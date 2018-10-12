@@ -1,0 +1,203 @@
+/* pages/home/home.wxss */
+@import'../util/publicCss';
+.slide-image{
+  width: 100%;
+  height: 360rpx;
+}
+/* .bannerDatas */
+.bannerData.section{
+  width: 100%;
+  height: 220rpx;
+  padding-top:36rpx;
+}
+.bannerData.flex-wrp{
+  height: 150rpx;
+  flex-direction:row;
+  justify-content:space-around;
+  display: flex;  
+  }
+.bannerData.flex-item{
+  width: 106rpx;
+  height: 150rpx;
+}
+.bannerData.flex-img{
+  width: 106rpx;
+  height:106rpx;
+  border-radius: 53rpx;
+}
+.bannerData.flex-txt{
+  width: 100%;
+  height: 30rpx;
+  line-height: 30rpx;
+  text-align: center;
+  margin-top: 21rpx;
+}
+
+/* typeDataSwiperCss */
+.typeData.section{
+  width: 100%;
+  height: 112rpx;
+   padding-top:39rpx;
+}
+.typeData.flex-wrp{
+  width: 100%;
+  height: 112rpx;
+  flex-direction:row;
+  justify-content:space-around;
+  display: flex;  
+}
+.typeData.flex-item{
+  width: 102rpx;
+  height: 112rpx;
+}
+.typeData.flex-imgC{
+  width: 102rpx;
+  height: 87rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.typeData.flex-img{
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 0;
+}
+.typeData.flex-txt{
+  height: 25rpx;
+  line-height: 25rpx;
+  margin-top: 17rpx;
+  text-align: center;
+}
+/* skillDataCss */
+.skillData.flex-item{
+  padding:35rpx 22rpx;
+}
+.skillTitle{
+  width: 100%;
+  height: 30rpx;
+  margin-bottom: 46rpx;
+   display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.skillTitleLeft{
+  width: 49%;
+  height: 30rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  vertical-align: middle;
+  vertical-align: -webkit-baseline-middle;
+}
+.skillTLBefore{
+  width: 6rpx;
+  height: 24rpx;
+  background-color: rgb(70,110,235);
+ 
+}
+.skillTitleRight{
+  width: 49%;
+  height: 30rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+   vertical-align: middle;
+  vertical-align: -webkit-baseline-middle;
+}
+.skillTRAfter{
+  width: 16rpx;
+  height: 30rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.skillTRAfter>image{
+  width: 16rpx;
+  height: 30rpx;
+
+}
+/* 人员技能Css */
+.psnData.flex-item{
+  display: inline-block;
+  margin:3.9rpx;
+}
+.rzRow{
+  width: 100%;
+  height: 30rpx;
+  margin-top: 22rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.rzRowL{
+  width: 182rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.rzRowLlistL{
+  width: 50%;
+  height: 30rpx;
+   border-radius:4rpx 0 0 4rpx;
+  border-left: 0.5rpx;
+  border-top: 0.5rpx;
+  border-bottom: 0.5rpx;
+  border-right: 0;
+  border-style: solid;
+  border-left-color: rgb(134,178,249);
+  border-top-color: rgb(134,178,249);
+  border-bottom-color: rgb(134,178,249);
+  font-size: 22rpx;
+  color: white;
+  text-align: center;
+  line-height: 30rpx;
+}
+.rzRowLlistL.active{
+  background-color: rgb(134,178,249);
+}
+.rzRowLlistR{
+  width: 50%;
+  height: 30rpx;
+   border-radius:0 4rpx 4rpx 0;
+  border-left: 0;
+  border-top: 0.5rpx;
+  border-bottom: 0.5rpx;
+  border-right: 0.5rpx;
+  border-style: solid;
+  border-right-color: rgb(134,178,249);
+  border-top-color: rgb(134,178,249);
+  border-bottom-color: rgb(134,178,249);
+  font-size: 22rpx;
+  color: rgb(51,51,51);
+  text-align: center;
+  line-height: 30rpx;
+}
+.rzRowRlistL{
+  font-size: 30rpx;
+  color: rgb(255,51,71);
+}
+.rzRowRlistL::after{
+  content: '/小时';
+  font-size: 22rpx;
+  color: rgb(51,51,51);
+}
+/* 评分Css */
+.pingfen{
+  height: 19rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+
+}
+.pingfenTxt{
+  font-size: 22rpx;
+  color: rgb(255,185,36);
+}

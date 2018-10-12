@@ -1,0 +1,35 @@
+<!--pages/allType/allType.wxml-->
+ <scroll-view scroll-y="true">   
+<view class='main'>
+    <view class='top'>
+        <view class='top_left'>
+          <view class='top_leftL'>
+          <image src='http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg'/>
+          </view>
+          <view class='top_leftR'>
+            极速下单
+          </view>
+        </view>
+        <view class='top_right'>
+          <image src='../image/home/right_JT.png'/>
+        </view>
+    </view>
+    <!-- 分类 -->
+        <view class='type_Skill' wx:for="{{typeData}}">
+          <view class='type_SkillTxt'>
+          {{item.title}}
+          </view>
+          <view class='type_SkillContent'>
+            <view class="{{index>2?'skill_ItemOther':'skill_Item'}}"  wx:for ="{{item.typeItem}}">
+              <view class='skill_ItemT'>
+                <image src="{{item.url}}" class="skill_Item-img" />
+                <view class='skill_ItemTxt'>{{item.name}}</view>
+              </view>
+            </view>
+          </view>
+     
+    </view>
+  
+</view>
+
+</scroll-view>

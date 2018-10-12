@@ -1,0 +1,66 @@
+<!--pages/order/sendOrderDetail.wxml-->
+<view class='main' style='background-color:#fff'>
+  <!-- 品类 -->
+  <picker  bindchange="bindPickerPLChange" value='{{index}}' range='{{PLArray}}'>
+    <view class='list-item'>
+    <text class='list-item-left' >品类</text>
+    <view class='list-item-right'>
+      <text>  {{title}}</text>
+      <view >
+        <image src='../image/home/right_JT.png' mode='aspectFit'/>
+      </view>
+    </view>
+  </view>
+  </picker>
+
+  <!-- sex -->
+  <picker bindchange="bindPickerSexChange" value='{{index}}' range='{{SexArray}}'>
+   <view class='list-item'>
+    <text class='list-item-left'>性别要求</text>
+    <view class='list-item-right'>
+     <text>  {{sex}}</text>
+      <view >
+        <image src='../image/home/right_JT.png' mode='aspectFit'/>
+      </view>
+    </view>
+  </view>
+  </picker>
+ 
+  <!-- time -->
+  <picker mode='time' value="{{time}}" style='' bindchange="bindPickerTimeChange" >
+  <view class='list-item'>
+    <text class='list-item-left'>时间</text>
+    <view class='list-item-right'>
+     <text>  {{time}}</text>
+      <view >
+        <image src='../image/home/right_JT.png' mode='aspectFit'/>
+      </view>
+    </view>
+  </view>
+  </picker>
+  <!-- 数量 -->
+  <view class='list-item'>
+     <text class='list-item-left'>数量</text>
+      <view class='list-item-rightN'>
+      <view class='reduce' bindtap='reduceNum'>
+      -
+      </view>
+      <view class='num'> 
+      {{num}}
+      </view>
+      <view class='add' bindtap='addNum'>
+      +
+      </view>
+     </view>
+  </view>
+  <!-- 备注 -->
+  <view class='list-end'>
+     <text>备注</text>
+     <textarea>
+     </textarea>
+    
+  </view>
+</view>
+<view class='footer'>
+  我要发布
+</view>

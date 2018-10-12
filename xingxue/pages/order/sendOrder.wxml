@@ -1,0 +1,27 @@
+<!--pages/order/sendOrder.wxml-->
+<view class='main'>
+    <!-- 一级目录 -->
+    <view class='top'>
+        <scroll-view class='OneLeverScroll' scroll-x="true">
+          <view class='OneLeverTar' scroll-x="true">
+              <view class="OneTar_Item {{OneTar_Num==index?'active':''}}" bindtap='OneTarFun' wx:for='{{OneLeverData}}' wx:key='index+{{index}}' data-num="{{index}}">
+                  <view>{{item}}</view>   
+              </view>
+          </view>
+         </scroll-view>
+          <scroll-view class='TwoLeverScroll' scroll-x="true">
+                <view class='TwoLeverTar' scroll-x="true">
+                    <view class="TwoTar_Item {{TwoTar_Num==index?'active':''}}" bindtap='TwoTarFun' wx:for='{{TwoLeverData}}' data-num="{{index}}">
+                        <view>{{item}}</view>   
+                    </view>
+                </view>
+          </scroll-view>
+    </view>
+    <view>
+    <view class="mapMid" bindtap='ToDetail'>
+    
+    </view>
+    <map id="map" longitude="113.324520" latitude="23.099994" scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location style='width:100%;height:950rpx;'></map>
+    </view>
+   
+</view>

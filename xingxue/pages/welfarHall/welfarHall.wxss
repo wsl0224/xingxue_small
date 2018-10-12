@@ -1,0 +1,16 @@
+/* pages/welfarHall/welfarHall.wxss */
+@import '../util/publicCss.wxss';
+.main{
+  padding: 25rpx;
+}
+.url_Item{
+  width: 700rpx;
+  height: 270rpx;
+  border-radius: 8rpx;
+  
+}
+.url_Item>image{
+  width: 700rpx;
+  height: 270rpx;
+  border-radius: 8rpx;
+}

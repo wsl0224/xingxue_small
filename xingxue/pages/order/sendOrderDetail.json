@@ -1,0 +1,8 @@
+{
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "发布任务详细",
+  "backgroundColor": "#f2f2f2",
+  "backgroundTextStyle": "light",
+  "enablePullDownRefresh": false
+}

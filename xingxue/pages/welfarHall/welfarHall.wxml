@@ -1,0 +1,8 @@
+<!--pages/welfarHall/welfarHall.wxml-->
+<scroll-view class='main'>
+    <view style='width:100%;margin-bottom:30rpx;' bindtap='ToWelfarDetail' wx:for='{{urlArray}}'>
+      <view class='url_Item'>
+      <image src='{{item.url}}'/>
+      </view>
+    </view>
+</scroll-view>

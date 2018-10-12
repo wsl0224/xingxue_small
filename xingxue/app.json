@@ -1,0 +1,37 @@
+{
+  "pages": [
+    
+    "pages/home/home",
+    "pages/message/message",
+    "pages/mine/mine",
+    "pages/order/sendOrder",
+    "pages/order/sendOrderDetail",
+    "pages/welfarHall/welfarHall",
+    "pages/welfarHall/welfarDetail",
+    "pages/allType/allType"
+   
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F2F2F2"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的"
+      }
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+/* pages/welfarHall/welfarDetail.wxss */
+
+.main{
+  border-top:1rpx;
+  border-top-color: rgb(223,223,221);
+  border-top-style: solid; 
+  padding: 43rpx;
+}

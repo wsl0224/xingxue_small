@@ -1,0 +1,98 @@
+<!--pages/home/home.wxml-->
+<!-- banner -->
+<scroll-view scroll-y style="height:100vm;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style='height:360rpx'>
+  <block wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" />
+    </swiper-item>
+  </block>
+</swiper>
+<!-- 推荐分类 -->
+<view class="bannerData section" style='background-color:{{config.XStyle.CbgColor}}'>
+  <view class="bannerData flex-wrp">
+    <view class="bannerData flex-item" bindtap='ToLevePage' wx:for="{{bannerData}}" id="{{item.id}}" wx:key="index+{{item.id}}">
+      <image src="{{item.url}}" class="bannerData flex-img" />
+      <view class='bannerData flex-txt' style='font-size:{{config.XStyle.FSize}}'>{{item.name}}</view>
+    </view>
+  </view>
+</view>
+<!-- 推荐服务 -->
+<swiper indicator-dots="{{typeData_indicatorDots}}" autoplay="{{typeData_autoplay}}" interval="{{typeData_interval}}" duration="{{typeData_duration}}" style='height:391rpx;margin-top:20rpx;margin-bottom:20rpx;background-color:{{config.XStyle.CbgColor}}'>
+  <block wx:for="{{typeData}}" wx:key="index">
+    <swiper-item>
+      <view class="typeData section">
+        <view class="typeData flex-wrp">
+          <view class="typeData flex-item"  wx:for="{{item[0]}}">
+            <view class='typeData flex-imgC'>
+              <image src="{{item.url}}" class="typeData flex-img" />
+            </view>
+            <view class='typeData flex-txt' style='font-size:{{config.XStyle.FSize}}'>{{item.name}}</view>
+          </view>
+        </view>
+      </view>
+      <view class="typeData section">
+        <view class="typeData flex-wrp">
+          <view class="typeData flex-item" bindtap='ToSkillPage' data-type="{{item.id}}" wx:for="{{item[1]}}">
+            <view class='typeData flex-imgC'>
+              <image src="{{item.url}}" class="typeData flex-img" />
+            </view>
+            <view class='typeData flex-txt' style='font-size:{{config.XStyle.FSize}}'>{{item.name}}</view>
+          </view>
+        </view>
+      </view>
+    </swiper-item>
+  </block>
+</swiper>
+<!-- 技能类别 -->
+<view class="skillData section">
+  <view class="skillData flex-wrp" >
+    <view class="skillData flex-item"  style='background-color:{{config.XStyle.CbgColor}};margin-bottom:20rpx;' wx:for="{{skillData}}" wx:key="id">
+          <view class="skillTitle" >
+                    <view class='skillTitleLeft'>
+                      <view class='skillTLBefore'>
+                      </view>
+                       <text style='font-size:{{config.XStyle.skillTFSize}};color:{{config.XStyle.FColor}};margin-left:21rpx;'>{{item.title}}</text>
+                        
+                    </view>
+                    <view class='skillTitleRight'>
+                      <text style='font-size:24rpx;color:{{config.XStyle.skillTFColor}};'>更多</text>
+                      <view class='skillTRAfter'>
+                        <image src='../image/home/right_JT.png' mode='aspectFit'/>
+                      </view>                          
+                    </view>     
+          </view>
+        
+          <view class="psnData section" style='background-color:{{config.XStyle.CbgColor}}'>
+            <view class="psnData flex-wrp">
+              <view class="psnData flex-item" wx:for="{{item.psnData}}">
+                <view style='width:347rpx;'>
+                  <image style='width:344rpx;height:344rpx;border-radius:4rpx;' src='{{item.url}}'/>
+                  <text style='height:28rpx;font-size:30rpx;color:{{config.XStyle.skillTFColor}}'>{{item.title}}</text>
+                  <view class='rzRow'>
+                    <view class='rzRowL'>
+                      <view class='rzRowLlistL active'>已实名</view>
+                      <view class='rzRowLlistR'>学生认证</view>
+                    </view>
+                    
+                    <view class='rzRowRlistL'>￥{{item.money}}</view>
+                  </view>
+                  <view class='pingfen'>
+                    <view>
+                      <view>
+                        <image style='width:20rpx;height:19rpx;'/>
+                      </view>
+                    </view>
+                    <text class='pingfenTxt'>
+                    {{item.pinfen}}                    
+                    </text>
+                  </view>
+
+                </view>
+              </view>
+            </view>
+      </view>
+    </view>
+  </view>
+</view>
+</scroll-view>
