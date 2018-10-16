@@ -1,1 +1,234 @@
 /* pages/mine/mine.wxss */
+.main{
+  height: 100vh;
+}
+.top{
+  height: 368rpx;
+}
+.topT{
+  height: 248rpx;
+  background: linear-gradient(#86B2F9, rgb(70,138,248));
+  position: relative;
+}
+.topT_psn{
+  height: 328rpx;
+  width: 700rpx;
+  box-shadow: 0 5rpx 5rpx 3.5rpx rgba(19,11,6,0.1); 
+  margin: 0 auto;
+  border-radius: 6rpx;
+  background-color: #fff;
+}
+.topT_psnInfo{
+  height: 185rpx;
+  border-bottom: 1rpx;
+  border-bottom-color: rgb(223,223,221);
+  border-bottom-style: solid;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.psnInfo_img{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-left: 19rpx;
+}
+.psnInfo_img,.psnInfo_img>image{
+  width: 112rpx;
+  height: 112rpx;
+  border-radius: 56rpx;
+}
+.psnInfo_name{
+  width: 100%;
+  margin-left: 45rpx;
+  font-size: 30rpx;
+  color: rgb(51,51,51);
+}
+.psnInfo_right{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-right: 7rpx;
+}
+.psnInfo_right,.psnInfo_right>image{
+  width: 15rpx;
+  height: 24rpx;
+}
+.topT_psnMenu{
+  height: 142rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.psnMenuList,.psnMenuFK{
+  width: 231rpx;
+  height: 142rpx;
+}
+.psnMenu{
+  height: 82rpx;
+  margin-top: 31rpx;
+  border-right: 1rpx;
+  border-right-color: rgb(223,223,221);
+  border-right-style: solid;
+  text-align: center;
+}
+.psnMenu_Num{
+  font-size: 36rpx;
+  color: rgb(64,135,250);
+}
+.psnMenu_txt{
+  font-size: 24rpx;
+  color: rgb(0,0,0);
+}
+.psnMenuFK_Item{
+  height: 82rpx;
+  text-align: center;
+}
+.psnMenuI_img{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 22rpx;
+  margin-bottom: 19rpx;
+}
+.psnMenuI_img,.psnMenuI_img>image{
+  width: 38rpx;
+  height: 40rpx;
+}
+.psnMenuFk_txt{
+  font-size: 24rpx;
+  color: rgb(0,0,0);
+}
+.topB{
+  height: 121rpx;
+}
+
+/* mid */
+.mid{
+  width: 699rpx;
+  height: 118rpx;
+  margin:0 auto;
+  box-shadow: rgba(19,11,6,0.1) 0 0 10rpx 5rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+}
+.mid_Item{
+  width: 50%;
+  height: 82rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.midItemL{
+  border-right: 1rpx;
+  border-right-style: solid;
+  border-right-color: rgb(223,223,221);
+}
+.mid_ItemT{
+  display: flex;
+    flex-direction: row;
+  align-items: center;
+  margin-bottom: 14rpx;
+}
+.mid_ItemTImg{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-right: 7rpx;
+  
+}
+.mid_ItemTImg,.mid_ItemTImg>image{
+  width: 34rpx;
+  height: 31rpx;
+}
+.mid_ItemTr{
+  font-size: 30rpx;
+  color: rgb(51,51,51);
+
+}
+.mid_ItemB{
+  font-size: 24rpx;
+  color:rgb(102,102,102);
+}
+/* bottom */
+.bottom{
+  margin-top: 34rpx;
+  padding:0 32rpx 0 35rpx;
+}
+.bottom_ItemTop{
+  margin-top: 32rpx;
+}
+.bottom_Item{
+  height: 99rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1rpx;
+  border-bottom-color: rgb(223,223,221);
+  border-bottom-style: solid;
+}
+.bottom_ItemL{
+  width: 50%;
+  height: 40rpx;
+   display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+
+}
+.bottom_ItemImg{
+   display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-right: 18rpx;
+}
+.bottom_ItemImg,.bottom_ItemImg>image{
+  width: 40rpx;
+  height: 40rpx;
+}
+.bottom_ItemLtxt{
+  font-size: 32rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  color: rgb(51,51,51);
+}
+.bottom_ItemR{
+  width: 50%;
+  height: 40rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+ 
+}
+.bottom_ItemRL{
+  width: 172rpx;
+  height: 40rpx;
+  font-size: 24rpx;
+  margin-right: 7rpx;
+   background: linear-gradient(rgb(255,13,13), rgb(255,113,18));
+   border-radius: 21rpx;
+   line-height: 40rpx;
+   color: #fff;
+}
+.bottom_ItemRImg{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.bottom_ItemRImg,.bottom_ItemRImg>image{
+  width: 15rpx;
+  height: 24rpx;
+}

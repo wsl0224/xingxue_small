@@ -1,0 +1,61 @@
+<!--pages/personalData/personalData.wxml-->
+<scroll-view scroll-y class='main'>
+<!-- 头像 -->
+  <view class='top'>
+  <view class='top_type'>
+  头像
+  </view>
+    <view class='top_psnPhoto' bindtap='updataImage'>
+    <image src='{{psnData.url}}'></image>
+    </view>
+  </view>
+  <!-- 形象照 -->
+  <view class='mid'>
+    <view class='mid_type'>
+     形象照
+    </view>
+    <view class='mid_content'>
+      <view class='mid_psnPhoto' bindtap='updataPhoto'>
+      <image src='{{psnData.url}}'></image>
+      </view>
+      <view class='mid_alt'>
+      发布形象照更容易获得关注哦
+      </view>
+    </view>
+    
+  </view>
+  <!-- 个人资料 -->
+   <view class='info'>
+    <view class='infoT'>
+      <view class='infoTitle'>
+        个人资料
+      </view>
+  
+    </view>
+    <view class='infoList'>
+       <view class='infoItem'>
+        <view class='infoLabel'>
+        昵称
+        </view>
+        <view class='infoValue'>
+          {{psnData.name}}
+        </view>
+      </view>
+      <view class='infoItem'>
+        <view class='infoLabel'>
+        生日
+        </view>
+        <view class='infoValue'>
+        {{psnData.date}}
+        </view>
+      </view><view class='infoItemQM'>
+        <view class='infoLabel'>
+        签名
+        </view>
+        <view class='infoValue'>
+          {{psnData.qianming}}
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

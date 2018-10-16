@@ -1,5 +1,6 @@
 // pages/home/home.js
 var config = require('../util/config.js');
+let $=require('../util/commit.js');
 Page({
 
   /**
@@ -223,6 +224,15 @@ Page({
       wx.navigateTo({
         url: '../allType/allType',
       })
+    }else{
+      let param = {
+        name: e.currentTarget.dataset.name
+      };
+      console.log(e.currentTarget.dataset);
+      let data = JSON.stringify(param);
+      wx.navigateTo({
+        url: '../skillList/skillList?param='+data,
+      })
     }
   },
   // 跳转极速下单
@@ -242,5 +252,25 @@ Page({
       }) 
     }
    
+  },
+  // 跳转技能资质
+  ToSkillPsnPage:function(e){
+    let data={
+      id:e.currentTarget.dataset.id
+    };
+    data=JSON.stringify(data);
+    wx.navigateTo({
+      url: '../skillPage/skillPage?param='+data,
+    })
+  },
+  // 更多 
+  ToTowSkillPage:function(e){
+    $.openWin({
+      url:'../twoSkillPage/twoSkillPage',
+      data:{
+        id:e.currentTarget.dataset.id,
+        title:e.currentTarget.dataset.title,
+      }
+    })
   }
 })

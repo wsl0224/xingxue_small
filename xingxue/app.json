@@ -1,6 +1,5 @@
 {
   "pages": [
-    
     "pages/home/home",
     "pages/message/message",
     "pages/mine/mine",
@@ -8,8 +7,16 @@
     "pages/order/sendOrderDetail",
     "pages/welfarHall/welfarHall",
     "pages/welfarHall/welfarDetail",
-    "pages/allType/allType"
-   
+    "pages/allType/allType",
+    "pages/skillList/skillList",
+    "pages/skillPage/skillPage",
+    "pages/psnPage/psnPage",
+    "pages/OnlineJob/OnlineJob",
+    "pages/placeOrder/placeOrder",
+    "pages/personalData/personalData",
+    "pages/myAttentionFans/myAttentionFans",
+    "pages/myTracks/myTracks",
+    "pages/twoSkillPage/twoSkillPage"
   ],
   "window": {
     "backgroundTextStyle": "light",

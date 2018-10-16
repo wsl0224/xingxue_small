@@ -1,0 +1,387 @@
+/* pages/psnPage/psnPage.wxss */
+@import '../util/publicCss';
+.main{
+  height:86vh;
+}
+ .psnTop{
+   height: 496rpx;
+  position: relative;
+ }
+ .psnTop_image{
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+ }
+  .psnTop_image,.psnTop_image>image{
+    width: 100vw;
+    height: 496rpx;
+  }
+  .psnTopInfo{
+  height: 158rpx;
+  background-color: rgba(255,255,255,0.4);
+  box-shadow: 0 -8rpx 0 3.5rpx rgba(0,0,0,0.05);
+  
+  position: absolute;
+  bottom:0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  }
+  .psnTopInfoZ{
+    padding:15rpx 24rpx 0 24rpx;
+  }
+  .psnInfo_top{
+    height: 36rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .psnInfo_topN{
+    height: 36rpx;
+    font-size: 32rpx;
+    line-height: 36rpx;
+    font-weight: bold;
+    margin-right: 9rpx;
+  }
+  .psnInfo_topS{
+    height: 36rpx;
+    width: 102rpx;
+    background-color: rgb(255,64,129);
+    border-radius: 18rpx;
+     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12rpx;
+  }
+  .psnInfo_topSL{
+    height: 36rpx;
+      display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .psnInfo_topSL,.psnInfo_topSL>image{
+    width: 24rpx;
+    height:25rpx;
+  }
+  .psnInfo_topSR{
+    height:36rpx;
+    line-height: 36rpx;
+    font-size: 24rpx;
+    color: rgb(255,255,255);
+    margin-left: 5rpx;
+  }
+  .psnInfo_RZstatus{
+    height: 36rpx;
+    width: 102rpx;
+    line-height: 36rpx;
+    background-color: rgb(12,217,97);
+    border-radius: 18rpx;
+    text-align: center;
+    font-size: 24rpx;
+    color:rgb(255,255,255);
+  }
+  .psnInfo_Content{
+    height: 34rpx;
+    margin-top: 12rpx;
+ 
+  }
+  .psnInfo_CT{
+    height: 34rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .psnInfo_CTL{
+    height: 24rpx;
+    font-size: 24rpx;
+    line-height: 24rpx;
+    color: rgb(51,51,51);
+    margin-top:9rpx;
+  }
+  .psnInfo_CTR{
+    height: 30rpx;
+    font-size: 30rpx;
+    line-height: 30rpx;
+    color:rgb(28,111,246);
+    
+  }
+  .psnInfo_CTR::before{
+    content: '粉丝';
+    color: rgb(51,51,51);
+    font-size: 24rpx;
+    margin-right: 10rpx;
+  }
+.psnInfo_F{
+  height: 36rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 18rpx;
+}
+.psnInfo_Faddr{
+  height: 36rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.psnInof_FaddrL{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-right: 7rpx;
+}
+  .psnInof_FaddrL,.psnInof_FaddrL>image{
+    width: 14rpx;
+    height: 16rpx;
+  }
+  .psnInfo_FaddrR{
+    height: 22rpx;
+    line-height: 22rpx;
+    font-size: 22rpx;
+    color: rgb(51,51,51);
+  }
+  .psnInfo_FR{
+    height: 36rpx;
+    width: 86rpx;
+    text-align: center;
+    line-height: 36rpx;
+    font-size: 24rpx;
+    color:rgb(134,178,249);
+    border:1rpx;
+    border-style: solid;
+    border-color: rgb(134,178,249);
+    border-radius: 8rpx;
+  }
+  .photo{
+   
+    background-color: #FFF;
+    padding:33rpx 24rpx;
+  }
+  .photoT{
+    height: 30rpx;
+    display: flex;
+     flex-direction: row;
+    align-items: center;
+
+  }
+  .photoTitle{
+    
+    height: 30rpx;
+    line-height: 30rpx;
+    font-size: 30rpx;
+    color: rgb(51,51,51);
+  }
+  .TitleBefore{
+    width: 8rpx;
+    height: 30rpx;
+    background-color: rgb(134,178,249);
+    border-radius: 3.5rpx;
+    margin-right: 12rpx;
+  }
+  .photoList{
+    height: 124rpx;
+    margin-top: 45rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .photoItem{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-right: 36rpx;
+
+  }
+  .photoItem,.photoItem>image{
+    width: 124rpx;
+    height: 124rpx;
+    border-radius: 6rpx;
+  }
+  .skill{
+    background-color: #fff;
+    margin-top: 20rpx; 
+  }
+  .skillT{
+    height: 92rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 24rpx;
+    border-bottom: 1rpx;
+    border-bottom-color:rgb(223,223,221);
+    border-bottom-style: solid;
+  }
+ .skillItem{
+    height: 193rpx;
+    padding: 0 24rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1rpx;
+    border-bottom-color:rgb(223,223,221);
+    border-bottom-style: solid;
+  }
+    .skillItemImg{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-right: 13rpx;
+  }
+    .skillItemImg,.skillItemImg>image{
+     width: 124rpx;
+      height: 124rpx;
+      border-radius: 6rpx;
+  }
+  .skillInfo{
+    width: 100%;
+    height: 124rpx;
+  
+  }
+  .skillInfo_name{
+    height: 30rpx;
+    line-height: 30rpx;
+    font-size: 30rpx;
+    color: rgb(51,51,51);
+    margin-bottom: 14rpx;
+  }
+    .skillInfo_money{
+    height: 30rpx;
+    line-height: 30rpx;
+    font-size: 30rpx;
+    color: rgb(255,51,71);
+    margin-bottom: 19rpx;
+    text-align: right;
+  }
+   .skillInfo_music{
+    height: 32rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  justify-content: space-between;
+  }
+   .skillInfo_ML{
+    width: 92rpx;
+    height: 32rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border:1rpx;
+    border-style: solid;
+    border-color:rgb(134,178,249);
+    border-radius: 4rpx;
+  }
+  .skillInfo_MLImg{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 0 8rpx 0 13rpx;
+  }
+  .skillInfo_MLImg,.skillInfo_MLImg>image{
+    width: 24rpx;
+    height: 24rpx;
+  }
+    .skillInfo_MLTxt{
+    font-size: 24rpx;
+    height: 24rpx;
+    line-height: 24rpx;
+    color: rgb(102,102,102);
+  }
+  .skillInfo_MLTxt::after{
+    content: "'";
+     color: rgb(102,102,102);
+  }
+  .skillInfo_MR{
+    height: 24rpx;
+    line-height: 24rpx;
+    font-size: 24rpx;
+    color:rgb(102,102,102);
+  }
+  .info{
+    background-color: #FFF;
+    padding:33rpx 24rpx;
+    margin-top: 20rpx;
+  }
+  .infoT{
+    height: 30rpx;
+    display: flex;
+     flex-direction: row;
+    align-items: center;
+  }
+  .infoTitle{
+       height: 30rpx;
+    line-height: 30rpx;
+    font-size: 30rpx;
+    color: rgb(51,51,51);
+  }
+  .infoList{
+    margin-top: 52rpx;
+  }
+  .infoItem{
+    height: 28rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 50rpx;
+  }
+  .infoLabel{
+    font-size: 30rpx;
+    height: 30rpx;
+    color: rgb(136,136,136);
+    margin-right: 60rpx;
+  }
+  .infoValue{
+    font-size: 30rpx;
+    height: 30rpx;
+    color:rgb(51,51,51);
+  }
+
+/* footer */
+.footer{
+  border-top:1rpx;
+  border-top-style: solid;
+  border-top-color: rgb(223,223,221);
+  background-color: #FFF;
+  padding: 0 24rpx;
+  height: 144rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0rpx;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+.footerL{
+  width: 268rpx;
+  height: 86rpx;
+  line-height: 86rpx;
+  border: 1rpx;
+  border-style: solid;
+  border-color: rgb(134,178,249);
+  border-radius: 8rpx;
+  text-align: center;
+  font-size: 36rpx;
+  color: rgb(134,178,249);
+}
+.footerR{
+  width: 402rpx;
+  height: 86rpx;
+  line-height: 86rpx;
+  background-color: rgb(134,178,249);
+  border-radius: 8rpx;
+  text-align: center;
+  font-size: 36rpx;
+  color: rgb(255,255,255);
+}

@@ -68,6 +68,7 @@ OneLeverScroll{
   width: 100rpx;
   height: 100rpx;
   z-index: 9999;
+  background-color: red;
   border:1rpx solid #fff;
   position: fixed;
   bottom: 495rpx;

@@ -1,0 +1,43 @@
+<!--pages/myAttentionFans/myAttentionFans.wxml-->
+<view class='main'>
+<view class='top'>
+    <view class="top_item left {{atteStatus?'active':''}}" data-id='left' bindtap='ChooseTab'>
+      <view class='attention'> 关注</view>
+    </view>
+  
+    <view class="top_item right {{fansStatus?'active':''}}" data-id='right' bindtap='ChooseTab'>
+    <view class='fans'>
+      粉丝
+    </view>
+  </view>
+</view>
+<scroll-view scroll-y class='list'>
+     <view data-id='{{item.id}}' class="{{index==0?'first_item':'item_main'}}" wx:for="{{psnData}}">
+      <view class='item_content'>
+        <view class='item_contentL'>
+            <view class='item_image'>
+              <image src='{{item.url}}' />
+            </view>
+            <view class='item_txt'>
+              <view class='item_txtName'>
+              {{item.name}}
+              </view>
+              <view class="item_sex {{item.sex==1?'item_sexN':'item_sexW'}}">
+                <view class='item_sexL'>
+                <image src="{{item.sex==1?'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg':'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'}}"/>
+                </view>
+                <view class='item_sexR'>
+                {{item.age}}
+                </view>
+              </view>
+              <view class='item_qinming'>
+              {{item.qianming}}
+              </view>
+            </view>
+        </view>
+       
+      </view>
+  </view>
+</scroll-view>
+</view>
+

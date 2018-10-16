@@ -1,5 +1,4 @@
-// pages/mine/mine.js
-let $=require('../util/commit.js');
+// pages/placeOrder/placeOrder.js
 Page({
 
   /**
@@ -9,12 +8,16 @@ Page({
     psnData:{
       url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
       name:'成都小甜甜',
-      guanzhuNum:100,
-      fengsiNum:200,
-      yuer:12.00,
-      jingxing:0,
-      
-    }
+    },
+    title:'叫醒服务',
+    sexNeed:'全部',
+    time:'选择时间',
+    num:1,
+    remark:'',
+    money:8,
+    allMoney:8,
+     PLArray: ['叫醒服务', '叫醒服务', '叫醒服务', '叫醒服务'],
+    SexArray:['全部','男','女'],
   },
 
   /**
@@ -72,43 +75,34 @@ Page({
   onShareAppMessage: function () {
 
   },
-  // 跳转个人资料
-  ToPersonalData:function(e){
-    wx.navigateTo({
-      url: '../personalData/personalData',
-    })
-  },
-  // 跳转关注或粉丝
-  ToMyAttentionFans:function(e){
-    console.log(e);
-    
-    if(e.currentTarget.dataset.type=='atte'){
-      let data={
-        id:'111',
-        Type:'atte',
-      };
-      $.openWin({
-        url:'../myAttentionFans/myAttentionFans',
-        data:data,        
-      })
-    } else if (e.currentTarget.dataset.type == 'fans'){
-      let data = {
-        id: '111',
-        Type: 'fans',
-      };
-      $.openWin({
-        url: '../myAttentionFans/myAttentionFans',
-        data: data,
+  // 数量运算
+  reduceNum: function (e) {
+    if (this.data.num > 1) {
+      this.data.num -= 1;
+      this.setData({
+        num: this.data.num,
+        allMoney: this.data.num * this.data.money
       })
     }
+
   },
-  // 跳转足迹
-  ToMyTracks:function(e){
-    $.openWin({
-      url:'../myTracks/myTracks',
-      data:{
-        id:'111',
-      }
+  addNum: function (e) {
+    this.data.num += 1;
+    this.setData({
+      num: this.data.num,
+      allMoney: this.data.num * this.data.money
+    })
+  },
+  // 品类选择
+  bindPickerPLChange: function (e) {
+    this.setData({
+      title: this.data.PLArray[e.detail.value]
+    })
+  },
+  // sex选择
+  bindPickerSexChange: function (e) {
+    this.setData({
+      sex: this.data.SexArray[e.detail.value]
     })
   }
 })

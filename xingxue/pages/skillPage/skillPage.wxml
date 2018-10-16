@@ -1,0 +1,100 @@
+<!--pages/skillPage/skillPage.wxml-->
+<scroll-view class='body_main' scroll-y style="height: 87.5vh;">
+  <view class='main'>
+    <view class='top'>
+      <view class='psnInfo' bindtap='ToPsnPage'>
+        <view class='psnInfo_img'>
+          <image src='{{skillData.psnData.url}}' />
+        </view>
+        <view class='psnInfoR'>
+          <view class='psnInfoRT'>
+            <view class='psnInfo_name'>
+              {{skillData.psnData.name}}
+            </view>
+            <view class="psnInfo_sex {{skillData.psnData.sex==1?'psnInfo_sexN':'psnInfo_sexW'}}">
+              <view class='psnInfo_sexImg'>
+                <image src="{{skillData.psnData.sex==1?'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg':'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'}}" />
+              </view>
+              <view class='psnInfo_sexTxt'>
+                {{skillData.psnData.age}}
+              </view>
+            </view>
+          </view>
+          <view class='psnInfo_addr'>
+            <view class='psnInfo_addrImg'>
+              <image src='http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg' />
+            </view>
+            <view class='psnInfo_addrTxt'>
+              {{skillData.psnData.addr}}
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='topR'>
+        <view class="guanzhu">
+          {{skillData.psnData.guanzhu==1?'关注':'已关注'}}
+        </view>
+      </view>
+    </view>
+    <view class='photo'>
+      <view class='photoImg'>
+        <image src='{{skillData.photoImg}}'>
+        </image>
+      </view>
+      <view class='photoR'>
+        <view class="{{index<2?'photoR_item':'photoR_itemLast'}}" wx:for="{{skillData.photo}}">
+          <image src='{{item}}'></image>
+        </view>
+      </view>
+    </view>
+    <view class='skill'>
+      <view class='skillTitle'>
+        {{skillData.skillName}}
+      </view>
+      <view class='skillMoney'>
+        {{skillData.money}}元/小时
+      </view>
+      <view class='skillNP'>
+        <view class='skillNPL'>
+          <view class='skillNPL_IMG'>
+            <image src='http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg'>
+            </image>
+          </view>
+          <view class='skillNPL_txt'>
+            接单{{skillData.num}}次
+          </view>
+        </view>
+        <view class='skillNPR'>
+          <view class='skillNPR_IMG'>
+            <image></image>
+          </view>
+          <view class='skillNPR_txt'>
+            {{skillData.pingfen}}
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='skillC'>
+      <view class='skillMusic'>
+        <view class='skillML'>
+          <image src='http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg'></image>
+        </view>
+        <view class='skillM_Time'>
+          {{skillData.musicTime}}
+        </view>
+        <audio></audio>
+      </view>
+      <view class='skillContxt'>
+        {{skillData.content}}
+      </view>
+    </view>
+  </view>
+</scroll-view>
+<view class='footer'>
+  <view class='footerL'>
+    聊天
+  </view>
+  <view class='footerR'>
+    下单
+  </view>
+</view>

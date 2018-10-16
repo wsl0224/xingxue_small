@@ -1,0 +1,96 @@
+<!--pages/placeOrder/placeOrder.wxml-->
+<scroll-view scroll-y class='main'>
+  <!-- 头像 -->
+  <view class='top'>
+    <view class='top_img'>
+      <image src='{{psnData.url}}'></image>
+    </view>
+    <view class='top_txt'>
+      {{psnData.name}}
+    </view>
+  </view>
+  <!-- 主体 -->
+  <view class='mid'>
+    <!-- 品类 -->
+    <picker bindchange="bindPickerPLChange" value='{{index}}' range='{{PLArray}}'>
+      <view class='list-item'>
+        <text class='list-item-left'>品类</text>
+        <view class='list-item-right'>
+          <text>  {{title}}</text>
+          <view>
+            <image src='../image/home/right_JT.png' mode='aspectFit' />
+          </view>
+        </view>
+      </view>
+    </picker>
+
+    <!-- sex -->
+    <picker bindchange="bindPickerSexChange" value='{{index}}' range='{{SexArray}}'>
+      <view class='list-item'>
+        <text class='list-item-left'>性别要求</text>
+        <view class='list-item-right'>
+          <text>  {{sexNeed}}</text>
+          <view>
+            <image src='../image/home/right_JT.png' mode='aspectFit' />
+          </view>
+        </view>
+      </view>
+    </picker>
+
+    <!-- time -->
+    <picker mode='time' value="{{time}}" style='' bindchange="bindPickerTimeChange">
+      <view class='list-item'>
+        <text class='list-item-left'>时间</text>
+        <view class='list-item-right'>
+          <text>  {{time}}</text>
+          <view>
+            <image src='../image/home/right_JT.png' mode='aspectFit' />
+          </view>
+        </view>
+      </view>
+    </picker>
+    <!-- 数量 -->
+    <view class='list-item'>
+      <text class='list-item-left'>数量</text>
+      <view class='list-item-rightN'>
+        <view class='reduce' bindtap='reduceNum'>
+          -
+        </view>
+        <view class='num'>
+          {{num}}
+        </view>
+        <view class='add' bindtap='addNum'>
+          +
+        </view>
+      </view>
+    </view>
+    <!-- 备注 -->
+    <view class='list-end'>
+      <text>备注</text>
+      <input placeholder='简单说下你的要求' placeholder-class='remarkInput'></input>
+
+    </view>
+  </view>
+ 
+  <view class='bottom'>
+   <!-- 费用 -->
+    <view class='list-item'>
+        <text class='list-item-left'>费用</text>
+        <view class='list-item-right'>
+          <text>  {{money}}元/小时</text>
+        </view>
+      </view>
+       <view class='list-item'>
+        <text class='list-item-left'>合计</text>
+        <view class='list-item-right'>
+          <text>  {{allMoney}}元</text>
+        </view>
+      </view>
+  </view>
+</scroll-view>
+<view class='footer'>
+  <view>
+    提交订单
+  </view>
+  
+</view>

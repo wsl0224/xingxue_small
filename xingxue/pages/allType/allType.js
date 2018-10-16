@@ -168,5 +168,11 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  // 跳转极速下单
+  ToLevePage: function (e) {
+      wx.navigateTo({
+        url: '../order/sendOrder',
+      })  
   }
 })

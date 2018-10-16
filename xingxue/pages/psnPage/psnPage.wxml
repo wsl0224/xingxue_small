@@ -1,0 +1,143 @@
+<!--pages/psnPage/psnPage.wxml-->
+<scroll-view scroll-y  class='main'>
+  <view class='psnTop'>
+    <view class='psnTop_image'>
+      <image src='http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg'></image>
+    </view>
+    <view class='psnTopInfo'>
+      <view class='psnTopInfoZ'>
+        <view class='psnInfo_top'>
+          <view class='psnInfo_topN'>
+            {{psnData.name}}
+          </view>
+          <view class='psnInfo_topS'>
+            <view class='psnInfo_topSL'>
+              <image src='http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg'></image>
+            </view>
+            <view class='psnInfo_topSR'>
+              {{psnData.sex}}
+            </view>
+          </view>
+          <view class='psnInfo_RZstatus' wx:if="{{psnData.RZstatus==1?true:false}}">
+            学生认证
+          </view>
+        </view>
+        <view class='psnInfo_Content'>
+          <view class='psnInfo_CT'>
+            <view class='psnInfo_CTL'>{{psnData.context}}</view>
+            <view class='psnInfo_CTR'>{{psnData.num}}</view>
+          </view>
+          <view class='psnInfo_F'>
+            <view class='psnInfo_Faddr'>
+              <view class='psnInof_FaddrL'>
+                <image src='http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg'></image>
+              </view>
+              <view class='psnInfo_FaddrR'>
+                {{psnData.addr}}
+              </view>
+            </view>
+            <view class='psnInfo_FR'>
+              {{psnData.guanzhu==1?'关注':'已关注'}}
+            </view>
+          </view>
+        </view>
+      </view>
+
+    </view>
+  </view>
+
+  <view class='photo'>
+    <view class='photoT'>
+      <view class='TitleBefore'>
+      </view>
+      <view class='photoTitle'>
+        形象照
+      </view>
+    </view>
+    <view class='photoList'>
+      <view class='photoItem' wx:for="{{psnData.photo}}">
+        <image src='{{item}}'></image>
+      </view>
+    </view>
+  </view>
+  <view class='skill'>
+    <view class='skillT'>
+      <view class='TitleBefore'>
+      </view>
+      <view class='skillTitle'>
+        TA的技能
+      </view>
+    </view>
+    <view class='skillItem' wx:for="{{skillData}}">
+      <view class='skillItemImg'>
+        <image src='{{item.url}}'></image>
+      </view>
+      <view class='skillInfo'>
+        <view class='skillInfo_name'>
+          {{item.skillName}}
+        </view>
+        <view class='skillInfo_money'>
+          {{item.money}}元/小时
+        </view>
+        <view class='skillInfo_music'>
+          <view class='skillInfo_ML'>
+            <view class='skillInfo_MLImg'>
+              <image src='http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg'></image>
+            </view>
+            <view class='skillInfo_MLTxt'>{{item.music}}</view>
+          </view>
+          <view class='skillInfo_MR'>
+            接单{{item.num}}次
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+  <view class='info'>
+    <view class='infoT'>
+      <view class='TitleBefore'>
+      </view>
+      <view class='infoTitle'>
+        个人资料
+      </view>
+  
+    </view>
+    <view class='infoList'>
+       <view class='infoItem'>
+        <view class='infoLabel'>
+        昵称
+        </view>
+        <view class='infoValue'>
+          {{psnData.name}}
+        </view>
+      </view>
+      <view class='infoItem'>
+        <view class='infoLabel'>
+        生日
+        </view>
+        <view class='infoValue'>
+        {{psnData.date}}
+        </view>
+      </view><view class='infoItem'>
+        <view class='infoLabel'>
+        签名
+        </view>
+        <view class='infoValue'>
+          {{psnData.context}}
+        </view>
+      </view>
+    </view>
+  </view>
+
+</scroll-view>
+
+
+<view class='footer'>
+  <view class='footerL'>
+    聊天
+  </view>
+  <view class='footerR'>
+    下单
+  </view>
+</view>

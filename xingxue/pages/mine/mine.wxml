@@ -1,2 +1,174 @@
 <!--pages/mine/mine.wxml-->
-<text>pages/mine/mine.wxml</text>
+<scroll-view scroll-y class='main'>
+  <view class='top'>
+    <view class='topT'>
+      <view class='topT_psn'>
+        <view class='topT_psnInfo' bindtap='ToPersonalData'>
+          <view class='psnInfo_img'>
+            <image src='{{psnData.url}}'></image>
+          </view>
+          <view class='psnInfo_name'>
+            {{psnData.name}}
+          </view>
+          <view class='psnInfo_right'>
+            <image src='../image/home/right_JT.png'></image>
+          </view>
+        </view>
+        <view class='topT_psnMenu'>
+          <!-- 关注 -->
+          <view class='psnMenuList' data-type='atte' bindtap='ToMyAttentionFans'>
+            <view class='psnMenu'>
+              <view class='psnMenu_Num'>{{psnData.guanzhuNum}}</view>
+              <view class='psnMenu_txt'>关注</view>
+            </view>
+          </view>
+          <!-- 粉丝 -->
+          <view class='psnMenuList' data-type='fans' bindtap='ToMyAttentionFans'>
+            <view class='psnMenu'>
+              <view class='psnMenu_Num'>{{psnData.fengsiNum}}</view>
+              <view class='psnMenu_txt'>粉丝</view>
+            </view>
+          </view>
+          <!-- 访客 -->
+          <view class='psnMenuFK' bindtap='ToMyTracks'>
+            <view class='psnMenuFK_Item'>
+              <view class='psnMenuI_img'>
+                <image src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg'></image>
+              </view>
+              <view class='psnMenuFk_txt'>
+                足迹
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='topB'>
+    </view>
+  </view>
+  <view class='mid'>
+    <!-- 我的钱包 -->
+    <view class='mid_Item midItemL'>
+      <view class='mid_ItemT'>
+        <view class='mid_ItemTImg'>
+          <image src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg'></image>
+        </view>
+        <view class='mid_ItemTr'>我的钱包</view>
+      </view>
+      <view class='mid_ItemB'>
+        余额:{{psnData.yuer}}
+      </view>
+    </view>
+    <!-- 兼职任务 -->
+    <view class='mid_Item'>
+      <view class='mid_ItemT'>
+        <view class='mid_ItemTImg'>
+          <image src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg'></image>
+        </view>
+        <view class='mid_ItemTr'>兼职任务</view>
+      </view>
+      <view class='mid_ItemB'>
+        进行中:{{psnData.jingxing}}
+      </view>
+    </view>
+  </view>
+  <view class='bottom'>
+  <!-- 邀请码 -->
+    <view class='bottom_Item'>
+      <view class='bottom_ItemL'>
+        <view class='bottom_ItemImg'>
+          <image src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg'></image>
+        </view>
+        <view class='bottom_ItemLtxt'>
+         邀请码
+        </view>
+      </view>
+      <view class='bottom_ItemR'>
+          <view>
+          </view>
+          <view class='bottom_ItemRImg'>
+            <image src='../image/home/right_JT.png'></image>
+          </view>
+      </view>
+
+    </view>
+    <!-- 申请技能 -->
+ <view class='bottom_Item bottom_ItemTop'>
+      <view class='bottom_ItemL'>
+        <view class='bottom_ItemImg'>
+          <image src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg'></image>
+        </view>
+        <view class='bottom_ItemLtxt'>
+         申请技能
+        </view>
+      </view>
+      <view class='bottom_ItemR'>
+          <view class='bottom_ItemRL'>
+          出租时间赚现金
+          </view>
+          <view class='bottom_ItemRImg'>
+            <image src='../image/home/right_JT.png'></image>
+          </view>
+      </view>
+
+    </view>
+    <!-- 订单中心 -->
+ <view class='bottom_Item'>
+      <view class='bottom_ItemL'>
+        <view class='bottom_ItemImg'>
+          <image src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg'></image>
+        </view>
+        <view class='bottom_ItemLtxt'>
+         订单中心
+        </view>
+      </view>
+      <view class='bottom_ItemR'>
+          <view>
+          </view>
+          <view class='bottom_ItemRImg'>
+            <image src='../image/home/right_JT.png'></image>
+          </view>
+      </view>
+
+    </view>
+    <!-- 在线客服 -->
+ <view class='bottom_Item bottom_ItemTop'>
+      <view class='bottom_ItemL'>
+        <view class='bottom_ItemImg'>
+          <image src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg'></image>
+        </view>
+        <view class='bottom_ItemLtxt'>
+         在线客服
+        </view>
+      </view>
+      <view class='bottom_ItemR'>
+          <view>
+          </view>
+          <view class='bottom_ItemRImg'>
+            <image src='../image/home/right_JT.png'></image>
+          </view>
+      </view>
+
+    </view>
+    <!-- 意见反馈 -->
+     <view class='bottom_Item'>
+      <view class='bottom_ItemL'>
+        <view class='bottom_ItemImg'>
+          <image src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg'></image>
+        </view>
+        <view class='bottom_ItemLtxt'>
+         意见反馈
+        </view>
+      </view>
+      <view class='bottom_ItemR'>
+          <view>
+          </view>
+          <view class='bottom_ItemRImg'>
+            <image src='../image/home/right_JT.png'></image>
+          </view>
+      </view>
+
+    </view>
+  </view>
+
+</scroll-view>

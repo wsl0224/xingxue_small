@@ -1,0 +1,96 @@
+/* pages/personalData/personalData.wxss */
+@import '../util/publicCss';
+.top,.mid{
+  height: 230rpx;
+  border-top: 1rpx;
+  border-top-color: rgb(223,223,221);
+  border-top-style: solid;
+  border-bottom: 1rpx;
+  border-bottom-color: rgb(223,223,221);
+  border-bottom-style: solid;
+  background-color: #fff;
+  padding: 26rpx 23rpx 0 23rpx;
+  margin-bottom: 20rpx;
+}
+.top_type,.mid_type{
+  font-size: 32rpx;
+  color: rgb(0,0,0);
+  margin-bottom: 20rpx;
+}
+.top_psnPhoto,mid_psnPhoto{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+}
+.top_psnPhoto,.top_psnPhoto>image,mid_psnPhoto,.mid_psnPhoto>image{
+  width: 124rpx;
+  height: 124rpx;
+  border-radius: 6rpx;
+}
+.mid_content{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+}
+.mid_alt{
+  margin-left: 36rpx;
+  color: rgb(106,106,106);
+  font-size: 32rpx;
+}
+ .info{
+    background-color: #FFF;
+     
+  }
+  .infoT{
+    height: 91rpx;
+    display: flex;
+     flex-direction: row;
+    align-items: center;
+    border-bottom: 1rpx;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(223,223,221);
+    padding:0 24rpx; 
+  }
+  .infoTitle{
+       height: 32rpx;
+    line-height: 32rpx;
+    font-size: 32rpx;
+    color: rgb(51,51,51);
+  }
+  .infoItem{
+    height: 81rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    border-bottom: 1rpx;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(223,223,221);
+    padding:0 24rpx;
+  }
+  .infoItemQM{
+      height: 136rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    border-bottom: 1rpx;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(223,223,221);
+    padding:32rpx 24rpx 0 24rpx;
+  }
+  .infoLabel{
+    font-size: 32rpx;
+    height: 32rpx;
+    line-height: 32rpx;
+    color: rgb(136,136,136);
+    margin-right: 60rpx;
+  }
+  .infoValue{
+    font-size: 30rpx;
+     height: 32rpx;
+    line-height: 32rpx;
+    color:rgb(51,51,51);
+  }
