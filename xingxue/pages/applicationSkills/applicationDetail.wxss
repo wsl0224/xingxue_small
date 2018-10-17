@@ -1,0 +1,154 @@
+/* pages/applicationSkills/applicationDetail.wxss */
+@import '../util/publicCss.wxss';
+.main{
+  border-top:1rpx;
+  border-top-color:#dfdfdd;
+  border-top-style: solid; 
+}
+.mid{
+  height: 85vh;
+  margin-bottom: 50rpx;
+}
+.top{
+  height: 74rpx;
+  background-color:#86b2f9;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24rpx;
+}
+.top_left{
+  width: 100%;
+  height: 74rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.top_leftImg{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.top_leftImg,.top_leftImg>image{
+  width: 24rpx;
+  height: 22rpx;
+}
+.top_leftTxt{
+  font-size: 26rpx;
+   color: #fff;
+   margin-left: 13rpx;
+}
+.top_right{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.top_right,.top_right>image{
+  width: 18rpx;
+  height: 18rpx;
+}
+
+.Info{
+  background-color: #fff;
+}
+.Info_Item{
+  height: 108rpx;
+  border-bottom: 1rpx;
+  border-bottom-color: #dfdfdd;
+  border-bottom-style: solid;
+   display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 24rpx;
+
+}
+.Info_Type{
+  width: 200rpx;
+  font-size: 32rpx;
+  color: #000000;
+}
+.Info_Type>input{
+  font-size: 32rpx;
+  color: #000000;
+}
+.placeInputCss{
+  font-size: 32rpx;
+  color: #999999;
+}
+.pInfo_title{
+  height: 93rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.pInfo_TLeft,.pInfo_Tright{
+width: 50%;
+font-size: 32rpx;
+color: #333333;
+text-align: center
+}
+.pInfo_Img{
+  height: 260rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  border-top:1rpx;
+  border-top-color:#dfdfdd;
+  border-top-style: solid; 
+  border-bottom: 1rpx;
+  border-bottom-color: #dfdfdd;
+  border-bottom-style: solid;
+}
+.pInfo_ImgL,.pInfo_ImgR{
+  width: 50%;
+  height: 260rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.pInfo_ImgLimg,.pInfo_ImgRimg{
+ 
+  border: 1rpx;
+  border-style: solid;
+  border-color: #87aada;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.pInfo_ImgLimg,.pInfo_ImgRimg,.pInfo_ImgLimg>image,.pInfo_ImgRimg>image{
+ width: 340rpx;
+  height: 208rpx;
+}
+.remark{
+  margin-top: 42rpx;
+  padding: 0 24rpx;
+}
+.remark_title{
+  font-size: 30rpx;
+  color: #333333;
+  margin-bottom: 21rpx;
+}
+.remark_content rich-text{
+   font-size: 30rpx;
+  color: #333333;
+}
+/* footer */
+.footer{
+ width: 700rpx;
+  height: 98rpx;
+  margin: 0 auto;
+  line-height: 98rpx;
+  text-align: center;
+  background-color:#86b2f9;
+  color: #fff;
+  border-radius: 6rpx;
+   font-size: 36rpx;
+}

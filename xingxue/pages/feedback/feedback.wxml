@@ -1,0 +1,25 @@
+<!--pages/feedback/feedback.wxml-->
+<view class='main'>
+  <view class='top'>
+    <view class='top_title'>
+    选择反馈类型
+    </view>
+    <view class='top_List'>
+        <view data-num='{{index}}' data-value="{{item}}" bindtap='ChooseType' class="top_Item {{indexNum==index?'active':''}}" wx:for="{{typeData}}">
+          {{item}}
+        </view>
+    </view>
+  </view>
+  <view class='mid'>
+    <view class='mid_title'>
+    反馈内容
+    </view>
+    <view class='mid_input'>
+    <input placeholder="请输入您要反馈的内容..." placeholder-class='inputCss'></input>
+    </view>
+  </view>
+  <!-- footer -->
+  <view class='footer'>
+      提交
+  </view>
+</view>

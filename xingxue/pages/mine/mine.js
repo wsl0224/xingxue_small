@@ -6,14 +6,16 @@ Page({
    * 页面的初始数据
    */
   data: {
+    loadingShow:false,
+    psnStatus:2,
     psnData:{
       url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
       name:'成都小甜甜',
       guanzhuNum:100,
       fengsiNum:200,
-      yuer:12.00,
+      yuer:'12.00',
       jingxing:0,
-      
+      skillRZstatus:2,
     }
   },
 
@@ -21,7 +23,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    if(this.data.psnStatus!=1){
+        // 未登录
+       this.setData({
+          psnData:{
+            url: '../image/icon/icon94.png',
+          name:'',
+          guanzhuNum:0,
+          fengsiNum:0,
+          yuer:0,
+          jingxing:0,  
+          }
+       });
+    }
   },
 
   /**
@@ -72,6 +86,54 @@ Page({
   onShareAppMessage: function () {
 
   },
+  // 登录窗口
+  ShowToLodPage:function(e){
+    this.setData({
+      loadingShow: true,
+    })
+  },
+  CloseLoadPage:function(e){
+    this.setData({
+      loadingShow:false,
+    })
+  },
+  // 登录事件
+  ToLoded:function(e){
+    let self=this;
+    console.log('登录事件');
+    wx.login({
+      timeout:5000,
+      success:function(e){
+        console.log(e);
+        wx.showToast({
+          title: '成功',
+          icon: 'success',
+          duration: 2000
+        })
+        self.setData({
+          psnStatus:1,
+          psnData:{
+            url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+            name: '成都小甜甜',
+            guanzhuNum: 100,
+            fengsiNum: 200,
+            yuer: 12.00,
+            jingxing: 0,
+          }
+        })
+        self.CloseLoadPage();
+      }, 
+      fail:function(e){
+        wx.showToast({
+          title: '失败',
+          icon: 'error',
+          duration: 2000
+        })
+      }
+
+    });
+  },
+  
   // 跳转个人资料
   ToPersonalData:function(e){
     wx.navigateTo({
@@ -110,5 +172,30 @@ Page({
         id:'111',
       }
     })
+  },
+  // 跳转我的钱包
+  ToMyWallet:function(e){
+    $.openWin({
+      url:'../myWallet/myWallet',
+      data:{id:'111'},
+    })
+  },
+  // 申请技能
+  ToApplicationSkill:function(e){
+    if (this.data.psnData.skillRZstatus!=1){
+      $.openWin({
+        url: '../applicationSkills/applicationSkills',
+      })
+    }else{
+
+    }
+    
+  },
+  // 意见反馈
+  ToFeedback:function(e){
+    $.openWin({
+      url:'../feedback/feedback',
+    })
   }
+  
 })

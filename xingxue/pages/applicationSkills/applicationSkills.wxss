@@ -1,0 +1,97 @@
+/* pages/applicationSkills/applicationSkills.wxss */
+@import '../util/publicCss.wxss';
+.main{
+    border-top:1rpx;
+  border-top-color:#dfdfdd;
+  border-top-style: solid; 
+}
+.top{
+  height: 74rpx;
+  background-color:#86b2f9;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24rpx;
+}
+.top_left{
+  width: 100%;
+  height: 74rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.top_leftImg{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.top_leftImg,.top_leftImg>image{
+  width: 24rpx;
+  height: 22rpx;
+}
+.top_leftTxt{
+  font-size: 26rpx;
+   color: #fff;
+   margin-left: 13rpx;
+}
+.top_right{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.top_right,.top_right>image{
+  width: 18rpx;
+  height: 18rpx;
+}
+.mid{
+  height: 162rpx;
+  border-bottom: 1rpx;
+  border-bottom-color: #dfdfdd;
+  border-bottom-style: solid;
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32rpx;
+}
+.mid_left{
+  width: 100%;
+  height: 76rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  
+}
+.mid_leftImg{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.mid_leftImg,.mid_leftImg>image{
+  width: 91rpx;
+  height: 67rpx;
+}
+.mid_leftR{
+  margin-left: 34rpx;
+}
+.mid_leftRT{
+  font-size: 30rpx;
+  color: #333333;
+  margin-bottom: 24rpx;
+}
+.mid_leftRB{
+  font-size: 24rpx;
+  color: #6a6a6a;
+}
+.mid_right{
+  width: 200rpx;
+  text-align: right;
+  font-size: 30rpx;
+  color: #333333;
+}

@@ -1,0 +1,28 @@
+/* pages/noData/noData.wxss */
+@import '../util/publicCss.wxss';
+.main{
+  height: 100vh;
+}
+.mid{
+  margin-top: 45%;
+  height: 193rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.mid_image{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50rpx;
+}
+.mid_image,.mid_image>image{
+  width: 128rpx;
+  height: 115rpx;
+}
+.mid_mid{
+  font-size: 30rpx;
+  color: #999999;
+}

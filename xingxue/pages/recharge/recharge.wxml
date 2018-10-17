@@ -1,0 +1,23 @@
+<!--pages/recharge/recharge.wxml-->
+<view class='main'>
+<!-- 充值 -->
+<view class='top'>
+    <view class='top_title'>
+    充值金额不可提现
+    </view>
+    <view class='top_list'>
+      <view class="top_item {{indexNum==index?'active':''}}" bindtap='ChooseItem' data-value="{{item}}" data-num="{{index}}" wx:for='{{moneyData}}'>
+      {{item}}元
+      </view>
+    </view>
+    
+</view>
+<!-- 手动充值 -->
+<view class='mid'>
+  <input type='number' bindinput="bindKeyInput"  placeholder='手动输入充值金额' placeholder-class='inputCss'></input>
+</view>
+<!-- 按钮 -->
+<view class='footer' bindtap='DoRecharge'>
+    微信充值
+</view>
+</view>

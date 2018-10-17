@@ -1,0 +1,39 @@
+/* pages/billDetail/billDetail.wxss */
+@import '../util/publicCss.wxss';
+.main{
+  height: 99vh;
+  border-top: 1rpx;
+  border-top-color: #dfdfdd;
+  border-top-style: solid;
+}
+.main_item{
+  height: 120rpx;
+  border-bottom: 1rpx;
+  border-bottom-color: #dfdfdd;
+  border-bottom-style: solid;
+  padding: 0 47rpx;
+  background-color: #fff;
+  display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-between;
+}
+.main_itemLT{
+  font-size: 30rpx;
+  color: #000000;
+  margin-bottom: 13rpx;
+}
+.main_itemLB{
+  font-size: 24rpx;
+  color: #666666;
+}
+.main_itemR{
+  font-size: 30rpx;
+}
+.main_itemR.add{
+
+    color:#7585ff;
+}
+.main_itemR.red{
+  color: #ea103e;
+}

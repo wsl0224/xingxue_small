@@ -1,0 +1,11 @@
+<!--pages/noData/noData.wxml-->
+<view class='main'>
+  <view class='mid'>
+    <view class='mid_image'>
+      <image src='../image/icon/icon60.png'></image>
+    </view>
+    <view class='mid_mid'>
+    敬请期待
+    </view>
+  </view>
+</view>

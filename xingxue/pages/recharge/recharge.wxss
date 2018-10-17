@@ -1,0 +1,70 @@
+/* pages/recharge/recharge.wxss */
+@import '../util/publicCss.wxss';
+.top{
+   height: 405rpx;
+   background-color: #fff;
+   margin-top: 20rpx;
+   padding: 39rpx 23rpx 0 23rpx;
+}
+.top_title{
+  font-size: 30rpx;
+  color: #666666;
+}
+.top_list{
+  width: 100%;
+  height: 250rpx;
+  margin-top: 39rpx;
+  display: flex;
+  flex-direction: row wrap;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap:wrap;
+
+}
+.top_item{
+ width: 214rpx;
+ height: 92rpx;
+ border:1rpx;
+ border-style: solid;
+ border-color: #dfdfdd;
+ border-radius: 8rpx;
+ line-height: 92rpx;
+ text-align: center;
+ color: #666666;
+}
+.top_item.active{
+  color: #fff;
+  background:url(http://pgq6951kf.bkt.clouddn.com/icon81.png);
+  background-repeat:no-repeat;
+ background-size:100% 100%;
+ -moz-background-size:100% 100%;
+}
+
+.mid{
+  height: 108rpx;
+  margin: 20rpx 0 101rpx 0;
+  padding:0 23rpx;
+  background-color:#fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.mid>input{
+  font-size: 30rpx;
+   color: #666666;
+}
+.inputCss{
+  color: #666666;
+  font-size: 30rpx;
+}
+.footer{
+  width: 700rpx;
+  height: 98rpx;
+  line-height: 98rpx;
+  font-size: 36rpx;
+  color: #fff;
+  background-color: #51c232;
+   border-radius: 6rpx;
+   text-align: center;
+   margin: 0 auto;
+}

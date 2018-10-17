@@ -1,0 +1,52 @@
+/* pages/bringUpSuccess/bringUpSuccess.wxss */
+@import '../util/publicCss.wxss';
+.top{
+  height: 456rpx;
+  margin: 20rpx 0 41rpx 0;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+    border-top: 1rpx;
+  border-top-color: #dfdfdd;
+  border-top-style: solid;
+    border-bottom: 1rpx;
+  border-bottom-color: #dfdfdd;
+  border-bottom-style: solid;
+}
+.top_image{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 80rpx;
+  margin-bottom: 41rpx;
+}
+.top_image,.top_image>image{
+  width: 82rpx;
+  height: 82rpx;
+}
+.top_title{
+  font-size: 30rpx;
+  color:#09bb07;
+}
+.top_money{
+  margin-top:42rpx;
+  margin-bottom: 25rpx;
+  font-size: 48rpx;
+  color: #000000; 
+}
+.top_footer{
+  font-size: 32rpx;
+  color: #000000;
+}
+.bottom{
+ width: 700rpx;
+  height: 98rpx;
+  margin: 0 auto;
+  line-height: 98rpx;
+  text-align: center;
+  background-color:#86b2f9;
+  color: #fff;
+  border-radius: 6rpx;
+}

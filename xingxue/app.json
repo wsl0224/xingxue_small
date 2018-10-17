@@ -1,5 +1,6 @@
 {
   "pages": [
+ 
     "pages/home/home",
     "pages/message/message",
     "pages/mine/mine",
@@ -16,7 +17,17 @@
     "pages/personalData/personalData",
     "pages/myAttentionFans/myAttentionFans",
     "pages/myTracks/myTracks",
-    "pages/twoSkillPage/twoSkillPage"
+    "pages/twoSkillPage/twoSkillPage",
+    "pages/myWallet/myWallet",
+    "pages/billDetail/billDetail",
+    "pages/recharge/recharge",
+    "pages/putForward/putForward",
+    "pages/bringUpSuccess/bringUpSuccess",
+    "pages/noData/noData",
+    "pages/applicationSkills/applicationSkills",
+    "pages/applicationSkills/applicationDetail",
+      "pages/feedback/feedback"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

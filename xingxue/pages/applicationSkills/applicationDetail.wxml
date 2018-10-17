@@ -1,0 +1,87 @@
+<!--pages/applicationSkills/applicationDetail.wxml-->
+<view class='main'>
+  <scroll-view class='mid' scroll-y>
+    <!-- title -->
+    <view class='top' wx:if="{{showTitle}}">
+      <view class='top_left'>
+        <view class='top_leftImg'>
+          <image src='../image/icon/icon86.png'></image>
+        </view>
+        <view class='top_leftTxt'>
+          申请技能服务者需先通过学生认证
+        </view>
+      </view>
+
+      <view class='top_right' bindtap='CloseTitle'>
+        <image src='../image/icon/icon87.png'></image>
+      </view>
+    </view>
+    <!-- 学生信息 -->
+    <view class='Info'>
+      <!-- 姓名 -->
+      <view class='Info_Item'>
+        <view class='Info_Type'>
+          姓名
+        </view>
+        <view class='Info_Input'>
+          <input placeholder='请填写您的姓名' placeholder-class='placeInputCss'></input>
+        </view>
+      </view>
+      <!-- 学号 -->
+      <view class='Info_Item'>
+        <view class='Info_Type'>
+          学号
+        </view>
+        <view class='Info_Input'>
+          <input placeholder='请填写您的学号' placeholder-class='placeInputCss'></input>
+        </view>
+      </view>
+      <!-- 院校名称 -->
+      <view class='Info_Item'>
+        <view class='Info_Type'>
+          院校名称
+        </view>
+        <view class='Info_Input'>
+          <input placeholder='请填写您的院校名称' placeholder-class='placeInputCss'></input>
+        </view>
+      </view>
+    </view>
+    <!-- 证件图 -->
+    <view class='pInfo'>
+      <view class='pInfo_title'>
+        <view class='pInfo_TLeft'>
+          学生证 (个人信息)
+        </view>
+        <view class='pInfo_Tright'>
+          手持学生证件照
+        </view>
+      </view>
+      <view class='pInfo_Img'>
+        <view class='pInfo_ImgL'>
+          <view class='pInfo_ImgLimg'>
+            <image src='../image/icon/icon59.png'></image>
+          </view>
+
+        </view>
+        <view class='pInfo_ImgR'>
+          <view class='pInfo_ImgRimg'>
+            <image src='../image/icon/icon59.png'></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 注意事项 -->
+    <view class='remark'>
+      <view class='remark_title'>
+        注意事项
+      </view>
+      <view class='remark_content'>
+        <rich-text nodes="{{content}}" bindtap="tap"></rich-text>
+      </view>
+    </view>
+    
+  </scroll-view>
+  <view class='footer'>
+      提交审核
+  </view>
+</view>

@@ -1,0 +1,72 @@
+/* pages/myWallet/myWallet.wxss */
+@import '../util/publicCss.wxss';
+.top{
+  width: 700rpx;
+  height: 328rpx;
+  margin: 0 auto;
+  margin-top: 29rpx;
+  padding-top: 64rpx;
+  border-radius: 6rpx;
+  background-color: #86b2f9;
+  box-shadow: 0 0 3.5rpx 3rpx rgba(0,0,0,0.1);
+}
+.top_title{
+  height: 28rpx;
+  line-height: 28rpx;
+  text-align: center;
+  color: #ffffff;
+
+  margin-bottom: 41rpx;
+}
+.top_balance{
+  font-size: 72rpx;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 63rpx;
+}
+.top_SHbalance{
+  font-size: 30rpx;
+    color: #ffffff;
+    text-align: center;
+}
+
+.mid{
+  width: 700rpx;
+  height: 208rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-top: 39rpx;
+
+}
+.mid_Item{
+  width: 200rpx;
+   display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mid_ItemZImg,.mid_ItemCImg,.mid_ItemTImg{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.mid_ItemZImg,.mid_ItemZImg>image{
+  width: 68rpx;
+  height: 49rpx;
+}
+.mid_ItemCImg,.mid_ItemCImg>image{
+  width: 59rpx;
+  height: 59rpx;
+}
+.mid_ItemTImg,.mid_ItemTImg>image{
+  width: 60rpx;
+  height: 44rpx;
+}
+.mid_ItemT{
+  margin-top: 21rpx;
+  font-size: 28rpx;
+  color: #000000;
+}

@@ -1,0 +1,20 @@
+<!--pages/bringUpSuccess/bringUpSuccess.wxml-->
+<view class='main'>
+    <view class='top'>
+      <view class='top_image'>
+      <image src='../image/icon/icon60.png'></image>
+      </view>
+      <view class='top_title'>
+      提现成功
+      </view>
+      <view class='top_money'>
+      ￥{{money}}
+      </view>
+      <view class='top_footer'>
+        成功提现至微信钱包
+      </view>
+    </view>
+    <view class='bottom'>
+      完成
+    </view>
+</view>
