@@ -1,0 +1,72 @@
+/* pages/skillCertification/skillCertification.wxss */
+@import '../util/publicCss';
+.main{
+
+}
+.top,.mid,.bot{
+  height: 196rpx;
+   border-top: 1rpx;
+  border-top-color: #dfdfdd;
+  border-top-style: solid;
+   border-bottom: 1rpx;
+  border-bottom-color: #dfdfdd;
+  border-bottom-style: solid;
+  background-color: #fff;
+  padding: 26rpx 24rpx;
+  margin-bottom: 20rpx;
+}
+.top_T,.mid_T,.bot_T{
+  height: 35rpx;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 38rpx;
+}
+.top_TL,.mid_TL,.bot_TL{
+  font-size: 32rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+  color: #000000;
+  margin-right: 53rpx;
+}
+.top_TR,.mid_TR{
+  font-size:24rpx;
+  height: 24rpx;
+  line-height: 24rpx;
+  color:#6a6a6a;
+  margin-top: 8rpx;
+  
+}
+.top_B,.mid_B{
+    display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.top_B,.mid_B,.top_B>image,.mid_B>image{
+  width: 124rpx;
+  height: 124rpx;
+}
+.bot_B{
+  width: 100%;
+}
+.bot_B>input{
+  width: 100%;
+}
+.bot_Binput{
+  font-size:24rpx;
+  color:#6a6a6a;
+}
+
+/* footer */
+.footer{
+ width: 700rpx;
+  height: 98rpx;
+  margin: 0 auto;
+  line-height: 98rpx;
+  text-align: center;
+  background-color:#86b2f9;
+  color: #fff;
+  border-radius: 6rpx;
+   font-size: 36rpx;
+   margin-top: 50rpx;
+}

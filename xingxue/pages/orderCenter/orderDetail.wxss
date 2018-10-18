@@ -1,0 +1,140 @@
+/* pages/orderCenter/orderDetail.wxss */
+@import '../util/publicCss';
+
+.main {
+  height: 100vh;
+}
+
+.psnInfo {
+  height: 193rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1rpx;
+  border-bottom-color: #dfdfdd;
+  border-bottom-style: solid;
+  padding: 0 23rpx;
+  background-color: #fff;
+  margin-bottom: 20rpx;
+}
+
+.psnImg {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.psnImg, .psnImg>image {
+  width: 124rpx;
+  height: 124rpx;
+  border-radius: 6rpx;
+}
+
+.psnInfo_R {
+  margin-left: 12rpx;
+}
+
+.psnName {
+  font-size: 30rpx;
+  color: #333;
+}
+
+.psnSex {
+  width: 102rpx;
+  height: 36rpx;
+  background-color: #ff4081;
+  border-radius: 18rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 19rpx;
+  margin-bottom: 20rpx;
+}
+
+.psnSexImg {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5rpx;
+}
+
+.psnSexImg, .psnSexImg>image {
+  width: 25rpx;
+  height: 25rpx;
+}
+
+.psnAge {
+  font-size: 24rpx;
+  color: #fff;
+}
+
+.psnEaluate {
+  height: 22rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.psnEaluateVal {
+  font-size: 22rpx;
+  color: #ffb924;
+}
+.Type,.Time,.Cost,.Discount,.Total{
+    background-color: #fff;
+}
+.Time{
+  border-bottom: 1rpx;
+  border-bottom-color: #dfdfdd;
+  border-bottom-style: solid;
+}
+.Cost{
+  margin-top: 20rpx;
+}
+.Item {
+  height: 108rpx;
+  padding: 0 25rpx;
+  border-top: 1rpx;
+  border-top-color: #dfdfdd;
+  border-top-style: solid;
+ 
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+.Item_label,.Item_val{
+  font-size: 32rpx;
+  color:#000000;
+}
+.Item_Discount{
+    color:#999999;
+}
+.Total{
+  height: 108rpx;
+  line-height: 108rpx;
+  padding: 0 25rpx;
+  text-align: right;
+  font-size: 32rpx;
+  color:#000000;
+   border-bottom: 1rpx;
+  border-bottom-color: #dfdfdd;
+  border-bottom-style: solid;
+   border-top: 1rpx;
+  border-top-color: #dfdfdd;
+  border-top-style: solid;
+}
+.Total::after{
+  content: '元';
+  font-size: 32rpx;
+  color:#000000;
+}
+.Total::before{
+  content: '合计： ';
+  font-size: 32rpx;
+  color:#000000;
+}

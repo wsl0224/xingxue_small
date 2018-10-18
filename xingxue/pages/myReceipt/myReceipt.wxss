@@ -1,0 +1,5 @@
+/* pages/myReceipt/myReceipt.wxss */
+@import '../util/publicCss';
+.main{
+  height: 100vh;
+}

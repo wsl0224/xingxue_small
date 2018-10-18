@@ -1,13 +1,11 @@
-// pages/applicationSkills/applicationSkills.js
-let $=require('../util/commit.js');
+// pages/myReceipt/myReceipt.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    showTitle:true,
-    
+
   },
 
   /**
@@ -64,18 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  // 关闭提示
-  CloseTitle:function(e){
-    this.setData({
-      showTitle:false,
-    })
-  },
-  // 跳转详情
-  ToApplicationDetail:function(e){
-    $.openWin({
-      url:'../applicationSkills/applicationDetail'
-    })
   }
-
 })

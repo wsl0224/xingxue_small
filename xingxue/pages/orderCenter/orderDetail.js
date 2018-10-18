@@ -1,13 +1,24 @@
-// pages/applicationSkills/applicationSkills.js
-let $=require('../util/commit.js');
+// pages/orderCenter/orderDetail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    showTitle:true,
-    
+    orderData:{
+      psnImg: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+      psnName:'成都小甜甜',
+      sex:1,
+      age:20,
+      psnEaluateVal:'5.0',
+      Type:'LOL陪玩',
+      Time:'08月08日 18:30',
+      Num:1,
+      Money:'15.23',
+      Unit:'小时',
+      Discount:'暂无优惠',
+      
+    }
   },
 
   /**
@@ -64,18 +75,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  // 关闭提示
-  CloseTitle:function(e){
-    this.setData({
-      showTitle:false,
-    })
-  },
-  // 跳转详情
-  ToApplicationDetail:function(e){
-    $.openWin({
-      url:'../applicationSkills/applicationDetail'
-    })
   }
-
 })

@@ -1,6 +1,5 @@
 {
   "pages": [
- 
     "pages/home/home",
     "pages/message/message",
     "pages/mine/mine",
@@ -26,8 +25,14 @@
     "pages/noData/noData",
     "pages/applicationSkills/applicationSkills",
     "pages/applicationSkills/applicationDetail",
-      "pages/feedback/feedback"
-    
+    "pages/feedback/feedback",
+    "pages/mySkill/mySkill",
+    "pages/skillCertification/skillCertification",
+    "pages/bringUpSuccess/promptSuccess",
+    "pages/orderCenter/orderCenter",
+    "pages/orderCenter/orderDetail",
+    "pages/myReceipt/myReceipt",
+    "pages/orderCenter/choosePsnPage"
   ],
   "window": {
     "backgroundTextStyle": "light",

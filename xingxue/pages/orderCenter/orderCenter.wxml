@@ -1,0 +1,39 @@
+<!--pages/orderCenter/orderCenter.wxml-->
+<wxs module="publicFun" src="../util/publicFun.wxs"></wxs>
+<scroll-view scroll-y class='main'>
+<view class='main_body'>
+  <view class='main_item' wx:for="{{orderData}}" data-id="{{item.id}}" data-status="{{item.orderStatus}}" bindtap='ToOrderDetail'>
+    <view class="main_itemTitle {{item.orderStatus==1?'active':''}}">
+      {{publicFun.showStatusLabel(item.orderStatus)}}
+    </view>
+    <view class='main_skillInfo'>
+      <view class='main_skillImg'>
+        <image src='{{item.url}}'></image>
+      </view>
+      <view class='main_skillR'>
+        <view class='main_SName'>
+          技能：{{item.skillName}}
+        </view>
+        <view class='main_STime'>
+          服务开始时间：{{item.time}}
+        </view>
+        <view class='mian_bot'>
+          <view class='main_SNum'>
+            数量：{{item.num}}
+          </view>
+          <view class='main_SUnit'>
+            单位：{{item.unit}}
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='main_money' wx:if="{{item.money}}">
+        <view class='main_right'>
+        ￥{{item.money}}
+        </view>
+    </view>
+  </view>
+</view>
+
+
+</scroll-view>

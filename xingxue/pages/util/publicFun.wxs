@@ -1,0 +1,15 @@
+var publicFun={
+  // 根据状态num显示状态中文
+  showStatusLabel: function (e) {
+    if (e == 1) {
+      return '待选择';
+    }
+    if(e==2){
+      return '待服务'
+    }
+  }
+}
+
+module.exports = {
+  showStatusLabel: publicFun.showStatusLabel,
+}

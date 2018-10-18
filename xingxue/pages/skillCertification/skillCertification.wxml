@@ -1,0 +1,48 @@
+<!--pages/skillCertification/skillCertification.wxml-->
+<view class='main'>
+<!-- 技能图 -->
+  <view class='top'>
+    <view class='top_T'>
+      <view class='top_TL'>
+        技能图
+      </view>
+      <view class='top_TR'>
+        请上传相关图片，如:游戏截图，技能证书等
+      </view>
+    </view>
+    <view class='top_B'>
+      <image src='../image/icon/icon91.png'>
+      </image>
+    </view>
+  </view>
+  <!-- 语音介绍 -->
+  <view class='mid'>
+    <view class='mid_T'>
+      <view class='mid_TL'>
+        技能图
+      </view>
+      <view class='mid_TR'>
+        录音需大于 5s 以上
+      </view>
+    </view>
+    <view class='mid_B'>
+      <image src='../image/icon/icon92.png'>
+      </image>
+    </view>
+  </view>
+  <!-- 技能说明 -->
+    <view class='bot'>
+    <view class='bot_T'>
+      <view class='bot_TL'>
+        技能图
+      </view>
+    </view>
+    <view class='bot_B'>
+      <input placeholder='请描述您的技能，优势等等' placeholder-class='bot_Binput'></input>
+    </view>
+  </view>
+  <!-- footer -->
+    <view class='footer'>
+      提交认证
+  </view>
+</view>

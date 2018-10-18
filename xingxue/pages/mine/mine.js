@@ -8,15 +8,7 @@ Page({
   data: {
     loadingShow:false,
     psnStatus:2,
-    psnData:{
-      url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-      name:'成都小甜甜',
-      guanzhuNum:100,
-      fengsiNum:200,
-      yuer:'12.00',
-      jingxing:0,
-      skillRZstatus:2,
-    }
+    psnData:{}
   },
 
   /**
@@ -33,6 +25,7 @@ Page({
           fengsiNum:0,
           yuer:0,
           jingxing:0,  
+          skillRZstatus: 0,
           }
        });
     }
@@ -110,17 +103,27 @@ Page({
           icon: 'success',
           duration: 2000
         })
-        self.setData({
-          psnStatus:1,
-          psnData:{
-            url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-            name: '成都小甜甜',
-            guanzhuNum: 100,
-            fengsiNum: 200,
-            yuer: 12.00,
-            jingxing: 0,
+        wx.getUserInfo({
+          success:function(e){
+            console.log(e);
+            self.setData({
+              psnStatus: 1,
+              psnData: {
+                url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+                name: '成都小甜甜',
+                guanzhuNum: 100,
+                fengsiNum: 200,
+                yuer: 12.00,
+                jingxing: 0,
+                skillRZstatus: 1,
+              }
+            })
+          },
+          fail:function(e){
+            console.log(e);
           }
         })
+       
         self.CloseLoadPage();
       }, 
       fail:function(e){
@@ -182,12 +185,15 @@ Page({
   },
   // 申请技能
   ToApplicationSkill:function(e){
+    console.log(this.data.psnData.skillRZstatus)
     if (this.data.psnData.skillRZstatus!=1){
       $.openWin({
         url: '../applicationSkills/applicationSkills',
       })
     }else{
-
+      $.openWin({
+        url: '../mySkill/mySkill',
+      })
     }
     
   },
@@ -196,6 +202,13 @@ Page({
     $.openWin({
       url:'../feedback/feedback',
     })
-  }
-  
+  },
+  // 跳转订单中心
+  ToOrderCenter:function(e){
+    $.openWin({
+      url:'../orderCenter/orderCenter'
+    })
+  },
+  // 
+
 })

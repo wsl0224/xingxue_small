@@ -16,7 +16,7 @@
     </view>
   </view>
   <!-- 学生证 -->
-  <view class='mid' bindtap='ToApplicationDetail'>
+  <view class='mid' bindtap="ToApplicationDetail">
     <view class='mid_left'>
       <view class='mid_leftImg'>
         <image src='../image/icon/icon85.png'></image>

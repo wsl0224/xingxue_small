@@ -1,0 +1,91 @@
+/* pages/mySkill/mySkill.wxss */
+@import '../util/publicCss';
+.main{
+  height: 100vh;
+}
+.top,.mid{
+   border-top:1rpx;
+  border-top-color:#dfdfdd;
+  border-top-style: solid; 
+  border-bottom: 1rpx;
+  border-bottom-color: #dfdfdd;
+  border-bottom-style: solid;
+  background-color: #fff;
+  margin-bottom: 20rpx;
+  padding: 29rpx 24rpx;
+}
+.top_title,mid_title{
+font-size: 30rpx;
+color: #333333;
+margin-bottom: 31rpx;
+}
+.top_tips{
+  font-size: 24rpx;
+  color: #999999;
+}
+.top_item,.mid_itemCB{
+  width: 100%;
+  display: flex;
+  flex-direction: row wrap;
+  align-items: center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+.top_itemN{
+  width: 150rpx;
+  height: 48rpx;
+  border-radius: 24rpx;
+  background:linear-gradient(#4391fc,#86b2f9);
+  text-align: center;
+  line-height: 48rpx;
+  font-size: 24rpx;
+  color:#fff;
+   margin: 0 20rpx 20rpx 20rpx;
+}
+.mid_List{
+  margin-top: 48rpx;
+}
+.mid_ItemC{
+ width: 100%; 
+}
+.mid_ItemTitle{
+  font-size: 24rpx;
+  color: #6a6a6a;
+  margin-bottom: 39rpx;
+}
+.mid_Items{
+  width: 150rpx;
+  height: 48rpx;
+  border-radius: 24rpx;
+  background:linear-gradient(#4391fc,#86b2f9);
+  text-align: center;
+  line-height: 48rpx;
+  font-size: 24rpx;
+  color:#fff;
+
+  margin: 0 20rpx 20rpx 20rpx;
+  position: relative;
+}
+.mid_itemCTR{
+  width: 72rpx;
+  height: 40rpx;
+  text-align: center;
+  line-height: 30rpx;
+  font-size: 18rpx;
+  color: #fff;
+  position: absolute;
+  top:-10rpx;
+  right: -30rpx;
+}
+.mid_itemCTR.XRZ{
+  background:url(http://pgq6951kf.bkt.clouddn.com/icon89.png);
+  background-repeat:no-repeat;
+ background-size:100% 100%;
+ -moz-background-size:100% 100%;
+}
+.mid_itemCTR.SHZ{
+  background:url(http://pgq6951kf.bkt.clouddn.com/icon90.png);
+  background-repeat:no-repeat;
+ background-size:100% 100%;
+ -moz-background-size:100% 100%;
+}

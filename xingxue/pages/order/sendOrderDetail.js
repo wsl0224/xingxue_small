@@ -96,6 +96,12 @@ Page({
     this.setData({
       sex: this.data.SexArray[e.detail.value]
     })
+  },
+  // 发布
+  ToOrderCenter:function(e){
+    $.openWin({
+      url:'../orderCenter/orderCenter'
+    })
   }
 
 })

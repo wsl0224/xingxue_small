@@ -1,0 +1,18 @@
+<!--pages/bringUpSuccess/promptSuccess.wxml-->
+<view class='main'>
+    <view class='top'>
+      <view class='top_image'>
+      <image src='../image/icon/icon60.png'></image>
+      </view>
+      <view class='top_title'>
+        任务提交成功
+      </view>
+     
+      <view class='top_footer'>
+        等待平台审核，请耐心等待
+      </view>
+    </view>
+    <view class='bottom'>
+      完成
+    </view>
+</view>

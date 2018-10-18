@@ -61,6 +61,6 @@
     
   </view>
 </view>
-<view class='footer'>
+<view class='footer' bindtap='ToOrderCenter'>
   我要发布
 </view>

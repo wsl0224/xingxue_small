@@ -1,0 +1,40 @@
+<!--pages/orderCenter/choosePsnPage.wxml-->
+<scroll-view>
+  <view data-id='{{item.id}}' class="{{index==0?'first_item':'item_main'}}" wx:for="{{psnData}}">
+      <view class='item_content'>
+        <view class='item_contentL'>
+            <view class='item_image'>
+              <image src='{{item.url}}' />
+            </view>
+            <view class='item_txt'>
+              <view class='item_txtName'>
+              {{item.name}}
+              </view>
+              <view class="item_sex {{item.sex==1?'item_sexN':'item_sexW'}}">
+                <view class='item_sexL'>
+                <image src="{{item.sex==1?'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg':'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'}}"/>
+                </view>
+                <view class='item_sexR'>
+                {{item.age}}
+                </view>
+              </view>
+              <view class='item_qinming'>
+              {{item.qianming}}
+              </view>
+            </view>
+        </view>
+        <view class='item_contentR'>
+          <view class='item_time'>
+            {{item.time}}
+          </view>
+          <view class='item_num'>
+            接单{{item.num}}次
+          </view>
+          <view class='item_money'>
+            ￥{{item.money}}
+          </view>
+        </view>
+        
+      </view>
+  </view>
+</scroll-view>

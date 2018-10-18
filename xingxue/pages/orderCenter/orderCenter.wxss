@@ -1,0 +1,90 @@
+/* pages/orderCenter/orderCenter.wxss */
+@import '../util/publicCss';
+.main{
+  height: 100vh;
+}
+.main_body{
+  padding-top:20rpx; 
+}
+.main_item{
+ margin-bottom: 20rpx;
+ padding-left: 23rpx;
+ background: #fff;
+}
+.main_itemTitle{
+  width: 100%;
+  margin-right: 25rpx;
+  height: 82rpx;
+  line-height: 82rpx;
+  font-size: 30rpx;
+  border-bottom: 1rpx;
+  border-bottom-color: #dfdfdd;
+  border-bottom-style: solid;
+}
+.main_itemTitle.active{
+  color: #86b2f9;
+}
+.main_skillInfo{
+  height: 195rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+}
+.main_skillImg{
+    display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12rpx;
+}
+.main_skillImg,.main_skillImg>image{
+  width: 124rpx;
+  height: 124rpx;
+  border-radius: 6rpx;
+}
+.main_skillR{
+    height: 124rpx;
+}
+.main_SName{
+  font-size: 32rpx;
+  color: #333333;
+  
+}
+.main_STime,.mian_bot{
+  font-size: 24rpx;
+  color: #6a6a6a;
+}
+.main_STime{
+margin-top:15rpx;
+margin-bottom: 5rpx; 
+}
+.mian_bot{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+}
+.main_SNum{
+  margin-right: 50rpx;
+}
+.main_money{
+  height: 81rpx;
+  border-top: 1rpx;
+  border-top-color: #dfdfdd;
+  border-top-style: solid;
+}
+.main_right{
+  height: 81rpx;
+  line-height: 81rpx;
+  text-align: right;
+   font-size: 30rpx;
+  color: #333333;
+  margin-right: 25rpx;
+}
+.main_right::before{
+  content: '订单金额：';
+  font-size: 30rpx;
+  color: #6a6a6a;
+
+}

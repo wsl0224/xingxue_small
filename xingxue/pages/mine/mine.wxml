@@ -11,7 +11,7 @@
             {{psnData.name}}
           </view>
           <view class='psnInfo_right'>
-            <view class='psnInfo_rightT'>
+            <view class='psnInfo_rightT' >
               {{psnStatus==1?' ':'点击登录'}}
             </view>
             <view class='psnInfo_rightImg'>
@@ -79,14 +79,15 @@
     </view>
   </view>
   <view class='bottom'>
-    <!-- 邀请码 -->
+
+     <!-- 我的接单 -->
     <view class='bottom_Item'>
       <view class='bottom_ItemL'>
         <view class='bottom_ItemImg'>
           <image src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg'></image>
         </view>
         <view class='bottom_ItemLtxt'>
-          邀请码
+          我的接单
         </view>
       </view>
       <view class='bottom_ItemR'>
@@ -99,7 +100,7 @@
 
     </view>
     <!-- 申请技能 -->
-    <view class='bottom_Item bottom_ItemTop' bindtap='ToApplicationSkill'>
+    <view class='bottom_Item' bindtap='ToApplicationSkill'>
       <view class='bottom_ItemL'>
         <view class='bottom_ItemImg'>
           <image src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg'></image>
@@ -116,10 +117,9 @@
           <image src='../image/home/right_JT.png'></image>
         </view>
       </view>
-
     </view>
     <!-- 订单中心 -->
-    <view class='bottom_Item'>
+    <view class='bottom_Item' bindtap='ToOrderCenter'>
       <view class='bottom_ItemL'>
         <view class='bottom_ItemImg'>
           <image src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg'></image>
@@ -137,8 +137,26 @@
       </view>
 
     </view>
+        <!-- 邀请码 -->
+    <view class='bottom_Item'>
+      <view class='bottom_ItemL'>
+        <view class='bottom_ItemImg'>
+          <image src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg'></image>
+        </view>
+        <view class='bottom_ItemLtxt'>
+          机构邀请码
+        </view>
+      </view>
+      <view class='bottom_ItemR'>
+        <view>
+        </view>
+        <view class='bottom_ItemRImg'>
+          <image src='../image/home/right_JT.png'></image>
+        </view>
+      </view>
+    </view>
     <!-- 在线客服 -->
-    <view class='bottom_Item bottom_ItemTop'>
+    <button class='botton bottom_Item bottom_Btn' open-type="contact">
       <view class='bottom_ItemL'>
         <view class='bottom_ItemImg'>
           <image src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg'></image>
@@ -155,7 +173,7 @@
         </view>
       </view>
 
-    </view>
+    </button>
     <!-- 意见反馈 -->
     <view class='bottom_Item' bindtap='ToFeedback'>
       <view class='bottom_ItemL'>
@@ -181,13 +199,13 @@
 <view class='loading' wx:if="{{loadingShow}}" bindtap='CloseLoadPage'>
   <view class='loading_mid'>
     <view class='loading_midTitle'>登录行学服务</view>
-    <view class='loading_midMenu' bindtap='ToLoded'>
+    <button class='loading_midMenu botton' bindtap='ToLoded' open-type="getUserInfo">
       <view class='loading_midMenuImg'>
         <image src='../image/icon/icon83.png'></image>
       </view>
       <view class='loading_midMenuTxt'>
         微信快速登录
       </view>
-    </view>
+    </button>
   </view>
 </view>
