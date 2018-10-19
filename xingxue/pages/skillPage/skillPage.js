@@ -43,7 +43,7 @@ Page({
   onLoad: function (options) {
     let data=JSON.parse(options.param);
     console.log(data.id);
-    
+     
   },
 
   /**

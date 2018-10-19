@@ -1,7 +1,7 @@
 
 //项目URL相同部分，减轻代码量，同时方便项目迁移
 //这里因为我是本地调试，所以host不规范，实际上应该是你备案的域名信息
-var host = 'http://106.14.145.141/xingxue/';
+var host = 'https://app.xingxue.vip/';
 /**
  * POST请求，
  * URL：接口
@@ -10,11 +10,13 @@ var host = 'http://106.14.145.141/xingxue/';
  * doFail：失败的回调函数
  */
 function POST(url, postData, doSuccess, doFail) {
+  console.log('POST参数');
+  console.log(postData);
   wx.request({
     //项目的真正接口，通过字符串拼接方式实现
     url: host + url,
     header: {
-      "content-type": "application/json;charset=UTF-8"
+      'content-type': 'application/x-www-form-urlencoded'
     },
     data: postData,
     method: 'POST',
@@ -77,9 +79,9 @@ function formatNumber(n) {
   n = n.toString()
   return n[1] ? n : '0' + n
 }
+
 module.exports.openWin = openWin;
 module.exports.POST = POST;
 module.exports.GET = GET;
-module.exports = {
-  formatTime: formatTime,
-}
+module.exports.formatTime = formatTime;
+module.exports.formatNumber = formatNumber;
