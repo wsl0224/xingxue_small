@@ -21,76 +21,76 @@ Page({
     duration: 1000,
     bannerData: [{
       id:1,
-      url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+      url: '../image/icon/icon01.png',
       name: '极速下单',
     }, {
         id: 2,
-      url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+        url: '../image/icon/icon02.png',
       name: '线上兼职',
     }, {
         id: 3,
-      url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+        url: '../image/icon/icon03.png',
       name: '拼团'
     }, {
         id: 4,
-      url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+        url: '../image/icon/icon04.png',
       name: '福利大厅',
     }],
     typeData: [
       [
         [{
-          url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+          url: '../image/icon/icon05.png',
           name: '叫醒服务',
         }, {
-            url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+            url: '../image/icon/icon06.png',
           name: '陪跑',
         }, {
-            url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+            url: '../image/icon/icon07.png',
           name: '跑腿',
         }, {
-            url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+            url: '../image/icon/icon08.png',
           name: '陪练服务',
         }],
         [{
-          url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+          url: '../image/icon/icon09.png',
           name: '钢琴服务',
         }, {
-            url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+            url: '../image/icon/icon10.png',
           name: '钢琴服务',
         }, {
-            url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+            url: '../image/icon/icon11.png',
           name: '钢琴服务',
         },{
           id:'allType',
-          url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+            url: '../image/icon/icon12.png',
           name:'全部技能'
         }]
       ],
       [[{
-        url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+        url: '../image/icon/icon08.png',
           name: '叫醒服务',
         },
         {
-          url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+          url: '../image/icon/icon08.png',
           name: '叫醒服务',
         }, {
-            url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+          url: '../image/icon/icon08.png',
           name: '叫醒服务',
         }, {
-            url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+          url: '../image/icon/icon08.png',
           name: '叫醒服务',
         }], [{
-            url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+          url: '../image/icon/icon08.png',
           name: '叫醒服务',
         },
         {
-          url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+          url: '../image/icon/icon08.png',
           name: '叫醒服务',
         }, {
-            url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+          url: '../image/icon/icon08.png',
           name: '叫醒服务',
           }, {
-            url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+          url: '../image/icon/icon08.png',
             name: '叫醒服务',
           }]
       ]
@@ -103,21 +103,21 @@ Page({
       title:'天天向上',
       psnData:[{
         title: '叫醒服务',
-        url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+        url: '../image/icon/icon13.png',
         idstatus: 1,
         stustatus: 1,
         money: 8,
         pinfen: 5.0,
       }, {
           title: '叫醒服务',
-          url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+          url: '../image/icon/icon14.png',
           idstatus: 1,
           stustatus: 1,
           money: 8,
           pinfen: 5.0,
         }, {
           title: '叫醒服务',
-          url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+          url: '../image/icon/icon44.png',
           idstatus: 1,
           stustatus: 1,
           money: 8,
@@ -127,21 +127,21 @@ Page({
         title: '天天向上',
         psnData: [{
           title: '叫醒服务',
-          url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+          url: '../image/icon/icon44.png',
           idstatus: 1,
           stustatus: 1,
           money: 8,
           pinfen: 5.0,
         }, {
             title: '叫醒服务',
-            url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+            url: '../image/icon/icon13.png',
             idstatus: 1,
             stustatus: 1,
             money: 8,
             pinfen: 5.0,
           }, {
             title: '叫醒服务',
-            url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+            url: '../image/icon/icon14.png',
             idstatus: 1,
             stustatus: 1,
             money: 8,

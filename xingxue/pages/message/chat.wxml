@@ -1,0 +1,23 @@
+<!--pages/conversation/chat.wxml-->
+<scroll-view class='rong-message-list' scroll-y='true' scroll-into-view='U-{{messageUId}}' bindscrolltoupper='loadMore' scroll-with-animation='false'>
+   <view class='rong-message'  wx:for="{{messageList}}" wx:for-item="message" id='U-{{message.messageUId}}'>
+    <view class='rong-avatar rong-message-avatar rong-message-{{message.direction}}-avatar'>
+      <image src='{{message.sender.portrait}}'></image>
+    </view>
+    <view class='rong-message-content rong-message-{{message.direction}}'>
+      {{message.content.content}}
+      <view class='rong-message-senttime'>
+        {{message.sentTime}}
+      </view>
+    </view>
+    <view class='rong-clearfix'></view>
+  </view>
+</scroll-view>
+
+<view class="weui-cells weui-cells_after-title rong-message-input">
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__bd">
+      <input class="weui-input" placeholder="说点什么..." value='{{content}}' confirm-type='send' bindinput='bindInput' bindconfirm='send' />
+    </view>
+  </view>
+</view>

@@ -1,4 +1,8 @@
 //app.js
+const config = require('./pages/config.js');
+const Service = require('./pages/service.js')(config);
+const Status = Service.Status;
+const Message = Service.Message;
 App({
   onLaunch: function () {
     //调用API从本地缓存中获取数据
@@ -25,6 +29,7 @@ App({
     }
   },
   globalData:{
-    userInfo:null
+    userInfo:null,
+    Service: Service
   }
 })

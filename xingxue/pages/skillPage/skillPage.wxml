@@ -13,7 +13,7 @@
             </view>
             <view class="psnInfo_sex {{skillData.psnData.sex==1?'psnInfo_sexN':'psnInfo_sexW'}}">
               <view class='psnInfo_sexImg'>
-                <image src="{{skillData.psnData.sex==1?'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg':'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'}}" />
+                <image src="{{skillData.psnData.sex==1?'../image/icon/icon46.png':'../image/icon/icon45.png'}}" />
               </view>
               <view class='psnInfo_sexTxt'>
                 {{skillData.psnData.age}}
@@ -22,7 +22,7 @@
           </view>
           <view class='psnInfo_addr'>
             <view class='psnInfo_addrImg'>
-              <image src='http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg' />
+              <image src='../image/icon/icon47.png' />
             </view>
             <view class='psnInfo_addrTxt'>
               {{skillData.psnData.addr}}
@@ -57,7 +57,7 @@
       <view class='skillNP'>
         <view class='skillNPL'>
           <view class='skillNPL_IMG'>
-            <image src='http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg'>
+            <image src='../image/icon/icon50.png'>
             </image>
           </view>
           <view class='skillNPL_txt'>
@@ -77,7 +77,7 @@
     <view class='skillC'>
       <view class='skillMusic'>
         <view class='skillML'>
-          <image src='http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg'></image>
+          <image src='../image/icon/icon48.png'></image>
         </view>
         <view class='skillM_Time'>
           {{skillData.musicTime}}
@@ -91,7 +91,7 @@
   </view>
 </scroll-view>
 <view class='footer'>
-  <view class='footerL'>
+  <view class='footerL' bindtap='gotoChat' data-item='{{conversation}}'>
     聊天
   </view>
   <view class='footerR'>

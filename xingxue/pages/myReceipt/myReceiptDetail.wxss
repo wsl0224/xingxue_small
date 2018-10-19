@@ -1,118 +1,110 @@
-/* pages/orderCenter/orderDetail.wxss */
+/* pages/myReceipt/myReceiptDetail.wxss */
 @import '../util/publicCss';
-
-.main {
-  height: 100vh;
+.main{
+  height: 85vh;
 }
-
-.psnInfo {
+.main_body{
+  border-top: 1rpx;
+  border-top-color: #dfdfdd;
+  border-top-style: solid;
+}
+.psnInfo{
   height: 193rpx;
+  padding: 0 23rpx;
   display: flex;
   flex-direction: row;
   align-items: center;
-  border-bottom: 1rpx;
-  border-bottom-color: #dfdfdd;
-  border-bottom-style: solid;
-  padding: 0 23rpx;
-  background-color: #fff;
+  background: #fff;
   margin-bottom: 20rpx;
 }
-
-.psnImg {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-
-.psnImg, .psnImg>image {
+.psnImg,.psnImg>image{
   width: 124rpx;
   height: 124rpx;
   border-radius: 6rpx;
 }
-
-.psnInfo_R {
+.psnInfoR{
   margin-left: 12rpx;
 }
-
-.psnName {
+.psnName{
   font-size: 30rpx;
-  color: #333;
+  color: #333333;
 }
-
-.psnSex {
-  width: 102rpx;
+.psn_SexAge{
   height: 36rpx;
-  background-color: #ff4081;
+  width: 102rpx;
+  margin: 15rpx 0 15rpx 0;
   border-radius: 18rpx;
+ 
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-top: 19rpx;
-  margin-bottom: 20rpx;
 }
-
-.psnSexImg {
+.psn_SexAge.woman{
+   background-color: #ff4081;
+}
+.psn_SexAge.man{
+   background-color: #6c7feb;
+}
+.psn_Sex{
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   margin-right: 5rpx;
 }
-
-.psnSexImg, .psnSexImg>image {
-  width: 25rpx;
+.psn_Sex,.psn_Sex>image{
+  width: 24rpx;
   height: 25rpx;
 }
-
-.psnAge {
+.psn_Age{
   font-size: 24rpx;
   color: #fff;
 }
-
-.psnEaluate {
+.psnEaluate{
   height: 22rpx;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
 }
-
-.psnEaluateVal {
-  font-size: 22rpx;
-  color: #ffb924;
-}
-.Type,.Time,.Cost,.Discount,.Total{
-    background-color: #fff;
-}
-.Time{
-  border-bottom: 1rpx;
-  border-bottom-color: #dfdfdd;
-  border-bottom-style: solid;
-}
-.Cost{
-  margin-top: 20rpx;
-}
-.Item {
-  height: 108rpx;
-  padding: 0 25rpx;
-  border-top: 1rpx;
-  border-top-color: #dfdfdd;
-  border-top-style: solid;
- 
+.psnEaluateL{
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+.psnEaluateVal{
+  font-size: 22rpx;
+  color: #ffb924;
+}
+.Type,.Cost,.EaluateShow{
+   border-top: 1rpx;
+    border-top-color: #dfdfdd;
+  border-top-style: solid;
+}
+.Type,.Sex,.Time,.Cost,.Discount,.Total,.EaluateShow{
+  background: #fff;
+}
+.Time{
+  margin-bottom: 20rpx;
+}
+.Item{
+  height: 108rpx;
+  padding: 0 23rpx;
+    display: flex;
+  flex-direction: row;
+  align-items: center;
   justify-content: space-between;
-  
+  border-bottom: 1rpx;
+  border-bottom-style: solid;
+  border-bottom-color: #dfdfdd;
 }
 .Item_label,.Item_val{
   font-size: 32rpx;
-  color:#000000;
+  color: #000000;
 }
 .Item_Discount{
-    color:#999999;
+  font-size: 32rpx;
+  color: #999999;
 }
 .Total{
   height: 108rpx;
@@ -124,9 +116,7 @@
    border-bottom: 1rpx;
   border-bottom-color: #dfdfdd;
   border-bottom-style: solid;
-   border-top: 1rpx;
-  border-top-color: #dfdfdd;
-  border-top-style: solid;
+   
 }
 .Total::after{
   content: '元';
@@ -156,4 +146,36 @@
   font-size: 36rpx;
   color: #909090;
   border:1rpx solid #909090;
+}
+.Item_EaluateShow{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.EaluateShowR{
+  font-size: 30rpx;
+  color: #ffb924;
+}
+.EaluateShowR::after{
+  content: '星';
+  font-size: 30rpx;
+  color: #ffb924;
+}
+.TakeOrder,.StartOrder{
+
+  width: 700rpx;
+  height: 98rpx;
+  background:#86b2f9;
+  text-align: center;
+  line-height: 98rpx;
+  color: #FFF;
+  
+  
+  border-radius: 6rpx;
+  position: absolute;
+  bottom: 60rpx;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
 }

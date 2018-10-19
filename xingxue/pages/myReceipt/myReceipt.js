@@ -1,11 +1,55 @@
 // pages/myReceipt/myReceipt.js
+let $=require('../util/commit.js');
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-
+      orderData:[{
+        url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+        name:'成都小甜甜',
+        title:'LOL陪玩',
+        XZ:'限女',
+        sex:2,
+        age:20,
+        addr:'南京',
+        time:'刚刚  08月08日 21:00',
+        num:1,
+        status:1,
+      }, {
+          url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+          name: '成都小甜甜',
+          title: 'LOL陪玩',
+          XZ: '限女',
+          sex: 2,
+          age: 20,
+          addr: '南京',
+          time: '刚刚  08月08日 21:00',
+          num: 1,
+          status: 1,
+        }, {
+          url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+          name: '成都小甜甜',
+          title: 'LOL陪玩',
+          XZ: '限女',
+          sex: 1,
+          age: 20,
+          addr: '南京',
+          time: '刚刚  08月08日 21:00',
+          num: 1,
+          status: 1,
+        }, {
+          url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+          name: '成都小甜甜',
+          title: 'LOL陪玩',
+          XZ: '限女',
+          sex: 2,
+          age: 20,
+          addr: '南京',
+          time: '刚刚  08月08日 21:00',
+          num: 1,
+          status: 1,
+        },]
   },
 
   /**
@@ -61,6 +105,16 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+
+  },
+  // 跳转接单详情
+  ToMyReceiptDetail:function(e){
+    $.openWin({
+      url:'../myReceipt/myReceiptDetail',
+      data:{
+        id:'111',
+      }
+    })
 
   }
 })

@@ -7,9 +7,17 @@ var publicFun={
     if(e==2){
       return '待服务'
     }
+  },
+  // 根据状态num显示图片
+  showStatusImg:function(e){
+    if(e==1){
+      
+      return '../image/icon/icon56.png';
+    }
   }
 }
 
 module.exports = {
   showStatusLabel: publicFun.showStatusLabel,
+  showStatusImg: publicFun.showStatusImg,
 }

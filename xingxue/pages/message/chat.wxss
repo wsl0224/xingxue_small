@@ -1,0 +1,94 @@
+/* pages/conversation/chat.wxss */
+.rong-message-list{
+  background-color: #CCC;
+  background-size: cover;
+  min-height: 800rpx;
+  position: absolute;
+  top: 0;
+  bottom: 70rpx;
+  border: none;
+  -webkit-overflow-scrolling: touch;
+}
+.rong-message{
+  padding: 20rpx;
+  min-height: 100rpx;
+  position: relative;
+}
+.rong-message-avatar{
+  height: 100rpx;
+  width: 100rpx;
+  position: absolute;
+}
+.rong-message-avatar image{
+   height: 100rpx;
+   width: 100rpx;
+   border-radius: 50rpx;
+}
+
+.rong-message-sender-avatar{
+  right: 10rpx;
+}
+
+.rong-message-receiver-avatar::after,.rong-message-sender-avatar::before{
+  content: "";
+	width:0px;
+  border-top:10rpx solid;
+  border-right:25rpx solid;
+  border-bottom:20rpx solid;
+  border-left:20rpx solid;
+	display: block;
+  position: absolute;
+  top: 20rpx;
+}
+.rong-message-receiver-avatar::after{
+  border-color:transparent #FFF transparent transparent;
+  left: 90rpx;
+}
+.rong-message-sender-avatar::before{
+  border-color:transparent transparent transparent #D8F8BE;
+  left: -30rpx;
+}
+
+.rong-message-receiver-avatar{
+  left: 10rpx;
+}
+
+.rong-message-sender{
+  right: 120rpx;
+  float: right;
+  background: #D8F8BE;
+}
+.rong-message-receiver{
+  left: 120rpx;
+  background: #FFF;
+}
+.rong-message-content{
+  max-width: 80%;
+  min-height: 80rpx;
+  min-width: 150rpx;
+  display: inline-block;
+  position: relative;
+  padding: 20rpx 10rpx 0rpx 10rpx;
+  box-sizing: border-box;
+  border-radius: 20rpx;
+  word-wrap: break-word;
+}
+.rong-message-senttime{
+  font-size: 12px;
+  position: absolute;
+  bottom: -32rpx;
+}
+.rong-message-receiver .rong-message-senttime{
+  right: 10rpx;
+}
+.rong-message-input{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #FFF;
+  border: none;
+  height: 80rpx;
+}
+.rong-clearfix{
+  clear: both;
+}

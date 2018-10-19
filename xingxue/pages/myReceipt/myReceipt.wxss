@@ -2,4 +2,115 @@
 @import '../util/publicCss';
 .main{
   height: 100vh;
+
+}
+.main_body{
+  border-top: 1rpx;
+  border-top-style: solid;
+  border-top-color: #dfdfdd;
+}
+.main_list{
+  height: 193rpx;
+  border-bottom: 1rpx;
+  border-bottom-color: #dfdfdd;
+  border-bottom-style: solid;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  background: #fff;
+}
+.main_Item{
+  width: 100%;
+  padding: 0 23rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+    justify-content: space-between;
+}
+.Item_Image{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+ }
+.Item_Image,.Item_Image>image{
+  width: 124rpx;
+  height: 124rpx;
+   border-radius: 6rpx;
+
+}
+.Item_mid{
+  margin-left: 12rpx;
+}
+.Item_midLT{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.Item_Name{
+  font-size: 30rpx;
+  color: #333333;
+}
+.Item_Title,.Item_XZ{
+  font-size: 24rpx;
+  color:#666666;
+}
+.Item_Title{
+margin-left: 34rpx;
+margin-right: 10rpx;
+}
+.Item_SexAge{
+  height: 36rpx;
+  width: 102rpx;
+  margin: 15rpx 0 15rpx 0;
+  border-radius: 18rpx;
+ 
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.Item_SexAge.woman{
+   background-color: #ff4081;
+}
+.Item_SexAge.man{
+   background-color: #6c7feb;
+}
+.Item_Sex{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5rpx;
+}
+.Item_Sex,.Item_Sex>image{
+  width: 24rpx;
+  height: 25rpx;
+}
+.Item_Age{
+  font-size: 24rpx;
+  color: #fff;
+}
+.Item_Bottom{
+  font-size: 24rpx;
+  color: #666666;
+}
+.Item_Num{
+  height: 124rpx;
+  line-height: 124rpx;
+  font-size: 30rpx;
+  color:#333333;
+   margin: 0 30rpx;
+}
+.Item_R{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+ 
+}
+.Item_R,.Item_R>image{
+  width: 102rpx;
+  height: 102rpx;
 }

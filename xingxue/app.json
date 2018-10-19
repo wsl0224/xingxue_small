@@ -1,7 +1,9 @@
 {
   "pages": [
+   
     "pages/home/home",
     "pages/message/message",
+    "pages/message/chat",
     "pages/mine/mine",
     "pages/order/sendOrder",
     "pages/order/sendOrderDetail",
@@ -31,8 +33,10 @@
     "pages/bringUpSuccess/promptSuccess",
     "pages/orderCenter/orderCenter",
     "pages/orderCenter/orderDetail",
+    "pages/orderCenter/choosePsnPage",
     "pages/myReceipt/myReceipt",
-    "pages/orderCenter/choosePsnPage"
+    "pages/myReceipt/myReceiptDetail"
+  
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -45,15 +49,21 @@
     "list": [
       {
         "pagePath": "pages/home/home",
-        "text": "首页"
+        "text": "首页",
+        "iconPath":"pages/image/icon/icon20.png",
+        "selectedIconPath":"pages/image/icon/icon21.png"
       },
       {
         "pagePath": "pages/message/message",
-        "text": "消息"
+        "text": "消息",
+        "iconPath": "pages/image/icon/icon22.png",
+        "selectedIconPath": "pages/image/icon/icon23.png"
       },
       {
         "pagePath": "pages/mine/mine",
-        "text": "我的"
+        "text": "我的",
+        "iconPath": "pages/image/icon/icon24.png",
+        "selectedIconPath": "pages/image/icon/icon25.png"
       }
     ]
   }

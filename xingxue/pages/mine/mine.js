@@ -8,7 +8,8 @@ Page({
   data: {
     loadingShow:false,
     psnStatus:2,
-    psnData:{}
+    psnData:{},
+    userId:'18262741104',
   },
 
   /**
@@ -94,36 +95,24 @@ Page({
   ToLoded:function(e){
     let self=this;
     console.log('登录事件');
+    console.log(e);
     wx.login({
       timeout:5000,
       success:function(e){
         console.log(e);
-        wx.showToast({
-          title: '成功',
-          icon: 'success',
-          duration: 2000
-        })
         wx.getUserInfo({
           success:function(e){
-            console.log(e);
-            self.setData({
-              psnStatus: 1,
-              psnData: {
-                url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-                name: '成都小甜甜',
-                guanzhuNum: 100,
-                fengsiNum: 200,
-                yuer: 12.00,
-                jingxing: 0,
-                skillRZstatus: 1,
-              }
-            })
+            wx.showToast({
+              title: '成功',
+              icon: 'success',
+              duration: 2000
+            });
+            // 
           },
           fail:function(e){
             console.log(e);
           }
-        })
-       
+        });     
         self.CloseLoadPage();
       }, 
       fail:function(e){
@@ -134,9 +123,9 @@ Page({
         })
       }
 
-    });
+    });  
   },
-  
+ 
   // 跳转个人资料
   ToPersonalData:function(e){
     wx.navigateTo({
@@ -209,6 +198,11 @@ Page({
       url:'../orderCenter/orderCenter'
     })
   },
-  // 
+  // 我的接单
+  ToMyReceipt:function(e){
+    $.openWin({
+      url:'../myReceipt/myReceipt'
+    })
+  }
 
 })

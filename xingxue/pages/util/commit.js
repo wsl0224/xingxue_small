@@ -1,8 +1,7 @@
-var app = getApp();
+
 //项目URL相同部分，减轻代码量，同时方便项目迁移
 //这里因为我是本地调试，所以host不规范，实际上应该是你备案的域名信息
 var host = 'http://106.14.145.141/xingxue/';
-
 /**
  * POST请求，
  * URL：接口
@@ -62,6 +61,25 @@ function openWin(e){
     url: path,
   });
 }
+// 格式化时间
+function formatTime(date) {
+  var year = date.getFullYear()
+  var month = date.getMonth() + 1
+  var day = date.getDate()
+
+  var hour = date.getHours()
+  var minute = date.getMinutes()
+  var second = date.getSeconds()
+  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+}
+
+function formatNumber(n) {
+  n = n.toString()
+  return n[1] ? n : '0' + n
+}
 module.exports.openWin = openWin;
 module.exports.POST = POST;
 module.exports.GET = GET;
+module.exports = {
+  formatTime: formatTime,
+}

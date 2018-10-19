@@ -1,4 +1,5 @@
 // pages/skillList/skillList.js
+let $=require('../util/commit.js');
 Page({
 
   /**
@@ -148,5 +149,11 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  // 跳转技能页
+  ToSkillPage:function(e){
+    $.openWin({
+      url:'../skillPage/skillPage',
+    })
   }
 })

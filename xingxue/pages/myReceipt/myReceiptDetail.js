@@ -1,26 +1,35 @@
-// pages/message/message.js
-let { stringFormat } = require('../util/utils.js');
-let app = getApp();
-let { Service: { Conversation, Status } } = app.globalData;
+// pages/myReceipt/myReceiptDetail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    conversationList: []
+    orderData: {
+      url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+      name: '成都小甜甜',
+      title: 'LOL陪玩',
+      XZ: '限女',
+      sex: 2,
+      age: 20,
+      addr: '南京',
+      Time: '刚刚  08月08日 21:00',
+      num: 1,
+      unit:'小时',
+      status: 1,
+      psnEaluateVal:'5.0',
+      OrderType:'LOL陪玩',
+      money:'15.00',
+      Discount:'暂无优惠',
+      
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let context = this;
-    // Conversation.watch((list) => {
-    //   context.setData({
-    //     conversationList: list
-    //   });
-    // });
+
   },
 
   /**
@@ -70,18 +79,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  // 进入聊天页面
-  gotoChat: function (event) {
-    let { currentTarget: { dataset: { item } } } = event;
-    let { conversationType: type, targetId } = item;
-    let url = '../message/conversation/chat?type={type}&targetId={targetId}';
-    url = stringFormat(url, {
-      type,
-      targetId
-    });
-    wx.navigateTo({
-      url: url,
-    });
   }
 })

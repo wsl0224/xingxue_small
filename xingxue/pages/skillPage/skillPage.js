@@ -1,10 +1,19 @@
 // pages/skillPage/skillPage.js
+let app = getApp();
+let { Service } = app.globalData
+let { Status, User } = Service;
+let { stringFormat } = require('../util/utils.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    conversation:{
+      type:0,
+      targetId:'222',
+    },
+    
    skillData:{
      skillName:'叫醒服务',
      psnData:{
@@ -90,5 +99,30 @@ Page({
     wx.navigateTo({
       url: '../psnPage/psnPage',
     })
-  }
+  },
+  // 进入聊天页面
+  gotoChat: function (event) {
+    User.getToken({
+      id: this.data.conversation.targetId
+    }).then((user) => {
+      console.log(user);
+      Status.connect(user).then(() => {
+        let { currentTarget: { dataset: { item } } } = event;
+        let { conversationType: type, targetId } = item;
+        let url = '../conversation/chat?type={type}&targetId={targetId}';
+        url = stringFormat(url, {
+          type,
+          targetId
+        });
+        wx.navigateTo({
+          url: url,
+        });
+      }, (error) => {
+        console.log('connect error', error);
+      });
+    });
+   
+  },
+
+  
 })

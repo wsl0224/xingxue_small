@@ -1,66 +1,44 @@
 <!--pages/myReceipt/myReceipt.wxml-->
+<wxs module="publicFun" src="../util/publicFun.wxs"></wxs>
 <scroll-view scroll-y class='main'>
-  <!-- 人员信息 -->
-  <view class='psnInfo'>
-    <view class='psnImg'>
-      <image></image>
-    </view>
-    <view>
-      <view class='psnName'>{{psnName}}</view>
-      <view class='psnSexAge'>
-        <view class='psnSex'>
-          <view class='psnSexImg'>
-            <image></image>
+<view class='main_body'>
+<view class='main_list' wx:for="{{orderData}}" bindtap='ToMyReceiptDetail'>
+    <view class='main_Item'>
+      <view class='Item_Image'>
+        <image src='{{item.url}}'></image>
+      </view>
+      <view class='Item_mid'>
+          <view class='Item_midLT'>
+            <view class='Item_Name'>
+           {{item.name}}
+            </view>
+            <view class='Item_Title'>
+              {{item.title}}
+            </view>
+            <view class='Item_XZ'>
+               {{item.XZ}}
+            </view>
           </view>
-        </view>
-        <view class='psnAge'>
-          {{psnAge}}
-        </view>
-
+          <view class="Item_SexAge {{item.sex==1?'man':'woman'}}">
+            <view class='Item_Sex'>
+                  <image src="{{item.sex==1?'../image/icon/icon46.png':'../image/icon/icon45.png'}}"/>
+            </view>
+            <view class='Item_Age'>
+            {{item.age}}
+            </view>
+          </view>
+           <view class='Item_Bottom'>
+           南京 | 刚刚 08月08日 21:00
+          </view> 
       </view>
-      <view class='psnEaluate'>
-        <view>
-
+     <view class='Item_Num'>
+              X {{item.num}}
         </view>
-        <view class='psnEaluateVal'>
-          {{psnEaluateVal}}</view>
+      <view class='Item_R'>
+         <image src='{{publicFun.showStatusImg(item.status)}}'></image>
       </view>
     </view>
   </view>
-  <!-- 品类 -->
-  <view class='Type'>
-    <view class='Item'>
-      <view class='Item_label'>
-      品类
-      </view>
-      <view class='Item_val'>
-      {{OrderType}}
-      </view>
-    </view>
-  </view>
-  <!-- 性别 -->
-  <view class='Sex'></view>
-  <!-- 时间  -->
-  <view class='Time'></view>
-  <!-- 费用 -->
-  <view class='Cost'></view>
-  <!-- 优惠 -->
-  <view class='Discount'></view>
-  <!-- 合计 -->
-  <view class='Total'></view>
-  <!-- 当前订单状态 -->
-  <view class='CurrentStatus'></view>
-  <!-- 评价显示 -->
-  <view class='EaluateShow'></view>
-  <!-- 评价 -->
-  <view class='Ealuate'></view>
-  <!-- 接受订单 -->
-  <view class='TakeOrder'></view>
-  <!-- 开始订单 -->
-  <view class='StartOrder'></view>
-  <!-- 取消 -->
-  <view class='ClearOrder'></view>
-  <!-- 结束 -->
-  <view class='EndOrder'></view>
-
+</view>
+  
 </scroll-view>
