@@ -1,0 +1,87 @@
+/* pages/invitationCode/invitationCode.wxss */
+.top{
+  width: 100vw;
+  height: 605rpx;
+    background:url(http://pgq6951kf.bkt.clouddn.com/my_jpg_Invitation.png);
+  background-repeat:no-repeat;
+  background-size:100% 100%;
+ -moz-background-size:100% 100%;
+ position: relative;
+}
+.top_mid{
+  width: 340rpx;
+  height: 135rpx;
+  position: absolute;
+  bottom: 50rpx;
+  right: 0 ;
+  left: 0;
+  margin: 0 auto;
+}
+.top_midT{
+  text-align: center;
+  font-size: 28rpx;
+  color: #f8f8f8;
+  margin-bottom: 38rpx;
+}
+.top_midB{
+   width: 340rpx;
+  height: 66rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: 1rpx solid #86b2f9;
+  border-radius: 33rpx;
+  background: #fff;
+  text-align: center;
+  font-size: 28rpx;
+  color: #86b2f9;
+}
+.top_BInput{
+    font-size: 28rpx;
+  color: #86b2f9;
+}
+.mid{
+  width: 635rpx;
+  height: auto;
+  
+  position: relative;
+  margin: 0 auto;
+  margin-top: 80rpx;
+  border:1rpx solid #747aff; 
+  
+}
+.mid_T{
+  width: 180rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+  text-align: center;
+  background: #fff;
+  font-size: 32rpx;
+  color: #6c73ff;
+  position: absolute;
+  top: -15rpx;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+.mid_B{
+  margin: 20rpx;
+  background: rgba(255, 255, 255, 0.01);
+  box-shadow: 0 0 20rpx 1rpx rgba(104,111,247,0.15);
+  padding: 40rpx 23rpx;
+  font-size: 26rpx;
+  color: #666666;
+}
+.footer{
+  width: 700rpx;
+  height: 92rpx;
+  background:#86b2f9; 
+  border-radius: 6rpx;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 92rpx;
+  color: #fff;
+  margin-top: 90rpx;
+
+}

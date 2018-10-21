@@ -10,11 +10,11 @@
           <view class='psnInfo_name'>
             {{psnData.name}}
           </view>
-          <view class='psnInfo_right'>
-            <view class='psnInfo_rightT' >
+          <view class="psnInfo_right {{psnStatus==1?'':'unload'}}">
+            <view class="psnInfo_rightT" >
               {{psnStatus==1?' ':'点击登录'}}
             </view>
-            <view class='psnInfo_rightImg'>
+            <view class='psnInfo_rightImg' wx:if="{{psnStatus==1}}">
               <image src='../image/home/right_JT.png'></image>
             </view>
 
@@ -66,7 +66,7 @@
       </view>
     </view>
     <!-- 兼职任务 -->
-    <view class='mid_Item'>
+    <view class='mid_Item' bindtap='ToOnlineJob'>
       <view class='mid_ItemT'>
         <view class='mid_ItemTImg'>
           <image src='../image/icon/icon71.png'></image>
@@ -202,7 +202,7 @@
     <button class='loading_midMenu botton' bindtap='ToLoded' open-type="getPhoneNumber">
      
       <view class='loading_midMenuImg'>
-        <image src='../image/icon/icon83.png'></image>
+        <image src='../image/icon/my_icon_weixin.png'></image>
       </view>
       <view class='loading_midMenuTxt'>
        微信快速登录

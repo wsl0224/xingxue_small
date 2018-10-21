@@ -1,0 +1,141 @@
+/* pages/onlineJob/submitJob.wxss */
+@import '../util/publicCss';
+.top{
+  margin-top: 20rpx;
+     border-top: 1rpx;
+  border-top-color: rgb(223,223,221);
+  border-top-style: solid;
+    border-bottom: 1rpx;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(223,223,221);
+  background: #fff;
+}
+.topTitle{
+  height: 93rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 40rpx;
+  border-bottom: 1rpx;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(223,223,221);
+}
+.topTImg{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+}
+.topTImg,.topTImg>image{
+  width: 40rpx;
+  height: 34rpx;
+}
+.topTtxt{
+  font-size: 32rpx;
+  color: #000000;
+  margin-left: 10rpx;
+}
+.topMid{
+  padding: 41rpx 91rpx;
+}
+.topMidPhoto{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+}
+.topMidPhoto,.topMidPhoto>image{
+  width: 140rpx;
+  height: 140rpx;
+}
+
+.mid{
+margin-top: 20rpx;
+     border-top: 1rpx;
+  border-top-color: rgb(223,223,221);
+  border-top-style: solid;
+    border-bottom: 1rpx;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(223,223,221);
+  background: #fff;
+}
+.midTitle{
+  height: 93rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 40rpx;
+  border-bottom: 1rpx;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(223,223,221);
+}
+.midTImg{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+}
+.midTImg,.midTImg>image{
+  width: 40rpx;
+  height: 34rpx;
+}
+.midTtxt{
+  font-size: 32rpx;
+  color: #000000;
+  margin-left: 10rpx;
+}
+.midMid_Item{
+  height: 81rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28rpx 0 61rpx;
+    border-bottom: 1rpx;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(223,223,221);
+}
+.midMid_Label{
+  width: 100rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+  font-size: 32rpx;
+  color:#333333;
+}
+.midMid_Val{
+
+  font-size: 30rpx;
+  color: #b6b6b6;
+}
+.inputPlaCss{
+  font-size: 30rpx;
+  color: #b6b6b6;
+}
+.midMid_remark{
+  font-size: 24rpx;
+  height: 24rpx;
+  line-height: 24rpx;
+  color: #666666;
+}
+
+.footer{
+  margin-top: 45rpx;
+  height: 98rpx;
+    display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.footer_btn{
+  width: 700rpx;
+  height: 98rpx;
+  background: #86b2f9;
+  border-radius: 6rpx;
+  color: #fff;
+  font-size: 36rpx;
+  text-align: center;
+  line-height: 98rpx;
+}

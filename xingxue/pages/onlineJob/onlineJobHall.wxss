@@ -1,0 +1,270 @@
+/* pages/onlineJob/onlineJobHall.wxss */
+@import '../util/publicCss';
+.main_type {
+  height: 91rpx;
+  border-top: 1rpx;
+  border-top-color: rgb(223, 223, 221);
+  border-top-style: solid;
+  border-bottom: 1rpx;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(223, 223, 221);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+
+}
+
+.main_Item {
+  width: 346rpx;
+  height: 91rpx;
+  font-size: 32rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.main_T{  
+  width: 100%;
+  height: 42rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+}
+.main_T.right {
+   border-right: 0.5rpx;
+  border-right-color: #eee;
+  border-right-style: solid;
+}
+
+.main_T.left {
+  border-left: 0.5rpx;
+  border-left-color: #eee;
+  border-left-style: solid;
+}
+
+.main_Item.active {
+  font-size: 32rpx;
+  color: #86b2f9;
+  border-bottom: 1rpx;
+  border-bottom-style: solid;
+  border-bottom-color: #86b2f9;
+}
+
+.main_TIcon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 9rpx;
+}
+
+.main_TIcon, .main_TIcon>image {
+  width: 19rpx;
+  height: 12rpx;
+}
+
+/*  */
+
+#FL,#PX{
+  flex:1;
+  width: 100%;
+  overflow: hidden;
+ 
+  animation-fill-mode: forwards;
+}
+.openFL{
+  display: block;
+  animation: slidedownFL 1s; 
+ 
+ background: rgba(0, 0, 0, 0.15);
+  position: absolute;
+  top: 95rpx;
+  z-index: 999;
+}
+.openPX{
+  display: block;
+  animation: slidedownPX 2s;
+   background: rgba(0, 0, 0, 0.15);
+   position: absolute;
+   top: 95rpx;
+  z-index: 999;
+}
+.closeFL{
+  animation: slideupFL 1s; 
+  display: none;    
+}
+.closePX{
+  animation: slideupPX 1s; 
+  display: none;    
+}
+
+@keyframes slidedownFL{
+    from {
+        height: 0;
+    }
+    to {
+        height: 90vh;
+    }
+}
+
+@keyframes slideupFL{
+    from {
+        height: 90vh;
+    }
+    to {
+        height: 0;
+    }
+}
+@keyframes slidedownPX{
+    from {
+        height: 0;
+    }
+    to {
+        height: 90vh;
+    }
+}
+
+@keyframes slideupPX{
+    from {
+        height: 90vh;
+    }
+    to {
+        height: 0;
+    }
+}
+
+
+.Item {
+  height: 80rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  padding: 0 23rpx;
+  border-bottom: 1rpx;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(223, 223, 221);
+}
+.FLItem.active>.Item_label,.PXItem.active>.Item_label{
+  color: #86b2f9;
+}
+.Item_label {
+  font-size: 30rpx;
+  color: #6666;
+}
+
+.Item_img {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.Item_img, .Item_img>image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.mid {
+  margin-top: 20rpx;
+  border-top: 1rpx;
+  border-top-color: rgb(223, 223, 221);
+  border-top-style: solid;
+}
+
+.mian_mid {
+  height: 90vh;
+}
+
+.mid_item {
+  height: 180rpx;
+  padding: 0 45rpx 0 48rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: #fff;
+  border-bottom: 1rpx;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(223, 223, 221);
+}
+
+.mid_itemL {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-right: 21rpx;
+}
+
+.mid_itemL, .mid_itemL>image {
+  width: 122rpx;
+  height: 122rpx;
+}
+
+.mid_itemR {
+  width: 100%;
+}
+
+.mid_itemRT {
+  width: 100%;
+  height: 39rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mid_itemTitle {
+  height: 39rpx;
+  line-height: 39rpx;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.mid_itemZD {
+  width: 89rpx;
+  height: 39rpx;
+  font-size: 24rpx;
+  border: 1rpx solid #ff3347;
+  border-radius: 6rpx;
+  color: #ff3347;
+  line-height: 39rpx;
+  text-align: center;
+}
+
+.mid_itemM {
+  height: 30rpx;
+  line-height: 30rpx;
+  font-size: 30rpx;
+  color: #333;
+  margin: 22rpx 0 11rpx 0;
+}
+
+.mid_itemM::before {
+  content: '剩余:';
+  font-size: 24rpx;
+  color: #666;
+}
+
+.mid_itemF {
+  width: 100%;
+  height: 30rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mid_itemFR {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.mid_itemFL {
+  font-size: 30rpx;
+  color: #ff3347;
+}

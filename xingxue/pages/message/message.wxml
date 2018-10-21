@@ -1,19 +1,2 @@
 <!--pages/message/message.wxml-->
-<scroll-view class='rong-conversation-list'>
-  <view class='rong-conversation-item' bindtap='gotoChat' wx:for="{{conversationList}}" wx:for-item="conversation" data-item='{{conversation}}'>
-    <view class='rong-avatar rong-conversation-avatar'>
-      <image src='{{conversation.user.portrait || conversation.group.portrait}}'></image>
-    </view>
-    <view class='rong-conversation-title' wx:if='conversation.conversationType == 1'>{{conversation.user.name}}</view>
-    <view class='rong-conversation-title' wx:if='conversation.conversationType == 3'>{{conversation.group.name}}</view>
-    <view class='rong-conversation-latestmessage'>
-      <view class='rong-conversation-latestmessage-content'>
-        {{conversation.latestMessage.content.content}}
-      </view>
-    </view>
-    <view class='rong-conversation-conversation-senttime'>{{conversation._sentTime}}</view>
-    <view class='rong-conversation-unread-count' wx:if="{{conversation.unreadMessageCount > 0}}">{{conversation.unreadMessageCount}}</view>
-    <view class='rong-conversation-line'></view>
-  </view>
-</scroll-view>
 

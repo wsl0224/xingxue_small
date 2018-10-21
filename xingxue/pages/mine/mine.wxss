@@ -43,7 +43,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-left: 19rpx;
+  margin-left: 50rpx;
 }
 .psnInfo_img,.psnInfo_img>image{
   width: 112rpx;
@@ -63,11 +63,15 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
-
+  
+}
+.psnInfo_right.unload{
+  margin-right: 50rpx;
 }
 .psnInfo_rightT{
   font-size: 30rpx;
   color: #666666;
+  
 }
 .psnInfo_rightImg{
   display: flex;

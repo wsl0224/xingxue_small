@@ -1,0 +1,81 @@
+<!--pages/onlineJob/onlineJobDetail.wxml-->
+<wxs module="publicFun" src="../util/publicFun.wxs"></wxs>
+<view class='main'>
+  <view class='top'>
+    <view class='top_L'>
+      <view class='top_LTop'>{{jobData.title}}</view>
+      <view class='top_LMid'>
+        <view class='top_Date'>截止:{{jobData.Date}}</view>
+        <view class='top_Limit'> 1人{{jobData.xianzi}}次</view>
+      </view>
+      <view class='top_LBottom'>
+        {{jobData.sy}}份
+      </view>
+    </view>
+    <view class='top_R'>
+      <view class='top_RMoney'>
+        {{jobData.money}}元/次
+      </view>
+    </view>
+  </view>
+  <view class='mid'>
+    <scroll-view scroll-y class='mid_main'>
+      <!-- 任务说明 -->
+      <view class='mid_top'>
+        <view class='mid_Ttop'>
+          <view class='mid_TImg'>
+            <image src='../image/icon/icon54.png'></image>
+          </view>
+          <view class='mid_TTtile'>
+            任务说明
+          </view>
+        </view>
+        <view class='mid_Tmid'>
+          {{jobData.sm}}
+        </view>
+        <view class='mid_Tbot' wx:if="{{jobData.url}}">
+          <view class='mid_Tbtn' bindtap='ToWebPage'>任务链接</view>
+        </view>
+      </view>
+      <!-- 任务步骤 -->
+      <view class='mid_mid'>
+        <view class='mid_Mtop'>
+          <view class='mid_MImg'>
+            <image src='../image/icon/icon55.png'></image>
+          </view>
+          <view class='mid_MTtile'>
+            任务步骤
+          </view>
+        </view>
+        <view class='mid_Mmid' wx:for="{{jobData.jobStep}}">
+          <view class='mid_MmidL'>
+            <view class='mid_MmidLimg'>
+              {{item.id}}
+            </view>
+          </view>
+          <view class='mid_MmidLR'>
+            <view class='mid_MmidLRstep'>
+              {{item.step}}
+            </view>
+            <view class='mid_MmidLRctxt'>
+              {{item.content}}
+            </view>
+            <view class='mid_MmidLRPhoto'>
+              <view class='Photo_Item' wx:for="{{item.photo}}">
+                <image src='{{item}}'></image>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <view class='bot'>
+    <view class="botStartJob startJOB" bindtap='ToSubmitJob' wx:if="{{jobData.status==1}}">
+      开始任务
+    </view>
+    <view class="botStatusJob {{publicFun.showJobSBgColor(jobData.status)}}" wx:if="{{jobData.status!=1}}">
+      {{publicFun.showJobLabel(jobData.status)}}
+    </view>
+  </view>
+</view>

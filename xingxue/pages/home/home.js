@@ -26,7 +26,7 @@ Page({
     }, {
         id: 2,
         url: '../image/icon/icon02.png',
-      name: '线上兼职',
+       name: '线上兼职',
     }, {
         id: 3,
         url: '../image/icon/icon03.png',
@@ -221,17 +221,14 @@ Page({
   ToSkillPage:function(e){
     
     if(e.currentTarget.dataset.type=='allType'){
-      wx.navigateTo({
+      $.openWin({
         url: '../allType/allType',
       })
     }else{
-      let param = {
-        name: e.currentTarget.dataset.name
-      };
-      console.log(e.currentTarget.dataset);
-      let data = JSON.stringify(param);
-      wx.navigateTo({
-        url: '../skillList/skillList?param='+data,
+  
+      $.openWin({
+        url: '../skillList/skillList',
+        data: { name: e.currentTarget.dataset.name}
       })
     }
   },
@@ -239,15 +236,17 @@ Page({
   ToLevePage:function(e){
  
     if (e.currentTarget.id == 1){
-      wx.navigateTo({
+     $.openWin({
        url: '../order/sendOrder',
       }) 
     } else if (e.currentTarget.id == 2){
-
+      $.openWin({
+        url:'../onlineJob/onlineJobHall'
+      })
     } else if (e.currentTarget.id == 3){
 
     }else {
-      wx.navigateTo({
+     $.openWin({
         url: '../welfarHall/welfarHall',
       }) 
     }

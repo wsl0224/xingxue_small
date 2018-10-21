@@ -1,4 +1,6 @@
 // pages/bringUpSuccess/promptSuccess.js
+let $=require('../util/commit.js');
+
 Page({
 
   /**
@@ -62,5 +64,11 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  // 完成返回
+  ToReturn:function(e){
+    $.openWin({
+      url:'../onlineJob/onlineJobDetail'
+    })
   }
 })

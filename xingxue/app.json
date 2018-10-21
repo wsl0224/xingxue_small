@@ -1,9 +1,8 @@
 {
   "pages": [
-   
+    
     "pages/home/home",
     "pages/message/message",
-    "pages/message/chat",
     "pages/mine/mine",
     "pages/order/sendOrder",
     "pages/order/sendOrderDetail",
@@ -13,7 +12,6 @@
     "pages/skillList/skillList",
     "pages/skillPage/skillPage",
     "pages/psnPage/psnPage",
-    "pages/OnlineJob/OnlineJob",
     "pages/placeOrder/placeOrder",
     "pages/personalData/personalData",
     "pages/myAttentionFans/myAttentionFans",
@@ -35,8 +33,13 @@
     "pages/orderCenter/orderDetail",
     "pages/orderCenter/choosePsnPage",
     "pages/myReceipt/myReceipt",
-    "pages/myReceipt/myReceiptDetail"
-  
+    "pages/myReceipt/myReceiptDetail",
+    "pages/onlineJob/onlineJob",
+    "pages/onlineJob/onlineJobDetail",
+    "pages/onlineJob/submitJob",
+    "pages/onlineJob/onlineJobHall",
+    "pages/invitationCode/invitationCode"
+   
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -50,8 +53,8 @@
       {
         "pagePath": "pages/home/home",
         "text": "首页",
-        "iconPath":"pages/image/icon/icon20.png",
-        "selectedIconPath":"pages/image/icon/icon21.png"
+        "iconPath": "pages/image/icon/icon20.png",
+        "selectedIconPath": "pages/image/icon/icon21.png"
       },
       {
         "pagePath": "pages/message/message",

@@ -7,7 +7,7 @@ Page({
    */
   data: {
     loadingShow:false,
-    psnStatus:2,
+    psnStatus:0,
     psnData:{},
     userId:'18262741104',
   },
@@ -205,6 +205,12 @@ Page({
   ToMyReceipt:function(e){
     $.openWin({
       url:'../myReceipt/myReceipt'
+    })
+  },
+  // 跳转兼职任务
+  ToOnlineJob:function(e){
+    $.openWin({
+      url: '../onlineJob/onlineJob'
     })
   }
 

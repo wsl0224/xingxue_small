@@ -37,7 +37,7 @@ Page({
           addr: '南京',
           time: '刚刚  08月08日 21:00',
           num: 1,
-          status: 1,
+          status: 3,
         }, {
           url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
           name: '成都小甜甜',
@@ -48,7 +48,7 @@ Page({
           addr: '南京',
           time: '刚刚  08月08日 21:00',
           num: 1,
-          status: 1,
+          status: 2,
         },]
   },
 

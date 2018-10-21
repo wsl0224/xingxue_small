@@ -1,1 +1,118 @@
-/* pages/OnlineJob/OnlineJob.wxss */
+/* pages/onlineJob/onlineJob.wxss */
+@import '../util/publicCss';
+.main{
+  border-top: 1rpx;
+  border-top-color: rgb(223,223,221);
+  border-top-style: solid;
+}
+.top{
+  width: 100vw;
+  height: 91rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background: #fff;
+   border-bottom: 1rpx;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(223,223,221);
+}
+.TypeData{
+  width: 124rpx;
+  height: 88rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.Type_Item{
+  font-size: 32rpx;
+  color: #6b6b6b;
+}
+.TypeData.active{
+  border-bottom: 3rpx;
+  border-bottom-style: solid;
+  border-bottom-color: #86b2f9;
+}
+.TypeData.active>.Type_Item{
+  font-size:32rpx;
+  color: #86b2f9;
+}
+.mid{
+  height: 90vh;
+  margin-top: 20rpx;
+  border-top: 1rpx;
+  border-top-color: rgb(223,223,221);
+  border-top-style: solid;
+}
+.mid_Item{
+  height: 180rpx;
+  background: #fff;
+  padding: 21rpx 45rpx 0 45rpx;
+  border-bottom: 1rpx;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(223,223,221);
+}
+.mid_top{
+  height: 44rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.mid_title{
+  font-size: 30rpx;
+  color: #333333;
+}
+.mid_status{
+  width: 122rpx;
+  height: 44rpx;
+  text-align: center;
+  line-height: 44rpx;
+  font-size: 24rpx;
+  color: #ffffff;
+}
+.mid_mid{
+  margin: 14rpx 0 11rpx 0;
+}
+.mid_midSY{
+  font-size: 30rpx;
+  color: #333333;
+}
+.mid_midSY::before{
+  content: '剩余:';
+  font-size: 24rpx;
+  color: #666666;
+}
+.mid_bottom{
+   height: 30rpx;
+  display: flex;
+  flex-direction: row;
+  align-items:baseline;
+  justify-content: space-between;
+}
+.mid_date{
+  font-size: 30rpx;
+  color: #666666;
+}
+.mid_date::before{
+ content: '截止:';
+  font-size: 24rpx;
+  color: #666666;
+}
+.mid_money{
+  font-size: 30rpx;
+  color: #ff3347;
+}
+.red{
+  background: #ee4726;
+}
+.green{
+  background: #2dc57a;
+}
+.gray{
+  background: #cdcdcd;
+}
+.violet{
+ background: #7183e6;
+}

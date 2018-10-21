@@ -1,0 +1,224 @@
+/* pages/onlineJob/onlineJobDetail.wxss */
+@import '../util/publicCss';
+.main{
+    border-top: 1rpx;
+  border-top-color: rgb(223,223,221);
+  border-top-style: solid;
+}
+.top{
+  height: 135rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 27rpx 0 0 46rpx;
+  justify-content: space-between;
+  background: #fff;
+  border-bottom: 1rpx;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(223,223,221);
+  margin-bottom: 20rpx;
+}
+
+.top_LTop{
+  font-size: 32rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+  color: #000000;
+}
+.top_LMid{
+  height: 28rpx;
+  line-height: 28rpx;
+  margin: 23rpx 0 10rpx 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.top_Date{
+  font-size: 28rpx;
+
+  color: #666666;
+}
+.top_Limit{
+  font-size:28rpx;
+  color: #333333;
+  margin-left: 56rpx;
+}
+.top_Limit::before{
+  content: "限制:";
+  font-size: 28rpx;
+  color: #666666;
+}
+.top_LBottom{
+  font-size: 30rpx;
+  color: #333333;
+}
+.top_LBottom::before{
+  content: "剩余:";
+  font-size: 28rpx;
+  color: #666666;
+}
+.top_RMoney{
+  width:191rpx;
+  height: 62rpx;
+  font-size: 28rpx;
+  color: #fff;
+  line-height: 62rpx;
+  text-align: center;
+   background:url(http://pgq6951kf.bkt.clouddn.com/icon53.png);
+  background-repeat:no-repeat;
+ background-size:100% 100%;
+ -moz-background-size:100% 100%;
+}
+.mid_main{
+  height: 70.5vh;
+}
+.mid_top,.mid_mid{
+  padding: 30rpx 40rpx;
+  background: #fff;
+  border-top: 1rpx;
+  border-top-color: rgb(223,223,221);
+  border-top-style: solid;
+  border-bottom: 1rpx;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(223,223,221);
+   margin-bottom: 20rpx;
+}
+.mid_Ttop,.mid_Mtop{
+   height: 91rpx;
+   border-bottom: 1rpx;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(223,223,221);
+  display: flex;
+  flex-direction: row;
+  align-items: center;  
+
+}
+.mid_TImg,.mid_MImg{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-right: 11rpx;
+}
+.mid_TImg,.mid_TImg>image,.mid_MImg,.mid_MImg>image{
+  width: 35rpx;
+  height: 32rpx;
+}
+.mid_TTtile,.mid_MTtile{
+  font-size: 32rpx;
+  color: #000000;
+ 
+  
+}
+.mid_Tmid{
+  margin-top: 28rpx;
+  margin-bottom: 40rpx;
+  color:#666666;
+  font-size: 30rpx;
+}
+.mid_Tbot{
+  height: 52rpx;
+   display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.mid_Tbtn{
+  width: 190rpx;
+  height: 52rpx;
+  border:1rpx solid #ff3347;
+  border-radius: 6rpx;
+  text-align: center;
+  line-height: 52rpx;
+  color: #ff3347;
+  font-size: 26rpx;
+}
+
+/* 任务步骤 */
+.mid_Mmid{
+  padding: 26rpx 41rpx 0 41rpx;
+  margin-bottom: 59rpx;
+  display: flex;
+  flex-direction: row;
+  align-items:flex-start;
+}
+.mid_MmidL{
+  width: 60rpx;
+}
+.mid_MmidLimg{
+  width: 60rpx;
+  height: 60rpx;
+  text-align: center;
+  line-height: 50rpx;
+  font-size: 24rpx;
+  color: #fff;
+   background:url(http://pgq6951kf.bkt.clouddn.com/icon56.png);
+  background-repeat:no-repeat;
+ background-size:100% 100%;
+ -moz-background-size:100% 100%;
+}
+.mid_MmidLR{
+  width: 100%;
+}
+.mid_MmidLRstep{
+  font-size: 30rpx;
+  color: #333333;
+  height: 60rpx;
+  line-height: 50rpx;
+}
+.mid_MmidLRctxt{
+  font-size: 30rpx;
+  color: #333;
+  margin-bottom: 30rpx;
+  padding-right: 10rpx;
+}
+.mid_MmidLRPhoto{
+  height: 164rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center; 
+}
+.Photo_Item{
+   display: flex;
+  flex-direction: row;
+  align-items: center; 
+  justify-content: center;
+  margin-right: 19rpx;
+}
+.Photo_Item,.Photo_Item>image{
+  width: 164rpx;
+  height: 164rpx;
+}
+
+.bot{
+  height: 170rpx; 
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center; 
+  justify-content: center;
+}
+.botStartJob,.botStatusJob{
+  width: 700rpx;
+  height: 98rpx;
+  border-radius: 6rpx;
+  line-height: 98rpx;
+  text-align: center;
+  margin: 0 auto;
+  color: #fff;
+}
+.startJOB{
+  background: #86b2f9;
+}
+.red{
+  background: #ee4726;
+}
+.green{
+  background: #2dc57a;
+}
+.gray{
+  background: #cdcdcd;
+}
+.violet{
+ background: #7183e6;
+}

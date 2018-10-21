@@ -1,18 +1,47 @@
-var publicFun={
+var publicFun = {
   // 根据状态num显示状态中文
-  showStatusLabel: function (e) {
+  showStatusLabel: function(e) {
     if (e == 1) {
       return '待选择';
     }
-    if(e==2){
+    if (e == 2) {
       return '待服务'
     }
   },
   // 根据状态num显示图片
-  showStatusImg:function(e){
-    if(e==1){
-      
-      return '../image/icon/icon56.png';
+  showStatusImg: function(e) {
+    if (e == 1) {
+      return '../image/icon/my_icon3_receipt.png';
+    } else if (e == 2) {
+      return '../image/icon/my_icon2_receipt.png';
+    }
+  },
+  showJobLabel: function(e) {
+    if (e == 1) {
+      return '进行中';
+    }
+    if (e == 2) {
+      return '审核中';
+    }
+    if (e == 3) {
+      return '已完成';
+    }
+    if (e == 4) {
+      return '已过期';
+    }
+    if (e == 5) {
+      return '任务失败';
+    }
+  },
+  showJobSBgColor: function(e) {
+    if (e == 1) {
+      return 'red';
+    } else if (e == 2) {
+      return 'green';
+    } else if (e == 3) {
+      return 'violet';
+    } else {
+      return 'gray';
     }
   }
 }
@@ -20,4 +49,6 @@ var publicFun={
 module.exports = {
   showStatusLabel: publicFun.showStatusLabel,
   showStatusImg: publicFun.showStatusImg,
+  showJobLabel: publicFun.showJobLabel,
+  showJobSBgColor: publicFun.showJobSBgColor
 }

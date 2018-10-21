@@ -1,0 +1,74 @@
+<!--pages/onlineJob/submitJob.wxml-->
+<view class='main'>
+  <!-- 上传所需截图 -->
+  <view class='top'>
+    <view class='topTitle'>
+      <view class='topTImg'>
+        <image src='../image/icon/icon57.png'></image>
+      </view>
+      <view class='topTtxt'>
+        上传所需截图
+      </view>
+    </view>
+    <view class='topMid'>
+      <view class='topMidPhoto'>
+        <image src='../image/icon/icon59.png'></image>
+      </view>
+    </view>
+  </view>
+  <!-- 其他信息 -->
+  <view class='mid'>
+     <view class='midTitle'>
+      <view class='midTImg'>
+        <image src='../image/icon/icon58.png'></image>
+      </view>
+      <view class='midTtxt'>
+        其他信息
+      </view>
+    </view>
+    <view class='midMid'>
+    <!-- 姓名 -->
+      <view class='midMid_Item'>
+        <view class='midMid_Label'>
+        姓名
+        </view>
+        <view class='midMid_Val'>
+        <input placeholder='请输入您的姓名' placeholder-class='inputPlaCss'></input>
+        </view>
+        <view class='midMid_remark'>
+        (非必填)
+        </view>
+      </view>
+    <!-- 手机号 -->
+      <view class='midMid_Item'>
+        <view class='midMid_Label'>
+        手机号
+        </view>
+        <view class='midMid_Val'>
+        <input type='number' placeholder='请输入您的手机号' placeholder-class='inputPlaCss'></input>
+        </view>
+         <view class='midMid_remark'>
+        (非必填)
+        </view>
+      </view>
+        <!-- 其它 -->
+      <view class='midMid_Item'>
+        <view class='midMid_Label'>
+        其它
+        </view>
+        <view class='midMid_Val'>
+        <input placeholder='请输入其它相关信息' placeholder-class='inputPlaCss'></input>
+        </view>
+         <view class='midMid_remark'>
+        (非必填)
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- btn -->
+  <view class='footer'>
+    <view class='footer_btn' bindtap='ToSure'>
+    确认
+    </view>
+  </view>
+</view>

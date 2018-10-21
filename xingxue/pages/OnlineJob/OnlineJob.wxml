@@ -1,2 +1,40 @@
-<!--pages/OnlineJob/OnlineJob.wxml-->
-<text>pages/OnlineJob/OnlineJob.wxml</text>
+<!--pages/onlineJob/onlineJob.wxml-->
+<wxs module="publicFun" src="../util/publicFun.wxs"></wxs>
+<view class='main'>
+<!-- top -->
+  <view class='top'>
+   <view class="TypeData {{indexNum==index?'active':''}}" data-id="{{item.id}}" bindtap='ChooseType' wx:for="{{TypeData}}">
+     <view class='Type_Item' >
+     {{item.name}}
+     </view>  
+  </view>
+  </view>
+ <!-- mid -->
+<scroll-view scroll-y class='mid'>
+  <view class='mid_main'>
+    <view class='mid_Item' bindtap='TopOnlineJobDetail' wx:for="{{jobData}}">
+      <view class='mid_top'>
+        <view class='mid_title'>
+        {{item.title}}
+        </view>
+        <view class="mid_status {{publicFun.showJobSBgColor(item.status)}}">
+          {{publicFun.showJobLabel(item.status)}}
+        </view>
+      </view>
+      <view class='mid_mid'>
+          <view class='mid_midSY'>
+          {{item.shenyue}}份
+          </view>
+      </view>
+      <view class='mid_bottom'>
+        <view class='mid_date'>
+        {{item.Date}}
+        </view>
+        <view class='mid_money'>
+        {{item.money}}元/次
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+</view>
