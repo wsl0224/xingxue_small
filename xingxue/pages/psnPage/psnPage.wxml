@@ -1,43 +1,44 @@
 <!--pages/psnPage/psnPage.wxml-->
+<wxs module="publicFun" src="../util/publicFun.wxs"></wxs>
 <scroll-view scroll-y  class='main'>
   <view class='psnTop'>
     <view class='psnTop_image'>
-      <image src='http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg'></image>
+      <image src='{{psnData.avatar}}' mode='center'></image>
     </view>
     <view class='psnTopInfo'>
       <view class='psnTopInfoZ'>
         <view class='psnInfo_top'>
           <view class='psnInfo_topN'>
-            {{psnData.name}}
+            {{psnData.user_nicename}}
           </view>
-          <view class='psnInfo_topS'>
-            <view class='psnInfo_topSL'>
-              <image src='http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg'></image>
+          <view class="psnInfo_topS  {{psnData.sex==1?'psnInfo_sexN':'psnInfo_sexW'}}">
+            <view class="psnInfo_topSL">
+                <image src="{{psnData.sex==1?'../image/icon/icon46.png':'../image/icon/icon45.png'}}" />
             </view>
             <view class='psnInfo_topSR'>
-              {{psnData.sex}}
+              {{psnData.age}}
             </view>
           </view>
-          <view class='psnInfo_RZstatus' wx:if="{{psnData.RZstatus==1?true:false}}">
+          <view class='psnInfo_RZstatus' wx:if="{{psnData.stu_uthentication==1?true:false}}">
             学生认证
           </view>
         </view>
         <view class='psnInfo_Content'>
           <view class='psnInfo_CT'>
-            <view class='psnInfo_CTL'>{{psnData.context}}</view>
-            <view class='psnInfo_CTR'>{{psnData.num}}</view>
+            <view class='psnInfo_CTL'>{{psnData.signature}}</view>
+            <view class='psnInfo_CTR'>{{psnData.follower_num}}</view>
           </view>
           <view class='psnInfo_F'>
             <view class='psnInfo_Faddr'>
               <view class='psnInof_FaddrL'>
-                <image src='http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg'></image>
+                <image src='../image/icon/icon47.png'></image>
               </view>
               <view class='psnInfo_FaddrR'>
-                {{psnData.addr}}
+                {{psnData.address}}
               </view>
             </view>
             <view class='psnInfo_FR'>
-              {{psnData.guanzhu==1?'关注':'已关注'}}
+              {{psnData.follower==2?'关注':'已关注'}}
             </view>
           </view>
         </view>
@@ -55,8 +56,8 @@
       </view>
     </view>
     <view class='photoList'>
-      <view class='photoItem' wx:for="{{psnData.photo}}">
-        <image src='{{item}}'></image>
+      <view class='photoItem' wx:for="{{psnData.image}}">
+        <image src='{{item}}' mode='center'></image>
       </view>
     </view>
   </view>
@@ -68,26 +69,26 @@
         TA的技能
       </view>
     </view>
-    <view class='skillItem' wx:for="{{skillData}}">
+    <view class='skillItem' bindtap='selectSkill' data-id='{{item.us_id}}' wx:for="{{skillData}}">
       <view class='skillItemImg'>
-        <image src='{{item.url}}'></image>
+        <image src='{{item.pic}}' mode='center'></image>
       </view>
       <view class='skillInfo'>
         <view class='skillInfo_name'>
-          {{item.skillName}}
+          {{item.cname}}
         </view>
         <view class='skillInfo_money'>
-          {{item.money}}元/小时
+          {{item.price}}元/小时
         </view>
         <view class='skillInfo_music'>
           <view class='skillInfo_ML'>
             <view class='skillInfo_MLImg'>
-              <image src='http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg'></image>
+              <image src='../image/icon/icon48.png'></image>
             </view>
-            <view class='skillInfo_MLTxt'>{{item.music}}</view>
+            <view class='skillInfo_MLTxt'>{{item.audio}}</view>
           </view>
           <view class='skillInfo_MR'>
-            接单{{item.num}}次
+            接单{{item.complate_score}}次
           </view>
         </view>
       </view>
@@ -109,7 +110,7 @@
         昵称
         </view>
         <view class='infoValue'>
-          {{psnData.name}}
+          {{psnData.user_nicename}}
         </view>
       </view>
       <view class='infoItem'>
@@ -117,14 +118,14 @@
         生日
         </view>
         <view class='infoValue'>
-        {{psnData.date}}
+        {{psnData.birth}}
         </view>
       </view><view class='infoItem'>
         <view class='infoLabel'>
         签名
         </view>
         <view class='infoValue'>
-          {{psnData.context}}
+          {{psnData.signature?psnData.signature:publicFun.signture()}}
         </view>
       </view>
     </view>

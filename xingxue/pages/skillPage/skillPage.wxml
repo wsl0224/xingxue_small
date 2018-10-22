@@ -1,22 +1,23 @@
 <!--pages/skillPage/skillPage.wxml-->
+<wxs module="publicFun" src="../util/publicFun.wxs"></wxs>
 <scroll-view class='body_main' scroll-y style="height: 87.5vh;">
   <view class='main'>
     <view class='top'>
-      <view class='psnInfo' bindtap='ToPsnPage'>
+      <view class='psnInfo' data-id='{{skillData.uid}}' bindtap='ToPsnPage'>
         <view class='psnInfo_img'>
-          <image src='{{skillData.psnData.url}}' />
+          <image src='{{skillData.avatar}}' mode='center' />
         </view>
         <view class='psnInfoR'>
           <view class='psnInfoRT'>
             <view class='psnInfo_name'>
-              {{skillData.psnData.name}}
+              {{skillData.user_nicename}}
             </view>
-            <view class="psnInfo_sex {{skillData.psnData.sex==1?'psnInfo_sexN':'psnInfo_sexW'}}">
+            <view class="psnInfo_sex {{skillData.sex==1?'psnInfo_sexN':'psnInfo_sexW'}}">
               <view class='psnInfo_sexImg'>
-                <image src="{{skillData.psnData.sex==1?'../image/icon/icon46.png':'../image/icon/icon45.png'}}" />
+                <image src="{{skillData.sex==1?'../image/icon/icon46.png':'../image/icon/icon45.png'}}" />
               </view>
               <view class='psnInfo_sexTxt'>
-                {{skillData.psnData.age}}
+                {{skillData.age}}
               </view>
             </view>
           </view>
@@ -25,34 +26,34 @@
               <image src='../image/icon/icon47.png' />
             </view>
             <view class='psnInfo_addrTxt'>
-              {{skillData.psnData.addr}}
+              {{skillData.address}}
             </view>
           </view>
         </view>
       </view>
       <view class='topR'>
         <view class="guanzhu">
-          {{skillData.psnData.guanzhu==1?'关注':'已关注'}}
+          {{skillData.follower_status==1?'关注':'已关注'}}
         </view>
       </view>
     </view>
     <view class='photo'>
       <view class='photoImg'>
-        <image src='{{skillData.photoImg}}'>
+        <image src='{{skillData.pic}}'  mode='center'>
         </image>
       </view>
       <view class='photoR'>
-        <view class="{{index<2?'photoR_item':'photoR_itemLast'}}" wx:for="{{skillData.photo}}">
-          <image src='{{item}}'></image>
+        <view class="{{index<2?'photoR_item':'photoR_itemLast'}}" wx:for="{{skillData.image}}">
+          <image src='{{item}}' mode='center'></image>
         </view>
       </view>
     </view>
     <view class='skill'>
       <view class='skillTitle'>
-        {{skillData.skillName}}
+        {{skillData.name}}
       </view>
       <view class='skillMoney'>
-        {{skillData.money}}元/小时
+        {{skillData.price}}元/小时
       </view>
       <view class='skillNP'>
         <view class='skillNPL'>
@@ -61,16 +62,21 @@
             </image>
           </view>
           <view class='skillNPL_txt'>
-            接单{{skillData.num}}次
+            接单{{skillData.complate_score}}次
           </view>
         </view>
-        <view class='skillNPR'>
-          <view class='skillNPR_IMG'>
-            <image></image>
-          </view>
-          <view class='skillNPR_txt'>
-            {{skillData.pingfen}}
-          </view>
+        <view>
+         <view class='pingfen'>
+                    <view class='pingfenList'>
+                      <view class='pingfenImg' wx:for="{{publicFun.showStars(skillData.score)}}">
+                        <image src='../image/icon/my_iocn03.png' />
+                      </view>
+
+                    </view>
+                    <view class='pingfenTxt'>
+                      {{skillData.score}}
+                    </view>
+                  </view>
         </view>
       </view>
     </view>
@@ -85,7 +91,7 @@
         <audio></audio>
       </view>
       <view class='skillContxt'>
-        {{skillData.content}}
+        {{skillData.signature}}
       </view>
     </view>
   </view>

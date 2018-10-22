@@ -43,6 +43,21 @@ var publicFun = {
     } else {
       return 'gray';
     }
+  },
+  // 显示评分小星星
+  showStars: function(e) {
+    var starsArr = [];
+
+
+    for (var i = 0; i < e; i++) {
+      starsArr.push(i);
+
+    }
+
+    return starsArr;
+  },
+  signature: function(e) {
+    return '此人比较懒暂无签名';
   }
 }
 
@@ -50,5 +65,7 @@ module.exports = {
   showStatusLabel: publicFun.showStatusLabel,
   showStatusImg: publicFun.showStatusImg,
   showJobLabel: publicFun.showJobLabel,
-  showJobSBgColor: publicFun.showJobSBgColor
+  showJobSBgColor: publicFun.showJobSBgColor,
+  showStars: publicFun.showStars,
+  signature: publicFun.signature
 }

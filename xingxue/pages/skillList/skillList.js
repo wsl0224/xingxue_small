@@ -95,13 +95,33 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let data=JSON.parse(options.param);
-    console.log(data);
+    let data=JSON.parse(options.data);
+    let self=this;
     wx.setNavigationBarTitle({
-      title: data.name
-    })
-  },
+      title: data.title
+    });
+    self.freshData(data);
 
+  },
+  freshData:function(e){
+    let self=this;
+    $.POST(
+      {
+        url: 'wcSkillSSL',
+        data: {
+          cate_id: e.id,
+          page:1,
+        }
+      },function(e){
+        self.setData({
+          psnData:e.data,
+        })
+      },
+      function(e){
+        console.log(e);
+      }
+    )
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -154,6 +174,9 @@ Page({
   ToSkillPage:function(e){
     $.openWin({
       url:'../skillPage/skillPage',
+      data:{
+        id:e.currentTarget.dataset.id,
+      }
     })
   }
 })

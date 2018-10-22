@@ -1,34 +1,12 @@
 // pages/skillPage/skillPage.js
-
+var $=require('../util/commit.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
-   
-    
    skillData:{
-     skillName:'叫醒服务',
-     psnData:{
-       name: '成都小甜甜',
-       url: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',
-       addr: '南京市',
-       sex:1,
-       age:20,
-       guanzhu:1,
-     },
-     biaoqian:'甜美声音',
-     num:1569,
-     money:8,
-     pingfen:5.0,
-     content:'专业叫醒服务，声音甜美，欢迎',
-     photoImg: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',  
-     photo: [
-       'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',      'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg', 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',
-       ],
-       musicTime:'90'
    }
   },
 
@@ -36,8 +14,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let data=JSON.parse(options.param);
-    console.log(data.id);
+    console.log('==')
+    console.log(options);
+    let param=JSON.parse(options.data);
+    console.log(param);
+    let self=this;
+    $.POST({
+      url: 'wcSkillSSD',
+      data: {
+        usid: param.id
+      }
+    }, function (e) {
+      self.setData({
+        skillData: e.data,
+      });
+    },
+      function (e) {
+        console.log(e);
+      });
      
   },
 
@@ -91,12 +85,24 @@ Page({
   },
   // 跳转人员信息
   ToPsnPage:function(e){
-    wx.navigateTo({
+  $.openWin({
       url: '../psnPage/psnPage',
+      data:{
+        id:e.currentTarget.dataset.id,
+      }
     })
   },
   // 进入聊天页面
- 
+  goToChat:function(e){
+    let that=this;
+    $.openWin({
+      url:'../message/chat',
+      data:{
+        id: that.data.psnData.id,
+        name: that.data.psnData.name
+      }
+    })
+  }
 
   
 })

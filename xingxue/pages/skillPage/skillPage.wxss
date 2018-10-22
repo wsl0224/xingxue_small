@@ -35,7 +35,7 @@
    display: flex;
   flex-direction: row;
   align-items: center;
-  margin-bottom: 73rpx;
+  margin-bottom: 40rpx;
 }
 .psnInfo_name{
   font-size: 30rpx;
@@ -84,6 +84,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-bottom: 33rpx;
 }
 .psnInfo_addrImg{
   margin-right: 7rpx;
@@ -196,6 +197,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  margin-right: 12rpx;
 }
 .skillNPL_IMG,.skillNPL_IMG>image{
   width: 24rpx;
@@ -207,20 +209,39 @@
   font-size: 24rpx;
   color:rgb(102,102,102);
 }
-.skillNPR_IMG{
+/* 评分Css */
+.pingfen{
+  height: 30rpx;
+  margin:10rpx 0;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: flex-start;
 }
-.skillNPR_IMG,.skillNPR_IMG>image{
+.pingfenList{
+  height: 30rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  margin-right:10rpx;
+}
+.pingfenImg{
+    display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+.pingfenImg,.pingfenImg>image{
   width: 20rpx;
-  height: 19rpx;
-}
-.skillNPR_txt{
   height: 22rpx;
-  line-height: 22rpx;
+
+}
+.pingfenTxt{
   font-size: 22rpx;
-  color:rgb(255,185,36);
+  height: 22rpx;
+  line-height: 24rpx;
+  color: rgb(255,185,36);
 }
 
 .skillMusic{

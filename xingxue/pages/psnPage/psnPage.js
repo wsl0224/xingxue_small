@@ -1,58 +1,37 @@
 // pages/psnPage/psnPage.js
+let $=require('../util/commit.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    psnData:{
-      name:'成都小甜甜',
-      sex:20,
-      RZstatus:1,
-      context:'爱到最美是陪伴',
-      addr:'南京市',
-      num:25,
-      guanzhu:1,
-      date:'1987.09.23',
-      photo: ['http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg', 'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg', 'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg', 'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg']
-          },
-    skillData: [{ 
-      id:1,
-      url: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-      skillName:'叫醒服务',
-      money:8,
-      num:12,
-      music:'09',
-    }, {
-        id: 2,
-        url: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-        skillName: '叫醒服务',
-        money: 8,
-        num: 12,
-        music: '09',
-      }, {
-        id: 3,
-        url: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-        skillName: '叫醒服务',
-        money: 8,
-        num: 12,
-        music: '09',
-      }, {
-        id: 4,
-        url: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-        skillName: '叫醒服务',
-        money: 8,
-        num: 12,
-        music: '09',
-      }],
-
-  },
+    psnData:{},
+    skillData:[],
+   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let self=this;
+    let param=JSON.parse(options.data);
+    $.POST({
+      url:'wcUserSUHP',
+      data:{
+        uid:param.id,
+      }
+    },
+    function(e){
+      self.setData({
+        psnData:e.data.user,
+        skillData:e.data.skill
+      })
+    },
+    function(e){
+      console.log(e);
+    }
+    )
   },
 
   /**

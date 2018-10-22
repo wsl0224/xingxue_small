@@ -4,41 +4,49 @@
 var host = 'https://app.xingxue.vip/';
 /**
  * POST请求，
- * URL：接口
- * postData：参数，json类型
+ * param{
+ * url:接口
+ * data:参数
+ * }
  * doSuccess：成功的回调函数
  * doFail：失败的回调函数
  */
-function POST(url, postData, doSuccess, doFail) {
+function POST(param,doSuccess,doFail) {
   console.log('POST参数');
-  console.log(postData);
+  console.log(param);
   wx.request({
     //项目的真正接口，通过字符串拼接方式实现
-    url: host + url,
+    url: host + param.url,
     header: {
       'content-type': 'application/x-www-form-urlencoded'
     },
-    data: postData,
+    data: param.data,
     method: 'POST',
     success: function (res) {
+      console.log('POST成功');
+      console.log(res.data);
       //参数值为res.data,直接将返回的数据传入
       doSuccess(res.data);
     },
     fail: function () {
-      doFail();
+      doFail(res);
     },
   })
 }
 
 //GET请求，不需传参，直接URL调用，
-function GET(url, doSuccess, doFail) {
+function GET(param, doSuccess, doFail) {
+  console.log('GET');
+  console.log(param);
   wx.request({
-    url: host + url,
+    url: host + param.url,
     header: {
       "content-type": "application/json;charset=UTF-8"
     },
     method: 'GET',
     success: function (res) {
+      console.log('GET成功');
+      console.log(res.data);
       doSuccess(res.data);
     },
     fail: function () {
@@ -50,8 +58,6 @@ function GET(url, doSuccess, doFail) {
 //  url:路径
 //  data:{url:,param:}
 function openWin(e){
-
-
   let param,path;
   if(e.data){
      param = JSON.stringify(e.data);

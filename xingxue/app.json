@@ -1,6 +1,5 @@
 {
   "pages": [
-    
     "pages/home/home",
     "pages/message/message",
     "pages/mine/mine",
@@ -38,8 +37,8 @@
     "pages/onlineJob/onlineJobDetail",
     "pages/onlineJob/submitJob",
     "pages/onlineJob/onlineJobHall",
-    "pages/invitationCode/invitationCode"
-   
+    "pages/invitationCode/invitationCode",
+    "pages/message/chat"
   ],
   "window": {
     "backgroundTextStyle": "light",

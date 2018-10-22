@@ -1,14 +1,15 @@
 <!--pages/skillList/skillList.wxml-->
+<wxs module="publicFun" src="../util/publicFun.wxs"></wxs>
 <scroll-view>
-  <view data-id='{{item.id}}' bindtap='ToSkillPage' class="{{index==0?'first_item':'item_main'}}" wx:for="{{psnData}}">
+  <view data-id='{{item.usid}}' bindtap='ToSkillPage' class="{{index==0?'first_item':'item_main'}}" wx:for="{{psnData}}">
       <view class='item_content'>
         <view class='item_contentL'>
             <view class='item_image'>
-              <image src='{{item.url}}' />
+              <image src='{{item.avatar}}' mode='center'/>
             </view>
             <view class='item_txt'>
               <view class='item_txtName'>
-              {{item.name}}
+              {{item.user_nicename}}
               </view>
               <view class="item_sex {{item.sex==1?'item_sexN':'item_sexW'}}">
                 <view class='item_sexL'>
@@ -19,7 +20,7 @@
                 </view>
               </view>
               <view class='item_qinming'>
-              {{item.qianming}}
+              {{item.signature?item.signature:publicFun.signture()}}
               </view>
             </view>
         </view>
@@ -28,10 +29,10 @@
             {{item.time}}
           </view>
           <view class='item_num'>
-            接单{{item.num}}次
+            接单{{item.complate_score}}次
           </view>
           <view class='item_money'>
-            ￥{{item.money}}
+            ￥{{item.price}}
           </view>
         </view>
         

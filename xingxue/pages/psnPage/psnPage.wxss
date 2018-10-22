@@ -46,7 +46,6 @@
   .psnInfo_topS{
     height: 36rpx;
     width: 102rpx;
-    background-color: rgb(255,64,129);
     border-radius: 18rpx;
      display: flex;
     flex-direction: row;
@@ -54,6 +53,13 @@
     justify-content: center;
     margin-right: 12rpx;
   }
+.psnInfo_sexN{
+  background-color:rgb(108,127,235);
+}
+.psnInfo_sexW{
+  background-color: rgb(255,64,129);  
+}
+
   .psnInfo_topSL{
     height: 36rpx;
       display: flex;

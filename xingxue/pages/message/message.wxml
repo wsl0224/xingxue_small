@@ -1,2 +1,25 @@
 <!--pages/message/message.wxml-->
+<view class='main'>
+  <scroll-view class='main_mes'>
+    <view class='mes_item' bindtap='ToChat' data-id='{{item.id}}' data-name='{{item.title}}' wx:for="{{mesData}}">
+      <view class='mes_itemL'>
+        <image src='{{item.url}}'></image>
+      </view>
+      <view class='mes_itemR'>
+        <view class='mes_itemRT'>
+          <view class='mes_itemRTL'>
+            {{item.title}}
+          </view>
 
+          <view class='mes_itemRTR'>
+            {{item.time}}
+          </view>
+        </view>
+        <view class='mes_itemRB'>
+          <view class='mes_itemRBL'>{{item.content}}</view>
+          <view class='mes_itemRBR' wx:if="{{item.num>0}}">{{item.num}}</view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
