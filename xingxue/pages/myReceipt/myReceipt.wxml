@@ -1,34 +1,34 @@
 <!--pages/myReceipt/myReceipt.wxml-->
 <wxs module="publicFun" src="../util/publicFun.wxs"></wxs>
-<scroll-view scroll-y class='main'>
+<scroll-view scroll-y class='main' bindscrolltoupper='upper' bindscrolltolower="lower">
 <view class='main_body'>
-<view class='main_list' wx:for="{{orderData}}" bindtap='ToMyReceiptDetail'>
+<view class='main_list'  wx:for="{{orderData}}" bindtap='ToMyReceiptDetail'>
     <view class='main_Item'>
       <view class='Item_Image'>
-        <image src='{{item.url}}'></image>
+        <image src='{{item.avatar}}'></image>
       </view>
       <view class='Item_mid'>
           <view class='Item_midLT'>
             <view class='Item_Name'>
-           {{item.name}}
+           {{item.user_nicename}}
             </view>
             <view class='Item_Title'>
-              {{item.title}}
+              {{item.cname}}
             </view>
             <view class='Item_XZ'>
-               {{item.XZ}}
+               {{item.order_sex}}
             </view>
           </view>
           <view class="Item_SexAge {{item.sex==1?'man':'woman'}}">
             <view class='Item_Sex'>
-                  <image src="{{item.sex==1?'../image/icon/icon46.png':'../image/icon/icon45.png'}}"/>
+                  <image src="{{item.sex==1?'http://pgq6951kf.bkt.clouddn.com/icon46.png':'http://pgq6951kf.bkt.clouddn.com/icon45.png'}}"/>
             </view>
             <view class='Item_Age'>
             {{item.age}}
             </view>
           </view>
            <view class='Item_Bottom'>
-           南京 | 刚刚 08月08日 21:00
+            {{item.address}} | {{item.order_begin_time}}
           </view> 
       </view>
      <view class='Item_Num'>
@@ -40,5 +40,5 @@
     </view>
   </view>
 </view>
-  
+
 </scroll-view>

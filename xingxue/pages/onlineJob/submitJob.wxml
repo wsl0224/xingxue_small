@@ -4,7 +4,7 @@
   <view class='top'>
     <view class='topTitle'>
       <view class='topTImg'>
-        <image src='../image/icon/icon57.png'></image>
+        <image src='http://pgq6951kf.bkt.clouddn.com/icon57.png'></image>
       </view>
       <view class='topTtxt'>
         上传所需截图
@@ -12,7 +12,7 @@
     </view>
     <view class='topMid'>
       <view class='topMidPhoto'>
-        <image src='../image/icon/icon59.png'></image>
+        <image src='http://pgq6951kf.bkt.clouddn.com/icon59.png'></image>
       </view>
     </view>
   </view>
@@ -20,7 +20,7 @@
   <view class='mid'>
      <view class='midTitle'>
       <view class='midTImg'>
-        <image src='../image/icon/icon58.png'></image>
+        <image src='http://pgq6951kf.bkt.clouddn.com/icon58.png'></image>
       </view>
       <view class='midTtxt'>
         其他信息

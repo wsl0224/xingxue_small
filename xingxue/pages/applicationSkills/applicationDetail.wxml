@@ -5,7 +5,7 @@
     <view class='top' wx:if="{{showTitle}}">
       <view class='top_left'>
         <view class='top_leftImg'>
-          <image src='../image/icon/icon86.png'></image>
+          <image src='http://pgq6951kf.bkt.clouddn.com/icon86.png'></image>
         </view>
         <view class='top_leftTxt'>
           申请技能服务者需先通过学生认证
@@ -13,7 +13,7 @@
       </view>
 
       <view class='top_right' bindtap='CloseTitle'>
-        <image src='../image/icon/icon87.png'></image>
+        <image src='http://pgq6951kf.bkt.clouddn.com/icon87.png'></image>
       </view>
     </view>
     <!-- 学生信息 -->
@@ -59,13 +59,13 @@
       <view class='pInfo_Img'>
         <view class='pInfo_ImgL'>
           <view class='pInfo_ImgLimg'>
-            <image src='../image/icon/icon59.png'></image>
+            <image src='http://pgq6951kf.bkt.clouddn.com/icon59.png'></image>
           </view>
 
         </view>
         <view class='pInfo_ImgR'>
           <view class='pInfo_ImgRimg'>
-            <image src='../image/icon/icon59.png'></image>
+            <image src='http://pgq6951kf.bkt.clouddn.com/icon59.png'></image>
           </view>
         </view>
       </view>

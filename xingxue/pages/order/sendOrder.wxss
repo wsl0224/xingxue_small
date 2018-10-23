@@ -67,7 +67,7 @@ OneLeverScroll{
 .mapMid{
   width: 308rpx;
   height: 225rpx;
-  z-index: 9999;
+
   border:1rpx solid 99;
   background-color: re#fff;
   position: fixed;
@@ -78,19 +78,13 @@ OneLeverScroll{
   display: flex;
   flex-direction: column;
   align-items: center;
+ 
 
 }
 .mapMidTop{
   width:288rpx;
   height: 103rpx;
-  font-size: 41.4rpx;
-  line-height: 93rpx;
-  padding-left: 20rpx;  
-  color: #fff;
-  background-image: url(http://pgq6951kf.bkt.clouddn.com/icon27.png);
-  background-repeat:no-repeat;
- background-size:100% 100%;
- -moz-background-size:100% 100%;
+
 }
 .mapMidBottom{
    display: flex;
@@ -98,7 +92,7 @@ OneLeverScroll{
   align-items: center;
   justify-content: center;
 }
-.mapMidBottom,.mapMidBottom>image{
+.mapMidBottom,.mapMidBottom>cover-image{
   width: 38rpx;
   height: 89rpx;
 }

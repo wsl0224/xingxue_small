@@ -11,7 +11,7 @@
       </view>
     </view>
     <view class='top_B'>
-      <image src='../image/icon/icon91.png'>
+      <image src='http://pgq6951kf.bkt.clouddn.com/icon91.png'>
       </image>
     </view>
   </view>
@@ -26,7 +26,7 @@
       </view>
     </view>
     <view class='mid_B'>
-      <image src='../image/icon/icon92.png'>
+      <image src='http://pgq6951kf.bkt.clouddn.com/icon92.png'>
       </image>
     </view>
   </view>

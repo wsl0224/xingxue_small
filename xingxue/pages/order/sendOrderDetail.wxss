@@ -87,12 +87,13 @@ page{
   border-top-style: solid;
   border-top-color: rgb(223,223,221);
 }
-.list-end>text{
+.remarkCss,.remarkCss>input{
   font-size: 32rpx;
+  color: #333;
+  margin-bottom: 20rpx;
 }
-.list-end>textarea{
-  font-size: 32rpx;
-}
+
+
 /* footer */
 .footer{
   width: 700rpx;

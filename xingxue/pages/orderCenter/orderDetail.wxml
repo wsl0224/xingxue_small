@@ -10,7 +10,7 @@
 
       <view class='psnSex'>
         <view class='psnSexImg'>
-          <image src="{{orderData.sex==1?'../image/icon/icon46.png':'../image/icon/icon45.png'}}"></image>
+          <image src="{{orderData.sex==1?'http://pgq6951kf.bkt.clouddn.com/icon46.png':'http://pgq6951kf.bkt.clouddn.com/icon45.png'}}"></image>
         </view>
         <view class='psnAge'>
           {{orderData.age}}

@@ -1,26 +1,44 @@
 // pages/order/sendOrderDetail.js
+let $=require('../util/commit.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    id:'',
     title:'叫醒服务',
     sex:'全部',
+    date:'选择日期',
     time:'选择时间',
     num:1,
     remark:'',
     PLArray: ['叫醒服务', '叫醒服务', '叫醒服务', '叫醒服务'],
     SexArray:['全部','男','女'],
+    Midlatitude:'',
+    Midlongitude:'',
+    startDate:'',
+    endDate:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      let param=JSON.parse(options.data);
+      let self=this;
+      self.setData({
+        id: param.id,
+        title:param.name,  
+        startDate:'2018-01-01',
+        endDate:'2100-01-01'
+      });
+      self.getLocation();
   },
-
+  freshAllTwoSkill:function(e){
+     
+  },
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -69,6 +87,19 @@ Page({
   onShareAppMessage: function () {
 
   },
+  // 获取当前人地理位置
+  getLocation: function (e) {
+    let self = this;
+    wx.getLocation({
+      type: 'wgs84',
+      success(res) {
+        self.setData({
+          Midlatitude: res.latitude,
+          Midlongitude: res.longitude,
+        })
+      }
+    })
+  },
   // 数量运算
   reduceNum:function(e){
     if(this.data.num>1){
@@ -95,13 +126,67 @@ Page({
   bindPickerSexChange:function(e){
     this.setData({
       sex: this.data.SexArray[e.detail.value]
+    });
+  },
+    // 选择日期时间 
+  bindPickerDateChange: function (e) {
+    console.log(e);
+    this.setData({
+      date: e.detail.value
+    });
+  },
+
+  bindPickerTimeChange: function (e) {
+    console.log(e);
+    this.setData({
+      time: e.detail.value
+    });
+  },
+  WTRemark:function(e){
+    this.setDate({
+      remark: e.detail.value
     })
   },
   // 发布
   ToOrderCenter:function(e){
-    $.openWin({
-      url:'../orderCenter/orderCenter'
-    })
+    let self=this;
+    let sexVal;
+    let DateTime;
+    DateTime = Date.parse(self.data.date + ' ' + self.data.time) / 1000;
+
+    if(self.data.sex=='全部'){
+      sexVal=0;
+    }
+    if (self.data.sex == '男') {
+      sexVal = 1;
+    }
+    if (self.data.sex == '女') {
+      sexVal = 2;
+    }
+    if (self.data.date&&sel.data.time){
+      $.POST({
+        url: 'wcUserCO',
+        data: {
+          address_x: self.data.Midlongitude,
+          address_y: self.data.Midlatitude,
+          cate_id: self.data.id,
+          num: self.data.num,
+          begin_time: DateTime,
+          sex: sexVal,
+          remark: self.data.remark,
+
+        }
+      },function(e){
+        $.openWin({
+          url: '../orderCenter/orderCenter'
+        })
+      })
+    }else{
+      wx.showToast({
+        title: '请选择日期或时间',
+      })
+    }
+ 
   }
 
 })

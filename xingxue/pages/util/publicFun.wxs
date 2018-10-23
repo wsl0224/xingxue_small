@@ -7,13 +7,62 @@ var publicFun = {
     if (e == 2) {
       return '待服务'
     }
+    if (e == 1) {
+      return '待选择';
+    }
+    if (e == 2) {
+      return '待接受'
+    } 
+    if (e == 3) {
+      return '待服务';
+    }
+    if (e == 4) {
+      return '进行中'
+    } 
+    if (e == 5) {
+      return '等待用户评价';
+    }
+    if (e == 6) {
+      return '已完成'
+    } 
+    if (e == 7) {
+      return '已取消';
+    }
+    if (e == 8) {
+      return '未支付'
+    }
+    if(e==9){
+      return '已支付订单'
+    }
   },
   // 根据状态num显示图片
   showStatusImg: function(e) {
     if (e == 1) {
-      return '../image/icon/my_icon3_receipt.png';
-    } else if (e == 2) {
-      return '../image/icon/my_icon2_receipt.png';
+      return 'http://pgq6951kf.bkt.clouddn.com/n/my_icon3_receipt.png';
+    } 
+    if (e == 2) {
+      return 'http://pgq6951kf.bkt.clouddn.com/my_icon4_receipt.png';
+    }
+    if (e == 3) {
+      return '';
+    }
+    if (e == 4) {
+      return 'http://pgq6951kf.bkt.clouddn.com/my_icon5_receipt.png';
+    }
+    if (e == 5) {
+      return 'http://pgq6951kf.bkt.clouddn.com/my_icon7_receipt.png';
+    }
+    if (e == 6) {
+      return 'http://pgq6951kf.bkt.clouddn.com/my_icon7_receipt.png';
+    }
+    if (e == 7) {
+      return 'http://pgq6951kf.bkt.clouddn.com/my_icon8_receipt.png';
+    }
+    if (e == 8) {
+      return '';
+    }
+    if (e == 9) {
+      return 'http://pgq6951kf.bkt.clouddn.com/my_icon8_receipt.png';
     }
   },
   showJobLabel: function(e) {

@@ -1,14 +1,14 @@
 <!--pages/mine/mine.wxml-->
-<scroll-view scroll-y class='main'>
+<scroll-view scroll-y class='main' bindscrolltoupper="upper" >
   <view class='top'>
     <view class='topT'>
       <view class='topT_psn'>
         <view class='topT_psnInfo' bindtap="{{psnStatus==1?'ToPersonalData':'ShowToLodPage'}}">
           <view class='psnInfo_img'>
-            <image src="{{psnData.url}}"></image>
+            <image src="{{psnData.avatar}}"></image>
           </view>
           <view class='psnInfo_name'>
-            {{psnData.name}}
+            {{psnData.user_nicename}}
           </view>
           <view class="psnInfo_right {{psnStatus==1?'':'unload'}}">
             <view class="psnInfo_rightT" >
@@ -24,22 +24,22 @@
           <!-- 关注 -->
           <view class='psnMenuList' data-type='atte' bindtap='ToMyAttentionFans'>
             <view class='psnMenu'>
-              <view class='psnMenu_Num'>{{psnData.guanzhuNum}}</view>
+              <view class='psnMenu_Num'>{{psnData.follower_num}}</view>
               <view class='psnMenu_txt'>关注</view>
             </view>
           </view>
           <!-- 粉丝 -->
           <view class='psnMenuList' data-type='fans' bindtap='ToMyAttentionFans'>
             <view class='psnMenu'>
-              <view class='psnMenu_Num'>{{psnData.fengsiNum}}</view>
+              <view class='psnMenu_Num'>{{psnData.fans_num}}</view>
               <view class='psnMenu_txt'>粉丝</view>
             </view>
           </view>
           <!-- 访客 -->
-          <view class='psnMenuFK' bindtap='ToMyTracks'>
+          <view class='psnMenuFK' bindtap='ToMyTracks' data-id="{{userId}}">
             <view class='psnMenuFK_Item'>
               <view class='psnMenuI_img'>
-                <image src='../image/icon/icon69.png'></image>
+                <image src='http://pgq6951kf.bkt.clouddn.com/icon69.png'></image>
               </view>
               <view class='psnMenuFk_txt'>
                 足迹
@@ -57,24 +57,24 @@
     <view class='mid_Item midItemL' bindtap='ToMyWallet'>
       <view class='mid_ItemT'>
         <view class='mid_ItemTImg'>
-          <image src='../image/icon/icon70.png'></image>
+          <image src='http://pgq6951kf.bkt.clouddn.com/icon70.png'></image>
         </view>
         <view class='mid_ItemTr'>我的钱包</view>
       </view>
       <view class='mid_ItemB'>
-        余额:{{psnData.yuer}}
+        余额:{{psnData.price}}
       </view>
     </view>
     <!-- 兼职任务 -->
     <view class='mid_Item' bindtap='ToOnlineJob'>
       <view class='mid_ItemT'>
         <view class='mid_ItemTImg'>
-          <image src='../image/icon/icon71.png'></image>
+          <image src='http://pgq6951kf.bkt.clouddn.com/icon71.png'></image>
         </view>
         <view class='mid_ItemTr'>兼职任务</view>
       </view>
       <view class='mid_ItemB'>
-        进行中:{{psnData.jingxing}}
+        进行中:{{psnData.task_count}}
       </view>
     </view>
   </view>
@@ -84,7 +84,7 @@
     <view class='bottom_Item' bindtap='ToMyReceipt'>
       <view class='bottom_ItemL'>
         <view class='bottom_ItemImg'>
-          <image src='../image/icon/icon72.png'></image>
+          <image src='http://pgq6951kf.bkt.clouddn.com/icon72.png'></image>
         </view>
         <view class='bottom_ItemLtxt'>
           我的接单
@@ -103,7 +103,7 @@
     <view class='bottom_Item' bindtap='ToApplicationSkill'>
       <view class='bottom_ItemL'>
         <view class='bottom_ItemImg'>
-          <image src='../image/icon/icon73.png'></image>
+          <image src='http://pgq6951kf.bkt.clouddn.com/icon73.png'></image>
         </view>
         <view class='bottom_ItemLtxt'>
           申请技能
@@ -122,7 +122,7 @@
     <view class='bottom_Item' bindtap='ToOrderCenter'>
       <view class='bottom_ItemL'>
         <view class='bottom_ItemImg'>
-          <image src='../image/icon/icon74.png'></image>
+          <image src='http://pgq6951kf.bkt.clouddn.com/icon74.png'></image>
         </view>
         <view class='bottom_ItemLtxt'>
           订单中心
@@ -138,10 +138,10 @@
 
     </view>
         <!-- 邀请码 -->
-    <view class='bottom_Item'>
+    <view class='bottom_Item' bindtap='ToInvitationCode'>
       <view class='bottom_ItemL'>
         <view class='bottom_ItemImg'>
-          <image src='../image/icon/my_iocn01.png'></image>
+          <image src='http://pgq6951kf.bkt.clouddn.com/my_iocn01.png'></image>
         </view>
         <view class='bottom_ItemLtxt'>
           机构邀请码
@@ -159,7 +159,7 @@
     <button class='botton bottom_Item bottom_Btn' open-type="contact">
       <view class='bottom_ItemL'>
         <view class='bottom_ItemImg'>
-          <image src='../image/icon/icon75.png'></image>
+          <image src='http://pgq6951kf.bkt.clouddn.com/icon75.png'></image>
         </view>
         <view class='bottom_ItemLtxt'>
           在线客服
@@ -178,7 +178,7 @@
     <view class='bottom_Item' bindtap='ToFeedback'>
       <view class='bottom_ItemL'>
         <view class='bottom_ItemImg'>
-          <image src='../image/icon/icon76.png'></image>
+          <image src='http://pgq6951kf.bkt.clouddn.com/icon76.png'></image>
         </view>
         <view class='bottom_ItemLtxt'>
           意见反馈
@@ -199,13 +199,27 @@
 <view class='loading' wx:if="{{loadingShow}}" bindtap='CloseLoadPage'>
   <view class='loading_mid'>
     <view class='loading_midTitle'>登录行学服务</view>
-    <button class='loading_midMenu botton' bindtap='ToLoded' open-type="getPhoneNumber">
+    <button class='loading_midMenu botton'  open-type="getUserInfo" bindgetuserinfo="ToLoded">
      
       <view class='loading_midMenuImg'>
-        <image src='../image/icon/my_icon_weixin.png'></image>
+        <image src='http://pgq6951kf.bkt.clouddn.com/my_icon_weixin.png'></image>
       </view>
       <view class='loading_midMenuTxt'>
        微信快速登录
+       </view>
+    </button>
+  </view>
+</view>
+<view class='loading' wx:if="{{registerShow}}" bindtap='CloseLoadPage'>
+  <view class='loading_mid'>
+    <view class='loading_midTitle'>请先注册账号</view>
+    <button class='loading_midMenu botton' open-type="getPhoneNumber" bindgetphonenumber="Register">
+     
+      <view class='loading_midMenuImg'>
+        <image src='http://pgq6951kf.bkt.clouddn.com/my_icon_weixin.png'></image>
+      </view>
+      <view class='loading_midMenuTxt'>
+       注册
        </view>
     </button>
   </view>

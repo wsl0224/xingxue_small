@@ -1,4 +1,5 @@
 // pages/feedback/feedback.js
+let $=require('../util/commit.js');
 Page({
 
   /**
@@ -7,7 +8,8 @@ Page({
   data: {
     indexNum:0,
     typeData:['产品问题','优化建议','违规举报'],
-    endValue:'',
+    endValue:'1',
+    content:'',
   },
 
   /**
@@ -72,5 +74,34 @@ Page({
       indexNum:e.currentTarget.dataset.num,
       endValue:e.currentTarget.dataset.value,
     })
+  },
+  // 填写反馈内容
+  bindKeyInput:function(e){
+    this.setData({
+      content: e.detail.value,
+    })
+
+  },
+  // 提交
+  submitBtn:function(e){
+    let self=this;
+    if (self.data.content){
+    $.POST({
+      url: 'wcUserAFB',
+      data: {
+        content: self.data.content,
+        type:self.data.endValue,
+      }
+    },function(e){
+      wx.showToast({
+        title: '提交成功',
+      });
+      wx.navigateBack();
+    },function(e){})
+  }else{
+      wx.showToast({
+        title: '请填写反馈意见',
+      });
+  }
   }
 })

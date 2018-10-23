@@ -12,7 +12,7 @@
               </view>
               <view class="item_sex {{item.sex==1?'item_sexN':'item_sexW'}}">
                 <view class='item_sexL'>
-                <image src="{{item.sex==1?'../image/icon/icon46.png':'../image/icon/icon45.png'}}"/>
+                <image src="{{item.sex==1?'http://pgq6951kf.bkt.clouddn.com/icon46.png':'http://pgq6951kf.bkt.clouddn.com/icon45.png'}}"/>
                 </view>
                 <view class='item_sexR'>
                 {{item.age}}

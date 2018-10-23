@@ -14,7 +14,7 @@
             </view>
             <view class="psnInfo_sex {{skillData.sex==1?'psnInfo_sexN':'psnInfo_sexW'}}">
               <view class='psnInfo_sexImg'>
-                <image src="{{skillData.sex==1?'../image/icon/icon46.png':'../image/icon/icon45.png'}}" />
+                <image src="{{skillData.sex==1?'http://pgq6951kf.bkt.clouddn.com/icon46.png':'http://pgq6951kf.bkt.clouddn.com/icon45.png'}}" />
               </view>
               <view class='psnInfo_sexTxt'>
                 {{skillData.age}}
@@ -23,7 +23,7 @@
           </view>
           <view class='psnInfo_addr'>
             <view class='psnInfo_addrImg'>
-              <image src='../image/icon/icon47.png' />
+              <image src='http://pgq6951kf.bkt.clouddn.com/icon47.png' />
             </view>
             <view class='psnInfo_addrTxt'>
               {{skillData.address}}
@@ -32,14 +32,14 @@
         </view>
       </view>
       <view class='topR'>
-        <view class="guanzhu">
+        <view class="guanzhu" bindtap='FollowerBtn' data-id="{{skillData.uid}}">
           {{skillData.follower_status==1?'关注':'已关注'}}
         </view>
       </view>
     </view>
     <view class='photo'>
       <view class='photoImg'>
-        <image src='{{skillData.pic}}'  mode='center'>
+        <image src='{{skillData.pic}}' mode='center'>
         </image>
       </view>
       <view class='photoR'>
@@ -58,7 +58,7 @@
       <view class='skillNP'>
         <view class='skillNPL'>
           <view class='skillNPL_IMG'>
-            <image src='../image/icon/icon50.png'>
+            <image src='http://pgq6951kf.bkt.clouddn.com/icon50.png'>
             </image>
           </view>
           <view class='skillNPL_txt'>
@@ -66,24 +66,24 @@
           </view>
         </view>
         <view>
-         <view class='pingfen'>
-                    <view class='pingfenList'>
-                      <view class='pingfenImg' wx:for="{{publicFun.showStars(skillData.score)}}">
-                        <image src='../image/icon/my_iocn03.png' />
-                      </view>
+          <view class='pingfen'>
+            <view class='pingfenList'>
+              <view class='pingfenImg' wx:for="{{publicFun.showStars(skillData.score)}}">
+                <image src='http://pgq6951kf.bkt.clouddn.com/my_iocn03.png' />
+              </view>
 
-                    </view>
-                    <view class='pingfenTxt'>
-                      {{skillData.score}}
-                    </view>
-                  </view>
+            </view>
+            <view class='pingfenTxt'>
+              {{skillData.score}}
+            </view>
+          </view>
         </view>
       </view>
     </view>
     <view class='skillC'>
       <view class='skillMusic'>
         <view class='skillML'>
-          <image src='../image/icon/icon48.png'></image>
+          <image src='http://pgq6951kf.bkt.clouddn.com/icon48.png'></image>
         </view>
         <view class='skillM_Time'>
           {{skillData.musicTime}}
@@ -100,7 +100,7 @@
   <view class='footerL' bindtap='gotoChat' data-item='{{conversation}}'>
     聊天
   </view>
-  <view class='footerR'>
+  <view class='footerR' bindtap='ToPlaceOrder' data-id='{{skillData.usid}}' data-='{{skillData.user_nicename}}'>
     下单
   </view>
 </view>

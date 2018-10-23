@@ -24,7 +24,7 @@
       <view class='mid_top'>
         <view class='mid_Ttop'>
           <view class='mid_TImg'>
-            <image src='../image/icon/icon54.png'></image>
+            <image src='http://pgq6951kf.bkt.clouddn.com/icon54.png'></image>
           </view>
           <view class='mid_TTtile'>
             任务说明
@@ -41,7 +41,7 @@
       <view class='mid_mid'>
         <view class='mid_Mtop'>
           <view class='mid_MImg'>
-            <image src='../image/icon/icon55.png'></image>
+            <image src='http://pgq6951kf.bkt.clouddn.com/icon55.png'></image>
           </view>
           <view class='mid_MTtile'>
             任务步骤

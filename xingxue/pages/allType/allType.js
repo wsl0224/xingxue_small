@@ -6,122 +6,28 @@ Page({
    * 页面的初始数据
    */
   data: {
-    typeData:[
-      {
-        title:'天天向上',
-        typeItem:[{
-          id:1,
-          url:'../image/icon/icon37.png',
-          name:'任务大厅',
-        }, {
-            id: 2,
-            url: '../image/icon/icon38.png',
-            name: '机构',
-          }, {
-            id: 3,
-            url: '../image/icon/icon39.png',
-            name: '线上兼职',
-          }, {
-            id: 4,
-            url: '../image/icon/icon39.png',
-            name: '线性代数',
-          }, {
-            id: 5,
-            url: '../image/icon/icon39.png',
-            name: '任务大厅',
-          }, {
-            id: 6,
-            url: '../image/icon/icon38.png',
-            name: '任务大厅',
-          },{
-            id: 7,
-            url: '../image/icon/icon38.png',
-            name: '任务大厅',
-          },{
-            id: 8,
-            url: '../image/icon/icon38.png',
-            name: '任务大厅',
-          }]
-    },{
-        title:'天天向上',
-        typeItem:[{
-          id:1,
-          url: '../image/icon/icon38.png',
-          name:'任务大厅',
-        }, {
-            id: 2,
-            url: '../image/icon/icon38.png',
-            name: '机构',
-          }, {
-            id: 3,
-            url: '../image/icon/icon38.png',
-            name: '线上兼职',
-          }, {
-            id: 4,
-            url: '../image/icon/icon38.png',
-            name: '线性代数',
-          }, {
-            id: 5,
-            url: '../image/icon/icon38.png',
-            name: '任务大厅',
-          }, {
-            id: 6,
-            url: '../image/icon/icon38.png',
-            name: '任务大厅',
-          },{
-            id: 7,
-            url: '../image/icon/icon38.png',
-            name: '任务大厅',
-          },{
-            id: 8,
-            url: '../image/icon/icon38.png',
-            name: '任务大厅',
-          }]
-      }, {
-        title: '运动休闲',
-        typeItem: [{
-          id: 1,
-          url: '../image/icon/icon38.png',
-          name: '任务大厅',
-        }, {
-          id: 2,
-            url: '../image/icon/icon38.png',
-          name: '机构',
-        }, {
-          id: 3,
-            url: '../image/icon/icon38.png',
-          name: '线上兼职',
-        }, {
-          id: 4,
-            url: '../image/icon/icon38.png',
-          name: '线性代数',
-        }, {
-          id: 5,
-            url: '../image/icon/icon38.png',
-          name: '任务大厅',
-        }, {
-          id: 6,
-            url: '../image/icon/icon38.png',
-          name: '任务大厅',
-        }, {
-          id: 7,
-            url: '../image/icon/icon38.png',
-          name: '任务大厅',
-        }, {
-          id: 8,
-            url: '../image/icon/icon38.png',
-          name: '任务大厅',
-        }]
-      }]
+    typeData:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.freshData();
   },
-
+  // 刷新数据
+  freshData:function(e){
+    let self=this;
+    $.GET({
+      url:'wcOtherC',
+    },function(e){
+      console.log('wcOtherC');
+      console.log(e);
+      self.setData({
+        typeData:e.data,
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -174,15 +80,15 @@ Page({
   ToLevePage: function (e) {
     
     $.openWin({
-      url: '../ order / sendOrder'
+      url: '../order/sendOrder'
     })
   },
   // 跳转二级
   ToTwoSkillPage:function(e){
     $.openWin({
-      url:'../twoSkillPage/twoSkillPage',
+      url:'../skillList/skillList',
       data:{
-        id:'111',
+        id:e.currentTarget.dataset.id,
         title:e.currentTarget.dataset.title
       }
     })

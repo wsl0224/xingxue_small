@@ -11,7 +11,7 @@
       <view class='psnName'>{{orderData.name}}</view>
       <view class="psn_SexAge {{orderData.sex==1?'man':'woman'}}">
             <view class='psn_Sex'>
-                  <image src="{{orderData.sex==1?'../image/icon/icon46.png':'../image/icon/icon45.png'}}"/>
+                  <image src="{{orderData.sex==1?'http://pgq6951kf.bkt.clouddn.com/icon46.png':'http://pgq6951kf.bkt.clouddn.com/icon45.png'}}"/>
             </view>
             <view class='psn_Age'>
             {{orderData.age}}

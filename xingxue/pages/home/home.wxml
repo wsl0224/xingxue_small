@@ -1,6 +1,6 @@
 <!--pages/home/home.wxml-->
 <wxs module="publicFun" src="../util/publicFun.wxs"></wxs>
-<scroll-view scroll-y style="height:100vm;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+<scroll-view scroll-y style="height:100vm;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}" >
   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style='height:360rpx'>
     <block wx:for="{{imgUrls}}">
       <swiper-item>
@@ -37,7 +37,7 @@
   <!-- 技能类别 -->
   <view class="skillData section">
     <view class="skillData flex-wrp">
-      <view class="skillData flex-item"  style='background-color:{{config.XStyle.CbgColor}};margin-bottom:20rpx;' wx:for="{{skillData}}" wx:key="id">
+      <view class="skillData flex-item" wx:if="{{item.skill.length>0}}" style='background-color:{{config.XStyle.CbgColor}};margin-bottom:20rpx;' wx:for="{{skillData}}" wx:key="id">
         <view class="skillTitle">
           <view class='skillTitleLeft'>
             <view class='skillTLBefore'>
@@ -73,7 +73,7 @@
                   <view class='pingfen'>
                     <view class='pingfenList'>
                       <view class='pingfenImg' wx:for="{{publicFun.showStars(item.score)}}">
-                        <image src='../image/icon/my_iocn03.png' />
+                        <image src='http://pgq6951kf.bkt.clouddn.com/my_iocn03.png' />
                       </view>
 
                     </view>

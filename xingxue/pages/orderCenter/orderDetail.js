@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    paramData:'',
     orderData:{
       psnImg: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
       psnName:'成都小甜甜',
@@ -25,9 +26,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      paramData:JSON.parse(options.data),
+    });
   },
-
+freshData:function(e){
+  $.POST(
+    
+  )
+},
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

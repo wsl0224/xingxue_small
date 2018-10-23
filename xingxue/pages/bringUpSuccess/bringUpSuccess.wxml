@@ -2,7 +2,7 @@
 <view class='main'>
     <view class='top'>
       <view class='top_image'>
-      <image src='../image/icon/icon60.png'></image>
+      <image src='http://pgq6951kf.bkt.clouddn.com/icon60.png'></image>
       </view>
       <view class='top_title'>
       提现成功

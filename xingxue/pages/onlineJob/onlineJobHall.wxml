@@ -7,7 +7,7 @@
         {{item.name}}
       </view>
       <view class='main_TIcon'>
-        <image src="{{selectIndex==index?'../image/icon/icon51.png':'../image/icon/icon52.png'}}"></image>
+        <image src="{{selectIndex==index?'http://pgq6951kf.bkt.clouddn.com/icon51.png':'http://pgq6951kf.bkt.clouddn.com/icon52.png'}}"></image>
       </view>
     </view>
       
@@ -21,7 +21,7 @@
           {{item.name}}
           </view>
           <view class='Item_img' wx:if="{{FLSelectIndex==index}}">
-            <image src='../image/icon/sure.png'></image>
+            <image src='http://pgq6951kf.bkt.clouddn.com/sure.png'></image>
           </view>
         </view>
     </view>
@@ -32,7 +32,7 @@
           {{item.name}}
           </view>
           <view class='Item_img'  wx:if="{{PXSelectIndex==index}}">
-            <image src='../image/icon/sure.png'></image>
+            <image src='http://pgq6951kf.bkt.clouddn.com/sure.png'></image>
           </view>
         </view>
     </view>

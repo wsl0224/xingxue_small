@@ -1,33 +1,34 @@
 <!--pages/order/sendOrder.wxml-->
 <view class='main'>
-    <!-- 一级目录 -->
-    <view class='top'>
-        <scroll-view class='OneLeverScroll' scroll-x="true">
-          <view class='OneLeverTar' scroll-x="true">
-              <view class="OneTar_Item {{OneTar_Num==index?'active':''}}" bindtap='OneTarFun' wx:for='{{OneLeverData}}' wx:key='index+{{index}}' data-num="{{index}}">
-                  <view>{{item}}</view>   
-              </view>
-          </view>
-         </scroll-view>
-          <scroll-view class='TwoLeverScroll' scroll-x="true">
-                <view class='TwoLeverTar' scroll-x="true">
-                    <view class="TwoTar_Item {{TwoTar_Num==index?'active':''}}" bindtap='TwoTarFun' wx:for='{{TwoLeverData}}' data-num="{{index}}">
-                        <view>{{item}}</view>   
-                    </view>
-                </view>
-          </scroll-view>
-    </view>
-    <view>
-    <view class="mapMid" >
-      <view class='mapMidTop' bindtap='ToDetail'>
-       我要下单
+  <!-- 一级目录 -->
+  <view class='top'>
+    <scroll-view class='OneLeverScroll' scroll-x="true">
+      <view class='OneLeverTar' scroll-x="true">
+        <view class="OneTar_Item {{OneTar_Num==index?'active':''}}" bindtap='OneTarFun' data-id='{{item.cid}}' wx:for='{{OneLeverData}}' wx:key='index+{{index}}' data-num="{{index}}">
+          <view>{{item.name}}</view>
+        </view>
       </view>
-      <view class='mapMidBottom'>
-        <image src='../image/icon/icon28.png'>
-        </image>
+      </scroll-view>
+    <scroll-view class='TwoLeverScroll' scroll-x="true">
+      <view class='TwoLeverTar' scroll-x="true">
+        <view class="TwoTar_Item {{TwoTar_Num==index?'active':''}}" bindtap='TwoTarFun' data-name="{{item.name}}" data-id='{{item.cid}}' wx:for='{{TwoLeverData}}' data-num="{{index}}">
+          <view>{{item.name}}</view>
+        </view>
       </view>
-    </view>
-    <map id="map" longitude="113.324520" latitude="23.099994" scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location style='width:100%;height:950rpx;'></map>
-    </view>
-   
+    </scroll-view>
+  </view>
+  <view>
+    <cover-view class="mapMid">
+      <cover-image src='http://pgq6951kf.bkt.clouddn.com/icon27.png' class='mapMidTop' data-name="{{TwoLeverName}}" data-id="{{TwoLeverId}}" bindtap='ToDetail'>
+       
+      </cover-image>
+  
+      <cover-view class='mapMidBottom'>
+        <cover-image src='http://pgq6951kf.bkt.clouddn.com/icon28.png'/>
+      </cover-view>
+    </cover-view>
+    <map id="map" longitude="{{Midlongitude}}" latitude="{{Midlatitude}}" scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location
+      style='width:100%;height:950rpx;'></map>
+  </view>
+
 </view>

@@ -1,37 +1,56 @@
 // pages/orderCenter/orderCenter.js
 let $=require('../util/commit.js');
+let page=1;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    orderData:[{
-      orderStatus:1,
-        url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-        skillName:'叫醒服务',
-        time:'2017-03-06 08:02',
-        num:1,
-        unit:'小时',
-        money:'',
-    }, {
-        orderStatus: 2,
-        url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-        skillName: '叫醒服务',
-        time: '2017-03-06 08:02',
-        num: 1,
-        unit: '小时',
-        money: '12.00',
-      }]
+    orderData:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.loadData();
   },
-
+  // 加载数据
+  loadData:function(e){
+    let self=this;
+    $.POST({
+      url:'wOrderSUO',
+      data:{
+        page:1,
+      }
+    },function(e){
+      self.setData({
+        orderData:e.data,
+      })
+    },function(e){
+      console.log(e);
+    })
+  },
+  upper:function(e){
+    this.loadData();
+  },
+  lower:function(e){
+    let self = this;
+    self.page++;
+    $.POST({
+      url: 'wOrderSUO',
+      data: {
+        page: self.page,
+      }
+    }, function (e) {
+      self.setData({
+        orderData: self.data.orderData.concat(e.data),
+      })
+    }, function (e) {
+      console.log(e);
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

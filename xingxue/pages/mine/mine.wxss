@@ -190,7 +190,7 @@
 /* bottom */
 
 .bottom{
-  margin-top: 34rpx;
+  margin-top: 25rpx;
   padding:0 32rpx 0 35rpx;
 }
 

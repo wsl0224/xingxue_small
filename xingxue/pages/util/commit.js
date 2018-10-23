@@ -12,32 +12,53 @@ var host = 'https://app.xingxue.vip/';
  * doFail：失败的回调函数
  */
 function POST(param,doSuccess,doFail) {
-  console.log('POST参数');
-  console.log(param);
-  wx.request({
-    //项目的真正接口，通过字符串拼接方式实现
-    url: host + param.url,
-    header: {
-      'content-type': 'application/x-www-form-urlencoded'
-    },
-    data: param.data,
-    method: 'POST',
-    success: function (res) {
-      console.log('POST成功');
-      console.log(res.data);
-      //参数值为res.data,直接将返回的数据传入
-      doSuccess(res.data);
-    },
-    fail: function () {
-      doFail(res);
+  wx.getStorage({
+    key: 'key',
+    success: function(res) {
+      if(res){
+        param.data.key = res.data;
+      }
+      wx.request({
+        //项目的真正接口，通过字符串拼接方式实现
+        url: host + param.url,
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        data: param.data,
+        method: 'POST',
+        success: function (res) {
+          console.log('POST参数');
+          console.log(param);
+          console.log('POST成功');
+          console.log(res.data);
+          //参数值为res.data,直接将返回的数据传入
+          if (res.data.code == 200) {
+            doSuccess(res.data);
+          }else{
+            if (param.url =='wcUserMHP'){
+              doSuccess(res.data);
+            }else{
+              wx.showToast({
+                title:res.data.msg,
+                duration: 2000
+              })
+            }
+            
+          }
+
+        },
+        fail: function () {
+          doFail();
+        },
+      })
     },
   })
+ 
 }
 
 //GET请求，不需传参，直接URL调用，
 function GET(param, doSuccess, doFail) {
-  console.log('GET');
-  console.log(param);
+ 
   wx.request({
     url: host + param.url,
     header: {
@@ -45,6 +66,8 @@ function GET(param, doSuccess, doFail) {
     },
     method: 'GET',
     success: function (res) {
+      console.log('GET');
+      console.log(param);
       console.log('GET成功');
       console.log(res.data);
       doSuccess(res.data);

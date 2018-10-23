@@ -20,19 +20,19 @@ Page({
     duration: 1000,
     bannerData: [{
       id: 1,
-      url: '../image/icon/icon01.png',
+      url: 'http://pgq6951kf.bkt.clouddn.com/icon01.png',
       name: '极速下单',
     }, {
       id: 2,
-      url: '../image/icon/icon02.png',
+      url: 'http://pgq6951kf.bkt.clouddn.com/icon02.png',
       name: '线上兼职',
     }, {
       id: 3,
-      url: '../image/icon/icon03.png',
+      url: 'http://pgq6951kf.bkt.clouddn.com/icon03.png',
       name: '拼团'
     }, {
       id: 4,
-      url: '../image/icon/icon04.png',
+      url: 'http://pgq6951kf.bkt.clouddn.com/icon04.png',
       name: '福利大厅',
     }],
     SkillArrAA: [],
@@ -43,61 +43,61 @@ Page({
     typeData1: [
       [
         [{
-          url: '../image/icon/icon05.png',
+          url: 'http://pgq6951kf.bkt.clouddn.com/icon05.png',
           name: '叫醒服务',
         }, {
-          url: '../image/icon/icon06.png',
+          url: 'http://pgq6951kf.bkt.clouddn.com/icon06.png',
           name: '陪跑',
         }, {
-          url: '../image/icon/icon07.png',
+          url: 'http://pgq6951kf.bkt.clouddn.com/icon07.png',
           name: '跑腿',
         }, {
-          url: '../image/icon/icon08.png',
+          url: 'http://pgq6951kf.bkt.clouddn.com/icon08.png',
           name: '陪练服务',
         }],
         [{
-          url: '../image/icon/icon09.png',
+          url: 'http://pgq6951kf.bkt.clouddn.com/icon09.png',
           name: '钢琴服务',
         }, {
-          url: '../image/icon/icon10.png',
+          url: 'http://pgq6951kf.bkt.clouddn.com/icon10.png',
           name: '钢琴服务',
         }, {
-          url: '../image/icon/icon11.png',
+          url: 'http://pgq6951kf.bkt.clouddn.com/icon11.png',
           name: '钢琴服务',
         }, {
           id: 'allType',
-          url: '../image/icon/icon12.png',
+          url: 'http://pgq6951kf.bkt.clouddn.com/icon12.png',
           name: '全部技能'
         }]
       ],
       [
         [{
-            url: '../image/icon/icon08.png',
+            url: 'http://pgq6951kf.bkt.clouddn.com/icon08.png',
             name: '叫醒服务',
           },
           {
-            url: '../image/icon/icon08.png',
+            url: 'http://pgq6951kf.bkt.clouddn.com/icon08.png',
             name: '叫醒服务',
           }, {
-            url: '../image/icon/icon08.png',
+            url: 'http://pgq6951kf.bkt.clouddn.com/icon08.png',
             name: '叫醒服务',
           }, {
-            url: '../image/icon/icon08.png',
+            url: 'http://pgq6951kf.bkt.clouddn.com/icon08.png',
             name: '叫醒服务',
           }
         ],
         [{
-            url: '../image/icon/icon08.png',
+            url: 'http://pgq6951kf.bkt.clouddn.com/icon08.png',
             name: '叫醒服务',
           },
           {
-            url: '../image/icon/icon08.png',
+            url: 'http://pgq6951kf.bkt.clouddn.com/icon08.png',
             name: '叫醒服务',
           }, {
-            url: '../image/icon/icon08.png',
+            url: 'http://pgq6951kf.bkt.clouddn.com/icon08.png',
             name: '叫醒服务',
           }, {
-            url: '../image/icon/icon08.png',
+            url: 'http://pgq6951kf.bkt.clouddn.com/icon08.png',
             name: '叫醒服务',
           }
         ]
@@ -151,7 +151,7 @@ Page({
         }
         SkillArrA.push({
           id: 'allType',
-          pic: '../image/icon/icon12.png',
+          pic: 'http://pgq6951kf.bkt.clouddn.com/icon12.png',
           name: '全部技能'
         });
         typeData.push(SkillArrA);
@@ -162,7 +162,7 @@ Page({
         }
         SkillArrA.push({
           id: 'allType',
-          pic: '../image/icon/icon12.png',
+          pic: 'http://pgq6951kf.bkt.clouddn.com/icon12.png',
           name: '全部技能'
         });
         typeData.push(SkillArrA);
@@ -191,6 +191,8 @@ Page({
         type: 1,
       }
     }, function(e) {
+      console.log('过滤banner');
+      console.log(e);
       self.setData({
         imgUrls: e.data,
       })
@@ -248,7 +250,10 @@ Page({
   },
 
   upper: function(e) {
-    console.log(e)
+    let self = this;
+    self.freshTData(); // 过滤二级数据
+    self.freshBanner(); //  过滤banner
+    self.freshTSData(); //过滤推荐二级技能
   },
   lower: function(e) {
     console.log(e)
@@ -305,6 +310,7 @@ Page({
     })
 
   },
+ 
 
 
 })

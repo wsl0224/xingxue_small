@@ -10,7 +10,7 @@
   <!-- 账单明细 -->
     <view class='mid_Item' bindtap='ToBillDetail'>
       <view class='mid_ItemZImg'>
-        <image src='../image/icon/icon78.png'>
+        <image src='http://pgq6951kf.bkt.clouddn.com/icon78.png'>
         </image>
       </view>
       <view class='mid_ItemT'>
@@ -20,7 +20,7 @@
     <!-- 充值 -->
     <view class='mid_Item' bindtap='ToRecharge'>
       <view class='mid_ItemCImg'>
-        <image src='../image/icon/icon79.png'>
+        <image src='http://pgq6951kf.bkt.clouddn.com/icon79.png'>
         </image>
       </view>
       <view class='mid_ItemT'>
@@ -30,7 +30,7 @@
     <!-- 提现 -->
     <view class='mid_Item' bindtap='ToPutForward'>
       <view class='mid_ItemTImg'>
-        <image src='../image/icon/icon80.png'>
+        <image src='http://pgq6951kf.bkt.clouddn.com/icon80.png'>
         </image>
       </view>
       <view class='mid_ItemT'>

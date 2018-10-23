@@ -9,7 +9,7 @@ const XStyle={
 }
 // 公共参数
 var Config = {
-  sdkappid: '	wx98b7ecc024d1079a'
+    sdkappid: '	wx98b7ecc024d1079a'
   , accountType: 884
   , accountMode: 1 //帐号模式，0-表示独立模式，1-表示托管模式
 

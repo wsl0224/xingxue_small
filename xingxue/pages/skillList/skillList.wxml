@@ -1,6 +1,6 @@
 <!--pages/skillList/skillList.wxml-->
 <wxs module="publicFun" src="../util/publicFun.wxs"></wxs>
-<scroll-view>
+<scroll-view scroll-y class='main' bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll">
   <view data-id='{{item.usid}}' bindtap='ToSkillPage' class="{{index==0?'first_item':'item_main'}}" wx:for="{{psnData}}">
       <view class='item_content'>
         <view class='item_contentL'>
@@ -13,7 +13,7 @@
               </view>
               <view class="item_sex {{item.sex==1?'item_sexN':'item_sexW'}}">
                 <view class='item_sexL'>
-                <image src="{{item.sex==1?'../image/icon/icon46.png':'../image/icon/icon45.png'}}"/>
+                <image src="{{item.sex==1?'http://pgq6951kf.bkt.clouddn.com/icon46.png':'http://pgq6951kf.bkt.clouddn.com/icon45.png'}}"/>
                 </view>
                 <view class='item_sexR'>
                 {{item.age}}

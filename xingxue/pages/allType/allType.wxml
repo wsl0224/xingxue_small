@@ -4,7 +4,7 @@
     <view class='top' bindtap='ToLevePage'>
         <view class='top_left'>
           <view class='top_leftL'>
-          <image src='../image/icon/icon36.png'/>
+          <image src='http://pgq6951kf.bkt.clouddn.com/icon36.png'/>
           </view>
           <view class='top_leftR'>
             极速下单
@@ -15,19 +15,19 @@
         </view>
     </view>
     <!-- 分类 -->
-        <view class='type_Skill' wx:for="{{typeData}}">
+        <view class='type_Skill'  wx:for="{{typeData}}">
           <view class='type_SkillTxt'>
-          {{item.title}}
+          {{item.name}}
           </view>
           <view class='type_SkillContent'>
-            <view bindtap='ToTwoSkillPage' data-title="{{item.name}}" class="{{index>2?'skill_ItemOther':'skill_Item'}}" wx:for ="{{item.typeItem}}">
+            <view bindtap='ToTwoSkillPage' data-id='{{item.cid}}' data-title="{{item.name}}" class="{{index>2?'skill_ItemOther':'skill_Item'}}" wx:for ="{{item.child}}">
               <view class='skill_ItemT'>
-                <image src="{{item.url}}" class="skill_Item-img" />
+                <image src="{{item.pic}}" class="skill_Item-img" />
                 <view class='skill_ItemTxt'>{{item.name}}</view>
               </view>
             </view>
           </view>
-     
+    
     </view>
   
 </view>
