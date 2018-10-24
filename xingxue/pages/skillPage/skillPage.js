@@ -13,10 +13,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log('==')
-    console.log(options);
     let param = JSON.parse(options.data);
-    console.log(param);
     let self = this;
     $.POST({
         url: 'wcSkillSSD',
@@ -91,11 +88,22 @@ Page({
       }
     })
   },
+  // 下单
   ToPlaceOrder: function(e) {
+    let self=this;
+    let skillParam={
+      sId: self.data.skillData.usid,
+      sName: self.data.skillData.name,
+      sMoney: self.data.skillData.price,
+      avatar: self.data.skillData.avatar,
+      name: self.data.skillData.user_nicename,
+      psnId: self.data.skillData.uid,
+    };
     $.openWin({
       url: '../placeOrder/placeOrder',
       data: {
-        id: e.currentTarget.dataset.id,
+        Type:'skillPage',
+        skillParam: skillParam,
       }
     })
   },
@@ -103,29 +111,46 @@ Page({
   goToChat: function(e) {
     let that = this;
     $.openWin({
-      url: '../message/chat',
+      url:'../message/chat',
       data: {
-        id: that.data.psnData.id,
-        name: that.data.psnData.name
+        id: e.currentTarget.dataset.id,
+        title: e.currentTarget.dataset.title
       }
     })
   },
   // 关注事件
   FollowerBtn:function(e){
+ 
     let that=this;
-    $.POST({
-      url:'wcUserAFU',
-      data:{
-       
-        uid:e.currentTarget.dataset.id
-      }
-    },function(e){
-      wx.showToast({
-        title: e.data.msg,
-      });
-    },function(e){
-      console.log(e);
-    })
+    if (e.currentTarget.dataset.status==1){
+      $.POST({
+        url: 'wcUserUFU',
+        data: {
+          uid: e.currentTarget.dataset.id
+        }
+      }, function (e) {
+        wx.showToast({
+          title: e.data.msg,
+        });
+        that.onLoad();
+      }, function (e) {
+        console.log(e);
+      })
+    }else{
+      $.POST({
+        url: 'wcUserAFU',
+        data: {
+          uid: e.currentTarget.dataset.id,
+        }
+      }, function (e) {
+        wx.showToast({
+          title: e.data.msg,
+        });
+        that.onLoad();
+      }, function (e) {
+        console.log(e);
+      })
+    }  
   }
 
 

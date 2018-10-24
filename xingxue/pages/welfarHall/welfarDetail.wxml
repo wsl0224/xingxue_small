@@ -1,14 +1,7 @@
 <!--pages/welfarHall/welfarDetail.wxml-->
-
-<scroll-view>
 <view class='main'>
-        <view style='text-align:center;font-size:32rpx;'>
-        {{title}}
-        </view>
-          <view style='font-size:30rpx;margin-top:36rpx;'>
-          {{content}}
-          </view>
-      </view>
-</scroll-view>
+      <rich-text nodes="{{welfarData.content}}">
+      </rich-text>  
+</view>
 
 

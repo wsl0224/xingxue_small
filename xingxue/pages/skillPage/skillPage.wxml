@@ -32,7 +32,7 @@
         </view>
       </view>
       <view class='topR'>
-        <view class="guanzhu" bindtap='FollowerBtn' data-id="{{skillData.uid}}">
+        <view class="guanzhu" bindtap='FollowerBtn' data-id="{{skillData.uid}}" data-status='{{skillData.follower_status}}'>
           {{skillData.follower_status==1?'关注':'已关注'}}
         </view>
       </view>
@@ -97,10 +97,10 @@
   </view>
 </scroll-view>
 <view class='footer'>
-  <view class='footerL' bindtap='gotoChat' data-item='{{conversation}}'>
+  <view class='footerL' bindtap='goToChat' data-id='{{skillData.uid}}' data-title="{{skillData.user_nicename}}">
     聊天
   </view>
-  <view class='footerR' bindtap='ToPlaceOrder' data-id='{{skillData.usid}}' data-='{{skillData.user_nicename}}'>
+  <view class='footerR' bindtap='ToPlaceOrder'>
     下单
   </view>
 </view>

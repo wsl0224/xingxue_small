@@ -3,29 +3,39 @@
   <!-- 头像 -->
   <view class='top'>
     <view class='top_img'>
-      <image src='{{psnData.url}}'></image>
+      <image src='{{avatar}}' mode='center'></image>
     </view>
     <view class='top_txt'>
-      {{psnData.name}}
+      {{name}}
     </view>
   </view>
   <!-- 主体 -->
   <view class='mid'>
     <!-- 品类 -->
-    <picker bindchange="bindPickerPLChange" value='{{index}}' range='{{PLArray}}'>
+    <picker bindchange="bindPickerTitleChange" value='{{index}}' range='{{PLArray}}' range-key="{{'cname'}}" wx:if="{{Type=='psnPage'}}">
       <view class='list-item'>
         <text class='list-item-left'>品类</text>
         <view class='list-item-right'>
-          <text>  {{title}}</text>
+          <text>{{title}}</text>
           <view>
             <image src='../image/home/right_JT.png' mode='aspectFit' />
           </view>
         </view>
       </view>
     </picker>
-
+    <view wx:if="{{Type=='skillPage'}}">
+      <view class='list-item'>
+        <text class='list-item-left'>品类</text>
+        <view class='list-item-right'>
+          <text>{{title}}</text>
+          <view>
+            <image src='../image/home/right_JT.png' mode='aspectFit' />
+          </view>
+        </view>
+      </view>
+    </view>
     <!-- sex -->
-    <picker bindchange="bindPickerSexChange" value='{{index}}' range='{{SexArray}}'>
+    <!-- <picker bindchange="bindPickerSexChange" value='{{index}}' range='{{SexArray}}'>
       <view class='list-item'>
         <text class='list-item-left'>性别要求</text>
         <view class='list-item-right'>
@@ -35,8 +45,19 @@
           </view>
         </view>
       </view>
+    </picker> -->
+  <!-- date -->
+    <picker mode='date' value="{{date}}" style='' bindchange="bindPickerDateChange">
+      <view class='list-item'>
+        <text class='list-item-left'>日期</text>
+        <view class='list-item-right'>
+          <text>  {{date}}</text>
+          <view>
+            <image src='../image/home/right_JT.png' mode='aspectFit' />
+          </view>
+        </view>
+      </view>
     </picker>
-
     <!-- time -->
     <picker mode='time' value="{{time}}" style='' bindchange="bindPickerTimeChange">
       <view class='list-item'>
@@ -67,7 +88,7 @@
     <!-- 备注 -->
     <view class='list-end'>
       <text>备注</text>
-      <input placeholder='简单说下你的要求' placeholder-class='remarkInput'></input>
+      <input placeholder='简单说下你的要求'  bindinput="bindKeyInput" placeholder-class='remarkInput'></input>
 
     </view>
   </view>
@@ -83,12 +104,12 @@
        <view class='list-item'>
         <text class='list-item-left'>合计</text>
         <view class='list-item-right'>
-          <text>  {{allMoney}}元</text>
+          <text>  {{money*num}}元</text>
         </view>
       </view>
   </view>
 </scroll-view>
-<view class='footer'>
+<view class='footer' bindtap='submit'>
   <view>
     提交订单
   </view>

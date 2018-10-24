@@ -30,14 +30,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
+    var self = this;
     //调用应用实例的方法获取全局数据
     let data = JSON.parse(options.data);
     wx.setNavigationBarTitle({
       title: data.title
     });
-    that.login(function () {
-      that.initIM();
+    self.setData({
+      Identifier:'Tx_'+data.id,
+      UserSig:'',
+    })
+    that.login(function (e) {
+      console.log(e)
     });
   },
 

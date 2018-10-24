@@ -16,7 +16,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    mesData:[]
+    mesData: [{ 
+      id:1,
+      url:'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',
+      title:'成都小甜甜',
+      content: '测试',
+      time:'2018-10-24'
+    },{
+      id:2,
+      url: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',
+        title: '成都小甜甜',
+        content: '测试',
+        time: '2018-10-24'
+      }]
  
   },
 

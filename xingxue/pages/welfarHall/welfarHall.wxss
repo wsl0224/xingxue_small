@@ -1,16 +1,37 @@
 /* pages/welfarHall/welfarHall.wxss */
 @import '../util/publicCss.wxss';
 .main{
-  padding: 25rpx;
+ 
+  border-top: 1rpx;
+  border-top-color:#dfdfdf;
+  border-top-style: solid;
+  background: #fff;
+}
+.Item{
+  width: 100vw;
+  height: 120rpx;
+  padding: 0 23rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;  
+  
+    border-bottom: 1rpx;
+  border-bottom-color: #dfdfdf;
+  border-bottom-style: solid;
 }
 .url_Item{
-  width: 700rpx;
-  height: 270rpx;
-  border-radius: 8rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;  
+  justify-content: center;
   
 }
 .url_Item>image{
-  width: 700rpx;
-  height: 270rpx;
+  width: 78rpx;
+  height: 78rpx;
   border-radius: 8rpx;
+}
+.item_txt{
+  font-size: 32rpx;
+  color: #333333;
 }

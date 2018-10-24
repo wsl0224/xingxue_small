@@ -38,7 +38,7 @@
               </view>
             </view>
             <view class='psnInfo_FR'>
-              {{psnData.follower==2?'关注':'已关注'}}
+              {{psnData.follower==2?'未关注':'已关注'}}
             </view>
           </view>
         </view>
@@ -135,10 +135,10 @@
 
 
 <view class='footer'>
-  <view class='footerL'>
+  <view class='footerL'  bindtap='goToChat' data-id='{{psnData.uid}}' data-title="{{psnData.user_nicename}}">
     聊天
   </view>
-  <view class='footerR'>
+  <view class='footerR'  bindtap='ToPlaceOrder' data-id='{{psnData.uid}}' data-psnData='{{psnData}}'>
     下单
   </view>
 </view>
