@@ -5,16 +5,16 @@
     <view class='top_L'>
       <view class='top_LTop'>{{jobData.title}}</view>
       <view class='top_LMid'>
-        <view class='top_Date'>截止:{{jobData.Date}}</view>
-        <view class='top_Limit'> 1人{{jobData.xianzi}}次</view>
+        <view class='top_Date'>截止:{{jobData.jztime}}</view>
+        <view class='top_Limit'> 1人{{jobData.limitnum}}次</view>
       </view>
       <view class='top_LBottom'>
-        {{jobData.sy}}份
+        {{jobData.num}}份
       </view>
     </view>
     <view class='top_R'>
       <view class='top_RMoney'>
-        {{jobData.money}}元/次
+        {{jobData.price}}元/次
       </view>
     </view>
   </view>
@@ -24,14 +24,14 @@
       <view class='mid_top'>
         <view class='mid_Ttop'>
           <view class='mid_TImg'>
-            <image src='http://pgq6951kf.bkt.clouddn.com/icon54.png'></image>
+            <image src='https://app.xingxue.vip/icon/icon54.png'></image>
           </view>
           <view class='mid_TTtile'>
             任务说明
           </view>
         </view>
         <view class='mid_Tmid'>
-          {{jobData.sm}}
+          {{jobData.instruction}}
         </view>
         <view class='mid_Tbot' wx:if="{{jobData.url}}">
           <view class='mid_Tbtn' bindtap='ToWebPage'>任务链接</view>
@@ -41,27 +41,27 @@
       <view class='mid_mid'>
         <view class='mid_Mtop'>
           <view class='mid_MImg'>
-            <image src='http://pgq6951kf.bkt.clouddn.com/icon55.png'></image>
+            <image src='https://app.xingxue.vip/icon/icon55.png'></image>
           </view>
           <view class='mid_MTtile'>
             任务步骤
           </view>
         </view>
-        <view class='mid_Mmid' wx:for="{{jobData.jobStep}}">
+        <view class='mid_Mmid' wx:for="{{jobData.taskstep}}">
           <view class='mid_MmidL'>
             <view class='mid_MmidLimg'>
-              {{item.id}}
+              {{item.step}}
             </view>
           </view>
           <view class='mid_MmidLR'>
             <view class='mid_MmidLRstep'>
-              {{item.step}}
+              第{{item.step}}步
             </view>
             <view class='mid_MmidLRctxt'>
               {{item.content}}
             </view>
             <view class='mid_MmidLRPhoto'>
-              <view class='Photo_Item' wx:for="{{item.photo}}">
+              <view class='Photo_Item' wx:key="{{index}}" wx:for="{{publicFun.stringToArr(item.spic,',')}}">
                 <image src='{{item}}'></image>
               </view>
             </view>
@@ -71,10 +71,10 @@
     </scroll-view>
   </view>
   <view class='bot'>
-    <view class="botStartJob startJOB" bindtap='ToSubmitJob' wx:if="{{jobData.status==1}}">
+    <view class="botStartJob startJOB" data-id="{{jobData.id}}" bindtap='ToSubmitJob' wx:if="{{jobData.status==0||jobData.status==3||jobData.status==4||jobData.status==5}}">
       开始任务
     </view>
-    <view class="botStatusJob {{publicFun.showJobSBgColor(jobData.status)}}" wx:if="{{jobData.status!=1}}">
+    <view class="botStatusJob {{publicFun.showJobSBgColor(jobData.status)}}" wx:if="{{jobData.status==1||jobData.status==2}}">
       {{publicFun.showJobLabel(jobData.status)}}
     </view>
   </view>

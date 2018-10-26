@@ -1,10 +1,11 @@
 <!--pages/applicationSkills/applicationSkills.wxml-->
+ <wxs module="publicFun" src="../util/publicFun.wxs"></wxs>
 <view class='main'>
   <!-- title -->
   <view class='top' wx:if="{{showTitle}}">
     <view class='top_left'>
       <view class='top_leftImg'>
-        <image src='../image/icon/icon86.png'></image>
+        <image src='https://app.xingxue.vip/icon/icon86.png'></image>
       </view>
       <view class='top_leftTxt'>
         申请技能服务者需先通过学生认证
@@ -12,14 +13,15 @@
     </view>
 
     <view class='top_right' bindtap='CloseTitle'>
-      <image src='../image/icon/icon87.png'></image>
+      <image src='https://app.xingxue.vip/icon/icon87.png'></image>
     </view>
   </view>
   <!-- 学生证 -->
+ 
   <view class='mid' bindtap="ToApplicationDetail">
     <view class='mid_left'>
       <view class='mid_leftImg'>
-        <image src='../image/icon/icon85.png'></image>
+        <image src='https://app.xingxue.vip/icon/icon85.png'></image>
       </view>
       <view class='mid_leftR'>
         <view class='mid_leftRT'>
@@ -31,7 +33,7 @@
       </view>
     </view>
     <view class='mid_right'>
-      未认证
+     {{publicFun.showApplicationStatus(appliData.status)}}
     </view>
   </view>
 </view>

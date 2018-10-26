@@ -89,7 +89,7 @@ page{
 }
 .remarkCss,.remarkCss>input{
   font-size: 32rpx;
-  color: #333;
+  color: #666666;
   margin-bottom: 20rpx;
 }
 

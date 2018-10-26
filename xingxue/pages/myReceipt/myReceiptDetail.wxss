@@ -151,7 +151,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+ 
 }
 .EaluateShowR{
   font-size: 30rpx;
@@ -161,6 +161,17 @@
   content: '星';
   font-size: 30rpx;
   color: #ffb924;
+}
+.EaluateShowL{
+    display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+.EaluateShowL,.EaluateShowL>image{
+  width: 20rpx;
+  height: 22rpx;
+
 }
 .TakeOrder,.StartOrder{
 

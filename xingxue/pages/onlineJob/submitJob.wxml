@@ -4,15 +4,15 @@
   <view class='top'>
     <view class='topTitle'>
       <view class='topTImg'>
-        <image src='http://pgq6951kf.bkt.clouddn.com/icon57.png'></image>
+        <image src='https://app.xingxue.vip/icon/icon57.png'></image>
       </view>
       <view class='topTtxt'>
         上传所需截图
       </view>
     </view>
     <view class='topMid'>
-      <view class='topMidPhoto'>
-        <image src='http://pgq6951kf.bkt.clouddn.com/icon59.png'></image>
+      <view class='topMidPhoto' bindtap='updataImg'>
+        <image src="{{image?image:'https://app.xingxue.vip/icon/icon59.png'}}"></image>
       </view>
     </view>
   </view>
@@ -20,7 +20,7 @@
   <view class='mid'>
      <view class='midTitle'>
       <view class='midTImg'>
-        <image src='http://pgq6951kf.bkt.clouddn.com/icon58.png'></image>
+        <image src='https://app.xingxue.vip/icon/icon58.png'></image>
       </view>
       <view class='midTtxt'>
         其他信息
@@ -33,7 +33,7 @@
         姓名
         </view>
         <view class='midMid_Val'>
-        <input placeholder='请输入您的姓名' placeholder-class='inputPlaCss'></input>
+        <input placeholder='请输入您的姓名' bindinput='keyName' placeholder-class='inputPlaCss'></input>
         </view>
         <view class='midMid_remark'>
         (非必填)
@@ -45,7 +45,7 @@
         手机号
         </view>
         <view class='midMid_Val'>
-        <input type='number' placeholder='请输入您的手机号' placeholder-class='inputPlaCss'></input>
+        <input type='number' placeholder='请输入您的手机号' bindinput='keyPhone' placeholder-class='inputPlaCss'></input>
         </view>
          <view class='midMid_remark'>
         (非必填)
@@ -57,7 +57,7 @@
         其它
         </view>
         <view class='midMid_Val'>
-        <input placeholder='请输入其它相关信息' placeholder-class='inputPlaCss'></input>
+        <input placeholder='请输入其它相关信息' bindinput='keyRemark' placeholder-class='inputPlaCss'></input>
         </view>
          <view class='midMid_remark'>
         (非必填)

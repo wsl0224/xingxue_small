@@ -34,7 +34,7 @@
 }
 .top_item.active{
   color: #fff;
-  background:url(http://pgq6951kf.bkt.clouddn.com/icon81.png);
+  background:url(https://app.xingxue.vip/icon/icon81.png);
   background-repeat:no-repeat;
  background-size:100% 100%;
  -moz-background-size:100% 100%;

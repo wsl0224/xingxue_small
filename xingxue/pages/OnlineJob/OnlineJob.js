@@ -1,5 +1,6 @@
 // pages/onlineJob/onlineJob.js
-let $=require('../util/commit.js');
+let $ = require('../util/commit.js');
+let page = 1, oldPage = 0;
 Page({
 
   /**
@@ -21,64 +22,53 @@ Page({
         id: '3',
         name: '已结束',
       }],
-      jobData:[{
-        title:'下载微信注册后加100好友任务',
-        shenyue:'1289',
-        Date:'2018-10-30',
-        money:'28.00',
-        status:1,
-      }, {
-          title: '下载微信注册后加100好友任务',
-          shenyue: '1289',
-          Date: '2018-10-30',
-          money: '28.00',
-          status: 2,
-        }, {
-          title: '下载微信注册后加100好友任务',
-          shenyue: '1289',
-          Date: '2018-10-30',
-          money: '28.00',
-          status: 4,
-        }, {
-          title: '下载微信注册后加100好友任务',
-          shenyue: '1289',
-          Date: '2018-10-30',
-          money: '28.00',
-          status: 3,
-        }, {
-          title: '下载微信注册后加100好友任务',
-          shenyue: '1289',
-          Date: '2018-10-30',
-          money: '28.00',
-          status: 5,
-        }, {
-          title: '下载微信注册后加100好友任务',
-          shenyue: '1289',
-          Date: '2018-10-30',
-          money: '28.00',
-          status: 5,
-        }, {
-          title: '下载微信注册后加100好友任务',
-          shenyue: '1289',
-          Date: '2018-10-30',
-          money: '28.00',
-          status: 5,
-        }, {
-          title: '下载微信注册后加100好友任务',
-          shenyue: '1289',
-          Date: '2018-10-30',
-          money: '28.00',
-          status: 5,
-        }]
-  },
+      jobData:[]},
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.freshData();
+  },
+  freshData:function(e){
+    let self=this;
+    $.POST({
+      url:'Wc/Task/task_mytask',
+      data:{
+        page:1,
+        status: self.data.indexNum,
+      }
+    },function(e){
+      self.setData({
+        jobData:e.data
+      });
+      page = 1;
+      oldPage = 0;
+    })
+  },
+  upper: function (e) {
+    this.freshData();
+  },
+  lower: function (e) {
+    let self = this;
+    console.log(page, oldPage);
+    if (page - oldPage == 1) {
+      page++;
+      $.POST({
+        url: 'Wc/Task/task_mytask',
+        data: {
+          page: page,
+          status: self.data.indexNum,
+        }
+      }, function (e) {
+        self.setData({
+          JobData: self.data.JobData.concat(e.data)
+        });
+        oldPage++;
+      })
+    }
 
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -90,7 +80,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.freshData();
   },
 
   /**
@@ -132,12 +122,13 @@ Page({
     this.setData({
       indexNum:e.currentTarget.dataset.id,
     })
+    this.freshData();
   },
   // 跳转任务详情
   TopOnlineJobDetail:function(e){
     $.openWin({
       url:'../onlineJob/onlineJobDetail',
-
+      data: { id: e.currentTarget.dataset.id }
     })
   }
 })

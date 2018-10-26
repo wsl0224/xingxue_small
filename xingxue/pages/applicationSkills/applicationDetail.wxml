@@ -5,7 +5,7 @@
     <view class='top' wx:if="{{showTitle}}">
       <view class='top_left'>
         <view class='top_leftImg'>
-          <image src='http://pgq6951kf.bkt.clouddn.com/icon86.png'></image>
+          <image src='https://app.xingxue.vip/icon/icon86.png'></image>
         </view>
         <view class='top_leftTxt'>
           申请技能服务者需先通过学生认证
@@ -13,7 +13,7 @@
       </view>
 
       <view class='top_right' bindtap='CloseTitle'>
-        <image src='http://pgq6951kf.bkt.clouddn.com/icon87.png'></image>
+        <image src='https://app.xingxue.vip/icon/icon87.png'></image>
       </view>
     </view>
     <!-- 学生信息 -->
@@ -24,7 +24,7 @@
           姓名
         </view>
         <view class='Info_Input'>
-          <input placeholder='请填写您的姓名' placeholder-class='placeInputCss'></input>
+          <input placeholder='请填写您的姓名' bindinput='keyNameBtn' placeholder-class='placeInputCss'></input>
         </view>
       </view>
       <!-- 学号 -->
@@ -33,7 +33,7 @@
           学号
         </view>
         <view class='Info_Input'>
-          <input placeholder='请填写您的学号' placeholder-class='placeInputCss'></input>
+          <input placeholder='请填写您的学号' bindinput='keyNumberBtn' placeholder-class='placeInputCss'></input>
         </view>
       </view>
       <!-- 院校名称 -->
@@ -42,30 +42,30 @@
           院校名称
         </view>
         <view class='Info_Input'>
-          <input placeholder='请填写您的院校名称' placeholder-class='placeInputCss'></input>
+          <input placeholder='请填写您的院校名称' bindinput='keySchoolBtn' placeholder-class='placeInputCss'></input>
         </view>
       </view>
     </view>
     <!-- 证件图 -->
     <view class='pInfo'>
-      <view class='pInfo_title'>
-        <view class='pInfo_TLeft'>
-          学生证 (个人信息)
-        </view>
-        <view class='pInfo_Tright'>
-          手持学生证件照
-        </view>
+      <view class='pInfo_TLeft'>
+        学生证 (个人信息)
       </view>
-      <view class='pInfo_Img'>
-        <view class='pInfo_ImgL'>
+      <view class='pInfo_Tright'>
+        手持学生证件照
+      </view>
+    </view>
+    <view>
+      <view class='pInfo_Img' >
+        <view class='pInfo_ImgL' bindtap='updataCard'>
           <view class='pInfo_ImgLimg'>
-            <image src='http://pgq6951kf.bkt.clouddn.com/icon59.png'></image>
+            <image src="{{Card_pic?Card_pic:'https://app.xingxue.vip/icon/icon59.png'}}"></image>
           </view>
 
         </view>
-        <view class='pInfo_ImgR'>
+        <view class='pInfo_ImgR' bindtap='updataHalf'>
           <view class='pInfo_ImgRimg'>
-            <image src='http://pgq6951kf.bkt.clouddn.com/icon59.png'></image>
+            <image src="{{Half_pic?Half_pic:'https://app.xingxue.vip/icon/icon59.png'}}"></image>
           </view>
         </view>
       </view>
@@ -79,9 +79,9 @@
         <rich-text nodes="{{content}}" bindtap="tap"></rich-text>
       </view>
     </view>
-    
+
   </scroll-view>
-  <view class='footer'>
-      提交审核
+  <view class='footer' bindtap='submitBtn'>
+    提交审核
   </view>
 </view>

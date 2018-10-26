@@ -4,5 +4,5 @@
   "navigationBarTitleText": "我的足迹",
   "backgroundColor": "#eeeeee",
   "backgroundTextStyle": "light",
-  "enablePullDownRefresh": false
+  "enablePullDownRefresh": true
 }

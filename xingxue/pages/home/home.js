@@ -9,30 +9,26 @@ Page({
     config: config,
     toView: 'red',
     scrollTop: 100,
-    imgUrls: [
-      'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
-    ],
+    imgUrls: [],
     indicatorDots: true,
     autoplay: true,
     interval: 5000,
     duration: 1000,
     bannerData: [{
       id: 1,
-      url: 'http://pgq6951kf.bkt.clouddn.com/icon01.png',
+      url: 'https://app.xingxue.vip/icon/icon01.png',
       name: '极速下单',
     }, {
       id: 2,
-      url: 'http://pgq6951kf.bkt.clouddn.com/icon02.png',
+      url: 'https://app.xingxue.vip/icon/icon02.png',
       name: '线上兼职',
     }, {
       id: 3,
-      url: 'http://pgq6951kf.bkt.clouddn.com/icon03.png',
+      url: 'https://app.xingxue.vip/icon/icon03.png',
       name: '拼团'
     }, {
       id: 4,
-      url: 'http://pgq6951kf.bkt.clouddn.com/icon04.png',
+      url: 'https://app.xingxue.vip/icon/icon04.png',
       name: '福利大厅',
     }],
     SkillArrAA: [],
@@ -40,69 +36,7 @@ Page({
     SkillArrBA: [],
     SkillArrBB: [],
     typeData: [],
-    typeData1: [
-      [
-        [{
-          url: 'http://pgq6951kf.bkt.clouddn.com/icon05.png',
-          name: '叫醒服务',
-        }, {
-          url: 'http://pgq6951kf.bkt.clouddn.com/icon06.png',
-          name: '陪跑',
-        }, {
-          url: 'http://pgq6951kf.bkt.clouddn.com/icon07.png',
-          name: '跑腿',
-        }, {
-          url: 'http://pgq6951kf.bkt.clouddn.com/icon08.png',
-          name: '陪练服务',
-        }],
-        [{
-          url: 'http://pgq6951kf.bkt.clouddn.com/icon09.png',
-          name: '钢琴服务',
-        }, {
-          url: 'http://pgq6951kf.bkt.clouddn.com/icon10.png',
-          name: '钢琴服务',
-        }, {
-          url: 'http://pgq6951kf.bkt.clouddn.com/icon11.png',
-          name: '钢琴服务',
-        }, {
-          id: 'allType',
-          url: 'http://pgq6951kf.bkt.clouddn.com/icon12.png',
-          name: '全部技能'
-        }]
-      ],
-      [
-        [{
-            url: 'http://pgq6951kf.bkt.clouddn.com/icon08.png',
-            name: '叫醒服务',
-          },
-          {
-            url: 'http://pgq6951kf.bkt.clouddn.com/icon08.png',
-            name: '叫醒服务',
-          }, {
-            url: 'http://pgq6951kf.bkt.clouddn.com/icon08.png',
-            name: '叫醒服务',
-          }, {
-            url: 'http://pgq6951kf.bkt.clouddn.com/icon08.png',
-            name: '叫醒服务',
-          }
-        ],
-        [{
-            url: 'http://pgq6951kf.bkt.clouddn.com/icon08.png',
-            name: '叫醒服务',
-          },
-          {
-            url: 'http://pgq6951kf.bkt.clouddn.com/icon08.png',
-            name: '叫醒服务',
-          }, {
-            url: 'http://pgq6951kf.bkt.clouddn.com/icon08.png',
-            name: '叫醒服务',
-          }, {
-            url: 'http://pgq6951kf.bkt.clouddn.com/icon08.png',
-            name: '叫醒服务',
-          }
-        ]
-      ]
-    ],
+    typeData1: [],
     typeData_indicatorDots: true,
     typeData_autoplay: false,
     typeData_interval: 5000,
@@ -114,6 +48,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+   
     let self = this;
     self.freshTData(); // 过滤二级数据
     self.freshBanner(); //  过滤banner
@@ -151,7 +86,7 @@ Page({
         }
         SkillArrA.push({
           id: 'allType',
-          pic: 'http://pgq6951kf.bkt.clouddn.com/icon12.png',
+          pic: 'https://app.xingxue.vip/icon/icon12.png',
           name: '全部技能'
         });
         typeData.push(SkillArrA);
@@ -162,7 +97,7 @@ Page({
         }
         SkillArrA.push({
           id: 'allType',
-          pic: 'http://pgq6951kf.bkt.clouddn.com/icon12.png',
+          pic: 'https://app.xingxue.vip/icon/icon12.png',
           name: '全部技能'
         });
         typeData.push(SkillArrA);
@@ -184,6 +119,7 @@ Page({
   },
   // 过滤banner
   freshBanner: function(e) {
+    console.log('过滤banner');
     let self = this;
     $.POST({
       url: 'wcOtherSB',
@@ -191,7 +127,7 @@ Page({
         type: 1,
       }
     }, function(e) {
-      console.log('过滤banner');
+     
       console.log(e);
       self.setData({
         imgUrls: e.data,
@@ -254,6 +190,7 @@ Page({
     self.freshTData(); // 过滤二级数据
     self.freshBanner(); //  过滤banner
     self.freshTSData(); //过滤推荐二级技能
+   
   },
   lower: function(e) {
     console.log(e)
@@ -290,7 +227,12 @@ Page({
         url: '../onlineJob/onlineJobHall'
       })
     } else if (e.currentTarget.id == 3) {
-
+      $.openWin({
+        url: '../webView/webView',
+        data:{
+          url:'https://xzwages.libokeji.cn/index.html',
+        }
+      })
     } else {
       $.openWin({
         url: '../welfarHall/welfarHall',

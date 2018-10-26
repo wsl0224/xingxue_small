@@ -17,7 +17,7 @@
         </view>
         <view class='mes_itemRB'>
           <view class='mes_itemRBL'>{{item.content}}</view>
-          <view class='mes_itemRBR' wx:if="{{item.num>0}}">{{item.num}}</view>
+          <view class='mes_itemRBR' wx:key="{{index}}" wx:if="{{item.num>0}}">{{item.num}}</view>
         </view>
       </view>
     </view>

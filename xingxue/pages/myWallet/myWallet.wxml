@@ -2,15 +2,15 @@
   <!-- top -->
   <view class='top'>
     <view class='top_title'>可提现金额 (元)</view>
-    <view class='top_balance'>{{yuer}}</view>
-    <view class='top_SHbalance'>审核中金额: {{shenghe}}元</view>
+    <view class='top_balance'>{{walletData.price}}</view>
+    <view class='top_SHbalance'>审核中金额: {{walletData.task_price}}元</view>
   </view>
   <!-- menu -->
   <view class='mid'>
   <!-- 账单明细 -->
     <view class='mid_Item' bindtap='ToBillDetail'>
       <view class='mid_ItemZImg'>
-        <image src='http://pgq6951kf.bkt.clouddn.com/icon78.png'>
+        <image src='https://app.xingxue.vip/icon/icon78.png'>
         </image>
       </view>
       <view class='mid_ItemT'>
@@ -20,7 +20,7 @@
     <!-- 充值 -->
     <view class='mid_Item' bindtap='ToRecharge'>
       <view class='mid_ItemCImg'>
-        <image src='http://pgq6951kf.bkt.clouddn.com/icon79.png'>
+        <image src='https://app.xingxue.vip/icon/icon79.png'>
         </image>
       </view>
       <view class='mid_ItemT'>
@@ -30,7 +30,7 @@
     <!-- 提现 -->
     <view class='mid_Item' bindtap='ToPutForward'>
       <view class='mid_ItemTImg'>
-        <image src='http://pgq6951kf.bkt.clouddn.com/icon80.png'>
+        <image src='https://app.xingxue.vip/icon/icon80.png'>
         </image>
       </view>
       <view class='mid_ItemT'>

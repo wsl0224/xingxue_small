@@ -1,0 +1,55 @@
+<!--pages/mySkill/mySkillSet.wxml-->
+<scroll-view scroll-y class='main'>
+
+  <!-- 主体 -->
+  <view class='mid'>
+    <!-- 品类 -->
+    <view>
+      <view class='list-item'>
+        <text class='list-item-left'>品类</text>
+        <view class='list-item-right'>
+          <text>{{sName}}</text>
+          <view>
+            <image src='../image/home/right_JT.png' mode='aspectFit' />
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 价格 -->
+     <picker bindchange="bindPickerPriceChange" value='{{index}}' range='{{priceArr}}' range-key="{{'price'}}">
+      <view class='list-item'>
+        <text class='list-item-left'>价格</text>
+        <view class='list-item-right'>
+          <text>{{price}}</text>
+          <view>
+            <image src='../image/home/right_JT.png' mode='aspectFit' />
+          </view>
+        </view>
+      </view>
+    </picker>
+     <!-- 单位 -->
+     <picker bindchange="bindPickerUnitChange"  range='{{unitArr}}' value='{{}}' range-key="{{'unit'}}" >
+      <view class='list-item'>
+        <text class='list-item-left'>单位</text>
+        <view class='list-item-right'>
+          <text>{{unit}}</text>
+          <view>
+            <image src='../image/home/right_JT.png' mode='aspectFit' />
+          </view>
+        </view>
+      </view>
+    </picker>
+    <!-- 备注 -->
+    <view class='list-end'>
+      <text>备注</text>
+      <input placeholder='简单说下你的要求'  bindinput="bindKeyInput" placeholder-class='remarkInput'></input>
+    </view>
+  </view>
+ 
+</scroll-view>
+<view class='footer' bindtap='submit'>
+  <view>
+    保存
+  </view>
+  
+</view>

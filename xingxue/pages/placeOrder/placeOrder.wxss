@@ -158,7 +158,7 @@
 }
 .footer>view{
   width: 700rpx;
-  height: 98rpx;
+ height: 98 rpx;
   line-height: 98rpx;
   text-align: center;
   font-size: 36rpx;

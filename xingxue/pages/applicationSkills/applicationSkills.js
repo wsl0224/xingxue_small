@@ -7,16 +7,27 @@ Page({
    */
   data: {
     showTitle:true,
-    
+    appliData:{},
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.freshData();
   },
-
+  freshData:function(){
+    let self=this;
+    $.POST({
+      url:'wcUserSUSA',
+      data:{}
+    },function(e){
+      self.setData({
+        appliData:e.data,
+      })
+    })
+  }
+  ,
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -73,9 +84,16 @@ Page({
   },
   // 跳转详情
   ToApplicationDetail:function(e){
-    $.openWin({
-      url:'../applicationSkills/applicationDetail'
-    })
+    if (this.data.appliData.status == 1 || this.data.appliData.status == 4){
+      $.openWin({
+        url: '../applicationSkills/applicationDetail'
+      })
+    }
+    if (this.data.appliData.status == 2) {
+     wx.showToast({
+       title: '认证中',
+     })
+    }
   }
 
 })

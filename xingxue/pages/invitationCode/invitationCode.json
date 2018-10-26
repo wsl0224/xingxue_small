@@ -4,5 +4,5 @@
   "navigationBarTitleText": "机构邀请码",
   "backgroundColor": "#eeeeee",
   "backgroundTextStyle": "light",
-  "enablePullDownRefresh": false
+  "enablePullDownRefresh": true
 }

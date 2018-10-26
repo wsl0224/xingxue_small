@@ -2,7 +2,7 @@
 .top{
   width: 100vw;
   height: 605rpx;
-    background:url(http://pgq6951kf.bkt.clouddn.com/my_jpg_Invitation.png);
+    background:url(https://app.xingxue.vip/icon/my_jpg_Invitation.png);
   background-repeat:no-repeat;
   background-size:100% 100%;
  -moz-background-size:100% 100%;

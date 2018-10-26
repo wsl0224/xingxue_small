@@ -1,28 +1,49 @@
 // pages/personalData/personalData.js
 var $=require('../util/commit.js');
+var config=require('../util/config.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    psnData:{
-      url: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',
-      photo: [
-        'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg', 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg', 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'],
-      name:'成都小甜甜',
-      date:'1987.09.23',
-      qianming: "爱到最美是陪伴",
-    }
+    avatar:'',
+    image:[],
+    picArr:[],
+    user_nicename:'',
+    birth:'',
+    signature:'',
+    startDate:'1900-01-01',
+    endDate:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
+    this.freshData();
   },
-
+  // 加载人员信息
+  freshData:function(e){
+    let self=this;
+    $.POST({
+      url:'wcUserSUD',
+      data:{},
+    },function(e){
+      self.setData({
+        avatar:e.data.avatar,
+        image: e.data.image,
+        picArr: e.data.image,
+        user_nicename: e.data.user_nicename,
+        birth: e.data.birth,
+        signature: e.data.signature,
+      })
+    },
+    function(e){
+      console.log(e);
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -73,25 +94,122 @@ Page({
   },
   // 上传头像
   updataImage:function(e){
+    let self = this;
+    let psnkey = wx.getStorageSync('psnkey');
     wx.chooseImage({
-      count:1,
-      sourceType: ['album', 'camera'],
-      success: function(res) {
+      count: 1,
+      success: function (res) {
+        const tempFilePaths = res.tempFilePaths
         wx.uploadFile({
-          url: util.getClientSetting().domainName + '/home/uploadfilenew',
-          filePath: tempFilePaths[i],
-          name: 'uploadfile_ant',
+          url: config.Config.updateImgUrl,
+          filePath: tempFilePaths[0],
+          name: 'file',
           formData: {
-            'imgIndex': i
+            'key': psnkey
           },
-          header: {
-            "Content-Type": "multipart/form-data"
-          }, 
-          success:function(res){
-
+          success(res) {
+            let pic = JSON.parse(res.data).data.pic;
+            console.log(pic);
+            self.setData({
+              avatar: pic,
+            });
+          
+            $.POST({
+              url: 'wcUserSAVEUD',
+              data: {
+                avatar: pic
+              }
+            },function(e){
+              wx.showToast({
+                title: e.msg,
+              })
+            })  
           }
         })
       },
     })
   },
+  // 上传形象照
+  updataPhoto:function(e){
+    let self = this;
+    let psnkey = wx.getStorageSync('psnkey');
+    wx.chooseImage({
+      count: 1,
+      success: function (res) {
+        const tempFilePaths = res.tempFilePaths
+        wx.uploadFile({
+          url: config.Config.updateImgUrl,
+          filePath: tempFilePaths[0],
+          name: 'file',
+          formData: {
+            'key': psnkey
+          },
+          success(res) {
+            let pic = JSON.parse(res.data).data.pic;
+            if (self.data.picArr.length>=3){
+              self.data.picArr.pop();
+            }
+            self.data.picArr.unshift(pic); 
+            self.setData({
+              image:self.data.picArr,
+            });
+            $.POST({
+              url: 'wcUserSAVEUD',
+              data: {
+                image: self.data.picArr
+              }
+            },function(e){
+
+            })
+          }
+        })
+      },
+    })
+  },
+  // 修改日期
+  bindPickerDateChange:function(e){
+    this.setData({
+      birth:e.detail.value,
+    });
+    let self=this;
+    $.POST({
+      url:'wcUserSAVEUD',
+      data: { 
+        birth: e.detail.value}
+    },function(e){
+      wx.showToast({
+        title: e.msg,
+      })
+    })
+  },
+  // 昵称 
+  keyNameSignatureBtn:function(e){
+    this.setData({
+      user_nicename: e.detail.value,
+    });
+    let self = this;
+    $.POST({
+      url: 'wcUserSAVEUD',
+      data: {
+        name: e.detail.value
+      }
+    }, function (e) {
+      
+    })
+  },
+  // 签名
+  keySignatureBtn:function(e){
+    this.setData({
+      signature:e.detail.value,
+    });
+    let self = this;
+    $.POST({
+      url: 'wcUserSAVEUD',
+      data: {
+        signature: e.detail.value
+      }
+    },function(){
+      
+    })
+  }
 })

@@ -1,5 +1,6 @@
 {
   "pages": [
+    
     "pages/home/home",
     "pages/message/message",
     "pages/message/chat",
@@ -38,7 +39,11 @@
     "pages/onlineJob/onlineJobDetail",
     "pages/onlineJob/submitJob",
     "pages/onlineJob/onlineJobHall",
-    "pages/invitationCode/invitationCode"
+    "pages/invitationCode/invitationCode",
+    "pages/webView/webView",
+    "pages/mySkill/mySkillSet",
+    "pages/payOrder/payOrder"
+  
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -48,6 +53,8 @@
     "backgroundColor": "#F2F2F2"
   },
   "tabBar": {
+    "color": "#666666",
+    "selectedColor": "rgb(108,127,235)",
     "list": [
       {
         "pagePath": "pages/home/home",

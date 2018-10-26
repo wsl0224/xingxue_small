@@ -1,0 +1,128 @@
+/* pages/payOrder/payOrder.wxss */
+@import '../util/publicCss';
+.top{
+  height: 124rpx;
+  padding: 34rpx 23rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  margin-bottom: 20rpx;
+     border-top: 1rpx;
+  border-top-color: rgb(223,223,221);
+  border-top-style: solid;
+}
+.psnInfo{
+  height: 124rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.psnInfo_img{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-right: 25rpx;
+}
+.psnInfo_img,.psnInfo_img>image{
+  width: 124rpx;
+   height: 124rpx;
+   border-radius: 6rpx;
+}
+.psnInfoRT{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 25rpx;
+}
+.psnInfo_name{
+  font-size: 30rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  color: rgb(51,51,51);
+  margin-right: 23rpx;
+}
+.orderSkillName{
+  width: 150rpx;
+  height: 30rpx;
+  background: rgb(134,178,249);
+  font-size: 26rpx;
+  line-height: 30rpx;
+  text-align: center;
+  margin-bottom: 15rpx;
+  color: #fff;
+
+}
+.order_bot{
+  font-size: 26rpx;
+  color: #333333;
+}
+.topR{
+  height: 124rpx;
+  line-height: 124rpx;
+  color: red;
+}
+.payList{
+  background: #fff;
+   border-top: 1rpx;
+  border-top-color: rgb(223,223,221);
+  border-top-style: solid;
+}
+.payItem{
+  height: 98rpx;
+  border-bottom: 1rpx;
+  border-bottom-color: rgb(223,223,221);
+  border-bottom-style: solid;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+}
+.payImage{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+  padding: 0 23rpx;
+
+}
+.payImage,.payImage>image{
+  width: 40rpx;
+  height: 40rpx;
+}
+.payTxt{
+  width: 100%;
+  font-size: 30rpx;
+  color: #333333;
+}
+.sure{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.sure,.sure>image{
+  width: 40rpx;
+  height: 40rpx;
+}
+/* footer */
+.footer{
+  width: 700rpx;
+  height: 98rpx;
+  border-radius: 6rpx;
+  background-color: rgb(134,178,249);
+  line-height: 98rpx;
+  text-align: center;
+  font-size: 36rpx;
+  color: #FFF;
+  
+  position: fixed;
+  bottom: 116rpx;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+

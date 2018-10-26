@@ -10,9 +10,9 @@
   </view>
   </view>
  <!-- mid -->
-<scroll-view scroll-y class='mid'>
+<scroll-view scroll-y class='mid' bindscrolltoupper="upper" bindscrolltolower="lower">
   <view class='mid_main'>
-    <view class='mid_Item' bindtap='TopOnlineJobDetail' wx:for="{{jobData}}">
+    <view class='mid_Item' bindtap='TopOnlineJobDetail' data-id='{{item.tid}}' wx:key="{{index}}" wx:for="{{jobData}}">
       <view class='mid_top'>
         <view class='mid_title'>
         {{item.title}}
@@ -23,15 +23,15 @@
       </view>
       <view class='mid_mid'>
           <view class='mid_midSY'>
-          {{item.shenyue}}份
+          {{item.num}}份
           </view>
       </view>
       <view class='mid_bottom'>
         <view class='mid_date'>
-        {{item.Date}}
+        {{item.jztime}}
         </view>
         <view class='mid_money'>
-        {{item.money}}元/次
+        {{item.price}}元/次
         </view>
       </view>
     </view>

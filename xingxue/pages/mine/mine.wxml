@@ -39,7 +39,7 @@
           <view class='psnMenuFK' bindtap='ToMyTracks' data-id="{{userId}}">
             <view class='psnMenuFK_Item'>
               <view class='psnMenuI_img'>
-                <image src='http://pgq6951kf.bkt.clouddn.com/icon69.png'></image>
+                <image src='https://app.xingxue.vip/icon/icon69.png'></image>
               </view>
               <view class='psnMenuFk_txt'>
                 足迹
@@ -57,7 +57,7 @@
     <view class='mid_Item midItemL' bindtap='ToMyWallet'>
       <view class='mid_ItemT'>
         <view class='mid_ItemTImg'>
-          <image src='http://pgq6951kf.bkt.clouddn.com/icon70.png'></image>
+          <image src='https://app.xingxue.vip/icon/icon70.png'></image>
         </view>
         <view class='mid_ItemTr'>我的钱包</view>
       </view>
@@ -69,7 +69,7 @@
     <view class='mid_Item' bindtap='ToOnlineJob'>
       <view class='mid_ItemT'>
         <view class='mid_ItemTImg'>
-          <image src='http://pgq6951kf.bkt.clouddn.com/icon71.png'></image>
+          <image src='https://app.xingxue.vip/icon/icon71.png'></image>
         </view>
         <view class='mid_ItemTr'>兼职任务</view>
       </view>
@@ -84,7 +84,7 @@
     <view class='bottom_Item' bindtap='ToMyReceipt'>
       <view class='bottom_ItemL'>
         <view class='bottom_ItemImg'>
-          <image src='http://pgq6951kf.bkt.clouddn.com/icon72.png'></image>
+          <image src='https://app.xingxue.vip/icon/icon72.png'></image>
         </view>
         <view class='bottom_ItemLtxt'>
           我的接单
@@ -103,7 +103,7 @@
     <view class='bottom_Item' bindtap='ToApplicationSkill'>
       <view class='bottom_ItemL'>
         <view class='bottom_ItemImg'>
-          <image src='http://pgq6951kf.bkt.clouddn.com/icon73.png'></image>
+          <image src='https://app.xingxue.vip/icon/icon73.png'></image>
         </view>
         <view class='bottom_ItemLtxt'>
           申请技能
@@ -122,7 +122,7 @@
     <view class='bottom_Item' bindtap='ToOrderCenter'>
       <view class='bottom_ItemL'>
         <view class='bottom_ItemImg'>
-          <image src='http://pgq6951kf.bkt.clouddn.com/icon74.png'></image>
+          <image src='https://app.xingxue.vip/icon/icon74.png'></image>
         </view>
         <view class='bottom_ItemLtxt'>
           订单中心
@@ -141,7 +141,7 @@
     <view class='bottom_Item' bindtap='ToInvitationCode'>
       <view class='bottom_ItemL'>
         <view class='bottom_ItemImg'>
-          <image src='http://pgq6951kf.bkt.clouddn.com/my_iocn01.png'></image>
+          <image src='https://app.xingxue.vip/icon/my_iocn01.png'></image>
         </view>
         <view class='bottom_ItemLtxt'>
           机构邀请码
@@ -159,7 +159,7 @@
     <button class='botton bottom_Item bottom_Btn' open-type="contact">
       <view class='bottom_ItemL'>
         <view class='bottom_ItemImg'>
-          <image src='http://pgq6951kf.bkt.clouddn.com/icon75.png'></image>
+          <image src='https://app.xingxue.vip/icon/icon75.png'></image>
         </view>
         <view class='bottom_ItemLtxt'>
           在线客服
@@ -178,7 +178,7 @@
     <view class='bottom_Item' bindtap='ToFeedback'>
       <view class='bottom_ItemL'>
         <view class='bottom_ItemImg'>
-          <image src='http://pgq6951kf.bkt.clouddn.com/icon76.png'></image>
+          <image src='https://app.xingxue.vip/icon/icon76.png'></image>
         </view>
         <view class='bottom_ItemLtxt'>
           意见反馈
@@ -202,7 +202,7 @@
     <button class='loading_midMenu botton'  open-type="getUserInfo" bindgetuserinfo="ToLoded">
      
       <view class='loading_midMenuImg'>
-        <image src='http://pgq6951kf.bkt.clouddn.com/my_icon_weixin.png'></image>
+        <image src='https://app.xingxue.vip/icon/my_icon_weixin.png'></image>
       </view>
       <view class='loading_midMenuTxt'>
        微信快速登录
@@ -216,7 +216,7 @@
     <button class='loading_midMenu botton' open-type="getPhoneNumber" bindgetphonenumber="Register">
      
       <view class='loading_midMenuImg'>
-        <image src='http://pgq6951kf.bkt.clouddn.com/my_icon_weixin.png'></image>
+        <image src='https://app.xingxue.vip/icon/my_icon_weixin.png'></image>
       </view>
       <view class='loading_midMenuTxt'>
        注册

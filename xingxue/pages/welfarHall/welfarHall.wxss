@@ -24,7 +24,7 @@
   flex-direction: row;
   align-items: center;  
   justify-content: center;
-  
+  margin-right: 20rpx;
 }
 .url_Item>image{
   width: 78rpx;

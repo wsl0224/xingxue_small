@@ -6,70 +6,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    mySkillData:[{
-      id:'1',
-      name:'叫醒服务',
-    }, {
-      id: '2',
-      name: '王者服务',
-      }, {
-        id: '3',
-        name: '叫醒服务',
-      }, {
-        id: '4',
-        name: '叫醒服务',
-      }
-      ],
-      noApplySkillData:[
-        { 
-          title:'天天向上',
-          skillData:[{
-            id: '2',
-            name: '王者服务',
-            status:1,
-          }, {
-              id: '3',
-              name: '嘴角',
-              status: 2,
-              },{
-              id: '4',
-              name: '王者服务',
-              status: 2,
-              },{
-              id: '5',
-              name: '王者服务',
-              status: 2,
-              }]
-        }, {
-          title: '天天向上',
-          skillData: [{
-            id: '2',
-            name: '王者服务',
-            status: 1,
-          }, {
-            id: '3',
-            name: '王者服务',
-              status: 2,
-          }, {
-            id: '4',
-            name: '王者服务',
-              status: 1,
-          }, {
-            id: '5',
-            name: '王者服务',
-              status: 2,
-          }]
-        }
-      ],
+    mySkillData:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.freshData();
   },
-
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -81,7 +27,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.freshData();
   },
 
   /**
@@ -118,18 +64,44 @@ Page({
   onShareAppMessage: function () {
 
   },
+  // 设置技能 
+  ToMySkillSet:function(e){
+    $.openWin({
+      url: '../mySkill/mySkillSet',
+      data:{
+        id: e.currentTarget.dataset.id,
+        name:e.currentTarget.dataset.name,
+        cid: e.currentTarget.dataset.cid,
+      }
+    })
+  },
   // 跳转技能认证详情
   ToSkillCertification:function(e){
-    console.log(e);
-    if(e.currentTarget.dataset.status==1){
+    if(e.currentTarget.dataset.status==0){
       $.openWin({
         url:'../skillCertification/skillCertification',
-
+        data: {
+          id: e.currentTarget.dataset.id,
+          name: e.currentTarget.dataset.name,
+        }
       })
     }else{
       wx.showToast({
         title: '当前技能在审核中',
       })
     }
+  },
+  // 刷新
+  freshData:function(e){
+    let self=this;
+    $.POST({
+      url:'wcUserSUS',
+      data:{},
+    },function(e){
+      console.log(e);
+      self.setData({
+        mySkillData:e.data,
+      })
+    })
   }
 })

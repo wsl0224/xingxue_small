@@ -16,7 +16,7 @@ Page({
    */
   onLoad: function (options) {
     let data=JSON.parse(options.data);
-    console.log(data);
+  
     let self=this;
     wx.setNavigationBarTitle({
       title: data.title
@@ -24,7 +24,7 @@ Page({
     self.setData({
       OneId: data.id,
     })
-    self.freshData(data);
+    self.freshData();
 
   },
   freshData:function(e){
@@ -33,7 +33,7 @@ Page({
       {
         url: 'wcSkillSSL',
         data: {
-          cate_id: e.id,
+          cate_id:self.data.OneId,
           page:1,
         }
       },function(e){
@@ -41,7 +41,7 @@ Page({
         self.setData({
           psnData:e.data,
         });
-        this.page=1;
+        page=1;
       },
       function(e){
         console.log(e);
@@ -50,14 +50,18 @@ Page({
   },
   // upper
   upper:function(e){
+    this.freshData();
+  },
+  lower:function(e){
+    
     let self = this;
-    self.page++;
+    page++;
     $.POST(
       {
         url: 'wcSkillSSL',
         data: {
           cate_id: self.data.OneId,
-          page: self.page,
+          page: page,
         }
       }, function (e) {
         self.setData({
@@ -68,9 +72,6 @@ Page({
         console.log(e);
       }
     )
-  },
-  lower:function(e){
-    this.freshData();
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -83,7 +84,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.freshData();
   },
 
   /**

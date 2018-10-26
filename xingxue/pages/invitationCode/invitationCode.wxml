@@ -6,7 +6,7 @@
         填写邀请码赚现金红包
       </view>
       <view class='top_midB'>
-       <input placeholder='请填写邀请码' placeholder-class='top_BInput'></input>
+       <input placeholder='请填写邀请码' bindinput='keyBtn' placeholder-class='top_BInput'></input>
       </view>
     </view>
   </view>
@@ -22,7 +22,7 @@
     4.已获得红包奖励的用户不再享受该红包"
     </view>
   </view>
-  <view class='footer'>
+  <view class='footer' bindtap='submitBtn'>
     提交
   </view>
 </view>

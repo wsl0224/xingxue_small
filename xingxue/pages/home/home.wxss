@@ -134,7 +134,7 @@
   margin:3.9rpx;
    display: flex;
   flex-direction: row wrap;
-  align-items: center;
+  
   justify-content: space-between;
   flex-wrap:wrap;
 }

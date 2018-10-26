@@ -1,43 +1,73 @@
 <!--pages/myAttentionFans/myAttentionFans.wxml-->
 <view class='main'>
-<view class='top'>
+  <view class='top'>
     <view class="top_item left {{atteStatus?'active':''}}" data-id='left' bindtap='ChooseTab'>
       <view class='attention'> 关注</view>
     </view>
-  
+
     <view class="top_item right {{fansStatus?'active':''}}" data-id='right' bindtap='ChooseTab'>
-    <view class='fans'>
-      粉丝
+      <view class='fans'>
+        粉丝
+      </view>
     </view>
   </view>
-</view>
-<scroll-view scroll-y class='list'>
-     <view data-id='{{item.id}}' class="{{index==0?'first_item':'item_main'}}" wx:for="{{psnData}}">
+  <scroll-view scroll-y class='list' bindscrolltoupper="upper" bindscrolltolower="lower">
+    <view data-id='{{item.uid}}' style='{{dataList}}'  wx:key="{{index}}"  wx:if="{{atteStatus}}"  bindtouchstart="drawStart" bindtouchmove="drawMove" bindtouchend="drawEnd" style="right:{{item.right}}rpx"  data-index="{{index}}"  data-fid='{{item.fid}}' class="{{index==0?'first_item':'item_main'}} atte-item" wx:for="{{psnData}}">
+      <view class='item_content' style='{{item.txtStyle}}'>
+        <view class='item_contentL'>
+          <view class='item_image'>
+            <image src='{{item.avatar}}' />
+          </view>
+          <view class='item_txt'>
+            <view class='item_txtName'>
+              {{item.user_nicename}}
+            </view>
+            <view class="item_sex {{item.sex==1?'item_sexN':'item_sexW'}}">
+              <view class='item_sexL'>
+                <image src="{{item.sex==1?'https://app.xingxue.vip/icon/icon46.png':'https://app.xingxue.vip/icon/icon45.png'}}" />
+              </view>
+              <view class='item_sexR'>
+                {{item.age}}
+              </view>
+            </view>
+            <view class='item_qinming'>
+              {{item.signature}}
+            </view>
+          </view>
+        </view>
+
+      </view>
+      <!-- 取关 -->
+       <view class="remove" bindtap="delItem" data-id="{{item.fid}}">取关</view>
+    </view>
+<!-- 粉丝 -->
+  <view data-id='{{item.uid}}' wx:key="{{index}}" wx:if="{{fansStatus}}" data-fid='{{item.fid}}' class="{{index==0?'first_item':'item_main'}}" wx:for="{{psnData}}">
       <view class='item_content'>
         <view class='item_contentL'>
-            <view class='item_image'>
-              <image src='{{item.url}}' />
+          <view class='item_image'>
+            <image src='{{item.avatar}}'/>
+          </view>
+          <view class='item_txt'>
+            <view class='item_txtName'>
+              {{item.user_nicename}}
             </view>
-            <view class='item_txt'>
-              <view class='item_txtName'>
-              {{item.name}}
+            <view class="item_sex {{item.sex==1?'item_sexN':'item_sexW'}}">
+              <view class='item_sexL'>
+                <image src="{{item.sex==1?'https://app.xingxue.vip/icon/icon46.png':'https://app.xingxue.vip/icon/icon45.png'}}" />
               </view>
-              <view class="item_sex {{item.sex==1?'item_sexN':'item_sexW'}}">
-                <view class='item_sexL'>
-                <image src="{{item.sex==1?'http://pgq6951kf.bkt.clouddn.com/icon46.png':'http://pgq6951kf.bkt.clouddn.com/icon45.png'}}"/>
-                </view>
-                <view class='item_sexR'>
+              <view class='item_sexR'>
                 {{item.age}}
-                </view>
-              </view>
-              <view class='item_qinming'>
-              {{item.qianming}}
               </view>
             </view>
+            <view class='item_qinming'>
+              {{item.signature}}
+            </view>
+          </view>
         </view>
-       
-      </view>
-  </view>
-</scroll-view>
-</view>
 
+      </view>
+      <!-- 关注事件 -->
+    </view>
+
+  </scroll-view>
+</view>

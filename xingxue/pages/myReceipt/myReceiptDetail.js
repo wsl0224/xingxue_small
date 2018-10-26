@@ -1,37 +1,40 @@
 // pages/myReceipt/myReceiptDetail.js
+let $ = require('../util/commit.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    orderData: {
-      url: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-      name: '成都小甜甜',
-      title: 'LOL陪玩',
-      XZ: '限女',
-      sex: 2,
-      age: 20,
-      addr: '南京',
-      Time: '刚刚  08月08日 21:00',
-      num: 1,
-      unit:'小时',
-      status: 1,
-      psnEaluateVal:'5.0',
-      OrderType:'LOL陪玩',
-      money:'15.00',
-      Discount:'暂无优惠',
-      
-    }
+    oid:'',
+    orderData: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let param=JSON.parse(options.data);
+    this.setData({
+      oid: param.id,
+    })
+    this.freshData();
   },
-
+  freshData:function(e){
+    let self=this;
+    $.POST({
+      url:'wcOrderSOD',
+      data:{
+        oid:self.data.oid,
+        type:2,
+      }
+    },function(e){
+      self.setData({
+        orderData: e.data,
+      })
+    
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -43,7 +46,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.freshData();
   },
 
   /**

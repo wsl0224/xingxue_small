@@ -1,100 +1,20 @@
 // pages/myTracks/myTracks.js
+let $=require('../util/commit.js');
+let pageNum=1;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    psnData: [
-      {
-        id: '1',
-        url: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',
-        name: '成都小甜甜',
-        sex: '1',
-        age: '20',
-        time: '22分钟前',
-        num: 129,
-        qianming: '爱到最美是陪伴',
-        money: 8,
-      }, {
-        id: '2',
-        url: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',
-        name: '成都小甜甜',
-        sex: '2',
-        age: '20',
-        time: '22分钟前',
-        num: 129,
-        qianming: '爱到最美是陪伴',
-        money: 8,
-      }, {
-        id: '3',
-        url: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',
-        name: '成都小甜甜',
-        sex: '1',
-        age: '20',
-        time: '22分钟前',
-        num: 129,
-        qianming: '爱到最美是陪伴',
-        money: 8,
-      }, {
-        id: '3',
-        url: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',
-        name: '成都小甜甜',
-        sex: '1',
-        age: '20',
-        time: '22分钟前',
-        num: 129,
-        qianming: '爱到最美是陪伴',
-        money: 8,
-      }, {
-        id: '3',
-        url: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',
-        name: '成都小甜甜',
-        sex: '1',
-        age: '20',
-        time: '22分钟前',
-        num: 129,
-        qianming: '爱到最美是陪伴',
-        money: 8,
-      }, {
-        id: '3',
-        url: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',
-        name: '成都小甜甜',
-        sex: '1',
-        age: '20',
-        time: '22分钟前',
-        num: 129,
-        qianming: '爱到最美是陪伴',
-        money: 8,
-      }, {
-        id: '3',
-        url: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',
-        name: '成都小甜甜',
-        sex: '1',
-        age: '20',
-        time: '22分钟前',
-        num: 129,
-        qianming: '爱到最美是陪伴',
-        money: 8,
-      }, {
-        id: '3',
-        url: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',
-        name: '成都小甜甜',
-        sex: '1',
-        age: '20',
-        time: '22分钟前',
-        num: 129,
-        qianming: '爱到最美是陪伴',
-        money: 8,
-      },
-    ]
+    psnData: [ ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.freshData();
   },
 
   /**
@@ -144,5 +64,45 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  // 刷新数据
+  freshData:function(e){
+    let self=this;
+    $.POST({ url:'wcUserSUF',data:{
+      page:1
+    }},function(e){
+      pageNum=1;
+      self.setData({
+        psnData:e.data,
+      })
+    },function(e){
+      console.log(e);
+    })
+  },
+  // 加载更多
+  freshMoreData:function(e){
+    let self = this;
+    pageNum++;
+    $.POST({
+      url: 'wcUserSUF', data: {
+        page: pageNum
+      }
+    }, function (e) {
+
+      self.setData({
+        psnData: self.data.psnData.concat(e.data),
+      })
+    }, function (e) {
+      console.log(e);
+    })
+  },
+  // 跳转人员主页 
+  ToPsnPage:function(e){
+    $.openWin({
+      url:'../psnPage/psnPage',
+      data:{
+        id:e.currentTarget.dataset.id,
+      }
+    })
   }
 })

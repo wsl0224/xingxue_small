@@ -14,15 +14,9 @@ Page({
     TwoLeverName:'',
     Midlatitude: '',
     Midlongitude: '',
-    markers: [{
-      iconPath: "http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg",
-      id: 0,
-      latitude: 23.099994,
-      longitude: 113.324520,
-      width: 50,
-      height: 50,
-      borderRadius: 25,
-    }],
+    Mlatitude: '',
+    Mlongitude: '',
+    markers: [],
    
   },
 
@@ -42,6 +36,8 @@ Page({
         self.setData({
           Midlatitude: res.latitude,
           Midlongitude: res.longitude,
+          Mlatitude: res.latitude,
+          Mlongitude: res.longitude,
         })
       }
     })
@@ -70,7 +66,7 @@ Page({
   // 加载Marker
   freshMarker: function(TwoId) {
     let self = this;
-    let coordinates = self.data.Midlongitude + ',' + self.data.Midlatitude;
+    let coordinates = self.data.Mlongitude + ',' + self.data.Mlatitude;
     $.POST({
       url: 'wcSkillSMUS',
       data: {
@@ -79,6 +75,7 @@ Page({
         proportion: 20,
       }
     }, function(e) {
+      console.log(e.data);
       self.setData({
         markers: e.data
       })
@@ -91,7 +88,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-
+    this.Map = wx.createMapContext('map')
   },
 
   /**
@@ -180,8 +177,16 @@ Page({
   },
   // 移动地图
   regionchange:function(e){
-    console.log(e);
-    console.log(e.type)
+    let self=this;
+    self.Map.getCenterLocation({
+      success: function (res) {
+        self.setData({
+          Mlatitude: res.latitude,
+          Mlongitude: res.longitude,
+        })
+        self.freshMarker(self.data.TwoLeverId);
+      }
+    })
   } 
 
 })

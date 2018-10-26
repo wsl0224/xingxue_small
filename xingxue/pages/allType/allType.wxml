@@ -4,7 +4,7 @@
     <view class='top' bindtap='ToLevePage'>
         <view class='top_left'>
           <view class='top_leftL'>
-          <image src='http://pgq6951kf.bkt.clouddn.com/icon36.png'/>
+          <image src='https://app.xingxue.vip/icon/icon36.png'/>
           </view>
           <view class='top_leftR'>
             极速下单

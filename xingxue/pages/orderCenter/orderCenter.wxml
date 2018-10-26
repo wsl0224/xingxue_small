@@ -2,7 +2,7 @@
 <wxs module="publicFun" src="../util/publicFun.wxs"></wxs>
 <scroll-view scroll-y class='main' bindscrolltoupper="upper" bindscrolltolower="lower">
 <view class='main_body'>
-  <view class='main_item' wx:for="{{orderData}}" data-id="{{item.oid}}" data-status="{{item.status}}" bindtap='ToOrderDetail'>
+  <view class='main_item' wx:key="{{index}}" wx:for="{{orderData}}" data-id="{{item.oid}}" data-status="{{item.status}}" bindtap='ToOrderDetail'>
     <view class="main_itemTitle {{item.status==1?'active':''}}">
       {{publicFun.showStatusLabel(item.status)}}
     </view>
@@ -12,7 +12,7 @@
       </view>
       <view class='main_skillR'>
         <view class='main_SName'>
-          技能：{{item.skillName}}
+          技能：{{item.cname}}
         </view>
         <view class='main_STime'>
           服务开始时间：{{item.begin_time}}

@@ -2,7 +2,7 @@
 <wxs module="publicFun" src="../util/publicFun.wxs"></wxs>
 <scroll-view scroll-y class='main' bindscrolltoupper='upper' bindscrolltolower="lower">
 <view class='main_body'>
-<view class='main_list'  wx:for="{{orderData}}" bindtap='ToMyReceiptDetail'>
+<view class='main_list'  wx:for="{{orderData}}" bindtap='ToMyReceiptDetail' data-oid="{{item.oid}}">
     <view class='main_Item'>
       <view class='Item_Image'>
         <image src='{{item.avatar}}'></image>
@@ -21,7 +21,7 @@
           </view>
           <view class="Item_SexAge {{item.sex==1?'man':'woman'}}">
             <view class='Item_Sex'>
-                  <image src="{{item.sex==1?'http://pgq6951kf.bkt.clouddn.com/icon46.png':'http://pgq6951kf.bkt.clouddn.com/icon45.png'}}"/>
+                  <image src="{{item.sex==1?'https://app.xingxue.vip/icon/icon46.png':'https://app.xingxue.vip/icon/icon45.png'}}"/>
             </view>
             <view class='Item_Age'>
             {{item.age}}

@@ -19,7 +19,7 @@
 }
 
 .input-section .love{
-  background:url(http://avc.qcloud.com/demo/webim/biggroup/mobile/img/like_hover.png);
+
   background-size:100%;
   width:70rpx;height:70rpx;
   display: block;

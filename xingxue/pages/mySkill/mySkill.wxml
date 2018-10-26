@@ -1,15 +1,15 @@
 <!--pages/mySkill/mySkill.wxml-->
-<scroll-view class='main'>
+<scroll-view class='main' scroll-y> 
   <view class='top'>
     <view class='top_title'>
     我的技能
     </view>
     <view class='top_List'>
-      <view class='top_tips' wx:if="{{mySkillData.length==0}}">
+      <view class='top_tips' wx:if="{{mySkillData.skill.length==0}}">
         您还没有技能，快去申请第一个技能把~
       </view>
-      <view class='top_item' wx:if="{{mySkillData.length>0}}">
-          <view class='top_itemN' data-id='{{itm.id}}' wx:for="{{mySkillData}}">
+      <view class='top_item'  wx:if="{{mySkillData.skill.length>0}}">
+          <view class='top_itemN' data-id='{{item.sid}}' wx:key="{{index}}" data-cid='{{item.cate_id}}' data-name="{{item.name}}"  wx:for="{{mySkillData.skill}}" bindtap='ToMySkillSet'>
             {{item.name}}
           </view>
       </view>
@@ -20,13 +20,13 @@
     未申请技能
     </view>
     <view class='mid_List'>
-        <view class='mid_ItemC' wx:for="{{noApplySkillData}}"> 
+        <view class='mid_ItemC' wx:key="{{index}}" wx:for="{{mySkillData.classification}}"> 
           <view class='mid_ItemTitle'>
-           {{item.title}}
+           {{item.name}}
           </view>
           <view class='mid_itemCB'>
              
-              <view class='mid_Items' wx:for="{{item.skillData}}" data-status='{{item.status}}' bindtap='ToSkillCertification'>
+              <view class='mid_Items' data-id='{{item.cate_id}}' data-name="{{item.name}}" wx:key="{{index}}"  wx:for="{{item.child}}" data-status='{{item.status}}' bindtap='ToSkillCertification'>
                   <view class="mid_itemCTR {{item.status==1?'XRZ':'SHZ'}}"  wx:if="{{item.status>0}}">
                     {{item.status==1?'需认证':'审核中'}}
                   </view>

@@ -1,40 +1,51 @@
 <!--pages/orderCenter/choosePsnPage.wxml-->
 <scroll-view>
-  <view data-id='{{item.id}}' class="{{index==0?'first_item':'item_main'}}" wx:for="{{psnData}}">
-      <view class='item_content'>
-        <view class='item_contentL'>
-            <view class='item_image'>
-              <image src='{{item.url}}' />
-            </view>
-            <view class='item_txt'>
-              <view class='item_txtName'>
-              {{item.name}}
-              </view>
-              <view class="item_sex {{item.sex==1?'item_sexN':'item_sexW'}}">
-                <view class='item_sexL'>
-                <image src="{{item.sex==1?'http://pgq6951kf.bkt.clouddn.com/icon46.png':'http://pgq6951kf.bkt.clouddn.com/icon45.png'}}"/>
-                </view>
-                <view class='item_sexR'>
-                {{item.age}}
-                </view>
-              </view>
-              <view class='item_qinming'>
-              {{item.qianming}}
-              </view>
-            </view>
+  <view data-id='{{item.aou_id}}' bindtap='SelectBtn' data-oid="{{item.oid}}" data-money="{{item.price}}" class="{{index==0?'first_item':'item_main'}}" wx:for="{{psnData}}">
+    <view class='item_content'>
+      <view class='item_contentL'>
+        <view class='item_image'>
+          <image src='{{item.avatar}}' mode='ceneter' />
         </view>
-        <view class='item_contentR'>
-          <view class='item_time'>
-            {{item.time}}
+        <view class='item_txt'>
+          <view class='item_txtName'>
+            {{item.user_nicename}}
           </view>
-          <view class='item_num'>
-            接单{{item.num}}次
+          <view class="item_sex {{item.sex==1?'item_sexN':'item_sexW'}}">
+            <view class='item_sexL'>
+              <image src="{{item.sex==1?'https://app.xingxue.vip/icon/icon46.png':'https://app.xingxue.vip/icon/icon45.png'}}" />
+            </view>
+            <view class='item_sexR'>
+              {{item.age}}
+            </view>
           </view>
-          <view class='item_money'>
-            ￥{{item.money}}
+          <view class='item_qinming'>
+            {{item.signature}}
           </view>
         </view>
-        
       </view>
+      <view class='item_contentR'>
+        <view class='item_time'>
+          {{item.begin_time}}
+        </view>
+        <view class='item_num'>
+          接单{{item.num}}次
+        </view>
+        <view class='item_money'>
+          ￥{{item.price}}
+        </view>
+      </view>
+    </view>
   </view>
 </scroll-view>
+<view class='Footer' wx:if="{{showFooter}}" bindtap='HideFooter'>
+  <view class='FMain'>
+    <view class='Footer_Item'>
+      <view class='Footer_lab'>费用</view>
+      <view class='Footer_Val'>{{SelectMoney}}</view>
+    </view>
+    <view class='FooterBtn' bindtap='sureBtn'>
+      确认
+    </view>
+  </view>
+
+</view>

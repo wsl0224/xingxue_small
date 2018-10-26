@@ -5,7 +5,7 @@
     <view class='top'>
       <view class='psnInfo' data-id='{{skillData.uid}}' bindtap='ToPsnPage'>
         <view class='psnInfo_img'>
-          <image src='{{skillData.avatar}}' mode='center' />
+          <image src='{{skillData.avatar}}' />
         </view>
         <view class='psnInfoR'>
           <view class='psnInfoRT'>
@@ -14,7 +14,7 @@
             </view>
             <view class="psnInfo_sex {{skillData.sex==1?'psnInfo_sexN':'psnInfo_sexW'}}">
               <view class='psnInfo_sexImg'>
-                <image src="{{skillData.sex==1?'http://pgq6951kf.bkt.clouddn.com/icon46.png':'http://pgq6951kf.bkt.clouddn.com/icon45.png'}}" />
+                <image src="{{skillData.sex==1?'https://app.xingxue.vip/icon/icon46.png':'https://app.xingxue.vip/icon/icon45.png'}}" />
               </view>
               <view class='psnInfo_sexTxt'>
                 {{skillData.age}}
@@ -23,7 +23,7 @@
           </view>
           <view class='psnInfo_addr'>
             <view class='psnInfo_addrImg'>
-              <image src='http://pgq6951kf.bkt.clouddn.com/icon47.png' />
+              <image src='https://app.xingxue.vip/icon/icon47.png' />
             </view>
             <view class='psnInfo_addrTxt'>
               {{skillData.address}}
@@ -33,18 +33,18 @@
       </view>
       <view class='topR'>
         <view class="guanzhu" bindtap='FollowerBtn' data-id="{{skillData.uid}}" data-status='{{skillData.follower_status}}'>
-          {{skillData.follower_status==1?'关注':'已关注'}}
+          {{skillData.follower_status==1?'已关注':'未关注'}}
         </view>
       </view>
     </view>
     <view class='photo'>
       <view class='photoImg'>
-        <image src='{{skillData.pic}}' mode='center'>
+        <image src='{{skillData.pic}}'>
         </image>
       </view>
       <view class='photoR'>
-        <view class="{{index<2?'photoR_item':'photoR_itemLast'}}" wx:for="{{skillData.image}}">
-          <image src='{{item}}' mode='center'></image>
+        <view class="{{index<2?'photoR_item':'photoR_itemLast'}}" wx:key="{{index}}" wx:for="{{skillData.image}}">
+          <image src='{{item}}'></image>
         </view>
       </view>
     </view>
@@ -58,7 +58,7 @@
       <view class='skillNP'>
         <view class='skillNPL'>
           <view class='skillNPL_IMG'>
-            <image src='http://pgq6951kf.bkt.clouddn.com/icon50.png'>
+            <image src='https://app.xingxue.vip/icon/icon50.png'>
             </image>
           </view>
           <view class='skillNPL_txt'>
@@ -68,8 +68,8 @@
         <view>
           <view class='pingfen'>
             <view class='pingfenList'>
-              <view class='pingfenImg' wx:for="{{publicFun.showStars(skillData.score)}}">
-                <image src='http://pgq6951kf.bkt.clouddn.com/my_iocn03.png' />
+              <view class='pingfenImg' wx:key="{{index}}" wx:for="{{publicFun.showStars(skillData.score)}}">
+                <image src='https://app.xingxue.vip/icon/my_iocn03.png' />
               </view>
 
             </view>
@@ -83,7 +83,7 @@
     <view class='skillC'>
       <view class='skillMusic'>
         <view class='skillML'>
-          <image src='http://pgq6951kf.bkt.clouddn.com/icon48.png'></image>
+          <image src='https://app.xingxue.vip/icon/icon48.png'></image>
         </view>
         <view class='skillM_Time'>
           {{skillData.musicTime}}

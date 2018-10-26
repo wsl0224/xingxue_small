@@ -1,4 +1,5 @@
 // pages/recharge/recharge.js
+let $=require('../util/commit.js');
 Page({
 
   /**
@@ -14,7 +15,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      endMoney:this.data.moneyData[0],
+    })
   },
 
   /**
@@ -80,6 +83,7 @@ Page({
       this.setData({
         inputValue: e.detail.value,
         indexNum: -1,
+        endMoney:e.detail.value,
       })
     }else{
       this.setData({
@@ -92,7 +96,27 @@ Page({
   },
   // 充值事件
   DoRecharge:function(e){
-    console.log('充值事件');
+    let self=this;
+    $.POST({ url:'wcUserR',data:{
+      price: self.data.endMoney,
+      pay_type:2
+    }},function(e){
+      console.log(e);
+      wx.requestPayment({
+        'timeStamp': e.data.timeStamp,
+        'nonceStr': e.data.nonceStr,
+        'package': e.data.package,
+        'signType': 'MD5',
+        'paySign': e.data.paySign,
+        'success': function (res) { 
+         console.log(res);
+        },
+        'fail': function (res) { },
+        'complete': function (res) { }
+      });
+    },function(e){
+      console.log(e)
+    })
   }
  
 })

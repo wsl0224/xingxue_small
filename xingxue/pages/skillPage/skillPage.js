@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    paramData:'',
     skillData: {}
   },
 
@@ -14,23 +15,27 @@ Page({
    */
   onLoad: function(options) {
     let param = JSON.parse(options.data);
+    this.setData({
+      paramData:param,
+    });
+    this.freshData();
+  },
+  freshData:function(e){
     let self = this;
     $.POST({
-        url: 'wcSkillSSD',
-        data: {
-          usid: param.id
-        }
-      }, function(e) {
-        self.setData({
-          skillData: e.data,
-        });
-      },
-      function(e) {
+      url: 'wcSkillSSD',
+      data: {
+        usid: self.data.paramData.id
+      }
+    }, function (e) {
+      self.setData({
+        skillData: e.data,
+      });
+    },
+      function (e) {
         console.log(e);
       });
-
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -126,13 +131,13 @@ Page({
       $.POST({
         url: 'wcUserUFU',
         data: {
-          uid: e.currentTarget.dataset.id
+          fid: that.data.skillData.fid,
         }
       }, function (e) {
         wx.showToast({
-          title: e.data.msg,
+          title: e.msg,
         });
-        that.onLoad();
+        that.freshData();
       }, function (e) {
         console.log(e);
       })
@@ -144,9 +149,9 @@ Page({
         }
       }, function (e) {
         wx.showToast({
-          title: e.data.msg,
+          title: e.msg,
         });
-        that.onLoad();
+        that.freshData();
       }, function (e) {
         console.log(e);
       })

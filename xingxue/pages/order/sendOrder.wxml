@@ -19,12 +19,12 @@
   </view>
   <view>
     <cover-view class="mapMid">
-      <cover-image src='http://pgq6951kf.bkt.clouddn.com/icon27.png' class='mapMidTop' data-name="{{TwoLeverName}}" data-id="{{TwoLeverId}}" bindtap='ToDetail'>
+      <cover-image src='https://app.xingxue.vip/icon/icon271.png' class='mapMidTop' data-name="{{TwoLeverName}}" data-id="{{TwoLeverId}}" bindtap='ToDetail'>
        
       </cover-image>
   
       <cover-view class='mapMidBottom'>
-        <cover-image src='http://pgq6951kf.bkt.clouddn.com/icon28.png'/>
+        <cover-image src='https://app.xingxue.vip/icon/icon28.png'/>
       </cover-view>
     </cover-view>
     <map id="map" longitude="{{Midlongitude}}" latitude="{{Midlatitude}}" scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location

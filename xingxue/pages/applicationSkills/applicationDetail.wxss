@@ -78,13 +78,14 @@
   font-size: 32rpx;
   color: #999999;
 }
-.pInfo_title{
+.pInfo{
   height: 93rpx;
-  display: flex;
-  flex-direction: row;
+   display: flex;
+   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
+
 .pInfo_TLeft,.pInfo_Tright{
 width: 50%;
 font-size: 32rpx;

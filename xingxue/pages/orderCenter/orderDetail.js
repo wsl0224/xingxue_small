@@ -1,39 +1,39 @@
 // pages/orderCenter/orderDetail.js
+let $ = require('../util/commit.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    paramData:'',
-    orderData:{
-      psnImg: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-      psnName:'成都小甜甜',
-      sex:1,
-      age:20,
-      psnEaluateVal:'5.0',
-      Type:'LOL陪玩',
-      Time:'08月08日 18:30',
-      Num:1,
-      Money:'15.23',
-      Unit:'小时',
-      Discount:'暂无优惠',
-      
-    }
+    orderCode:'',
+    orderData:{},
+    EndOrderArr:['1','2','3','4','5']
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let param= JSON.parse(options.data);
     this.setData({
-      paramData:JSON.parse(options.data),
+      orderCode: param.id,
     });
+    this.freshData();
   },
 freshData:function(e){
-  $.POST(
-    
-  )
+  let self=this;
+  $.POST({
+    url:'wcOrderSOD',
+    data:{
+      oid: self.data.orderCode,
+      type:1
+    }
+  },function(e){
+    self.setData({
+      orderData: e.data,    
+    })
+  })
 },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -46,7 +46,7 @@ freshData:function(e){
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.freshData();
   },
 
   /**
@@ -82,5 +82,48 @@ freshData:function(e){
    */
   onShareAppMessage: function () {
 
+  },
+  // 取消未支付订单
+  clearOrder:function(e){
+    let self=this;
+    $.POST({
+      url:'wcOrderCNPO',
+      data:{
+        oid: self.data.orderCode,
+      }
+    },function(e){
+      wx.navigateBack();
+      wx.showToast({
+        title: e.msg,
+      });
+    })
+  },
+  // 支付订单
+  payOrder:function(e){
+    let self=this;
+    $.openWin({
+      url:'../payOrder/payOrder',
+      data:{
+        id: self.data.orderCode,
+      }
+    })
+  },
+  // 完成
+  EndOrderBtn:function(e){
+
+    let self = this;
+    let score = self.data.EndOrderArr[e.detail.index];
+    $.POST({
+      url: 'wcOrderUCO',
+      data: {
+        oid: self.data.orderCode,
+        score: score,
+      }
+    }, function (e) {
+      wx.navigateBack();
+      wx.showToast({
+        title: e.msg,
+      });
+    })
   }
 })

@@ -1,7 +1,7 @@
 // pages/onlineJob/onlineJobHall.js
 let $=require('../util/commit.js');
+let page=1,oldPage=0;
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -12,6 +12,7 @@ Page({
       {id:'2',name:'排序'}
     ],
      FLSelectIndex:0,
+     FLEndSelecVal:'',
      FLStatus:false,
      FLData:[{
       id:0,
@@ -22,6 +23,7 @@ Page({
     }],
     PXSelectIndex:0,
     PXStatus: false,
+    PXEndSelecVal:'',
     PXData:[{
         id: 0,
         name:'不限',
@@ -38,79 +40,55 @@ Page({
         id: 4,
         name:'其它',
       },],
-    JobData:[{
-      url:'../image/icon/icon44.png',
-      title:'下载微信注册后加100好友任务',
-      zdStatus:1,
-      sy:'1286',
-      date:'2016-09-30',
-      money:'28.00',
-    }, {
-        url: '../image/icon/icon44.png',
-        title: '下载微信注册后加100好友任务',
-        zdStatus: 1,
-        sy: '1286',
-        date: '2016-09-30',
-        money: '28.00',
-      }, {
-        url: '../image/icon/icon44.png',
-        title: '下载微信注册后加100好友任务',
-        zdStatus: 1,
-        sy: '1286',
-        date: '2016-09-30',
-        money: '28.00',
-      }, {
-        url: '../image/icon/icon44.png',
-        title: '下载微信注册后加100好友任务',
-        zdStatus: 2,
-        sy: '1286',
-        date: '2016-09-30',
-        money: '28.00',
-      }, {
-        url: '../image/icon/icon44.png',
-        title: '下载微信注册后加100好友任务',
-        zdStatus: 2,
-        sy: '1286',
-        date: '2016-09-30',
-        money: '28.00',
-      }, {
-        url: '../image/icon/icon44.png',
-        title: '下载微信注册后加100好友任务',
-        zdStatus: 2,
-        sy: '1286',
-        date: '2016-09-30',
-        money: '28.00',
-      }, {
-        url: '../image/icon/icon44.png',
-        title: '下载微信注册后加100好友任务',
-        zdStatus: 2,
-        sy: '1286',
-        date: '2016-09-30',
-        money: '28.00',
-      }, {
-        url: '../image/icon/icon44.png',
-        title: '下载微信注册后加100好友任务',
-        zdStatus: 2,
-        sy: '1286',
-        date: '2016-09-30',
-        money: '28.00',
-      }, {
-        url: '../image/icon/icon44.png',
-        title: '下载微信注册后加100好友任务',
-        zdStatus: 2,
-        sy: '1286',
-        date: '2016-09-30',
-        money: '28.00',
-      }]
-  },
+    JobData:[]},
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.freshData();
   },
-
+  freshData:function(e){
+    let self=this;
+    $.POST({
+      url:'Wc/Task/task_list',
+      data:{
+        page:1,
+        condition: self.data.FLEndSelecVal,
+        type:self.data.PXEndSelecVal,
+      }
+    },function(e){
+      self.setData({
+        JobData:e.data
+      });
+      page=1;
+      oldPage=0;
+    })
+  },
+  upper:function(e){
+    this.freshData();
+  },
+  lower:function(e){
+    let self = this;
+     console.log(page,oldPage);
+      if(page-oldPage==1){
+        page++;
+        $.POST({
+          url: 'Wc/Task/task_list',
+          data: {
+            page: page,
+            condition: self.data.FLEndSelecVal,
+            type: self.data.PXEndSelecVal,
+          }
+        }, function (e) {
+          self.setData({
+            JobData: self.data.JobData.concat(e.data)
+          });
+          oldPage++;
+        })
+      }
+    
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -122,7 +100,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.freshData();
   },
 
   /**
@@ -172,17 +150,23 @@ Page({
       this.setData({
         FLStatus:!this.data.FLStatus,
         PXStatus:false,
+        FLEndSelecVal: '',
+       
+       
       })
     } else if (e.currentTarget.dataset.id == 1){
       this.setData({
         FLStatus: false,
         PXStatus: !this.data.PXStatus,
+        
       })
     }
     this.setData({
       selectIndex:e.currentTarget.dataset.id,
-    
+      FLEndSelecVal: '',
+      PXEndSelecVal: '',
     })
+
   },
   // 分类选择
   FLItemTab:function(e){
@@ -190,7 +174,19 @@ Page({
       FLSelectIndex: e.currentTarget.dataset.id,
       FLStatus: false,
       PXStatus: false,
+   
+
     })
+    if(e.currentTarget.dataset.id==0){
+      this.setData({
+        FLEndSelecVal: 'price',
+      })
+    }
+    if (e.currentTarget.dataset.id == 1) {
+      this.setData({
+        FLEndSelecVal: 'time',
+      })
+    }
   },
   // 排序选择
   PXItemTab:function(e){
@@ -198,10 +194,11 @@ Page({
       PXSelectIndex: e.currentTarget.dataset.id,
       FLStatus: false,
       PXStatus: false,
+      PXEndSelecVal:e.currentTarget.dataset.name
     })
   },
   // 进入任务详情
   ToOnlineJobDetail:function(e){
-    $.openWin({ url:'../onlineJob/onlineJobDetail'})
+    $.openWin({ url:'../onlineJob/onlineJobDetail',data:{id:e.currentTarget.dataset.id}})
   }
 })

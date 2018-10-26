@@ -1,11 +1,12 @@
 <!--pages/welfarHall/welfarHall.wxml-->
+<wxs module="publicFun" src="../util/publicFun.wxs"></wxs>
 <scroll-view class='main'  bindscrolltoupper="upper" bindscrolltolower="lower" >
     <view data-id="{{item.id}}" class='Item' bindtap='ToWelfarDetail' wx:for='{{urlArray}}'>
       <view class='url_Item'>
       <image src='{{item.path}}'/>
       </view>
       <view class='item_txt'>
-      {{item.title}}
+      {{publicFun.substr(item.title,15)}}
       </view>
     </view>
 </scroll-view>

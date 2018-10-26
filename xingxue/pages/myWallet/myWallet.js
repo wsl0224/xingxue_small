@@ -6,17 +6,30 @@ Page({
    * 页面的初始数据
    */
   data: {
-    yuer:'88.00',
-    shenghe:'6.00',
+    walletData:'',
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.freshData();
   },
+  // 加载数据
+  freshData:function(e){
+    let self=this;
+    $.POST({
+      url:'wcUserSUB',data:{
 
+    }},function(e){
+      self.setData({
+        walletData:e.data
+      })
+    },function(e){
+      console.log(e);
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -69,18 +82,12 @@ Page({
   ToBillDetail:function(e){
     $.openWin({
       url:'../billDetail/billDetail',
-      data:{
-        id:'111',
-      }
     })
   },
   // 跳转充值
   ToRecharge:function(e){
     $.openWin({
       url:'../recharge/recharge',
-      data:{
-        id:'111',
-      }
     })
   },
   // 跳转提现

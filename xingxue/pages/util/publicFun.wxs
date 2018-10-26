@@ -38,31 +38,31 @@ var publicFun = {
   // 根据状态num显示图片
   showStatusImg: function(e) {
     if (e == 1) {
-      return 'http://pgq6951kf.bkt.clouddn.com/n/my_icon3_receipt.png';
+      return 'https://app.xingxue.vip/icon/my_icon3_receipt.png';
     } 
     if (e == 2) {
-      return 'http://pgq6951kf.bkt.clouddn.com/my_icon4_receipt.png';
+      return 'https://app.xingxue.vip/icon/my_icon4_receipt.png';
     }
     if (e == 3) {
       return '';
     }
     if (e == 4) {
-      return 'http://pgq6951kf.bkt.clouddn.com/my_icon5_receipt.png';
+      return 'https://app.xingxue.vip/icon/my_icon5_receipt.png';
     }
     if (e == 5) {
-      return 'http://pgq6951kf.bkt.clouddn.com/my_icon7_receipt.png';
+      return 'https://app.xingxue.vip/icon/my_icon7_receipt.png';
     }
     if (e == 6) {
-      return 'http://pgq6951kf.bkt.clouddn.com/my_icon7_receipt.png';
+      return 'https://app.xingxue.vip/icon/my_icon7_receipt.png';
     }
     if (e == 7) {
-      return 'http://pgq6951kf.bkt.clouddn.com/my_icon8_receipt.png';
+      return 'https://app.xingxue.vip/icon/my_icon8_receipt.png';
     }
     if (e == 8) {
       return '';
     }
     if (e == 9) {
-      return 'http://pgq6951kf.bkt.clouddn.com/my_icon8_receipt.png';
+      return 'https://app.xingxue.vip/icon/my_icon8_receipt.png';
     }
   },
   showJobLabel: function(e) {
@@ -75,10 +75,10 @@ var publicFun = {
     if (e == 3) {
       return '已完成';
     }
-    if (e == 4) {
+    if (e == 5) {
       return '已过期';
     }
-    if (e == 5) {
+    if (e == 4) {
       return '任务失败';
     }
   },
@@ -105,9 +105,33 @@ var publicFun = {
 
     return starsArr;
   },
+  showApplicationStatus:function(e){
+    if(e==1){
+      return '未认证';
+    }
+    if(e==2){
+      return '申请中';
+    }
+    if(e==3){
+      return '通过';
+    }
+    if(e==4){
+      return '未通过';
+    }
+  },
   signature: function(e) {
     return '此人比较懒暂无签名';
+  },
+  substr:function(e,n){
+    if(e.length>n){
+      e=e.substring(0,n)+'...';
+    }
+    return e
+  },
+  stringToArr:function(e,splict){
+    return e.split(splict);
   }
+
 }
 
 module.exports = {
@@ -116,5 +140,8 @@ module.exports = {
   showJobLabel: publicFun.showJobLabel,
   showJobSBgColor: publicFun.showJobSBgColor,
   showStars: publicFun.showStars,
-  signature: publicFun.signature
+  signature: publicFun.signature,
+  showApplicationStatus: publicFun.showApplicationStatus,
+  substr: publicFun.substr,
+  stringToArr: publicFun.stringToArr
 }

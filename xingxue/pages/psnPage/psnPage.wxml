@@ -3,7 +3,7 @@
 <scroll-view scroll-y  class='main'>
   <view class='psnTop'>
     <view class='psnTop_image'>
-      <image src='{{psnData.avatar}}' mode='center'></image>
+      <image src='{{psnData.avatar}}'></image>
     </view>
     <view class='psnTopInfo'>
       <view class='psnTopInfoZ'>
@@ -13,7 +13,7 @@
           </view>
           <view class="psnInfo_topS  {{psnData.sex==1?'psnInfo_sexN':'psnInfo_sexW'}}">
             <view class="psnInfo_topSL">
-                <image src="{{psnData.sex==1?'http://pgq6951kf.bkt.clouddn.com/icon46.png':'http://pgq6951kf.bkt.clouddn.com/icon45.png'}}" />
+                <image src="{{psnData.sex==1?'https://app.xingxue.vip/icon/icon46.png':'https://app.xingxue.vip/icon/icon45.png'}}" />
             </view>
             <view class='psnInfo_topSR'>
               {{psnData.age}}
@@ -31,7 +31,7 @@
           <view class='psnInfo_F'>
             <view class='psnInfo_Faddr'>
               <view class='psnInof_FaddrL'>
-                <image src='http://pgq6951kf.bkt.clouddn.com/icon47.png'></image>
+                <image src='https://app.xingxue.vip/icon/icon47.png'></image>
               </view>
               <view class='psnInfo_FaddrR'>
                 {{psnData.address}}
@@ -57,7 +57,7 @@
     </view>
     <view class='photoList'>
       <view class='photoItem' wx:for="{{psnData.image}}">
-        <image src='{{item}}' mode='center'></image>
+        <image src='{{item}}'></image>
       </view>
     </view>
   </view>
@@ -71,7 +71,7 @@
     </view>
     <view class='skillItem' bindtap='selectSkill' data-id='{{item.us_id}}' wx:for="{{skillData}}">
       <view class='skillItemImg'>
-        <image src='{{item.pic}}' mode='center'></image>
+        <image src='{{item.pic}}'></image>
       </view>
       <view class='skillInfo'>
         <view class='skillInfo_name'>
@@ -83,7 +83,7 @@
         <view class='skillInfo_music'>
           <view class='skillInfo_ML'>
             <view class='skillInfo_MLImg'>
-              <image src='http://pgq6951kf.bkt.clouddn.com/icon48.png'></image>
+              <image src='https://app.xingxue.vip/icon/icon48.png'></image>
             </view>
             <view class='skillInfo_MLTxt'>{{item.audio}}</view>
           </view>

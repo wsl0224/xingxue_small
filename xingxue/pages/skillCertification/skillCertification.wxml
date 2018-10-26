@@ -10,8 +10,8 @@
         请上传相关图片，如:游戏截图，技能证书等
       </view>
     </view>
-    <view class='top_B'>
-      <image src='http://pgq6951kf.bkt.clouddn.com/icon91.png'>
+    <view class='top_B' bindtap='updatePic'>
+      <image src="{{pic?pic:'https://app.xingxue.vip/icon/icon91.png'}}">
       </image>
     </view>
   </view>
@@ -25,10 +25,21 @@
         录音需大于 5s 以上
       </view>
     </view>
-    <view class='mid_B'>
-      <image src='http://pgq6951kf.bkt.clouddn.com/icon92.png'>
+    <view class='mid_Bot'>
+     <view class='mid_B' bindtap='startAudio'>
+      <image src='https://app.xingxue.vip/icon/icon92.png'>
       </image>
     </view>
+    <view class='mid_B' bindtap='stop'>
+      <image src='https://app.xingxue.vip/icon/icon92.png'>
+      </image>
+    </view>
+    <view class='mid_B' bindtap='play'>
+      <image src='https://app.xingxue.vip/icon/icon92.png'>
+      </image>
+    </view>
+    </view>
+   
   </view>
   <!-- 技能说明 -->
     <view class='bot'>
@@ -38,11 +49,11 @@
       </view>
     </view>
     <view class='bot_B'>
-      <input placeholder='请描述您的技能，优势等等' placeholder-class='bot_Binput'></input>
+      <input placeholder='请描述您的技能，优势等等' bindinput='keyContentBtn' placeholder-class='bot_Binput'></input>
     </view>
   </view>
   <!-- footer -->
-    <view class='footer'>
+    <view class='footer' bindtap='submitBtn'>
       提交认证
   </view>
 </view>

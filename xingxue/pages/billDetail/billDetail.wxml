@@ -1,16 +1,16 @@
 <!--pages/billDetail/billDetail.wxml-->
-<scroll-view scroll-y class='main'>
+<scroll-view scroll-y class='main' bindscrolltoupper="upper" bindscrolltolower="lower">
 <view class='main_item' wx:for="{{billData}}">
   <view class='main_itemL'>
       <view class='main_itemLT'>
-      {{item.Type}}
+      {{item.title}}
       </view>
       <view class='main_itemLB'>
-      {{item.date}}
+      {{item.time}}
       </view>
   </view>
-  <view class="main_itemR {{item.status==1?'add':'red'}}">
-  {{item.status==1?'+':'-'}} {{item.money}}
+  <view class="main_itemR {{item.type==1||item.type==8?'red':'add'}}">
+  {{item.type==1||item.type==8?'-':'+'}} {{item.price}}
   </view>
 </view>
 </scroll-view>

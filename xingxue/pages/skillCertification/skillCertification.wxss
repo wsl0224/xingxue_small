@@ -70,3 +70,10 @@
    font-size: 36rpx;
    margin-top: 50rpx;
 }
+.mid_Bot{
+   height: 124rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+}

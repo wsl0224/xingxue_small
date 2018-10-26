@@ -2,9 +2,9 @@
 <wxs module="publicFun" src="../util/publicFun.wxs"></wxs>
 <scroll-view scroll-y style="height:100vm;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}" >
   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style='height:360rpx'>
-    <block wx:for="{{imgUrls}}">
+    <block wx:for="{{imgUrls}}" wx:key="{{index}}">
       <swiper-item>
-        <image src="{{item.pic}}" class="slide-image" mode='center' />
+        <image src="{{item.pic}}" class="slide-image"/>
       </swiper-item>
     </block>
   </swiper>
@@ -19,11 +19,11 @@
   </view>
   <!-- 推荐服务 -->
   <swiper indicator-dots="{{typeData_indicatorDots}}" autoplay="{{typeData_autoplay}}" interval="{{typeData_interval}}" duration="{{typeData_duration}}" style='height:391rpx;margin-top:20rpx;margin-bottom:20rpx;background-color:{{config.XStyle.CbgColor}}'>
-    <block wx:for="{{typeData}}" wx:key="index">
+    <block wx:for="{{typeData}}" wx:key="{{index}}">
       <swiper-item>
         <view class="typeData section">
           <view class="typeData flex-wrp">
-            <view class="typeData flex-item" data-id='{{item.cid}}'  data-type='{{item.id}}' bindtap='ToSkillPage' data-name="{{item.name}}" wx:for="{{item}}">
+            <view class="typeData flex-item" data-id='{{item.cid}}'  data-type='{{item.id}}' bindtap='ToSkillPage' data-name="{{item.name}}" wx:for="{{item}}" wx:key="{{index}}">
               <view class='typeData flex-imgC'>
                 <image src="{{item.pic}}" class="typeData flex-img" />
               </view>
@@ -37,7 +37,7 @@
   <!-- 技能类别 -->
   <view class="skillData section">
     <view class="skillData flex-wrp">
-      <view class="skillData flex-item" wx:if="{{item.skill.length>0}}" style='background-color:{{config.XStyle.CbgColor}};margin-bottom:20rpx;' wx:for="{{skillData}}" wx:key="id">
+      <view class="skillData flex-item" wx:if="{{item.skill.length>0}}" style='background-color:{{config.XStyle.CbgColor}};margin-bottom:20rpx;' wx:for="{{skillData}}" wx:key="{{index}}">
         <view class="skillTitle">
           <view class='skillTitleLeft'>
             <view class='skillTLBefore'>
@@ -52,30 +52,26 @@
             </view>
           </view>
         </view>
-
         <view class="psnData section" style='background-color:{{config.XStyle.CbgColor}}'>
           <view class="psnData flex-wrp">
-            <view class="psnData flex-item" bindtap='ToSkillPsnPage' data-id="{{item.usid}}" wx:for="{{item.skill}}">
+            <view class="psnData flex-item" bindtap='ToSkillPsnPage' data-id="{{item.usid}}" wx:key="{{index}}" wx:for="{{item.skill}}">
               <view style='width:347rpx;'>
-                <image style='width:344rpx;height:344rpx;border-radius:4rpx;' mode='center' src='{{item.avatar}}' />
-                <text style='height:28rpx;font-size:30rpx;color:{{config.XStyle.skillTFColor}}'>{{item.name}}</text>
+                <image style='width:344rpx;height:344rpx;border-radius:4rpx;' src='{{item.avatar}}' />
+                <view style='height:28rpx;font-size:30rpx;color:#333333'>{{item.user_nicename}}</view>
                 <view class='rzRow'>
                   <view class='rzRowL'>
                     <view class="rzRowLlistL active">已实名</view>
                     <view class="rzRowLlistR ">学生认证</view>
                   </view>
-
                   <view class='rzRowRlistL'>￥{{item.price}}</view>
                 </view>
                 <view>
                   <!-- 评分 -->
-
-                  <view class='pingfen'>
+                  <view class='pingfen' wx:if="{{item.score>0}}">
                     <view class='pingfenList'>
-                      <view class='pingfenImg' wx:for="{{publicFun.showStars(item.score)}}">
-                        <image src='http://pgq6951kf.bkt.clouddn.com/my_iocn03.png' />
+                      <view class='pingfenImg'  wx:key="{{index}}" wx:for="{{publicFun.showStars(item.score)}}">
+                        <image src='https://app.xingxue.vip/icon/my_iocn03.png' />
                       </view>
-
                     </view>
                     <view class='pingfenTxt'>
                       {{item.score}}

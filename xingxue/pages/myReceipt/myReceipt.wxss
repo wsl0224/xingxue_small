@@ -26,7 +26,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 .Item_Image{
   display: flex;
@@ -41,6 +41,7 @@
 
 }
 .Item_mid{
+  width: 100%;
   margin-left: 12rpx;
 }
 .Item_midLT{
@@ -97,6 +98,7 @@ margin-right: 10rpx;
   color: #666666;
 }
 .Item_Num{
+  width: 100rpx;
   height: 124rpx;
   line-height: 124rpx;
   font-size: 30rpx;

@@ -1,28 +1,20 @@
 // pages/billDetail/billDetail.js
+let $=require('../util/commit.js');
+let pageNum=1;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    billData:[{
-      Type:'订单支付',
-      status:2,
-      money:'100.00',
-      date:'2018-10-17 18:06'
-    }, {
-        Type: '充值',
-        status: 1,
-        money: '100.00',
-        date: '2018-08-08 18:06'
-      }]
+    billData:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.freshData();
   },
 
   /**
@@ -72,5 +64,40 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  // 加载数据
+  freshData:function(e){
+    let self=this;
+    $.POST({
+      url:'wcUserUD',
+      data:{
+        page:1,
+      }
+    },function(e){
+      self.setData({
+        billData:e.data
+      })
+    })
+  },
+  // upper
+  upper:function(e){
+    this.freshData();
+  },
+  // lower
+  lower:function(e){
+    let self=this;
+    pageNum++;
+    $.POST({
+      url:'wxUserUD',
+      data:{
+        page: pageNum,
+      }
+    },function(e){
+      self.setData({
+        billData:self.data.billData.concat(e.data)
+      })
+    },function(e){
+      console.log(e);
+    })
   }
 })

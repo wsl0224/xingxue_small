@@ -22,7 +22,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-
+  margin-right: 20rpx;
 }
 .top_psnPhoto,.top_psnPhoto>image,mid_psnPhoto,.mid_psnPhoto>image{
   width: 124rpx;
@@ -73,9 +73,8 @@
   }
   .infoItemQM{
       height: 136rpx;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+ 
+   
     border-bottom: 1rpx;
     border-bottom-style: solid;
     border-bottom-color: rgb(223,223,221);

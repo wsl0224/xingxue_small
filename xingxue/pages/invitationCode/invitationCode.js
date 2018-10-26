@@ -1,11 +1,12 @@
 // pages/invitationCode/invitationCode.js
+let $ = require('../util/commit.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    inputValue:''
   },
 
   /**
@@ -62,5 +63,25 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  // 输入
+  keyBtn:function(e){
+    this.setData({
+      inputValue:e.detail.value,
+    });
+  },
+  submitBtn:function(e){
+    let self=this;
+    $.POST({
+      url:'wcAI',
+      data:{
+        code: self.data.inputValue,
+      }
+    },function(e){
+      wx.navigateBack();
+      wx.showToast({
+        title: e.msg,
+      })
+    })
   }
 })

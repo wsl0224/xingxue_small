@@ -6,14 +6,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    yuer:'21.00'
+    yuer:'',
+    endValue:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.freshData();
   },
 
   /**
@@ -64,10 +65,54 @@ Page({
   onShareAppMessage: function () {
 
   },
+  // 加载余额
+  freshData:function(e){
+    let self=this;
+    $.POST({
+      url:'wcUserSUB',
+      data:{}
+    },function(e){
+      self.setData({
+        yuer: e.data.price,
+      })
+    },function(e){
+      console.log(e);
+    })
+  },
+  // 输入金额
+  updatePrice:function(e){
+    let self=this;
+    self.setData({
+      endValue:e.detail.value,
+    })
+  },
   // 提现
   onBtn:function(e){
-    $.openWin({
-      url:'../bringUpSuccess/bringUpSuccess'
-    })
+    let self=this;
+    if (self.data.yuer>=self.data.endValue){
+      $.POST({
+        url: 'wcUserAW', data: {
+          price:self.data.endValue
+        }
+      },function(e){
+        $.openWin({
+          url: '../bringUpSuccess/bringUpSuccess',
+          data:{
+            price: self.data.endValue,
+          }
+        })
+      },function(e){
+        console.log(e);
+      })
+    }else{
+      wx.showToast({
+        title: '输入金额不可大于余额',
+        icon: 'none',
+        duration: 2000
+      })
+
+    }
+   
+    
   }
 })

@@ -4,5 +4,5 @@
   "navigationBarTitleText": "账单明细",
   "backgroundColor": "#eeeeee",
   "backgroundTextStyle": "light",
-  "enablePullDownRefresh": false
+  "enablePullDownRefresh": true
 }

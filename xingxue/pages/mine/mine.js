@@ -12,7 +12,7 @@ Page({
     loadingShow:false,
     registerShow:false,
     psnData: {
-      avatar: 'http://pgq6951kf.bkt.clouddn.com/icon94.png',
+      avatar: 'https://app.xingxue.vip/icon/icon94.png',
       user_nicename: '',
       signature: '',
       follower_num: 0,
@@ -30,8 +30,6 @@ Page({
   onLoad: function (options) {
    let self=this;
     self.freshPsnData();
-  
-    
   },
 
   /**
@@ -45,7 +43,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.freshPsnData();
   },
 
   /**
@@ -119,11 +117,8 @@ Page({
             code: e.code,
           },
         }, function (e) {
-          wx.setStorage({
-            key: 'key',
-            data: e.data.key,
-          });
-        
+          console.log(e.data.key);
+          wx.setStorageSync('psnkey', e.data.key);
           if (e.data.status == 1) {
               self.getUserInfo();//获取人员信息
               self.ShowRegisterPage();//显示注册窗口 
@@ -231,7 +226,7 @@ Page({
       }else{
         self.setData({
           psnData: {
-            avatar: 'http://pgq6951kf.bkt.clouddn.com/icon94.png',
+            avatar: 'https://app.xingxue.vip/icon/icon94.png',
             user_nicename: '',
             signature: '',
             follower_num: 0,
@@ -297,11 +292,10 @@ getLocation:function(e){
   },
   // 跳转关注或粉丝
   ToMyAttentionFans:function(e){
-    console.log(e);
+  
     
     if(e.currentTarget.dataset.type=='atte'){
       let data={
-        id:'111',
         Type:'atte',
       };
       $.openWin({
@@ -310,7 +304,6 @@ getLocation:function(e){
       })
     } else if (e.currentTarget.dataset.type == 'fans'){
       let data = {
-        id: '111',
         Type: 'fans',
       };
       $.openWin({
@@ -323,22 +316,18 @@ getLocation:function(e){
   ToMyTracks:function(e){
     $.openWin({
       url:'../myTracks/myTracks',
-      data:{
-        id:'111',
-      }
     })
   },
   // 跳转我的钱包
   ToMyWallet:function(e){
     $.openWin({
       url:'../myWallet/myWallet',
-      data:{id:'111'},
     })
   },
   // 申请技能
   ToApplicationSkill:function(e){
     console.log(this.data.psnData.skillRZstatus)
-    if (this.data.psnData.skillRZstatus!=1){
+    if (this.data.psnData.stu_status!=3){
       $.openWin({
         url: '../applicationSkills/applicationSkills',
       })
@@ -370,7 +359,7 @@ getLocation:function(e){
   // 跳转兼职任务
   ToOnlineJob:function(e){
     $.openWin({
-      url: '../onlineJob/onlineJob'
+      url: '../onlineJob/onlineJob',
     })
   },
   //邀请码

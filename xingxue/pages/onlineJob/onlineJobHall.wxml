@@ -1,13 +1,13 @@
 <!--pages/onlineJob/onlineJobHall.wxml-->
 <view class='main'>
   <view class='main_type'>
-    <view class="main_Item {{selectIndex==index?'active':''}} " data-id="{{index}}" bindtap='SelectType' wx:for="{{typeData}}">
+    <view class="main_Item {{selectIndex==index?'active':''}} " wx:key="{{index}}" data-id="{{index}}" bindtap='SelectType' wx:for="{{typeData}}">
     <view class="main_T {{index==0?'right':'left'}}">
      <view class='main_TLabel'>
         {{item.name}}
       </view>
       <view class='main_TIcon'>
-        <image src="{{selectIndex==index?'http://pgq6951kf.bkt.clouddn.com/icon51.png':'http://pgq6951kf.bkt.clouddn.com/icon52.png'}}"></image>
+        <image src="{{selectIndex==index?'https://app.xingxue.vip/icon/icon51.png':'https://app.xingxue.vip/icon/icon52.png'}}"></image>
       </view>
     </view>
       
@@ -16,33 +16,33 @@
     <!-- 列表 -->
     <!-- 分类 -->
     <view id="FL" class="{{FLStatus?'openFL':'closeFL'}}" bindtap='CloseFLPX'>
-        <view class="Item FLItem {{FLSelectIndex==index?'active':''}}" bindtap='FLItemTab' data-id="{{index}}" wx:for="{{FLData}}">
+        <view class="Item FLItem {{FLSelectIndex==index?'active':''}}" wx:key="{{index}}" bindtap='FLItemTab' data-id="{{index}}" wx:for="{{FLData}}">
           <view class='Item_label'>
           {{item.name}}
           </view>
           <view class='Item_img' wx:if="{{FLSelectIndex==index}}">
-            <image src='http://pgq6951kf.bkt.clouddn.com/sure.png'></image>
+            <image src='https://app.xingxue.vip/icon/sure.png'></image>
           </view>
         </view>
     </view>
     <!-- 排序 -->
     <view id="PX"  class="{{PXStatus?'openPX ':'closePX'}}" bindtap='CloseFLPX'>
-        <view class="Item PXItem {{PXSelectIndex==index?'active':''}}" bindtap='PXItemTab' data-id="{{index}}"  wx:for="{{PXData}}">
+        <view class="Item PXItem {{PXSelectIndex==index?'active':''}}" bindtap='PXItemTab' wx:key="{{index}}" data-name="{{item.name}}" data-id="{{index}}"  wx:for="{{PXData}}">
          <view class='Item_label'>
           {{item.name}}
           </view>
           <view class='Item_img'  wx:if="{{PXSelectIndex==index}}">
-            <image src='http://pgq6951kf.bkt.clouddn.com/sure.png'></image>
+            <image src='https://app.xingxue.vip/icon/sure.png'></image>
           </view>
         </view>
     </view>
 
   <view class='mid'>
-    <scroll-view scroll-y class='mian_mid'>
+    <scroll-view scroll-y class='mian_mid' bindscrolltoupper="upper" bindscrolltolower="lower">
 
-      <view class='mid_item' bindtap='ToOnlineJobDetail' wx:for="{{JobData}}">
+      <view class='mid_item' bindtap='ToOnlineJobDetail' data-id='{{item.id}}' wx:key="{{index}}" wx:for="{{JobData}}">
         <view class='mid_itemL'>
-          <image src='{{item.url}}'></image>
+          <image src='{{item.pic}}'></image>
         </view>
         <view class='mid_itemR'>
           <view class='mid_itemRT'>
@@ -54,14 +54,14 @@
             </view>
           </view>
           <view class='mid_itemM'>
-            {{item.sy}}份
+            {{item.num}}份
           </view>
           <view class='mid_itemF'>
             <view class='mid_itemFR'>
-              截止:{{item.date}}
+              截止:{{item.jztime}}
             </view>
             <view class='mid_itemFL'>
-              {{item.money}}元/次
+              {{item.price}}元/次
             </view>
           </view>
 

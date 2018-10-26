@@ -1,0 +1,46 @@
+<!--pages/payOrder/payOrder.wxml-->
+<view class='main'>
+  <view class='top'>
+    <view class='psnInfo'>
+      <view class='psnInfo_img'>
+        <image src='{{orderData.avatar}}' />
+      </view>
+      <view class='psnInfoR'>
+        <view class='psnInfoRT'>
+          <view class='psnInfo_name'>
+            {{orderData.user_nicename}}
+          </view>
+        </view>
+        <view class='orderSkillName'>
+          {{orderData.cname}}
+        </view>
+        <view class='order_bot'>
+          {{orderData.price}}元/小时*{{orderData.num}}
+        </view>
+      </view>
+    </view>
+    <view class='topR'>
+      {{orderData.price}}元
+    </view>
+  </view>
+  <view class='payList'>
+    <view class='payItem' wx:for="{{payType}}" wx:key="{{index}}" data-id="{{item.id}}" bindtap='choosePayType'>
+      <view class='payImage'>
+        <image src='{{item.url}}'>
+        </image>
+      </view>
+      <view class='payTxt'>
+      {{item.name}}{{item.id==1?'(余额:'+orderData.user_balance+')':''}}
+      </view>
+      <view class='sure' wx:if="{{indexNum==item.id}}" >
+      <image src='https://app.xingxue.vip/icon/sure.png'>
+      
+      </image>
+      </view>
+    </view>
+  </view>
+  <view class='footer' bindtap='payBtn'>
+   支付 {{orderData.price}}
+  </view>
+
+</view>

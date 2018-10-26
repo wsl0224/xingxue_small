@@ -6,7 +6,7 @@
   头像
   </view>
     <view class='top_psnPhoto' bindtap='updataImage'>
-    <image src='{{psnData.url}}'></image>
+    <image src='{{avatar}}'></image>
     </view>
   </view>
   <!-- 形象照 -->
@@ -15,11 +15,14 @@
      形象照
     </view>
     <view class='mid_content'>
-      <view class='mid_psnPhoto' bindtap='updataPhoto'>
-      <image src='{{psnData.url}}'></image>
+      <view class='mid_psnPhoto' wx:key="{{index}}" wx:for="{{image}}" wx:if="{{image.length>0}}">
+        <image src='{{item}}'></image>
       </view>
-      <view class='mid_alt'>
-      发布形象照更容易获得关注哦
+      <view class='mid_psnPhoto' bindtap='updataPhoto' >
+      <image src='https://app.xingxue.vip/icon/icon59.png'></image>
+      </view>
+      <view class='mid_alt' wx:if="{{!image.length>0}}">
+       发布形象照更容易获得关注哦
       </view>
     </view>
     
@@ -37,24 +40,31 @@
         <view class='infoLabel'>
         昵称
         </view>
-        <view class='infoValue'>
-          {{psnData.name}}
-        </view>
+        <input class='infoValue' bindinput='keyNameSignatureBtn' value='{{user_nicename}}'>
+          
+        </input>
+      
       </view>
-      <view class='infoItem'>
+        <!-- date -->
+  <picker mode="date" value="{{birth}}" style='' bindchange="bindPickerDateChange" start="{{startDate}}" end="{{endDate}}">
+  <view class='infoItem'>
         <view class='infoLabel'>
         生日
         </view>
         <view class='infoValue'>
-        {{psnData.date}}
+        {{birth}}
         </view>
-      </view><view class='infoItemQM'>
+      </view>
+  </picker>
+    
+
+      <view class='infoItemQM'>
         <view class='infoLabel'>
         签名
         </view>
-        <view class='infoValue'>
-          {{psnData.qianming}}
-        </view>
+        <input class='infoValue' bindinput='keySignatureBtn' value='{{signature}}'>
+          
+        </input>
       </view>
     </view>
   </view>

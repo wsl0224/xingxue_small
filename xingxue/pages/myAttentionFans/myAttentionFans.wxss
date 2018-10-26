@@ -184,3 +184,18 @@ border-radius: 6rpx;
   font-size: 30rpx;
   color:rgb(51,51,51);
 }
+.atte-item{
+    position: relative;
+}
+.remove{  
+  width: 160rpx;  
+  height: 193rpx;
+  background-color: red; 
+  color: white; 
+  position: absolute;  
+  top: 0;  
+  right: -160rpx;  
+  display: flex;  
+  justify-content: center;  
+  align-items: center;  
+}

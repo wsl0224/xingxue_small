@@ -63,6 +63,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
+  margin-right: 23rpx;
   
 }
 .psnInfo_right.unload{

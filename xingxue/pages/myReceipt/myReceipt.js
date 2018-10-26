@@ -1,6 +1,6 @@
 // pages/myReceipt/myReceipt.js
 let $=require('../util/commit.js');
-let page=1;
+let page=1,oldPage=0;
 Page({
   /**
    * 页面的初始数据
@@ -27,15 +27,31 @@ freshData:function(e){
     self.setData({
       orderData:e.data
     }); 
+    page = 1;
+    oldPage = 0;
   })
 },
- // 上拉加载
+ // 
   upper:function(e){
-    console.log('下拉')
+    this.freshData();
   },
-// 下拉刷新  
+// 
   lower:function(e){
-    console.log('上拉')
+    let self = this;
+    if(page-oldPage==1){
+      page++;
+      $.POST({
+        url: 'wcOrderSSO',
+        data: {
+          page: page,
+        }
+      }, function (e) {
+        self.setData({
+          orderData: self.data.orderData.concat(e.data)
+        });
+      
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -48,7 +64,7 @@ freshData:function(e){
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.freshData();
   },
 
   /**
@@ -90,7 +106,7 @@ freshData:function(e){
     $.openWin({
       url:'../myReceipt/myReceiptDetail',
       data:{
-        id:'111',
+        id: e.currentTarget.dataset.oid,
       }
     })
 
