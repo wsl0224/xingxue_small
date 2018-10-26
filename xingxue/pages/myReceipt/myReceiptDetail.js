@@ -82,5 +82,33 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  JSBtn:function(e){
+    let self=this;
+    $.POST({
+      url:'wcOrderAO',
+      data:{
+        oid:e.currentTarget.dataset.id,
+      }
+    },function(e){
+      wx.navigateBack();
+      wx.showToast({
+        title: e.msg,
+      });
+    })
+  },
+  StartBtn:function(e){
+    let self = this;
+    $.POST({
+      url: 'wcOrderBS',
+      data: {
+        oid: e.currentTarget.dataset.id,
+      }
+    }, function (e) {
+      wx.navigateBack();
+      wx.showToast({
+        title: e.msg,
+      });
+    })
   }
 })

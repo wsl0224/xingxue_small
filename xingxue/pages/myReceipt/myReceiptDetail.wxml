@@ -3,12 +3,12 @@
 <scroll-view scroll-y class='main'>
 <view class='main_body'>
     <!-- 人员信息 -->
-  <view class='psnInfo'>
+  <view class='psnInfo' wx:if="{{orderData.status==2||orderData.status==3||orderData.status==4||orderData.status==6||orderData.status==9}}">
     <view class='psnImg'>
       <image src='{{orderData.avatar}}'></image>
     </view>
     <view class='psnInfoR'>
-      <view class='psnName'>{{orderData.name}}</view>
+      <view class='psnName'>{{orderData.user_nicename}}</view>
       <view class="psn_SexAge {{orderData.sex==1?'man':'woman'}}">
             <view class='psn_Sex'>
                   <image src="{{orderData.sex==1?'https://app.xingxue.vip/icon/icon46.png':'https://app.xingxue.vip/icon/icon45.png'}}"/>
@@ -27,7 +27,7 @@
     </view>
   </view>
   <!-- 品类 -->
-  <view class='Type'>
+  <view class='Type' >
     <view class='Item'>
       <view class='Item_label'>
       品类
@@ -60,7 +60,7 @@
     </view>
   </view>
   <!-- 费用 -->
-  <view class='Cost'>
+  <view class='Cost' wx:if="{orderData.status!=1}">
    <view class='Item'>
       <view class='Item_label'>
       费用
@@ -71,7 +71,7 @@
     </view>
   </view>
   <!-- 优惠 -->
-  <view class='Discount'>
+  <view class='Discount' wx:if="{orderData.status!=1}">
   <view class='Item'>
       <view class='Item_label'>
       优惠
@@ -82,7 +82,7 @@
     </view>
   </view>
   <!-- 合计 -->
-  <view class='Total'>
+  <view class='Total' wx:if="{orderData.status!=1}">
     {{orderData.price*orderData.num}}
   </view>
   <!-- 当前订单状态 -->
@@ -92,7 +92,7 @@
       </view>
   </view>
   <!-- 评价显示 -->
-  <view class='EaluateShow'>
+  <view class='EaluateShow' wx:if="{orderData.status==6}">
    <view class='Item'>
       <view class='Item_label'>
       评价
@@ -114,10 +114,10 @@
 </scroll-view>
 
 <!-- 接受订单 -->
-  <view class='TakeOrder'>
+  <view class='TakeOrder' data-id="{{orderData.oid}}" bindtap='JSBtn' wx:if="{{orderData.status==2}}">
       接受订单
   </view>
   <!-- 开始订单 -->
-  <view class='StartOrder'>
+  <view class='StartOrder' bindtap='StartBtn' data-id="{{orderData.oid}}" wx:if="{orderData.status==3}">
       开始服务
   </view>
