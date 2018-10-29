@@ -34,7 +34,7 @@
           {{jobData.instruction}}
         </view>
         <view class='mid_Tbot' wx:if="{{jobData.url}}">
-          <view class='mid_Tbtn' bindtap='ToWebPage'>任务链接</view>
+          <view class='mid_Tbtn' data-url="{{jobData.url}}" bindtap='ToWebPage'>任务链接</view>
         </view>
       </view>
       <!-- 任务步骤 -->
@@ -71,10 +71,16 @@
     </scroll-view>
   </view>
   <view class='bot'>
-    <view class="botStartJob startJOB" data-id="{{jobData.id}}" bindtap='ToSubmitJob' wx:if="{{jobData.status==0||jobData.status==3||jobData.status==4||jobData.status==5}}">
+    <view class="botStartJob startJOB" data-id="{{jobData.id}}" bindtap='ToSubmitStart' wx:if="{{showJob && !showSubmit}}">
       开始任务
     </view>
-    <view class="botStatusJob {{publicFun.showJobSBgColor(jobData.status)}}" wx:if="{{jobData.status==1||jobData.status==2}}">
+    <view class="botStartJob startSubmit" data-id="{{jobData.id}}" bindtap='ToSubmit' wx:if="{{showJob && showSubmit}}">
+     提交任务
+    </view>
+     <view class="botStartJob startSubmit" data-id="{{jobData.id}}" bindtap='ToSubmit' wx:if="{{!showJob &&jobData.status==1}}">
+     提交任务
+    </view>
+    <view class="botStatusJob {{publicFun.showJobSBgColor(jobData.status)}}" wx:if="{{!showJob && jobData.status!=1}}">
       {{publicFun.showJobLabel(jobData.status)}}
     </view>
   </view>

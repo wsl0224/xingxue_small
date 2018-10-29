@@ -61,8 +61,9 @@ Page({
           status: self.data.indexNum,
         }
       }, function (e) {
+        console.log(e.data);
         self.setData({
-          JobData: self.data.JobData.concat(e.data)
+          JobData: self.data.jobData.concat(e.data)
         });
         oldPage++;
       })
@@ -94,7 +95,9 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    wx.reLaunch({
+      url: '../mine/mine'
+    })
   },
 
   /**
@@ -127,8 +130,9 @@ Page({
   // 跳转任务详情
   TopOnlineJobDetail:function(e){
     $.openWin({
+      
       url:'../onlineJob/onlineJobDetail',
-      data: { id: e.currentTarget.dataset.id }
+      data: { Type: 'Job',id: e.currentTarget.dataset.id, mid: e.currentTarget.dataset.mid}
     })
   }
 })

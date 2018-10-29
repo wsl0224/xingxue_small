@@ -1,214 +1,557 @@
-// pages/message/chat.js
-var webim = require('../../utils/webim_wx.js');
-var webimhandler = require('../../utils/webim_handler.js');
-var tls = require('../../utils/tls.js');
+const utils = require('../utils/utils.js');
+const { adapterHeight } = utils.getAdapterheight();
 
-global.webim = webim;
-var Config = {
-    sdkappid: 1400037025
-  , accountType: 884
-  , accountMode: 1 //帐号模式，0-表示独立模式，1-表示托管模式
+const { globalData } = getApp();
+const { Service: { Status, Message, File } } = globalData;
+
+const RongEmoji = require('../lib/RongIMEmoji-2.2.6.js');
+RongEmoji.init();
+
+const softKeyboardHeight = 210;
+
+const getToView = (context) => {
+  let { messageList } = context.data;
+  let index = messageList.length - 1;
+  let message = messageList[index] || {};
+  return message.uId || '';
 };
 
-tls.init({
-  sdkappid: Config.sdkappid
-})
+const setKeyboardPos = (context, keyboardHeight, adapterHeight) => {
+  keyboardHeight = keyboardHeight || 0;
+  let data;
+  let isScroll = (keyboardHeight > 0);
+  if (isScroll) {
+    data = {
+      bottom: adapterHeight + keyboardHeight,
+      isShowEmojiSent: false,
+      toView: getToView(context)
+    };
+  } else {
+    data = {
+      bottom: adapterHeight + keyboardHeight,
+      isShowEmojiSent: false
+    };
+  }
+  context.setData(data);
+};
+
+const showSoftKeyboard = (context, display) => {
+  context.setData({
+    display: display,
+    bottom: softKeyboardHeight,
+    isShowKeyboard: false,
+    toView: getToView(context)
+  });
+};
+const hideSoftKeyboard = (context) => {
+  context.setData({
+    display: {
+      emoji: 'none',
+      more: 'none'
+    }
+  });
+};
+
+const hideKeyboard = (context) => {
+  let keyboardHeight = 0;
+  let { adapterHeight } = context.data;
+  setKeyboardPos(context, keyboardHeight, adapterHeight);
+  hideSoftKeyboard(context);
+};
+
+const formatEmojis = () => {
+  let list = RongEmoji.list;
+  return utils.sliceArray(list, { size: 24 });
+};
+
+const getMessageList = (context, params) => {
+  console.log(context);
+  console.log(params);
+  let { position } = params;
+  return Message.getList(params).then((result) => {
+    console.log(result);
+    let messages = result.messageList;
+    let hasMore = result.hasMore;
+
+    let { messageList, playingVoice, playingMusicComponent } = context.data;
+    messageList = messages.concat(messageList);
+    let toView = '';
+    if (params.position == 0) {
+      let index = messageList.length - 1;
+      let message = messageList[index] || {};
+      toView = message.uId || '';
+    }
+    let isFirst = (position == 0);
+    if (!hasMore && !isFirst) {
+      // 灰条提示
+      toView = 'message-notify-without';
+      context.setData({
+        hasMore: hasMore
+      });
+    }
+
+    if (isFirst) {
+      context.setData({
+        messageList: messageList,
+        isAllowScroll: true,
+        toView: toView
+      });
+    } else {
+      context.setData({
+        messageList: messageList,
+        isAllowScroll: true
+      });
+    }
+
+  });
+};
+
+const updatePlayStatus = (context, { newMusicComponent, isPlaying }, callback) => {
+  let { data: { messageList, playingMusicComponent } } = context;
+  callback = callback || utils.noop;
+  messageList.map((message) => {
+    callback(message);
+    return message;
+  });
+  if (playingMusicComponent) {
+    playingMusicComponent.setData({
+      isPlaying
+    });
+  }
+  if (newMusicComponent) {
+    context.setData({
+      playingMusicComponent: newMusicComponent,
+      messageList
+    });
+  } else {
+    context.setData({
+      messageList
+    });
+  }
+
+};
+
+const stopPlayMusic = (context) => {
+  let newMusicComponent = null, isPlaying = false;
+  updatePlayStatus(context, { newMusicComponent, isPlaying }, (message) => {
+    utils.extend(message, { isPlaying });
+  });
+};
+
+const getImageUrls = (context) => {
+  let { messageList } = context.data;
+  return messageList.filter(message => {
+    return message.name == 'ImageMessage';
+  }).map(message => {
+    return message.content.imageUri;
+  });
+};
+
+const onLoad = (context, query) => {
+  console.log(context);
+  console.log(query);
+  let { title, type, targetId } = query;
+  wx.setNavigationBarTitle({
+    title
+  });
+  context.setData({
+    adapterHeight: adapterHeight,
+    type,
+    targetId
+  });
+  let keyboardHeight = 0;
+  setKeyboardPos(context, keyboardHeight, adapterHeight);
+
+  let position = 0;
+  let count = 15;
+  getMessageList(context, { type, targetId, position, count });
+
+  Message.watch((message) => {
+    let { messageList } = context.data;
+    console.log('----');
+    console.log(message);
+    messageList.push(message);
+
+    context.setData({
+      messageList,
+      toView: message.uId
+    });
+  });
+};
+
+const onUnload = (context) => {
+  let { playingVoice, playingMusicComponent } = context.data;
+  if (playingVoice) {
+    playingMusicComponent.stop();
+  }
+  if (playingMusicComponent) {
+    playingMusicComponent.stop();
+  }
+};
+
+const showVoice = (context) => {
+  let { adapterHeight } = context.data;
+  context.setData({
+    isShowKeyboard: false
+  });
+  hideKeyboard(context);
+};
+
+const showKeyboard = (context) => {
+  context.setData({
+    isShowKeyboard: true
+  });
+  hideKeyboard(context);
+};
+
+const recorderManager = wx.getRecorderManager()
+
+const startRecording = (context) => {
+  context.setData({
+    isRecording: true
+  });
+  let record = () => {
+    recorderManager.start({
+      format: 'mp3'
+    });
+  };
+  wx.getSetting({
+    success(res) {
+      if (!res.authSetting['scope.record']) {
+        wx.authorize({
+          scope: 'scope.record',
+          success: record
+        })
+      } else {
+        record();
+      }
+    }
+  })
+};
+
+const stopRecording = (context) => {
+  context.setData({
+    isRecording: false
+  });
+  recorderManager.onStop((res) => {
+    console.log('recorder stop', res)
+    const { tempFilePath, duration } = res
+    File.upload({
+      path: tempFilePath
+    }).then(file => {
+      console.log(file)
+      let content = {
+        content: file.downloadUrl,
+        duration: Math.ceil(duration / 1000)
+      };
+      let { type, targetId, messageList } = context.data;
+      Message.sendVoice({
+        type,
+        targetId,
+        content
+      }).then(message => {
+        messageList.push(message);
+        context.setData({
+          messageList,
+          toView: message.uId
+        });
+      });
+    });
+  })
+  recorderManager.stop();
+};
+
+const showEmojis = (context) => {
+  showSoftKeyboard(context, {
+    emoji: 'block',
+    more: 'none'
+  });
+};
+
+const showMore = (context) => {
+  showSoftKeyboard(context, {
+    emoji: 'none',
+    more: 'block'
+  });
+};
+
+const selectEmoji = (context, event) => {
+  var content = context.data.content;
+  var { emoji } = event.target.dataset;
+  content = content + emoji;
+  context.setData({
+    content: content,
+    isShowEmojiSent: true
+  });
+};
+
+const sendText = (context) => {
+  let { content, type, targetId, messageList } = context.data;
+  context.setData({
+    content: '',
+    isShowEmojiSent: false
+  });
+  if (content.length == 0) {
+    return;
+  }
+  Message.sendText({
+    type,
+    targetId,
+    content
+  }).then(message => {
+    messageList.push(message);
+    context.setData({
+      messageList,
+      toView: message.uId
+    });
+  });
+};
+
+const getMoreMessages = (context) => {
+  let { type, targetId, hasMore } = context.data;
+  let position = null;
+  let count = 5;
+  if (hasMore) {
+    context.setData({
+      isAllowScroll: false
+    });
+    getMessageList(context, { type, targetId, position, count });
+  }
+};
+
+const sendImage = (context) => {
+  wx.chooseImage({
+    count: 1,
+    sizeType: ['compressed'],
+    sourceType: ['album', 'camera'],
+    success: (res) => {
+      let { tempFilePaths } = res;
+      let tempFilePath = tempFilePaths[0];
+      wx.getImageInfo({
+        src: tempFilePath,
+        success: (res) => {
+          let extra = utils.compress(res);
+          let { type, targetId, messageList } = context.data;
+
+          let name = 'ImageMessage';
+          let content = {
+            imageUri: tempFilePath,
+            extra
+          };
+          let message = Message.create({
+            type,
+            targetId,
+            name,
+            content
+          });
+
+          messageList.push(message);
+          context.setData({
+            messageList,
+            toView: message.uId
+          });
+
+          File.upload({
+            path: tempFilePath
+          }).then(result => {
+            let { downloadUrl: imageUri } = result;
+            Message.sendImage({
+              type,
+              targetId,
+              imageUri,
+              extra
+            }).then(message => {
+            });
+          });
+        }
+      })
+    }
+  })
+};
+
+const sendMusic = (context) => {
+  let { content, type, targetId, messageList } = context.data;
+  Message.sendMusic({
+    type,
+    targetId
+  }).then(message => {
+    messageList.push(message);
+    context.setData({
+      messageList,
+      toView: message.uId
+    });
+  });
+};
+
+const playVoice = (context, event) => {
+  let voiceComponent = event.detail;
+  let { playingVoice } = context.data;
+  if (playingVoice) {
+    let playingId = playingVoice.__wxExparserNodeId__;
+    let voiceId = voiceComponent.__wxExparserNodeId__;
+    // 两次播放为同个音频，状态保持不变
+    if (playingId == voiceId) {
+      return;
+    }
+    let { innerAudioContext } = playingVoice.data;
+    playingVoice.setData({
+      isPlaying: false
+    });
+    innerAudioContext.stop();
+  }
+  context.setData({
+    playingVoice: voiceComponent
+  });
+};
+
+const playMusic = (context, event) => {
+  let newMusicComponent = event.detail;
+  let { playingMusicComponent, messageList } = context.data;
+  let { properties: { message: { messageUId: newPlayId } } } = newMusicComponent
+  let playingId = '';
+
+  // 连续点击播放不同音乐
+  if (playingMusicComponent) {
+    let { properties: { message } } = playingMusicComponent;
+    playingId = message.messageUId;
+    //先停止上一个，再播放
+    let isDiffMusic = (playingId != newPlayId);
+    if (isDiffMusic) {
+      let { innerAudioContext } = playingMusicComponent.data;
+      playingMusicComponent.setData({
+        isPlaying: false
+      });
+      innerAudioContext.stop();
+    }
+  }
+  let isPlaying = false;
+  updatePlayStatus(context, { newMusicComponent, isPlaying }, (message) => {
+    let { messageUId } = message;
+    // 默认为未播放状态
+    isPlaying = false;
+    if (messageUId == newPlayId) {
+      isPlaying = true;
+    }
+    utils.extend(message, { isPlaying });
+  });
+};
+
+const previewImage = (context, event) => {
+  let currentImageUrl = event.detail;
+  let urls = getImageUrls(context);
+  if (utils.isEmpty(urls)) {
+    urls.push(currentImageUrl);
+  }
+  wx.previewImage({
+    current: currentImageUrl,
+    urls: urls
+  })
+};
+
+const stopMusic = (context, event) => {
+  let musicComponent = event.detail;
+  let { properties: { message: { messageUId } } } = musicComponent;
+
+  let { messageList, playingMusicComponent } = context.data;
+  if (playingMusicComponent) {
+    let { data: { innerAudioContext } } = playingMusicComponent;
+    innerAudioContext.stop();
+  }
+  musicComponent.setData({
+    isPlaying: false
+  });
+  stopPlayMusic(context);
+};
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    motto: 'Hello World',
-    msgs: [],
-    Identifier: null,
-    UserSig: null,
-    msgContent: ""
+    content: '',
+    messageList: [],
+    bottom: 0,
+    adapterHeight: 0,
+    display: {
+      emoji: 'none',
+      more: 'none'
+    },
+    emojis: formatEmojis(),
+    isShowEmojiSent: false,
+    isRecording: false,
+    isShowKeyboard: false,
+    hasMore: true,
+    toView: '',
+    playingVoice: null,
+    playingMusicComponent: null,
+    isAllowScroll: true,
+    scrollTop: 0
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    var self = this;
-    //调用应用实例的方法获取全局数据
-    let data = JSON.parse(options.data);
-    wx.setNavigationBarTitle({
-      title: data.title
-    });
-    self.setData({
-      Identifier:'Tx_'+data.id,
-      UserSig:'',
-    })
-    that.login(function (e) {
-      console.log(e)
-    });
+  hideKeyboard: function () {
+    hideKeyboard(this);
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  selectEmoji: function (event) {
+    selectEmoji(this, event);
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  sendText: function () {
+    sendText(this);
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  getMoreMessages: function (event) {
+    getMoreMessages(this);
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
+  sendImage: function () {
+    sendImage(this);
+  },
+  sendMusic: function () {
+    sendMusic(this);
+  },
+  showVoice: function () {
+    showVoice(this);
+  },
+  showKeyboard: function () {
+    showKeyboard(this);
+  },
+  startRecording: function () {
+    startRecording(this);
+  },
+  stopRecording: function () {
+    stopRecording(this);
+  },
+  showEmojis: function () {
+    showEmojis(this);
+  },
+  showMore: function () {
+    showMore(this);
+  },
+  // 以下是事件
+  onLoad: function (query) {
+    onLoad(this, query)
+  },
   onUnload: function () {
-
+    onUnload(this);
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-  clearInput: function () {
+  onInput: function (event) {
     this.setData({
-      msgContent: ""
-    })
-  },
-
-  bindConfirm: function (e) {
-    var that = this;
-    var content = e.detail.value;
-    if (!content.replace(/^\s*|\s*$/g, '')) return;
-    webimhandler.onSendMsg(content, function () {
-      that.clearInput();
-    })
-  },
-
-  bindTap: function () {
-    webimhandler.sendGroupLoveMsg();
-  },
-
-  login: function (cb) {
-    var that = this;
-    tls.login({
-      success: function (data) {
-        console.log('11111');
-        console.log(data);
-        that.setData({
-          Identifier: data.Identifier,
-          UserSig: data.UserSig
-        })
-        cb();
-      }
+      content: event.detail.value
     });
   },
-
-
-  receiveMsgs: function (data) {
-    var msgs = this.data.msgs || [];
-    msgs.push(data);
-    //最多展示10条信息
-    if (msgs.length > 10) {
-      msgs.splice(0, msgs.length - 10)
-    }
-
-    this.setData({
-      msgs: msgs
-    })
+  onFocus: function (event) {
+    let { height } = event.detail;
+    let adapterHeight = 0;
+    setKeyboardPos(this, height, adapterHeight);
+    hideSoftKeyboard(this);
   },
-
-  initIM: function () {
-    var that = this;
-    var avChatRoomId = 'test';
-    webimhandler.init({
-      accountMode: Config.accountMode
-      , accountType: Config.accountType
-      , sdkAppID: Config.sdkappid
-      , avChatRoomId: avChatRoomId //默认房间群ID，群类型必须是直播聊天室（AVChatRoom），这个为官方测试ID(托管模式)
-      , selType: webim.SESSION_TYPE.GROUP
-      , selToID: avChatRoomId
-      , selSess: null //当前聊天会话
-    });
-    //当前用户身份
-    var loginInfo = {
-      'sdkAppID': Config.sdkappid, //用户所属应用id,必填
-      'appIDAt3rd': Config.sdkappid, //用户所属应用id，必填
-      'accountType': Config.accountType, //用户所属应用帐号类型，必填
-      'identifier': that.data.Identifier, //当前用户ID,必须是否字符串类型，选填
-      'userSig': that.data.UserSig, //当前用户身份凭证，必须是字符串类型，选填
-    };
-
-    //监听（多终端同步）群系统消息方法，方法都定义在demo_group_notice.js文件中
-    var onGroupSystemNotifys = {
-      "5": webimhandler.onDestoryGroupNotify, //群被解散(全员接收)
-      "11": webimhandler.onRevokeGroupNotify, //群已被回收(全员接收)
-      "255": webimhandler.onCustomGroupNotify//用户自定义通知(默认全员接收)
-    };
-
-    //监听连接状态回调变化事件
-    var onConnNotify = function (resp) {
-      switch (resp.ErrorCode) {
-        case webim.CONNECTION_STATUS.ON:
-          //webim.Log.warn('连接状态正常...');
-          break;
-        case webim.CONNECTION_STATUS.OFF:
-          webim.Log.warn('连接已断开，无法收到新消息，请检查下你的网络是否正常');
-          break;
-        default:
-          webim.Log.error('未知连接状态,status=' + resp.ErrorCode);
-          break;
-      }
-    };
-
-
-    //监听事件
-    var listeners = {
-      "onConnNotify": webimhandler.onConnNotify, //选填
-      "onBigGroupMsgNotify": function (msg) {
-        webimhandler.onBigGroupMsgNotify(msg, function (msgs) {
-          that.receiveMsgs(msgs);
-        })
-      }, //监听新消息(大群)事件，必填
-      "onMsgNotify": webimhandler.onMsgNotify,//监听新消息(私聊(包括普通消息和全员推送消息)，普通群(非直播聊天室)消息)事件，必填
-      "onGroupSystemNotifys": webimhandler.onGroupSystemNotifys, //监听（多终端同步）群系统消息事件，必填
-      "onGroupInfoChangeNotify": webimhandler.onGroupInfoChangeNotify//监听群资料变化事件，选填
-    };
-
-    //其他对象，选填
-    var options = {
-      'isAccessFormalEnv': true,//是否访问正式环境，默认访问正式，选填
-      'isLogOn': true//是否开启控制台打印日志,默认开启，选填
-    };
-
-    if (Config.accountMode == 1) {//托管模式
-      webimhandler.sdkLogin(loginInfo, listeners, options, avChatRoomId);
-    } else {//独立模式
-      //sdk登录
-      webimhandler.sdkLogin(loginInfo, listeners, options);
-    }
+  onPlayVoice: function (event) {
+    playVoice(this, event);
   },
+  onPlayMusic: function (event) {
+    playMusic(this, event);
+  },
+  onMusicStop: function (event) {
+    stopMusic(this, event);
+  },
+  onPreviewImage: function (event) {
+    previewImage(this, event);
+  },
+  onHide: function () {
+    hideKeyboard(this);
+    stopPlayMusic(this);
+  }
 })

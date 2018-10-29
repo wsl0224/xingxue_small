@@ -1,4 +1,5 @@
 // pages/welfarHall/welfarDetail.js
+let $=require('../util/commit.js');
 Page({
 
   /**
@@ -18,15 +19,17 @@ Page({
     this.setData({
       paramData:JSON.parse(options.data),
     });
+    this.freshData();
   },
   freshData:function(e){
     let self=this;
     $.POST({
-      url:'otherSWFD',
+      url:'wcOtherSWFD',
       data:{
         wid: self.data.paramData.id,
       }
     },function(e){
+      console.log(e);
       self.setData({
         welfarData:e.data,
       })

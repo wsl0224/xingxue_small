@@ -210,6 +210,9 @@
 .startJOB{
   background: #86b2f9;
 }
+.startSubmit{
+  background: #7183e6;
+}
 .red{
   background: #ee4726;
 }

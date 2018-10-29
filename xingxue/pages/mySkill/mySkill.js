@@ -77,7 +77,7 @@ Page({
   },
   // 跳转技能认证详情
   ToSkillCertification:function(e){
-    if(e.currentTarget.dataset.status==0){
+    if (e.currentTarget.dataset.status == 0 || e.currentTarget.dataset.status == 1|| e.currentTarget.dataset.status == 4){
       $.openWin({
         url:'../skillCertification/skillCertification',
         data: {
@@ -85,7 +85,7 @@ Page({
           name: e.currentTarget.dataset.name,
         }
       })
-    }else{
+    }else {
       wx.showToast({
         title: '当前技能在审核中',
       })

@@ -117,13 +117,21 @@ Page({
         success(res) {
           console.log(config.Config.updateAudioUrl);
           console.log(res);
+         
           let audio = JSON.parse(res.data).data.audio;
-          innerAudioContext.src = audio;
-          self.setData({
-            audio: audio,
-            audio_time: innerAudioContext.duration
-          })
-
+          let duration = JSON.parse(res.data).data.duration;
+          if(duration>5){
+            innerAudioContext.src = audio;
+            self.setData({
+              audio: audio,
+              audio_time: duration,
+            })
+          }else{
+            wx.showToast({
+              title: '当前录音' + duration+'s请重新录制',
+            })
+          }
+        
         }
       })
     })

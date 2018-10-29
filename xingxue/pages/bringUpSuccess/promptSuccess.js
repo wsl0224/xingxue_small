@@ -68,7 +68,7 @@ Page({
   // 完成返回
   ToReturn:function(e){
     $.openWin({
-      url:'../onlineJob/onlineJobDetail'
+      url:'../onlineJob/onlineJob'
     })
   }
 })

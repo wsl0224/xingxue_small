@@ -1,1 +1,8 @@
-{}
+{
+  "usingComponents": {
+    "Message": "./components/message",
+    "WithoutMessage": "./components/message/without",
+    "Loading": "./components/loading"
+  },
+  "enablePullDownRefresh": true
+}

@@ -11,8 +11,11 @@
       </view>
     </view>
     <view class='topMid'>
-      <view class='topMidPhoto' bindtap='updataImg'>
-        <image src="{{image?image:'https://app.xingxue.vip/icon/icon59.png'}}"></image>
+      <view class='TOPMid' wx:if="{{image.length>0}}" bindtap="delImg" data-index="{{index}}" wx:key="{{index}}" wx:for="{{image}}">
+         <image src="{{item}}"></image>
+      </view>
+      <view class='topMidPhoto' bindtap='updataImg' wx:if="{{image.length<5}}">
+        <image src='https://app.xingxue.vip/icon/icon59.png'></image>
       </view>
     </view>
   </view>
@@ -36,7 +39,7 @@
         <input placeholder='请输入您的姓名' bindinput='keyName' placeholder-class='inputPlaCss'></input>
         </view>
         <view class='midMid_remark'>
-        (非必填)
+        (必填)
         </view>
       </view>
     <!-- 手机号 -->
@@ -48,7 +51,7 @@
         <input type='number' placeholder='请输入您的手机号' bindinput='keyPhone' placeholder-class='inputPlaCss'></input>
         </view>
          <view class='midMid_remark'>
-        (非必填)
+        (必填)
         </view>
       </view>
         <!-- 其它 -->

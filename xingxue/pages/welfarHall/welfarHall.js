@@ -102,9 +102,9 @@ Page({
   // 进入福利详细
   ToWelfarDetail: function(e) {
   $.openWin({
-      url: './welfarDetail',
+      url: '../webView/webView',
       data:{
-        id:e.currentTarget.dataset.id
+        url:'https://app.xingxue.vip/wcOtherSWFD/wid/'+e.currentTarget.dataset.id,
       }
     })
   }

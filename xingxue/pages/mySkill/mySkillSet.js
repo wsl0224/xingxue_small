@@ -104,17 +104,18 @@ Page({
   // 保存
   submit:function(e){
     let self=this;
-    if (!self.data.priceId){
+    console.log(self.data.priceId, self.data.unitId);
+    if (!self.data.priceId || self.data.priceId==0){
       wx.showToast({
         title: '请选择价格',
       })
     }
-    if (!self.data.unitId) {
+    if (!self.data.unitId || self.data.unitId == 0) {
       wx.showToast({
         title: '请选择单位',
       })
     }
-    if (self.data.unitId && self.data.priceId){
+    if (self.data.unitId && self.data.unitId != 0 && self.data.priceId && self.data.priceId!=0){
       $.POST({
         url: 'wcUserSSU',
         data: {

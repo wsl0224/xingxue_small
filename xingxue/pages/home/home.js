@@ -48,12 +48,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-   
+    wx.showLoading();
+    wx.startPullDownRefresh();
     let self = this;
     self.freshTData(); // 过滤二级数据
     self.freshBanner(); //  过滤banner
     self.freshTSData(); //过滤推荐二级技能
-
+    wx.hideLoading();
+    wx.stopPullDownRefresh();
   },
   // 过滤二级数据
   freshTData: function(e) {
@@ -64,6 +66,7 @@ Page({
       self.setData({
         skillData: e.data,
       })
+      
     }, function(e) {
 
     });
@@ -186,11 +189,14 @@ Page({
   },
 
   upper: function(e) {
+    wx.showLoading();
+    wx.startPullDownRefresh();
     let self = this;
     self.freshTData(); // 过滤二级数据
     self.freshBanner(); //  过滤banner
     self.freshTSData(); //过滤推荐二级技能
-   
+    wx.hideLoading();
+    wx.stopPullDownRefresh();
   },
   lower: function(e) {
     console.log(e)
@@ -228,9 +234,9 @@ Page({
       })
     } else if (e.currentTarget.id == 3) {
       $.openWin({
-        url: '../webView/webView',
+        url: '../noData/noData',
         data:{
-          url:'https://xzwages.libokeji.cn/index.html',
+          // url:'https://xzwages.libokeji.cn/index.html',
         }
       })
     } else {

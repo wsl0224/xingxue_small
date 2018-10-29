@@ -9,9 +9,10 @@ const XStyle={
 }
 // 公共参数
 var Config = {
-    sdkappid: '	wx98b7ecc024d1079a'
+
+    sdkappid: '1400153921'
   , accountType: 884
-  , accountMode: 1 //帐号模式，0-表示独立模式，1-表示托管模式
+  , accountMode: 0 //帐号模式，0-表示独立模式，1-表示托管模式
   , updateImgUrl:'https://app.xingxue.vip/wcUserUUP'
   , updateAudioUrl:'https://app.xingxue.vip/wcUserUUA'
 };

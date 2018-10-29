@@ -12,7 +12,7 @@
  <!-- mid -->
 <scroll-view scroll-y class='mid' bindscrolltoupper="upper" bindscrolltolower="lower">
   <view class='mid_main'>
-    <view class='mid_Item' bindtap='TopOnlineJobDetail' data-id='{{item.tid}}' wx:key="{{index}}" wx:for="{{jobData}}">
+    <view class='mid_Item' bindtap='TopOnlineJobDetail' data-id='{{item.tid}}' data-mid='{{item.mid}}' wx:key="{{index}}" wx:for="{{jobData}}">
       <view class='mid_top'>
         <view class='mid_title'>
         {{item.title}}

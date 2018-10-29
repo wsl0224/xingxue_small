@@ -1,13 +1,59 @@
 // pages/skillPage/skillPage.js
 var $ = require('../util/commit.js');
-Page({
+const utils = require('../utils/utils');
+const { globalData } = getApp();
+const { Service: { Status, Conversation } } = globalData;
+const innerAudioContext = wx.createInnerAudioContext();
+const watchConversation = (context) => {
+  Conversation.watch((conversationList) => {
+    context.setData({
+      conversationList
+    });
+  });
+};
+const watchStatus = () => {
+  Status.watch((status) => {
+    if (status == 3) {
+      let user = wx.getStorageSync('userInfo');
+      if (user) {
+        Status.connect(user.userInfo);
+      } else {
+        wx.showToast({
+          title: '请先登录',
+        })
+      }
+    }
+  })
+}
+const connect = (context) => {
+  watchConversation(context);
+  watchStatus();
+  let user = wx.getStorageSync('userInfo');
+  if (user) {
+    Status.connect(user.userInfo).then(() => {
+      console.log('connect successfully');
+    }, (error) => {
+      wx.showToast({
+        title: error.msg,
+        icon: 'none',
+        duration: 3000
+      })
+    })
+  } else {
+    wx.showToast({
+      title: '请先登录',
+    })
+  }
 
+};
+Page({
   /**
    * 页面的初始数据
    */
   data: {
     paramData:'',
-    skillData: {}
+    skillData: {},
+    hasUserAuth: true,
   },
 
   /**
@@ -18,8 +64,10 @@ Page({
     this.setData({
       paramData:param,
     });
+    connect(this);
     this.freshData();
   },
+  
   freshData:function(e){
     let self = this;
     $.POST({
@@ -112,16 +160,28 @@ Page({
       }
     })
   },
+  
   // 进入聊天页面
-  goToChat: function(e) {
-    let that = this;
-    $.openWin({
-      url:'../message/chat',
-      data: {
-        id: e.currentTarget.dataset.id,
-        title: e.currentTarget.dataset.title
-      }
-    })
+  goToChat: function(event) {
+  
+    let type=1;
+  
+    let title = event.currentTarget.dataset.title;
+    console.log(event.currentTarget.dataset.id);
+    let targetId = 'alias_' + event.currentTarget.dataset.id;
+  
+    let url = '../message/chat?type={type}&targetId={targetId}&title={title}';
+        url = utils.tplEngine(url, {
+          type,
+          targetId,
+          title: title
+        });
+        console.log(url);
+        wx.navigateTo({
+          url: url,
+        });
+    
+  
   },
   // 关注事件
   FollowerBtn:function(e){
@@ -156,6 +216,19 @@ Page({
         console.log(e);
       })
     }  
+  },
+  playMusic:function(e){
+    innerAudioContext.autoplay = true
+    innerAudioContext.src = e.currentTarget.dataset.audio,
+      console.log('播放事件')
+    console.log(innerAudioContext);
+    innerAudioContext.onPlay(() => {
+      console.log('开始播放');
+    })
+    innerAudioContext.onError((res) => {
+      console.log(res.errMsg)
+      console.log(res.errCode)
+    })
   }
 
 

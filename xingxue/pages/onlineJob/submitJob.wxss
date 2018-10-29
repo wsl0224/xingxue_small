@@ -36,17 +36,22 @@
   color: #000000;
   margin-left: 10rpx;
 }
+
 .topMid{
-  padding: 41rpx 91rpx;
+  padding: 41rpx 23rpx;
+  display: flex;
+  flex-direction: row wrap;
+  justify-content: flex-start;
+  flex-wrap:wrap;
 }
-.topMidPhoto{
+.topMidPhoto,.TOPMid{
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 
 }
-.topMidPhoto,.topMidPhoto>image{
+.topMidPhoto.TOPMid,.topMidPhoto>image,.TOPMid>image{
   width: 140rpx;
   height: 140rpx;
 }

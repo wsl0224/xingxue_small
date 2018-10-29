@@ -3,16 +3,16 @@
   <view class='top'>
     <view class='topT'>
       <view class='topT_psn'>
-        <view class='topT_psnInfo' bindtap="{{psnStatus==1?'ToPersonalData':'ShowToLodPage'}}">
-          <view class='psnInfo_img'>
+        <view class='topT_psnInfo' bindtap="{{psnStatus==1?'':'ShowToLodPage'}}">
+          <view class='psnInfo_img'  bindtap="{{psnStatus==1?'ToPersonalData':''}}">
             <image src="{{psnData.avatar}}"></image>
           </view>
-          <view class='psnInfo_name'>
+          <view class='psnInfo_name' bindtap="{{psnStatus==1?'ToPersonalData':''}}">
             {{psnData.user_nicename}}
           </view>
-          <view class="psnInfo_right {{psnStatus==1?'':'unload'}}">
+          <view class="psnInfo_right {{psnStatus==1?'':'unload'}}" bindtap='EXITBtn' data-status="{{psnStatus}}">
             <view class="psnInfo_rightT" >
-              {{psnStatus==1?' ':'点击登录'}}
+              {{psnStatus==1?'退出登录':'点击登录'}}
             </view>
             <view class='psnInfo_rightImg' wx:if="{{psnStatus==1}}">
               <image src='../image/home/right_JT.png'></image>

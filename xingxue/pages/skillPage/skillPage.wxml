@@ -81,12 +81,12 @@
       </view>
     </view>
     <view class='skillC'>
-      <view class='skillMusic'>
+      <view class='skillMusic' bindtap='playMusic' data-audio='{{skillData.audio}}'>
         <view class='skillML'>
           <image src='https://app.xingxue.vip/icon/icon48.png'></image>
         </view>
         <view class='skillM_Time'>
-          {{skillData.musicTime}}
+          {{skillData.audio_time}}
         </view>
         <audio></audio>
       </view>
@@ -97,7 +97,7 @@
   </view>
 </scroll-view>
 <view class='footer'>
-  <view class='footerL' bindtap='goToChat' data-id='{{skillData.uid}}' data-title="{{skillData.user_nicename}}">
+  <view class='footerL' bindtap='goToChat' data-type="1" data-id='{{skillData.uid}}' data-title="{{skillData.user_nicename}}">
     聊天
   </view>
   <view class='footerR' bindtap='ToPlaceOrder'>

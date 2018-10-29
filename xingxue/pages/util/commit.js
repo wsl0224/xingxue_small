@@ -11,11 +11,9 @@ var host = 'https://app.xingxue.vip/';
  * doFail：失败的回调函数
  */
 function POST(param, doSuccess, doFail) {
-
-  console.log(param);
-
+   
     var value = wx.getStorageSync('psnkey');
-    console.log(value);
+
     if (value) {
       param.data.key = value;
     }
@@ -28,15 +26,16 @@ function POST(param, doSuccess, doFail) {
       data: param.data,
       method: 'POST',
       success: function(res) {
-        console.log('POST参数');
-        console.log(param);
-        console.log(res.data);
         //参数值为res.data,直接将返回的数据传入
+        console.log(param);
+        console.log(res);
         if (res.data.code == 200) {
           doSuccess(res.data);
+          wx.stopPullDownRefresh();
         } else {
           if (param.url == 'wcUserMHP') {
             doSuccess(res.data);
+           
           } else {
             wx.showToast({
               title: res.data.msg,
@@ -50,6 +49,7 @@ function POST(param, doSuccess, doFail) {
       fail: function() {
         doFail();
       },
+     
     })
 }
 
@@ -68,6 +68,7 @@ function GET(param, doSuccess, doFail) {
       console.log('GET成功');
       console.log(res.data);
       doSuccess(res.data);
+      wx.stopPullDownRefresh();
     },
     fail: function() {
       doFail();

@@ -1,4 +1,5 @@
 <!--pages/mySkill/mySkill.wxml-->
+<wxs module="publicFun" src="../util/publicFun.wxs"></wxs>
 <scroll-view class='main' scroll-y> 
   <view class='top'>
     <view class='top_title'>
@@ -27,8 +28,8 @@
           <view class='mid_itemCB'>
              
               <view class='mid_Items' data-id='{{item.cate_id}}' data-name="{{item.name}}" wx:key="{{index}}"  wx:for="{{item.child}}" data-status='{{item.status}}' bindtap='ToSkillCertification'>
-                  <view class="mid_itemCTR {{item.status==1?'XRZ':'SHZ'}}"  wx:if="{{item.status>0}}">
-                    {{item.status==1?'需认证':'审核中'}}
+                  <view class="mid_itemCTR {{publicFun.showSkilStatusClass(item.status)}}"  wx:if="{{item.status>0}}">
+                    {{publicFun.showSkilStatusLabel(item.status)}}
                   </view>
                   {{item.name}}
             </view>
