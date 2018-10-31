@@ -11,8 +11,11 @@
       </view>
     </view>
     <view class='topMid'>
-      <view class='TOPMid' wx:if="{{image.length>0}}" bindtap="delImg" data-index="{{index}}" wx:key="{{index}}" wx:for="{{image}}">
+      <view class='TOPMid' wx:if="{{image.length>0}}"  wx:key="{{index}}" wx:for="{{image}}">
          <image src="{{item}}"></image>
+         <view class='ImageTop' bindtap="delImg" data-index="{{index}}">
+        <image src='https://app.xingxue.vip/icon/icon95.png'></image>
+        </view>
       </view>
       <view class='topMidPhoto' bindtap='updataImg' wx:if="{{image.length<5}}">
         <image src='https://app.xingxue.vip/icon/icon59.png'></image>

@@ -85,7 +85,7 @@
     background-color: rgb(12,217,97);
     border-radius: 18rpx;
     text-align: center;
-    font-size: 24rpx;
+    font-size: 20rpx;
     color:rgb(255,255,255);
   }
   .psnInfo_Content{

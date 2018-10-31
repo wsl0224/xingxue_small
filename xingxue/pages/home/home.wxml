@@ -1,6 +1,6 @@
 <!--pages/home/home.wxml-->
 <wxs module="publicFun" src="../util/publicFun.wxs"></wxs>
-<scroll-view scroll-y style="height:100vm;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}" >
+<scroll-view scroll-y style="height:100vm;">
   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style='height:360rpx'>
     <block wx:for="{{imgUrls}}" wx:key="{{index}}">
       <swiper-item>
@@ -60,8 +60,8 @@
                 <view style='height:28rpx;font-size:30rpx;color:#333333'>{{item.user_nicename}}</view>
                 <view class='rzRow'>
                   <view class='rzRowL'>
-                    <view class="rzRowLlistL active">已实名</view>
-                    <view class="rzRowLlistR ">学生认证</view>
+                    <view class="rzRowLlistL active">学生身份</view>
+                    <!-- <view class="rzRowLlistR "></view> -->
                   </view>
                   <view class='rzRowRlistL'>￥{{item.price}}</view>
                 </view>

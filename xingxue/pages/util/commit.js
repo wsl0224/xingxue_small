@@ -31,7 +31,7 @@ function POST(param, doSuccess, doFail) {
         console.log(res);
         if (res.data.code == 200) {
           doSuccess(res.data);
-          wx.stopPullDownRefresh();
+        
         } else {
           if (param.url == 'wcUserMHP') {
             doSuccess(res.data);
@@ -39,6 +39,7 @@ function POST(param, doSuccess, doFail) {
           } else {
             wx.showToast({
               title: res.data.msg,
+              icon:'none',
               duration: 2000
             })
           }
@@ -73,6 +74,7 @@ function GET(param, doSuccess, doFail) {
     fail: function() {
       doFail();
     },
+  
   })
 }
 // 打开页面
@@ -126,10 +128,43 @@ function subStrVal(value, num) {
   }
   return value;
 }
+// 截图
+// url图片路径
+// width图片宽度
+// height图片高度
+function cavasImage(url,width,height){
+  var Wnum=0,Hnum=0;
+  const ctx = wx.createCanvasContext('cover-preview')
+  if(width>height){
+    width = height;
+    Wnum = height-width;
+    Hnum=0;
+  }else{
+    height = width;
+    Wnum=0
+    Hnum = width - height;
+  }
+
+  ctx.drawImage(url, Wnum, Hnum, width, height);
+  ctx.draw();
+  console.log(ctx);
+  let tempFilePath = ctx.toTempFilePathSync({
+    x: 0,
+    y: 0,
+    width: width,
+    height: height,
+    destWidth: width,
+    destHeight: height
+  });
+  wx.shareAppMessage({
+    imageUrl: tempFilePath
+  })
+}
 module.exports = {
   openWin,
   POST,
   GET,
   formatTime,
   formatNumber,
+  cavasImage,
 }

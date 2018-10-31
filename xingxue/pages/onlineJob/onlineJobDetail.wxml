@@ -61,8 +61,8 @@
               {{item.content}}
             </view>
             <view class='mid_MmidLRPhoto'>
-              <view class='Photo_Item' wx:key="{{index}}" wx:for="{{publicFun.stringToArr(item.spic,',')}}">
-                <image src='{{item}}'></image>
+              <view class='Photo_Item' bindtap='showBigImage' data-src="{{item}}" wx:key="{{index}}" wx:for="{{publicFun.stringToArr(item.spic,',')}}">
+                <image src='{{item}}' ></image>
               </view>
             </view>
           </view>

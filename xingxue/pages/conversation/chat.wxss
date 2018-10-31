@@ -12,6 +12,7 @@
 }
 
 .rong-editor{
+  height: 90rpx;
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -36,8 +37,12 @@
 }
 
 .rong-editor-btn{
+  height: 64rpx;
+  width: 64rpx;
   margin-right: 20rpx;
   margin-top: 4rpx;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 .rong-editor-btn-voice{
   background-image: url("https://app.xingxue.vip/o_1chk2kfkpr8pdm31j56t49fg1a.png");

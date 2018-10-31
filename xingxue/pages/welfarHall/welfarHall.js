@@ -32,6 +32,7 @@ Page({
      }) 
       pageNum = 1;
     })
+    wx.stopPullDownRefresh();
   },
  
   upper: function (e) {
@@ -39,7 +40,7 @@ Page({
   },
   lower: function (e) {
     let self = this;
-  pageNum++;
+    pageNum++;
     $.POST({
       url: 'wcOtherSWF',
       data: {
@@ -83,7 +84,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    this.freshData()
   },
 
   /**
@@ -101,11 +102,17 @@ Page({
   },
   // 进入福利详细
   ToWelfarDetail: function(e) {
-  $.openWin({
-      url: '../webView/webView',
+  // $.openWin({
+  //     url: '../webView/webView',
+  //     data:{
+  //       url:'https://app.xingxue.vip/wcOtherSWFD/wid/'+e.currentTarget.dataset.id,
+  //     }
+  //   });
+    $.openWin({
+      url: '../welfarHall/welfarDetail',
       data:{
-        url:'https://app.xingxue.vip/wcOtherSWFD/wid/'+e.currentTarget.dataset.id,
+        id:e.currentTarget.dataset.id,
       }
     })
-  }
+   }
 })

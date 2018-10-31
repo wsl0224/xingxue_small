@@ -34,6 +34,7 @@ Page({
    */
   onLoad: function (options) {
     let param=JSON.parse(options.data);
+    console.log('-监听页面加载');
     console.log(param);
     this.setData({
       orderID:param.id,
@@ -77,7 +78,12 @@ Page({
           'signType': 'MD5',
           'paySign': e.data.paySign,
           'success': function (res) {
-            wx.navigateBack();
+            $.openWin({
+              url: '../orderCenter/orderCenter',
+            })
+            wx.showToast({
+              title: '支付成功',
+            })
           },
           'fail': function (res) { },
           'complete': function (res) { }
@@ -90,6 +96,16 @@ Page({
         data:{
           oid:self.data.orderID,
         }
+      },function(e){
+        $.openWin({
+          url: '../orderCenter/orderCenter',
+        })
+        wx.showToast({
+          title: '支付成功',
+        })
+       
+      },function(e){
+        console.log(e);
       })
     }
   },

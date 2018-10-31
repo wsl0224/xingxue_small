@@ -130,11 +130,7 @@ Page({
     wx.chooseImage({
       count: 5,
       success: function (res) {
-
         const tempFilePaths = res.tempFilePaths;
-        console.log('上传图片');
-        console.log(tempFilePaths);
-        
         wx.uploadFile({
           url: config.Config.updateImgUrl,
           filePath: tempFilePaths[0],
@@ -144,10 +140,8 @@ Page({
           },
           success(res) {
             let pic = JSON.parse(res.data).data.pic;
-            
-            console.log(pic);
+          
             self.data.imageArr.push(pic);
-            console.log(self.data.imageArr);
             self.setData({
               image: self.data.imageArr,
             })
@@ -177,7 +171,12 @@ Page({
   // delImg
   delImg:function(e){
     var self=this;
-    this.data.imageArr.splice(e.currentTarget.dataset.index,e.currentTarget.dataset.index);
+    if (e.currentTarget.dataset.index==0){
+      this.data.imageArr.splice(e.currentTarget.dataset.index, e.currentTarget.dataset.index+1);
+    }else{
+      this.data.imageArr.splice(e.currentTarget.dataset.index, e.currentTarget.dataset.index);
+    }
+   
     this.setData({
       image: self.data.imageArr,
     })

@@ -87,9 +87,14 @@ page{
   border-top-style: solid;
   border-top-color: rgb(223,223,221);
 }
-.remarkCss,.remarkCss>input{
+.remarkCss{
   font-size: 32rpx;
   color: #666666;
+
+}
+.remarkCssT,.remarkCssT>input{
+   font-size: 32rpx;
+  color: rgb(0,0,0);
   margin-bottom: 20rpx;
 }
 

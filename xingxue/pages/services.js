@@ -1,8 +1,10 @@
 const RongIMLib = require('./lib/RongIMLib.miniprogram-1.0.8.js');
-const RongIMClient = RongIMLib.RongIMClient;
 
+const RongIMClient = RongIMLib.RongIMClient;
+let $=require('../pages/util/commit.js');
 const utils = require('./utils/utils.js');
 const { UserList, GroupList, MusicList} = require('./mock.js');
+
 
 let imInstance = null;
 let currentUser = null;
@@ -125,11 +127,12 @@ let getUserIndex = (name, max) => {
 
 let getUser = (user) => {
   user = utils.rename(user, {avatarUrl: 'avatar', nickName: 'name'});
-  console.log(user);
-  let maxIndex = UserList.length - 1;
-  let index = getUserIndex(user.name,  maxIndex);
-  let _user = UserList[index];
+  // let maxIndex = UserList.length - 1;
+  // let index = getUserIndex(user.name,  maxIndex);
+  // let _user = UserList[index];
   // utils.extend(_user, user);
+  let _user = user;
+  console.log(user);
   return _user
 };
 
@@ -144,7 +147,10 @@ let getUserById = (id) => {
 };
 
 User.getToken = (user) => {
+  console.log('getToken');
+  console.log(user);
   currentUser = getUser(user);
+  console.log(Promise.resolve(currentUser));
   return Promise.resolve(currentUser);
 };
 
@@ -326,40 +332,18 @@ let Conversation = {
 };
 
 let bindUserInfo = (list) => {
-  let unknowUser = {
+   let unknowUser = {
     name: '火星人',
     avatar: 'https://rongcloud-image.cn.ronghub.com/FjGxbmdZ7wyIqMHvaa3SqOgSZGk_?e=2147483647&token=CddrKW5AbOMQaDRwc3ReDNvo3-sL_SO1fSUBKV3H:OCCilgLZtkK8G9AmayjUzP9J66w='
   };
-  let unknowGroup = {
-    name: '火星群组',
-    avatar: 'https://rongcloud-image.cn.ronghub.com/FjGxbmdZ7wyIqMHvaa3SqOgSZGk_?e=2147483647&token=CddrKW5AbOMQaDRwc3ReDNvo3-sL_SO1fSUBKV3H:OCCilgLZtkK8G9AmayjUzP9J66w='
-  };
+ 
   if (!utils.isArray(list)){
     list = [list];
   }
-
-  let infoMap = {
-      1: (conversation) => {
-        conversation.target = utils.find(UserList, (user) => {
-          return user.id == conversation.targetId
-        }) || unknowUser;
-      },
-      2: (conversation) => {
-        conversation.target = unknowUser;
-      },
-      3: (conversation) => {
-        conversation.target = utils.find(GroupList, (group) => {
-          return group.id == conversation.targetId
-        }) || unknowGroup;
-      },
-      10: (conversation) => {
-        conversation.target = unknowUser;
-      }
-  };
   let formatMsg = (msg) => {
-    let {messageType} = msg;
+    let { messageType } = msg;
     let content = '[此消息类型未解析]';
-    if (messageType == 'TextMessage'){
+    if (messageType == 'TextMessage') {
       content = msg.content.content;
     }
     if (messageType == 'VoiceMessage') {
@@ -376,15 +360,59 @@ let bindUserInfo = (list) => {
     }
     return content;
   };
+  let infoMap = {
+      1: (conversation) => {
+
+        // console.log(conversation);
+        // conversation.target = utils.find(UserList, (user) => {
+      
+        //   console.log(user.id == conversation.targetId);
+          
+        //   return user.id == conversation.targetId
+        // }) || unknowUser;
+        console.log(conversation.targetId);
+        $.POST({
+          url: 'wcUserSURD',
+          data: {
+            uid: conversation.targetId
+          }
+        }, function (res) {
+          conversation.target = {
+            name: res.data.user_nicename,
+            avatar: res.data.avatar,
+            id: 'alias_' + res.data.uid,
+          };
+        },function(res){
+          console.log(e);
+        });
+    
+        
+      },
+      2: (conversation) => {
+        conversation.target = unknowUser;
+     
+      },
+      3: (conversation) => {
+        conversation.target = utils.find(GroupList, (group) => {
+          return group.id == conversation.targetId
+        }) || unknowGroup;
+      },
+      10: (conversation) => {
+         conversation.target = unknowUser;
+  
+      }
+  };
   utils.map(list, (conversation) => {
-    let {sentTime} = conversation;
-    conversation._sentTime = utils.getTime(sentTime);
-    conversation.unReadCount = conversation.unreadMessageCount;
-    let { latestMessage } = conversation;
-    conversation.content = formatMsg(latestMessage);
-    let _type = conversation.conversationType;
-    _type = _type > 3 ? 10 : _type;
-    infoMap[_type](conversation);
+   
+      let { sentTime } = conversation;
+      conversation._sentTime = utils.getTime(sentTime);
+      conversation.unReadCount = conversation.unreadMessageCount;
+      let { latestMessage } = conversation;
+      conversation.content = formatMsg(latestMessage);
+      let _type = conversation.conversationType;
+      _type = _type > 3 ? 10 : _type;
+      infoMap[_type](conversation);
+    
   });
 
 };
@@ -397,6 +425,12 @@ Conversation.clearUnreadCount = (conversation) => {
   });
 };
 Conversation.watch = (watcher) => {
+  console.log('Conversation.watch ')
+  console.log(watcher);
+  console.log(RongIMClient.Conversation.watch(function (list) {
+    bindUserInfo(list);
+    watcher(list);
+  }))
   RongIMClient.Conversation.watch(function(list){
     bindUserInfo(list);
     watcher(list);
@@ -412,7 +446,6 @@ Status.connect = (user) => {
   console.log(user);
   RongIMClient.setConnectionStatusListener({
     onChanged: (status) => {
-   
       Status.watcher.notify(status);
     }
   });

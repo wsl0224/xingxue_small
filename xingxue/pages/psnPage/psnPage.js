@@ -1,5 +1,58 @@
 // pages/psnPage/psnPage.js
 let $ = require('../util/commit.js');
+const utils = require('../utils/utils');
+const innerAudioContext = wx.createInnerAudioContext();
+const { globalData } = getApp();
+const { Service: { Status, Conversation } } = globalData;
+const watchConversation = (context) => {
+  Conversation.watch((conversationList) => {
+    context.setData({
+      conversationList
+    });
+  });
+};
+const watchStatus = () => {
+  Status.watch((status) => {
+    if (status == 3) {
+      let user = wx.getStorageSync('userInfo');
+      if (user) {
+        Status.connect(user.userInfo);
+      } else {
+      }
+    }
+  })
+}
+const connect = (context) => {
+  watchConversation(context);
+  watchStatus();
+  let userId = wx.getStorageSync('userId');
+  let user = wx.getStorageSync('userInfo');
+  $.POST({
+    url: 'wcUserSRYT',
+    data: {
+      uid: userId,
+    }
+  }, function (e) {
+    console.log('登录聊天');
+    wx.setStorageSync('UserToken', e.data.token);
+    wx.setStorageSync('UserId', e.data.userId);
+
+    let user = wx.getStorageSync('userInfo');
+    console.log(user);
+    Status.connect(user.userInfo).then(() => {
+      console.log('connect successfully');
+    }, (error) => {
+      wx.showToast({
+        title: error.msg,
+        icon: 'none',
+        duration: 3000
+      })
+    });
+  }, function (e) {
+    console.log(e);
+  })
+
+};
 Page({
 
   /**
@@ -19,6 +72,10 @@ Page({
     this.setData({
       psnId:param.id,
     })
+    if (wx.getStorageSync('loadStatus') == 1) {
+      connect(this);
+    }
+
     this.freshData();
   },
   // 刷新个人信息
@@ -82,6 +139,10 @@ Page({
   // 下单
   ToPlaceOrder: function (e) {
     let self = this;
+    let RZStatus = wx.getStorageSync('RZStatus');
+    let loadStatus = wx.getStorageSync('loadStatus')
+    if (loadStatus == 1) {
+      if (RZStatus == 3) {
     let psnParam={
       avatar: self.data.psnData.avatar,
       name: self.data.psnData.user_nicename,
@@ -95,19 +156,57 @@ Page({
         psnParam: psnParam,
       }
     })
+      } else {
+        wx.showToast({
+          title: '请先通过技能申请中的学生认证',
+          icon: 'none',
+        });
+      }
+    } else {
+      wx.showToast({
+        title: '请先登录',
+        icon: 'none',
+      });
+    }
   },
   // 进入聊天页面
   goToChat: function (e) {
-    let that = this;
-    $.openWin({
-      url: '../message/chat',
-      data: {
-        id: e.currentTarget.dataset.id,
-        title: e.currentTarget.dataset.title
-      }
-    })
+    if (wx.getStorageSync('loadStatus') == 1) {
+      let type = 1;
+      let title = e.currentTarget.dataset.title;
+      console.log(e.currentTarget.dataset.id);
+      let targetId = 'alias_' + e.currentTarget.dataset.id;
+
+      let url = '../conversation/chat?type={type}&targetId={targetId}&title={title}';
+      url = utils.tplEngine(url, {
+        type,
+        targetId,
+        title: title
+      });
+      console.log(url);
+      wx.navigateTo({
+        url: url,
+      });
+    } else {
+      wx.showToast({
+        title: '请先登录',
+        icon: 'none',
+      })
+    }
   },
- 
+  playMusic: function (e) {
+    innerAudioContext.autoplay = true
+    innerAudioContext.src = e.currentTarget.dataset.audio,
+      console.log('播放事件')
+    console.log(innerAudioContext);
+    innerAudioContext.onPlay(() => {
+      console.log('开始播放');
+    })
+    innerAudioContext.onError((res) => {
+      console.log(res.errMsg)
+      console.log(res.errCode)
+    })
+  }
 
  
 })

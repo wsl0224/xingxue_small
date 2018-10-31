@@ -1,0 +1,11 @@
+{
+    "usingComponents": {
+      "Conversation": "./components/conversation"
+    },
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "消息",
+    "backgroundColor": "#F2F2F2",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": true
+}

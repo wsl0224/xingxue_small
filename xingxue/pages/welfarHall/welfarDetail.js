@@ -30,6 +30,7 @@ Page({
       }
     },function(e){
       console.log(e);
+      e.data.content = e.data.content.replace(/\<img/gi, '<img style="width:100%;height:auto" ')
       self.setData({
         welfarData:e.data,
       })
@@ -82,5 +83,20 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  copyUrl:function(e){
+    wx.setClipboardData({
+      data: e.currentTarget.dataset.url,
+      success(res) {
+        wx.getClipboardData({
+          success(res) {
+            wx.showToast({
+              title: '复制成功,请用浏览器访问',
+              icon: 'none',
+            })
+          }
+        })
+      }
+    }) 
   }
 })

@@ -17,10 +17,7 @@ const watchStatus = () => {
       let user = wx.getStorageSync('userInfo');
       if (user) {
         Status.connect(user.userInfo);
-      } else {
-        wx.showToast({
-          title: '请先登录',
-        })
+      } else { 
       }
     }
   })
@@ -28,22 +25,32 @@ const watchStatus = () => {
 const connect = (context) => {
   watchConversation(context);
   watchStatus();
+  let userId = wx.getStorageSync('userId');
   let user = wx.getStorageSync('userInfo');
-  if (user) {
-    Status.connect(user.userInfo).then(() => {
-      console.log('connect successfully');
-    }, (error) => {
-      wx.showToast({
-        title: error.msg,
-        icon: 'none',
-        duration: 3000
-      })
-    })
-  } else {
-    wx.showToast({
-      title: '请先登录',
-    })
-  }
+  $.POST({
+    url: 'wcUserSRYT',
+    data: {
+      uid: userId,
+    }
+  }, function (e) {
+    console.log('登录聊天');
+    wx.setStorageSync('UserToken', e.data.token);
+    wx.setStorageSync('UserId', e.data.userId);
+    
+        let user = wx.getStorageSync('userInfo');
+        console.log(user);
+        Status.connect(user.userInfo).then(() => {
+          console.log('connect successfully');
+        }, (error) => {
+          wx.showToast({
+            title: error.msg,
+            icon: 'none',
+            duration: 3000
+          })
+        }); 
+  }, function (e) {
+    console.log(e);
+  })
 
 };
 Page({
@@ -64,8 +71,12 @@ Page({
     this.setData({
       paramData:param,
     });
-    connect(this);
     this.freshData();
+   
+    if (wx.getStorageSync('loadStatus')==1){
+      connect(this);
+    }
+    
   },
   
   freshData:function(e){
@@ -79,8 +90,7 @@ Page({
       self.setData({
         skillData: e.data,
       });
-    },
-      function (e) {
+    },function (e) {
         console.log(e);
       });
   },
@@ -95,7 +105,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    this.freshData();
+    if (wx.getStorageSync('loadStatus')==1) {
+      connect(this);
+    }
   },
 
   /**
@@ -144,44 +157,64 @@ Page({
   // 下单
   ToPlaceOrder: function(e) {
     let self=this;
-    let skillParam={
-      sId: self.data.skillData.usid,
-      sName: self.data.skillData.name,
-      sMoney: self.data.skillData.price,
-      avatar: self.data.skillData.avatar,
-      name: self.data.skillData.user_nicename,
-      psnId: self.data.skillData.uid,
-    };
-    $.openWin({
-      url: '../placeOrder/placeOrder',
-      data: {
-        Type:'skillPage',
-        skillParam: skillParam,
+    let RZStatus = wx.getStorageSync('RZStatus');
+    let loadStatus = wx.getStorageSync('loadStatus');
+    console.log(loadStatus);
+    if (loadStatus == 1) {
+      if (RZStatus == 3) {
+        let skillParam = {
+          sId: self.data.skillData.usid,
+          sName: self.data.skillData.name,
+          sMoney: self.data.skillData.price,
+          avatar: self.data.skillData.avatar,
+          name: self.data.skillData.user_nicename,
+          psnId: self.data.skillData.uid,
+        };
+        $.openWin({
+          url: '../placeOrder/placeOrder',
+          data: {
+            Type: 'skillPage',
+            skillParam: skillParam,
+          }
+        })
+      } else {
+        wx.showToast({
+          title: '请先通过技能申请中的学生认证',
+          icon: 'none',
+        });
       }
-    })
+    } else {
+      wx.showToast({
+        title: '请先登录',
+        icon: 'none',
+      });
+    }
   },
   
   // 进入聊天页面
   goToChat: function(event) {
-  
-    let type=1;
-  
-    let title = event.currentTarget.dataset.title;
-    console.log(event.currentTarget.dataset.id);
-    let targetId = 'alias_' + event.currentTarget.dataset.id;
-  
-    let url = '../message/chat?type={type}&targetId={targetId}&title={title}';
-        url = utils.tplEngine(url, {
-          type,
-          targetId,
-          title: title
-        });
-        console.log(url);
-        wx.navigateTo({
-          url: url,
-        });
-    
-  
+    if (wx.getStorageSync('loadStatus')==1) {
+      let type = 1;
+      let title = event.currentTarget.dataset.title;
+      console.log(event.currentTarget.dataset.id);
+      let targetId = 'alias_' + event.currentTarget.dataset.id;
+
+      let url = '../conversation/chat?type={type}&targetId={targetId}&title={title}';
+      url = utils.tplEngine(url, {
+        type,
+        targetId,
+        title: title
+      });
+      console.log(url);
+      wx.navigateTo({
+        url: url,
+      });
+    }else{
+      wx.showToast({
+        title: '请先登录',
+        icon: 'none',
+      })
+    }
   },
   // 关注事件
   FollowerBtn:function(e){

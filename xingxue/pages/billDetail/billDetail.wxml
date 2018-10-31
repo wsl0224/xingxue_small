@@ -10,7 +10,7 @@
       </view>
   </view>
   <view class="main_itemR {{item.type==1||item.type==8?'red':'add'}}">
-  {{item.type==1||item.type==8?'-':'+'}} {{item.price}}
+  {{item.price}}
   </view>
 </view>
 </scroll-view>

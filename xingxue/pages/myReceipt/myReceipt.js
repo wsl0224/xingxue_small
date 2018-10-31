@@ -29,7 +29,8 @@ freshData:function(e){
     }); 
     page = 1;
     oldPage = 0;
-  })
+  });
+  wx.stopPullDownRefresh();
 },
  // 
   upper:function(e){
@@ -85,7 +86,7 @@ freshData:function(e){
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.freshData();
   },
 
   /**

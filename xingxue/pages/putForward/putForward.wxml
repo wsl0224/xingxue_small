@@ -16,22 +16,22 @@
     </view>
     <view class='top_right'>
       <view class='top_rightImg'>
-      <image src='https://app.xingxue.vip/icon/icon60.png'></image>
+        <image src='https://app.xingxue.vip/icon/icon60.png'></image>
       </view>
-     
+
     </view>
   </view>
   <view class='mid'>
     <view class='mid_top'>
       <view class='mid_topL'>
-      提现金额
+        提现金额
       </view>
-      <view class='mid_topR'>
-      <view class='mid_topRImg'>
-        <image src='https://app.xingxue.vip/icon/icon84.png'></image>
-      </view>
-      <view class='mid_topRTxt'>奖励金，注册成为服务者后或产生交易后即可提现或使用"</view>
-      </view>
+      <!-- <view class='mid_topR'>
+        <view class='mid_topRImg'>
+          <image src='https://app.xingxue.vip/icon/icon84.png'></image>
+        </view>
+        <view class='mid_topRTxt'>奖励金，注册成为服务者后或产生交易后即可提现或使用"</view>
+      </view> -->
     </view>
     <view class='mid_mid'>
       <view class='mid_midL'>
@@ -42,10 +42,10 @@
       </view>
     </view>
     <view class='mid_bottom'>
-    可提现余额 {{yuer}}元
+      可提现余额 {{yuer}}元
     </view>
   </view>
   <view class='bottom' bindtap='onBtn'>
-  提现
+    提现
   </view>
 </view>

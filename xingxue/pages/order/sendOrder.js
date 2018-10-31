@@ -167,13 +167,30 @@ Page({
   },
   // 进入下单详细
   ToDetail: function(e) {
-    $.openWin({
-      url: './sendOrderDetail',
-      data:{
-        id:e.currentTarget.dataset.id,
-        name: e.currentTarget.dataset.name,
+    let RZStatus = wx.getStorageSync('RZStatus');
+    let loadStatus = wx.getStorageInfoSync('loadStatus')
+    if (loadStatus == 1 ){
+      if (RZStatus == 3) {
+        $.openWin({
+          url: './sendOrderDetail',
+          data: {
+            id: e.currentTarget.dataset.id,
+            name: e.currentTarget.dataset.name,
+          }
+        });
+      } else {
+        wx.showToast({
+          title: '请先通过技能申请中的学生认证',
+          icon: 'none',
+        });
       }
-    });
+    }else{
+      wx.showToast({
+        title: '请先登录',
+        icon: 'none',
+      });
+    }
+    
   },
   // 移动地图
   regionchange:function(e){

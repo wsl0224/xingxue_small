@@ -43,19 +43,40 @@
   flex-direction: row wrap;
   justify-content: flex-start;
   flex-wrap:wrap;
+ 
+ 
 }
 .topMidPhoto,.TOPMid{
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-
+   position: relative;
+   margin-left: 10rpx;
+   margin-right: 20rpx;
+   margin-bottom: 20rpx;
+  
+}
+.TOPMid{
+  border:1rpx solid rgb(223,223,221);
 }
 .topMidPhoto.TOPMid,.topMidPhoto>image,.TOPMid>image{
   width: 140rpx;
   height: 140rpx;
 }
-
+.ImageTop{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -15rpx;
+  right: -15rpx;
+}
+.ImageTop,.ImageTop>image{
+  width: 30rpx;
+  height: 30rpx;
+}
 .mid{
 margin-top: 20rpx;
      border-top: 1rpx;

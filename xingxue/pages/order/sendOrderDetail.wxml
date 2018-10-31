@@ -1,7 +1,7 @@
 <!--pages/order/sendOrderDetail.wxml-->
 <view class='main' style='background-color:#fff'>
   <!-- 品类 -->
-  <picker  bindchange="bindPickerPLChange" value='{{index}}' range='{{PLArray}}'>
+  <picker  bindchange="bindPickerPLChange" value='{{index}}' range-key="{{'name'}}" range='{{PLArray}}'>
     <view class='list-item'>
     <text class='list-item-left' >品类</text>
     <view class='list-item-right'>
@@ -66,7 +66,7 @@
   </view>
   <!-- 备注 -->
   <view class='list-end'>
-     <text class='remarkCss'>备注</text>
+     <text class='remarkCssT'>备注</text>
      <input placeholder='点击进行备注' placeholder-class='remarkCss' bindchange='WTRemark'>
      </input> 
     

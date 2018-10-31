@@ -7,13 +7,15 @@ Page({
    */
   data: {
     id:'',
+
     title:'叫醒服务',
     sex:'全部',
     date:'选择日期',
     time:'选择时间',
     num:1,
     remark:'',
-    PLArray: ['叫醒服务', '叫醒服务', '叫醒服务', '叫醒服务'],
+    PLArray: [],
+ 
     SexArray:['全部','男','女'],
     Midlatitude:'',
     Midlongitude:'',
@@ -31,12 +33,22 @@ Page({
         id: param.id,
         title:param.name,  
         startDate:'2018-01-01',
-        endDate:'2100-01-01'
+        endDate:'9999-01-01'
       });
       self.getLocation();
+      self.freshAllTwoSkill();
   },
   freshAllTwoSkill:function(e){
-     
+     let self=this;
+     $.POST({
+       url:'wcSCSL',
+       data:{}
+     },function(e){
+
+      self.setData({
+        PLArray:e.data,
+      })
+     },function(e){})
   },
   
   /**
@@ -118,8 +130,10 @@ Page({
   },
 // 品类选择
   bindPickerPLChange:function(e){
+   
   this.setData({
-    title: this.data.PLArray[e.detail.value]
+    title: this.data.PLArray[e.detail.value].name,
+    id: this.data.PLArray[e.detail.value].cid,
   })
 },
 // sex选择
@@ -130,7 +144,7 @@ Page({
   },
     // 选择日期时间 
   bindPickerDateChange: function (e) {
-    console.log(e);
+  
     this.setData({
       date: e.detail.value
     });
@@ -174,12 +188,13 @@ Page({
           begin_time: DateTime,
           sex: sexVal,
           remark: self.data.remark,
-
         }
       },function(e){
         $.openWin({
           url: '../orderCenter/orderCenter'
         })
+      },function(e){
+        console.log(e);
       })
     }else{
       wx.showToast({

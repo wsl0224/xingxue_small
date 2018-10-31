@@ -64,10 +64,7 @@
   vertical-align: middle;
   vertical-align: -webkit-baseline-middle;
 }
-.list-item-right>text{
-  font-size: 32rpx;
- 
-}
+
 
 .list-item-right>view
 ,.list-item-right>view>image{
@@ -81,6 +78,7 @@
   align-items: center;
   justify-content: center;
 }
+
 /* 数量 */
 .list-item-rightN{
   height: 32rpx;
@@ -152,6 +150,7 @@
   border-bottom-style: solid;
   border-bottom-color:  rgb(223,223,221);
 }
+
 /* footer */
 .footer{
   margin-top: 20rpx;
@@ -166,4 +165,12 @@
   border-radius: 6rpx;
   background-color: rgb(134,178,249);
   margin: 0 auto;
+}
+.allMunMone{
+  width: 200rpx;
+}
+.allMunMone>.allMoney{
+  width: 200rpx;
+  font-size: 32rpx;
+  text-align: right;
 }

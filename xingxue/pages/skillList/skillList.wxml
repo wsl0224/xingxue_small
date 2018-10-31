@@ -1,6 +1,6 @@
 <!--pages/skillList/skillList.wxml-->
 <wxs module="publicFun" src="../util/publicFun.wxs"></wxs>
-<scroll-view scroll-y class='main' bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll">
+<scroll-view scroll-y class='main' bindscrolltolower="lower" >
   <view data-id='{{item.usid}}' bindtap='ToSkillPage' class="{{index==0?'first_item':'item_main'}}" wx:for="{{psnData}}">
       <view class='item_content'>
         <view class='item_contentL'>

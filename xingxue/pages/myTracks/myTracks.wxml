@@ -4,7 +4,7 @@
       <view class='item_content'>
         <view class='item_contentL'>
             <view class='item_image'>
-              <image src='{{item.avatar}}' mode='center'/>
+              <image src='{{item.avatar}}'/>
             </view>
             <view class='item_txt'>
               <view class='item_txtName'>

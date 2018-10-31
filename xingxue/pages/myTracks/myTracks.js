@@ -49,7 +49,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.freshData();
   },
 
   /**
@@ -74,9 +74,11 @@ Page({
       pageNum=1;
       self.setData({
         psnData:e.data,
-      })
+      });
+      wx.stopPullDownRefresh();
     },function(e){
       console.log(e);
+      wx.stopPullDownRefresh();
     })
   },
   // 加载更多

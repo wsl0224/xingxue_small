@@ -1,9 +1,10 @@
 <!--pages/placeOrder/placeOrder.wxml-->
+<wxs module="publicFun" src="../util/publicFun.wxs"></wxs>
 <scroll-view scroll-y class='main'>
   <!-- 头像 -->
   <view class='top'>
     <view class='top_img'>
-      <image src='{{avatar}}' mode='center'></image>
+      <image src='{{avatar}}'></image>
     </view>
     <view class='top_txt'>
       {{name}}
@@ -46,7 +47,7 @@
         </view>
       </view>
     </picker> -->
-  <!-- date -->
+    <!-- date -->
     <picker mode='date' value="{{date}}" style='' bindchange="bindPickerDateChange">
       <view class='list-item'>
         <text class='list-item-left'>日期</text>
@@ -88,30 +89,32 @@
     <!-- 备注 -->
     <view class='list-end'>
       <text>备注</text>
-      <input placeholder='简单说下你的要求'  bindinput="bindKeyInput" placeholder-class='remarkInput'></input>
+      <input placeholder='简单说下你的要求' bindinput="bindKeyInput" placeholder-class='remarkInput'></input>
 
     </view>
   </view>
- 
+
   <view class='bottom'>
-   <!-- 费用 -->
+    <!-- 费用 -->
     <view class='list-item'>
-        <text class='list-item-left'>费用</text>
-        <view class='list-item-right'>
-          <text>  {{money}}元/小时</text>
+      <text class='list-item-left'>费用</text>
+      <view class='list-item-right'>
+        <text>  {{money}}元/小时</text>
+      </view>
+    </view>
+    <view class='list-item'>
+      <text class='list-item-left'>合计</text>
+      <view class='list-item-right allMunMone'>
+        <view class='allMoney'>
+           {{publicFun.showNum(allMoney)}}元
         </view>
       </view>
-       <view class='list-item'>
-        <text class='list-item-left'>合计</text>
-        <view class='list-item-right'>
-          <text>  {{money*num}}元</text>
-        </view>
-      </view>
+    </view>
   </view>
 </scroll-view>
 <view class='footer' bindtap='submit'>
   <view>
     提交订单
   </view>
-  
+
 </view>

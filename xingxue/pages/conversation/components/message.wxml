@@ -1,5 +1,5 @@
  <view class='rong-message'>
-      <image class='rong-avatar rong-message-avatar rong-message-avatar-{{message.direction}}' src='{{message.sender.avatar}}'></image>
+      <image class='rong-avatar rong-message-avatar rong-message-avatar-{{message.direction}}' src='{{message.content.user.avatar}}'></image>
      
       <view wx:if = '{{message.name == "ImageMessage"}}' class='rong-message-content rong-message-content-image-{{message.direction}}'>
         <ImageMessage message='{{message}}' bindonpreviewimage='onPreviewImage'></ImageMessage>

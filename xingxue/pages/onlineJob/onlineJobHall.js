@@ -73,6 +73,9 @@ Page({
       });
       page = 1;
       oldPage = 0;
+      wx.stopPullDownRefresh();
+    },function(e){
+      wx.stopPullDownRefresh();
     })
   },
   upper: function(e) {
@@ -131,7 +134,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    this.freshData();
   },
 
   /**

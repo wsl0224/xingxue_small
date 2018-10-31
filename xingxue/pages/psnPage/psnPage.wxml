@@ -20,7 +20,7 @@
             </view>
           </view>
           <view class='psnInfo_RZstatus' wx:if="{{psnData.stu_uthentication==1?true:false}}">
-            学生认证
+            学生身份
           </view>
         </view>
         <view class='psnInfo_Content'>
@@ -81,11 +81,11 @@
           {{item.price}}元/小时
         </view>
         <view class='skillInfo_music'>
-          <view class='skillInfo_ML'>
+          <view class='skillInfo_ML' bindtap='playMusic' data-audio='{{item.audio}}'>
             <view class='skillInfo_MLImg'>
               <image src='https://app.xingxue.vip/icon/icon48.png'></image>
             </view>
-            <view class='skillInfo_MLTxt'>{{item.audio}}</view>
+            <view class='skillInfo_MLTxt'>{{item.audio_time}}</view>
           </view>
           <view class='skillInfo_MR'>
             接单{{item.complate_score}}次
@@ -135,7 +135,7 @@
 
 
 <view class='footer'>
-  <view class='footerL'  bindtap='goToChat' data-id='{{psnData.uid}}' data-title="{{psnData.user_nicename}}">
+  <view class='footerL'  bindtap='goToChat' data-type="1" data-id='{{psnData.uid}}' data-title="{{psnData.user_nicename}}">
     聊天
   </view>
   <view class='footerR'  bindtap='ToPlaceOrder' data-id='{{psnData.uid}}' data-psnData='{{psnData}}'>

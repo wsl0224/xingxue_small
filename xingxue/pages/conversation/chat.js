@@ -1,4 +1,6 @@
+let $=require('../util/commit.js');
 const utils = require('../utils/utils.js');
+const { UserList, GroupList, MusicList } = require('../mock.js');
 const { adapterHeight } = utils.getAdapterheight();
 
 const { globalData } = getApp();
@@ -65,11 +67,8 @@ const formatEmojis = () => {
 };
 
 const getMessageList = (context, params) => {
-  console.log(context);
-  console.log(params);
   let { position } = params;
   return Message.getList(params).then((result) => {
-    console.log(result);
     let messages = result.messageList;
     let hasMore = result.hasMore;
 
@@ -148,8 +147,6 @@ const getImageUrls = (context) => {
 };
 
 const onLoad = (context, query) => {
-  console.log(context);
-  console.log(query);
   let { title, type, targetId } = query;
   wx.setNavigationBarTitle({
     title
@@ -168,10 +165,7 @@ const onLoad = (context, query) => {
 
   Message.watch((message) => {
     let { messageList } = context.data;
-    console.log('----');
-    console.log(message);
     messageList.push(message);
-
     context.setData({
       messageList,
       toView: message.uId
@@ -299,11 +293,14 @@ const sendText = (context) => {
     targetId,
     content
   }).then(message => {
+   
+    // unKnowUser(message.targetId);
     messageList.push(message);
     context.setData({
       messageList,
       toView: message.uId
     });
+  
   });
 };
 

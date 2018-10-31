@@ -152,5 +152,14 @@ Page({
       }
     })
   },
-
+  showBigImage:function(e){
+    var src = e.currentTarget.dataset.src;
+    var list =[];
+    list.push(src);
+    wx.previewImage({
+      current: src,
+      urls: list
+    })
+  },
+ 
 })

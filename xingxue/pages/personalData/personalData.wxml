@@ -15,8 +15,11 @@
      形象照
     </view>
     <view class='mid_content'>
-      <view class='mid_psnPhoto' wx:key="{{index}}" wx:for="{{image}}" wx:if="{{image.length>0}}">
+      <view class='mid_psnPhoto' wx:key="{{index}}" wx:for="{{image}}"  wx:if="{{image.length>0}}">
         <image src='{{item}}'></image>
+        <view class='ImageTop' data-index="{{index}}" bindtap='delImage'>
+        <image src='https://app.xingxue.vip/icon/icon95.png'></image>
+        </view>
       </view>
       <view class='mid_psnPhoto' bindtap='updataPhoto' >
       <image src='https://app.xingxue.vip/icon/icon59.png'></image>
@@ -58,7 +61,7 @@
   </picker>
     
 
-      <view class='infoItemQM'>
+      <view class='infoItem'>
         <view class='infoLabel'>
         签名
         </view>
@@ -69,3 +72,11 @@
     </view>
   </view>
 </scroll-view>
+
+<canvas hidden='{{hide_canvas}}' id='cover-preview' bindtouchstart='canvas_start' bindtouchmove='canvas_move' bindtouchend='canvas_end' disable-scroll='true' canvas-id='cover-preview'>
+    <cover-view catchtap='upload_bg' id='croper-sure'>确定</cover-view>
+    <cover-view catchtap='cancel_croper' id='croper-cancel'>取消</cover-view>
+    <cover-view id='croper'></cover-view>
+ </canvas> 
+
+

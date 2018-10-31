@@ -48,17 +48,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    wx.showLoading();
-    wx.startPullDownRefresh();
+   
     let self = this;
     self.freshTData(); // 过滤二级数据
     self.freshBanner(); //  过滤banner
     self.freshTSData(); //过滤推荐二级技能
-    wx.hideLoading();
-    wx.stopPullDownRefresh();
+ 
   },
   // 过滤二级数据
   freshTData: function(e) {
+ 
+
     let self = this;
     $.GET({
       url: 'wcIndexRCC',
@@ -66,11 +66,12 @@ Page({
       self.setData({
         skillData: e.data,
       })
-      
+      console.log('1');
+      wx.stopPullDownRefresh();
     }, function(e) {
 
     });
-
+  
   },
   // 过滤推荐二级技能
   freshTSData: function(e) {
@@ -170,8 +171,11 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
-
+  onPullDownRefresh: function () {
+    let self = this;
+    self.freshTData(); // 过滤二级数据
+    self.freshBanner(); //  过滤banner
+    self.freshTSData(); //过滤推荐二级技能
   },
 
   /**
@@ -186,23 +190,6 @@ Page({
    */
   onShareAppMessage: function() {
 
-  },
-
-  upper: function(e) {
-    wx.showLoading();
-    wx.startPullDownRefresh();
-    let self = this;
-    self.freshTData(); // 过滤二级数据
-    self.freshBanner(); //  过滤banner
-    self.freshTSData(); //过滤推荐二级技能
-    wx.hideLoading();
-    wx.stopPullDownRefresh();
-  },
-  lower: function(e) {
-    console.log(e)
-  },
-  scroll: function(e) {
-    console.log(e)
   },
   // 
   ToSkillPage: function(e) {

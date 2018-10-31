@@ -4,5 +4,5 @@
     "WithoutMessage": "./components/message/without",
     "Loading": "./components/loading"
   },
-  "enablePullDownRefresh": true
+  "enablePullDownRefresh":true
 }

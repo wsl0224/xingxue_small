@@ -3,6 +3,68 @@ let $ = require('../util/commit.js');
 const utils = require('../utils/utils');
 const { globalData } = getApp();
 const { Service: { Status, Conversation } } = globalData;
+const watchStatus = () => {
+  Status.watch((status) => {
+    console.log(status);
+    if (status == 3) {
+      wx.getUserInfo({
+        success: (user) => {
+          console.log(user.userInfo);
+          Status.connect(user.userInfo);
+        }
+      });
+    }
+  })
+}
+const connect = (context) => {
+  watchStatus();
+  let userId = wx.getStorageSync('userId');
+    let user = wx.getStorageSync('userInfo');
+      $.POST({
+        url:'wcUserSRYT',
+        data: {
+          uid:userId,
+         }
+      },function(e){
+        console.log('登录聊天');
+        console.log(e);
+        wx.setStorageSync('UserToken', e.data.token);
+        wx.setStorageSync('UserId', e.data.userId);
+        wx.getUserInfo({
+          success: (user) => {
+          
+            user.userInfo.token = e.data.token;
+            user.userInfo.id = e.data.userId;
+            user.userInfo.userId = e.data.userId;
+            user.userInfo.name = e.data.name;
+            user.userInfo.nickName = e.data.name;
+            user.userInfo.avatar = e.data.avatar;
+            user.userInfo.avatarUrl = e.data.avatar; 
+            wx.setStorageSync("userInfo", user);      
+            Status.connect(user.userInfo).then(() => {
+              console.log('connect successfully');
+            }, (error) => {
+              wx.showToast({
+                title: error.msg,
+                icon: 'none',
+                duration: 3000
+              })
+            })
+          },
+          fail: (error) => {
+            console.log(error);
+            wx.showToast({
+              title: '换个网络试试，只能帮你到这了～',
+              icon: 'none',
+              duration: 3000
+            })
+          }
+        })
+       
+      },function(e){
+        console.log(e);
+      })
+};
 Page({
 
   /**
@@ -21,7 +83,6 @@ Page({
       jingxing: 0,
     },
     psnStatus: 0,
-  
     UserToken: '',
   },
 
@@ -65,7 +126,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    this.freshPsnData();
   },
 
   /**
@@ -108,6 +169,7 @@ Page({
   // 登录事件
   ToLoded: function(e) {
     let self = this;
+    
     wx.login({
       timeout: 5000,
       success: function(e) {
@@ -118,18 +180,22 @@ Page({
             code: e.code,
           },
         }, function(e) {
-         
+          
           wx.setStorageSync('psnkey', e.data.key);
           wx.setStorageSync('userId', e.data.uid);
-          self.getUserInfo(); //获取人员信息
-          if (e.data.status == 1) {
-      
-            self.ShowRegisterPage(); //显示注册窗口 
-
-          } else {
-            self.chatLogin();
-            self.freshPsnData();
-          }
+          wx.getUserInfo({
+            success: (user) => {
+              console.log(user);
+          
+              if (e.data.status == 1) {
+                self.ShowRegisterPage(); //显示注册窗口 
+              } else {
+                connect(self);
+                self.freshPsnData();
+              }
+            }
+          });
+         
         }, function(e) {
 
         });
@@ -145,38 +211,23 @@ Page({
 
     });
   },
-  // 获取人员信息
-  getUserInfo: function(e) {
-    // 登录成功后获取人员信息
-    wx.getUserInfo({
-      success: function(res) {
-        wx.setStorageSync("userInfo", res);
-       
-        console.log(res);
-        if (res) {
-          Status.connect(res.userInfo).then(() => {
-            console.log('connect successfully');
-          }, (error) => {
-            wx.showToast({
-              title: error.msg,
-              icon: 'none',
-              duration: 3000
-            })
-          })
-        }
-      }
-    });
 
-  },
   // 注册获取手机号
   Register: function(e) {
     let self = this;
     if (e.detail) {
-      wx.setStorageSync("phoneInfo", e.detail);
-      self.RegisterApp(); //同步注册APP账号
-      self.chatLogin(); //聊天登录
-      self.freshPsnData(); //刷新我的信息
-      self.CloseRegisterPage();
+      console.log('phoneInfo');
+      console.log(e.detail)
+      wx.getUserInfo({
+        success: (user) => {
+          console.log(user);
+          wx.setStorageSync("phoneInfo", e.detail);
+          wx.setStorageSync("userInfo", user);
+          self.RegisterApp(); //同步注册APP账号
+
+        }
+      })
+     
     }
 
   },
@@ -195,10 +246,13 @@ Page({
       wx.setStorageSync('psnkey', e.data.key);
       wx.setStorageSync('userId', e.data.uid);
       self.getLocation();
+      connect(self);
       self.freshPsnData();
+     
     }, function(e) {
     
-    })
+    });
+    self.CloseRegisterPage();
   },
   // 下拉刷新我的信息
   upper: function(e) {
@@ -215,7 +269,9 @@ Page({
         self.setData({
           psnData: e.data,
           psnStatus: 1,
-        })
+        });
+        wx.setStorageSync('RZStatus', e.data.stu_status)
+        wx.setStorageSync('loadStatus', 1);
       } else {
         wx.stopPullDownRefresh();
         self.setData({
@@ -231,31 +287,14 @@ Page({
           psnStatus: 0,
         })
       }
+      wx.stopPullDownRefresh();
     }, function(e) {
       console.log(e)
-
-    })
+      wx.stopPullDownRefresh();
+    });
+  
   },
-  // 登录消息
-
-  // 登录聊天
-  chatLogin: function(cb) {
-    let that=this;
-    let userId=wx.getStorageSync('userId');
-      $.POST({
-        url:'wcUserSRYT',
-        data: {
-          uid:userId,
-         }
-      },function(e){
-        console.log('登录聊天');
-        wx.setStorageSync('UserToken', e.data.token);
-        wx.setStorageSync('UserId', e.data.userId);
-        
-      },function(e){
-        console.log(e);
-      })
-  },
+  
 
   // 获取当前人地理位置
   getLocation: function(e) {
@@ -369,7 +408,6 @@ Page({
   },
   // 退出
   EXITBtn: function(e) {
-    wx.clearStorageSync();
     this.setData({
       psnData: {
         avatar: 'https://app.xingxue.vip/icon/icon94.png',
@@ -381,6 +419,11 @@ Page({
         task_count: 0,
       },
       psnStatus: 0,
+
+    })
+    wx.clearStorageSync();
+    wx.showToast({
+      title: '退出成功',
     })
   }
 })

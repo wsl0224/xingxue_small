@@ -1,7 +1,11 @@
 <!--pages/welfarHall/welfarDetail.wxml-->
 <view class='main'>
+     
       <rich-text nodes="{{welfarData.content}}">
       </rich-text>  
+       <view class='main_top' data-url="{{welfarData.url}}" bindtap='copyUrl'>
+          领取福利入口
+      </view>
 </view>
 
 
