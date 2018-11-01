@@ -4,7 +4,7 @@
   height:86vh;
 }
  .psnTop{
-   height: 496rpx;
+   height:100vw;
   position: relative;
  }
  .psnTop_image{
@@ -14,7 +14,7 @@
  }
   .psnTop_image,.psnTop_image>image{
     width: 100vw;
-    height: 496rpx;
+    height: 100vw;
   }
   .psnTopInfo{
   height: 158rpx;

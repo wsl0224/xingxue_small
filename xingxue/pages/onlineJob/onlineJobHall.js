@@ -22,30 +22,30 @@ Page({
     FLStatus: false,
     FLData: [{
       id: 0,
-      name: '佣金最高',
+      name: '不限',
     }, {
-      id: 1,
-      name: '最新发布',
-    }],
+        id: 1,
+        name: '关注',
+      }, {
+        id: 2,
+        name: '注册',
+      }, {
+        id: 3,
+        name: '体验',
+      }, {
+        id: 4,
+        name: '其它',
+      },],
     PXSelectIndex: 0,
     PXStatus: false,
     PXEndSelecVal: '',
     PXData: [{
       id: 0,
-      name: '不限',
+      name: '佣金最高',
     }, {
-      id: 1,
-      name: '关注',
-    }, {
-      id: 2,
-      name: '注册',
-    }, {
-      id: 3,
-      name: '体验',
-    }, {
-      id: 4,
-      name: '其它',
-    }, ],
+        id: 1,
+        name: '最新发布',
+      }],
     JobData: []
   },
 
@@ -62,11 +62,11 @@ Page({
       url: 'Wc/Task/task_list',
       data: {
         page: 1,
-        condition: self.data.FLEndSelecVal,
-        type: self.data.PXEndSelecVal,
+        condition: self.data.PXEndSelecVal,
+        type: self.data.FLEndSelecVal,
       }
     }, function(e) {
-      console.log('Wc/Task/task_list');
+     
       console.log(e);
       self.setData({
         JobData: e.data
@@ -183,23 +183,25 @@ Page({
   },
   // 分类选择
   FLItemTab: function(e) {
-    this.setData({
-      FLSelectIndex: e.currentTarget.dataset.id,
-      FLStatus: false,
-      PXStatus: false,
-
-
-    })
-    if (e.currentTarget.dataset.id == 0) {
+    console.log(e.currentTarget.dataset.id,e.currentTarget.dataset.name)
+    if (e.currentTarget.dataset.name == '不限'){
       this.setData({
-        FLEndSelecVal: 'price',
+        FLSelectIndex: e.currentTarget.dataset.id,
+        FLStatus: false,
+        PXStatus: false,
+        FLEndSelecVal: '',
+      })
+    }else{
+      this.setData({
+        FLSelectIndex: e.currentTarget.dataset.id,
+        FLStatus: false,
+        PXStatus: false,
+        FLEndSelecVal: e.currentTarget.dataset.name
       })
     }
-    if (e.currentTarget.dataset.id == 1) {
-      this.setData({
-        FLEndSelecVal: 'time',
-      })
-    }
+    
+  
+    this.freshData();
   },
   // 排序选择
   PXItemTab: function(e) {
@@ -207,8 +209,19 @@ Page({
       PXSelectIndex: e.currentTarget.dataset.id,
       FLStatus: false,
       PXStatus: false,
-      PXEndSelecVal: e.currentTarget.dataset.name
     })
+    if (e.currentTarget.dataset.id == 0) {
+      this.setData({
+        PXEndSelecVal: 'price',
+      })
+    }
+    if (e.currentTarget.dataset.id == 1) {
+      this.setData({
+        PXEndSelecVal: 'time',
+      })
+    }
+
+    this.freshData();
   },
   // 进入任务详情
   ToOnlineJobDetail: function(e) {

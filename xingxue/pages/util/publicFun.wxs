@@ -32,7 +32,7 @@ var publicFun = {
       return '未支付'
     }
     if (e == 9) {
-      return '已支付订单'
+      return '已取消'
     }
   },
   // 根据状态num显示图片

@@ -168,7 +168,7 @@ Page({
   // 进入下单详细
   ToDetail: function(e) {
     let RZStatus = wx.getStorageSync('RZStatus');
-    let loadStatus = wx.getStorageInfoSync('loadStatus')
+    let loadStatus = wx.getStorageSync('loadStatus');
     if (loadStatus == 1 ){
       if (RZStatus == 3) {
         $.openWin({

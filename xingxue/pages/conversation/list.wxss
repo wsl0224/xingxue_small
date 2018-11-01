@@ -1,6 +1,11 @@
+@import '../util/publicCss';
 .rong-conversations{
   color: #8E969F;
   font-size: 13px;
+  border-top: 1rpx;
+  border-top-color: #dfdfdd;
+  border-top-style: solid;
+  background: #fff;
 }
 
 .rong-authorization-tip{

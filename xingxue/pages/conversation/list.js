@@ -4,21 +4,21 @@ const utils = require('../utils/utils');
 const {globalData} = getApp();
 const {Service: {Status, Conversation}} = globalData;
 
-const requestUserAuth = () => {
-  return new Promise((resolve, reject) => {
-    console.log(resolve);
-    console.log(reject);
-    wx.getSetting({
-      success: function (res) {
-        resolve(!!res.authSetting['scope.userInfo'])
-      },
-      fail: function (error) {
-        console.log(error);
-        reject(error)
-      }
-    })
-  });
-};
+// const requestUserAuth = () => {
+//   return new Promise((resolve, reject) => {
+//     console.log(resolve);
+//     console.log(reject);
+//     wx.getSetting({
+//       success: function (res) {
+//         resolve(!!res.authSetting['scope.userInfo'])
+//       },
+//       fail: function (error) {
+//         console.log(error);
+//         reject(error)
+//       }
+//     })
+//   });
+// };
 
 const watchConversation = (context) => {
   Conversation.watch((conversationList) => {
@@ -45,6 +45,7 @@ const watchStatus = () => {
 
 const connect = (context) => {
   console.log(context);
+
   watchConversation(context);
   watchStatus();
   let userId = wx.getStorageSync('userId');
@@ -88,17 +89,28 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    requestUserAuth().then((hasUserAuth) => {
-      this.setData({
-        hasUserAuth
-      });
-      if (hasUserAuth){
+    // requestUserAuth().then((hasUserAuth) => {
+    //   console.log(hasUserAuth);
+    //   this.setData({
+    //     hasUserAuth
+    //   });
+      // if (hasUserAuth){
+   
         connect(this);
-      }
-    });
+       wx.startPullDownRefresh()
+  ;
+      
+      // }
+    // });
   },
   onPullDownRefresh: function () {
-    connect(this);
+    let self=this;
+    setTimeout(function(e){
+      connect(self);
+      wx.stopPullDownRefresh();
+    }, 5000);
+    wx.stopPullDownRefresh();
+   
   },
   onAuthCompleted: function(user){
     requestUserAuth().then((hasUserAuth) => {

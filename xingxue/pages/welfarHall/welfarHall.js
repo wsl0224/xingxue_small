@@ -1,6 +1,6 @@
 // pages/welfarHall/welfarHall.js
 let $ = require('../util/commit.js');
-let pageNum = 1;
+let pageNum = 1,oldPage=0;
 Page({
 
   /**
@@ -31,6 +31,7 @@ Page({
        urlArray:e.data
      }) 
       pageNum = 1;
+       oldPage = 0;
     })
     wx.stopPullDownRefresh();
   },
@@ -40,17 +41,23 @@ Page({
   },
   lower: function (e) {
     let self = this;
-    pageNum++;
-    $.POST({
-      url: 'wcOtherSWF',
-      data: {
-        page: pageNum,
-      }
-    }, function (e) {
-      self.setData({
-        urlArray: self.data.urlArray.concat(e.data),
+    if (pageNum-oldPage==1){
+      pageNum++;
+      $.POST({
+        url: 'wcOtherSWF',
+        data: {
+          page: pageNum,
+        }
+      }, function (e) {
+        self.setData({
+          urlArray: self.data.urlArray.concat(e.data),
+        })
+        oldPage++;
+      },function(e){
+        
       })
-    })
+    }
+   
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -91,7 +98,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-
+    this.lower();
   },
 
   /**

@@ -41,8 +41,9 @@
     "pages/invitationCode/invitationCode",
     "pages/webView/webView",
     "pages/mySkill/mySkillSet",
-    "pages/payOrder/payOrder"
-  
+    "pages/payOrder/payOrder",
+    "pages/cropper/cropper",
+    "pages/startPage/startPage"
   ],
   "window": {
     "backgroundTextStyle": "light",

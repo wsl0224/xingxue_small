@@ -1,12 +1,23 @@
 <!--pages/welfarHall/welfarHall.wxml-->
 <wxs module="publicFun" src="../util/publicFun.wxs"></wxs>
-<scroll-view class='main'  bindscrolltoupper="upper" bindscrolltolower="lower" >
-    <view data-id="{{item.id}}" class='Item' bindtap='ToWelfarDetail' wx:for='{{urlArray}}'>
-      <view class='url_Item'>
-      <image src='{{item.path}}'/>
+<scroll-view class='main'>
+  <view  class='Item'  wx:for='{{urlArray}}'>
+    <view class='url_ItemL'>
+      <view class='url_ItemL_T'>
+        <image src='{{item.path}}' />
       </view>
-      <view class='item_txt'>
-      {{publicFun.substr(item.title,15)}}
+      <view class='url_ItemL_B'>
+        <image src='{{item.path}}' />
       </view>
     </view>
+    <view class='url_ItemR'>
+      <view class='item_txt'>
+        {{publicFun.substr(item.title,15)}}
+      </view>
+      <view class='url_ItemRBtn'  data-id="{{item.id}}"bindtap='ToWelfarDetail'>
+        点击领取
+      </view>
+    </view>
+
+  </view>
 </scroll-view>

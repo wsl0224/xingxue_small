@@ -35,22 +35,20 @@ Page({
     wx.chooseImage({
       count: 1,
       success: function (res) {
-
         const tempFilePaths = res.tempFilePaths
-        wx.uploadFile({
-          url: config.Config.updateImgUrl,
-          filePath: tempFilePaths[0],
-          name: 'file',
-          formData: {
-            'key': psnkey
-          },
-          success(res) {
-            let pic = JSON.parse(res.data).data.pic;
-            self.setData({
-              pic: pic,
-            })
-          }
-        })
+        const src =tempFilePaths[0];
+        
+        if (src) {
+          // 将图片参数传递给插件
+
+          $.openWin({
+            url: '../cropper/cropper',
+            data: {
+              CutPageType: 'skillCerImage',
+              url: src,
+            }
+          });
+        }
       },
     })
 

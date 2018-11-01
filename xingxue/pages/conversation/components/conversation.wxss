@@ -1,26 +1,27 @@
 .rong-avatar{
-  height:100rpx;
-  width:100rpx;
-  border-radius:10rpx;
+  height:78rpx;
+  width:78rpx;
+  border-radius:8rpx;
 }
 
 .rong-conversation{
-  height: 120rpx;
+  height: 78rpx;
   position: relative;
-  padding: 20rpx 5rpx 3rpx 10rpx;
+  padding: 21rpx 23rpx;
   border-bottom: 1px solid #ccc;
 }
 
 .rong-conversation-messagecontent{
-  margin-top: 18rpx;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow:hidden;
   width: 70%;
+  font-size: 24rpx;
+  color: #666666;
 }
 .rong-conversation-title{
   color: #333;
-  font-size: 14px;
+  font-size: 32rpx;
 }
 
 .rong-conversation-avatar{

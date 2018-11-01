@@ -9,6 +9,9 @@
   position: absolute;
   top: 0;
   bottom: 100rpx;
+  border-top: 1rpx;
+  border-top-color: #dfdfdd;
+  border-top-style: solid;
 }
 
 .rong-editor{
@@ -148,7 +151,7 @@
   background-position: center;
 }
 .rong-editor-module-image{
-  background-image: url('https://app.xingxue.vip/FsB5XchwrDjI3yt2MiJODkqbxg7a');
+  background-image: url('https://app.xingxue.vip/FsB5XchwrDjI3yt2MiJODkqbxg7a.png');
 }
 
 .rong-editor-module-music{

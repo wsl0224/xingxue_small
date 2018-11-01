@@ -86,17 +86,32 @@ freshData:function(e){
   // 取消未支付订单
   clearOrder:function(e){
     let self=this;
-    $.POST({
-      url:'wcOrderCNPO',
-      data:{
-        oid: self.data.orderCode,
-      }
-    },function(e){
-      wx.navigateBack();
-      wx.showToast({
-        title: e.msg,
-      });
-    })
+    if (e.currentTarget.dataset.status == 2 || e.currentTarget.dataset.status == 3){
+      $.POST({
+        url: 'wcOrderCPO',
+        data: {
+          oid: self.data.orderCode,
+        }
+      }, function (e) {
+        wx.navigateBack();
+        wx.showToast({
+          title: e.msg,
+        });
+      })
+    }else{
+      $.POST({
+        url: 'wcOrderCNPO',
+        data: {
+          oid: self.data.orderCode,
+        }
+      }, function (e) {
+        wx.navigateBack();
+        wx.showToast({
+          title: e.msg,
+        });
+      })
+    }
+   
   },
   // 支付订单
   payOrder:function(e){

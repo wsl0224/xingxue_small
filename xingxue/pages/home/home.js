@@ -57,11 +57,10 @@ Page({
   },
   // 过滤二级数据
   freshTData: function(e) {
- 
-
     let self = this;
-    $.GET({
+    $.POST({
       url: 'wcIndexRCC',
+      data:{}
     }, function(e) {
       self.setData({
         skillData: e.data,
@@ -76,8 +75,9 @@ Page({
   // 过滤推荐二级技能
   freshTSData: function(e) {
     let self = this;
-    $.GET({
+    $.POST({
       url: 'wcIndexRCCL',
+      data:{}
     }, function(e) {
       console.log('过滤推荐二级技能');
       console.log(e.data);

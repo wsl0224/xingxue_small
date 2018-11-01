@@ -16,7 +16,7 @@
     <!-- 列表 -->
     <!-- 分类 -->
     <view id="FL" class="{{FLStatus?'openFL':'closeFL'}}" bindtap='CloseFLPX'>
-        <view class="Item FLItem {{FLSelectIndex==index?'active':''}}" wx:key="{{index}}" bindtap='FLItemTab' data-id="{{index}}" wx:for="{{FLData}}">
+        <view class="Item FLItem {{FLSelectIndex==index?'active':''}}" wx:key="{{index}}" bindtap='FLItemTab' data-id="{{index}}" data-name="{{item.name}}" wx:for="{{FLData}}">
           <view class='Item_label'>
           {{item.name}}
           </view>
@@ -27,7 +27,7 @@
     </view>
     <!-- 排序 -->
     <view id="PX"  class="{{PXStatus?'openPX ':'closePX'}}" bindtap='CloseFLPX'>
-        <view class="Item PXItem {{PXSelectIndex==index?'active':''}}" bindtap='PXItemTab' wx:key="{{index}}" data-name="{{item.name}}" data-id="{{index}}"  wx:for="{{PXData}}">
+        <view class="Item PXItem {{PXSelectIndex==index?'active':''}}" bindtap='PXItemTab' wx:key="{{index}}"  data-id="{{index}}"  wx:for="{{PXData}}">
          <view class='Item_label'>
           {{item.name}}
           </view>

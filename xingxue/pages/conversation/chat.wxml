@@ -42,9 +42,9 @@
           <view class='rong-editor-module rong-editor-module-image' bindtap='sendImage'></view>
         </view>
 
-        <view class='rong-editor-modules'>
+        <!-- <view class='rong-editor-modules'>
           <view class='rong-editor-module rong-editor-module-music' bindtap='sendMusic'></view>
-        </view>
+        </view> -->
       </swiper-item>
     </block>
   </swiper>

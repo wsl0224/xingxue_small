@@ -47,7 +47,7 @@
     </view>
   </view>
 
-  <view class='photo'>
+  <view class='photo' wx:if="{{psnData.image.lenght>0}}">
     <view class='photoT'>
       <view class='TitleBefore'>
       </view>

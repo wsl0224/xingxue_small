@@ -114,7 +114,7 @@
   </view>
 
   <!-- 取消 -->
-  <view class='clearBtn' bindtap='clearOrder' wx:if="{{orderData.status==2||orderData.status==3}}">
+  <view class='clearBtn' bindtap='clearOrder' data-status='{{orderData.status}}' wx:if="{{orderData.status==2||orderData.status==3}}">
     取消
   </view>
   <!-- 取消 和支付 -->

@@ -2,11 +2,12 @@
 .rong-message{
   padding: 15rpx;
   box-sizing: border-box;
+  
 }
 
 .rong-message-avatar{
-  height: 80rpx;
-  width: 80rpx;
+  height: 78rpx;
+  width: 78rpx;
   border-radius:10rpx;
 }
 
@@ -52,17 +53,18 @@
 .rong-message-content-receiver{
   float: left;
   background-color: #FFF;
-  border: 1px solid #ccc;
+  border: 1rpx solid #ccc;
 }
 
 .rong-message-content-sender::after{
-  border-color: transparent transparent transparent #CBE7FC;
+  border-color: transparent transparent transparent rgba(50,205,50,1);
   right: -24rpx;
 }
 
 .rong-message-content-sender{
   float: right;
-  background-color: #CBE7FC;
+  background-color:rgba(50,205,50,1);
+   border: 1rpx solid #ccc;
 }
 
 .rong-clearfix{
