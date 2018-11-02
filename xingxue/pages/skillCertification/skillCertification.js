@@ -4,6 +4,8 @@ let config = require('../util/config.js');
 const RecorderManager = wx.getRecorderManager();
 const innerAudioContext = wx.createInnerAudioContext();
 let tempFilePath;
+
+let ssTime;
 Page({
 
   /**
@@ -14,8 +16,10 @@ Page({
     skillName:'',
     pic:'',
     audio:'',
-    audio_time:'',
-    remark:''
+    audio_time:0,
+    audioTime:0,
+    remark:'',
+    showCover:false,
   },
 
   /**
@@ -53,8 +57,20 @@ Page({
     })
 
   },
+  openShow:function(e){
+    
+    this.setData({
+      showCover:true,
+      audioTime:0,
+    })
+  },
+  closeShow:function(e){
+    this.setData({
+      showCover: false,
+    })
+  },
   // 上传音频 
-  startAudio:function(e){
+  startAudio:function(e){    
     var that = this
     wx.getSetting({
       success(res) {
@@ -75,6 +91,7 @@ Page({
   },
   start:function(e){
     let self = this;
+    let ss=0;
     const options = {
       duration: 60000,//指定录音的时长，单位 ms
       sampleRate: 16000,//采样率
@@ -84,15 +101,26 @@ Page({
       frameSize: 50,//指定帧大小，单位 KB
     }
     //开始录音
+  
     RecorderManager.start(options);
     RecorderManager.onStart((res) => {
       console.log('recorder start');
       console.log(res);
+      ssTime = setInterval(function (e) {
+        ss++;
+        self.setData({
+          audioTime: ss,
+        })
+      }, 1000);
     });
 
     //错误回调
     RecorderManager.onError((res) => {
       console.log(res);
+      self.setData({
+        audioTime: 0,
+      })
+      clearTimeout(ssTime);
     })
   },
   stop:function(e){
@@ -115,18 +143,22 @@ Page({
         success(res) {
           console.log(config.Config.updateAudioUrl);
           console.log(res);
-         
+          clearTimeout(ssTime);
           let audio = JSON.parse(res.data).data.audio;
           let duration = JSON.parse(res.data).data.duration;
-          if(duration>5){
-            innerAudioContext.src = audio;
+          if (duration>5){
             self.setData({
               audio: audio,
               audio_time: duration,
             })
           }else{
+
             wx.showToast({
               title: '当前录音' + duration+'s请重新录制',
+              icon:'none',
+            });
+            self.setData({
+              audioTime:0,
             })
           }
         

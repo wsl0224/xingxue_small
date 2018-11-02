@@ -204,7 +204,7 @@
 
 
 }
-.clearBtn.clearBtn{
+.clearBtn.clearBtn,.EndOrder{
   width: 700rpx;
   height: 98rpx;
   border-radius: 6rpx;

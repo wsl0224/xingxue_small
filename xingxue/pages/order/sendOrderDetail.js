@@ -166,7 +166,10 @@ Page({
     let self=this;
     let sexVal;
     let DateTime;
-    DateTime = self.data.date + ' ' + self.data.time;
+    
+   
+   
+
 
     if(self.data.sex=='全部'){
       sexVal=0;
@@ -177,7 +180,8 @@ Page({
     if (self.data.sex == '女') {
       sexVal = 2;
     }
-    if (self.data.date && self.data.time){
+    if (self.data.date !== '选择日期' && self.data.time !== '选择时间'){
+      DateTime = self.data.date + ' ' + self.data.time;
       $.POST({
         url: 'wcUserCO',
         data: {

@@ -1,4 +1,5 @@
 // pages/orderCenter/choosePsnPage.js
+let $ = require('../util/commit.js');
 Page({
 
   /**
@@ -19,7 +20,8 @@ Page({
     let param=JSON.parse(options.data);
     this.setData({
       orderCode:param.id,
-    })
+    });
+    this.freshData();
   },
   freshData:function(e){
       let self=this;
@@ -33,6 +35,9 @@ Page({
         self.setData({
           psnData:e.data
         })
+        wx.stopPullDownRefresh()
+      },function(e){
+        wx.stopPullDownRefresh()
       })
   },
   /**
@@ -46,7 +51,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+   
   },
 
   /**
@@ -67,7 +72,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.freshData();
   },
 
   /**

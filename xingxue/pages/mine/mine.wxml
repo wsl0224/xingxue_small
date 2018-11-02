@@ -3,17 +3,15 @@
   <view class='top'>
     <view class='topT'>
       <view class='topT_psn'>
-        <view class='topT_psnInfo' bindtap="{{psnStatus==1?'ToPersonalData':'ShowToLodPage'}}">
+        <view class='topT_psnInfo' bindtap="ToPersonalData">
           <view class='psnInfo_img' >
             <image src="{{psnData.avatar}}"></image>
           </view>
           <view class='psnInfo_name' >
             {{psnData.user_nicename}}
           </view>
-          <view class="psnInfo_right {{psnStatus==1?'':'unload'}}" >
-            <view class="psnInfo_rightT" >
-              {{psnStatus==1?'':'点击登录'}}
-            </view>
+          <view class="psnInfo_right" >
+           
             <view class='psnInfo_rightImg' wx:if="{{psnStatus==1}}">
               <image src='../image/home/right_JT.png'></image>
             </view>
@@ -194,38 +192,9 @@
 
     </view>
     <!-- 退出 -->
-     <view class='exitBtn' bindtap='EXITBtn' data-status="{{psnStatus}}" wx:if="{{psnStatus==1}}">
+     <view class='exitBtn' bindtap='EXITBtn' data-status="{{psnStatus}}">
         退出登录
     </view>
   </view>
  
 </scroll-view>
-<view class='loading' wx:if="{{loadingShow}}" bindtap='CloseLoadPage'>
-  <view class='loading_mid'>
-    <view class='loading_midTitle'>登录行学服务</view>
-    <button class='loading_midMenu botton'  open-type="getUserInfo" bindgetuserinfo="ToLoded">
-     
-      <view class='loading_midMenuImg'>
-        <image src='https://app.xingxue.vip/icon/my_icon_weixin.png'></image>
-      </view>
-      <view class='loading_midMenuTxt'>
-       微信快速登录
-       </view>
-    </button>
-  </view>
-</view>
-<view class='loading' wx:if="{{registerShow}}" bindtap='CloseLoadPage'>
-  <view class='loading_mid'>
-    <view class='loading_midTitle'>请先注册账号</view>
-    <button class='loading_midMenu botton' open-type="getPhoneNumber" bindgetphonenumber="Register">
-     
-      <view class='loading_midMenuImg'>
-        <image src='https://app.xingxue.vip/icon/my_icon_weixin.png'></image>
-      </view>
-      <view class='loading_midMenuTxt'>
-       注册
-       </view>
-    </button>
-  </view>
-
-</view>

@@ -12,6 +12,7 @@
   border-top: 1rpx;
   border-top-color: #dfdfdd;
   border-top-style: solid;
+  background: #ebebeb;
 }
 
 .rong-editor{

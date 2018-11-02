@@ -123,11 +123,27 @@ freshData:function(e){
       }
     })
   },
+  // 删除
+  delOrder:function(e){
+    let self = this;
+    $.POST({
+      url: 'wcOrderDUO',
+      data: {
+        oid: self.data.orderCode,
+      }
+    }, function (e) {
+      wx.navigateBack();
+      wx.showToast({
+        title: e.msg,
+      });
+    })
+  },
   // 完成
   EndOrderBtn:function(e){
-
     let self = this;
-    let score = self.data.EndOrderArr[e.detail.index];
+    console.log(e);
+    let score = self.data.EndOrderArr[e.detail.value];
+
     $.POST({
       url: 'wcOrderUCO',
       data: {

@@ -1,8 +1,5 @@
 /* pages/skillCertification/skillCertification.wxss */
 @import '../util/publicCss';
-.main{
-
-}
 .top,.mid,.bot{
   height: 196rpx;
    border-top: 1rpx;
@@ -76,4 +73,82 @@
   flex-direction: row;
   align-items: center;
   
+}
+.cover{
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.25);
+  position: absolute;
+  top: 0;
+  z-index: 999;
+}
+.cover_main{
+  width: 554rpx;
+  height: 641rpx;
+  background: #fff;
+  border-radius: 8rpx;
+  position: absolute;
+  top:231rpx;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+.cover_top{
+  width: 100%;
+  height: 58rpx;
+   display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+   margin-top: 27rpx;
+}
+.cover_Timg{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-right: 24rpx;
+}
+.cover_Timg,.cover_Timg>image{
+  width: 56rpx;
+  height: 56rpx;
+}
+.cover_time{
+  height: 48rpx;
+  font-size: 48rpx;
+  color: #333333;
+  text-align: center;
+  line-height: 48rpx;
+  margin-top: 55rpx;
+  margin-bottom: 37rpx;
+}
+.cover_start{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+.cover_start,.cover_start>image{
+  width: 164rpx;
+  height: 164rpx;
+}
+.cover_txt{
+  height: 30rpx;
+  text-align: center;
+  line-height: 30rpx;
+  color: #666666;
+  margin: 40rpx 0;
+}
+.cover_sure{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+.cover_sure,.cover_sure>image{
+  width: 114rpx;
+  height: 114rpx;
+
 }

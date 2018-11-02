@@ -1,70 +1,5 @@
 // pages/mine/mine.js
 let $ = require('../util/commit.js');
-const utils = require('../utils/utils');
-const { globalData } = getApp();
-const { Service: { Status, Conversation } } = globalData;
-const watchStatus = () => {
-  Status.watch((status) => {
-    console.log(status);
-    if (status == 3) {
-      wx.getUserInfo({
-        success: (user) => {
-          console.log(user.userInfo);
-          Status.connect(user.userInfo);
-        }
-      });
-    }
-  })
-}
-const connect = (context) => {
-  watchStatus();
-  let userId = wx.getStorageSync('userId');
-    let user = wx.getStorageSync('userInfo');
-      $.POST({
-        url:'wcUserSRYT',
-        data: {
-          uid:userId,
-         }
-      },function(e){
-        console.log('登录聊天');
-        console.log(e);
-        wx.setStorageSync('UserToken', e.data.token);
-        wx.setStorageSync('UserId', e.data.userId);
-        wx.getUserInfo({
-          success: (user) => {
-          
-            user.userInfo.token = e.data.token;
-            user.userInfo.id = e.data.userId;
-            user.userInfo.userId = e.data.userId;
-            user.userInfo.name = e.data.name;
-            user.userInfo.nickName = e.data.name;
-            user.userInfo.avatar = e.data.avatar;
-            user.userInfo.avatarUrl = e.data.avatar; 
-            wx.setStorageSync("userInfo", user);      
-            Status.connect(user.userInfo).then(() => {
-              console.log('connect successfully');
-            }, (error) => {
-              wx.showToast({
-                title: error.msg,
-                icon: 'none',
-                duration: 3000
-              })
-            })
-          },
-          fail: (error) => {
-            console.log(error);
-            wx.showToast({
-              title: '换个网络试试，只能帮你到这了～',
-              icon: 'none',
-              duration: 3000
-            })
-          }
-        })
-       
-      },function(e){
-        console.log(e);
-      })
-};
 Page({
 
   /**
@@ -142,118 +77,7 @@ Page({
   onShareAppMessage: function() {
 
   },
-  // 登录窗口
-  ShowToLodPage: function(e) {
-    this.setData({
-      loadingShow: true,
-    })
-  },
-
-  CloseLoadPage: function(e) {
-    this.setData({
-      loadingShow: false,
-    })
-  },
-  // 注册窗口
-  ShowRegisterPage: function(e) {
-    this.setData({
-      registerShow: true,
-    })
-  },
-  // 注册窗口
-  CloseRegisterPage: function(e) {
-    this.setData({
-      registerShow: false,
-    })
-  },
-  // 登录事件
-  ToLoded: function(e) {
-    let self = this;
-    
-    wx.login({
-      timeout: 5000,
-      success: function(e) {
-        // 微信登录接口
-        $.POST({
-          url: 'wcLogin',
-          data: {
-            code: e.code,
-          },
-        }, function(e) {
-          
-          wx.setStorageSync('psnkey', e.data.key);
-          wx.setStorageSync('userId', e.data.uid);
-          wx.getUserInfo({
-            success: (user) => {
-              console.log(user);
-          
-              if (e.data.status == 1) {
-                self.ShowRegisterPage(); //显示注册窗口 
-              } else {
-                connect(self);
-                self.freshPsnData();
-              }
-            }
-          });
-         
-        }, function(e) {
-
-        });
-
-      },
-      fail: function(e) {
-        wx.showToast({
-          title: '失败',
-          icon: 'error',
-          duration: 2000
-        })
-      }
-
-    });
-  },
-
-  // 注册获取手机号
-  Register: function(e) {
-    let self = this;
-    if (e.detail) {
-      console.log('phoneInfo');
-      console.log(e.detail)
-      wx.getUserInfo({
-        success: (user) => {
-          console.log(user);
-          wx.setStorageSync("phoneInfo", e.detail);
-          wx.setStorageSync("userInfo", user);
-          self.RegisterApp(); //同步注册APP账号
-
-        }
-      })
-     
-    }
-
-  },
-  // 同步注册APP账号
-  RegisterApp: function(e) {
-    let self = this;
-    let userInfo = wx.getStorageSync('userInfo');
-    let phoneInfo = wx.getStorageSync('phoneInfo');
-    $.POST({
-      url: 'wcLoginR',
-      data: {
-        userinfo: JSON.stringify(userInfo),
-        phone: JSON.stringify(phoneInfo),
-      }
-    }, function(e) {
-      wx.setStorageSync('psnkey', e.data.key);
-      wx.setStorageSync('userId', e.data.uid);
-      self.getLocation();
-      connect(self);
-      self.freshPsnData();
-     
-    }, function(e) {
-    
-    });
-    self.CloseRegisterPage();
-  },
+  
   // 下拉刷新我的信息
   upper: function(e) {
     this.freshPsnData();
@@ -270,58 +94,14 @@ Page({
           psnData: e.data,
           psnStatus: 1,
         });
-        wx.setStorageSync('RZStatus', e.data.stu_status)
-        wx.setStorageSync('loadStatus', 1);
-      } else {
-        wx.stopPullDownRefresh();
-        self.setData({
-          psnData: {
-            avatar: 'https://app.xingxue.vip/icon/icon94.png',
-            user_nicename: '',
-            signature: '',
-            follower_num: 0,
-            fans_num: 0,
-            yuer: 0,
-            jingxing: 0,
-          },
-          psnStatus: 0,
-        })
-      }
-      wx.stopPullDownRefresh();
+        wx.setStorageSync('RZStatus', e.data.stu_status);
+      } 
     }, function(e) {
       console.log(e)
       wx.stopPullDownRefresh();
     });
   
   },
-  
-
-  // 获取当前人地理位置
-  getLocation: function(e) {
-    wx.getLocation({
-      type: 'wgs84',
-      success(res) {
-    
-        wx.setStorage({
-          key: 'address',
-          data: res,
-        });
-        //更新地理位置
-        $.POST({
-          url: 'wcUserUUC',
-          data: {
-            longitude: res.longitude,
-            latitude: res.latitude,
-          }
-        }, function(e) {
-      
-        }, function(e) {
-        
-        })
-      }
-    })
-  },
-
   // 跳转个人资料
   ToPersonalData: function(e) {
     $.openWin({
@@ -408,22 +188,9 @@ Page({
   },
   // 退出
   EXITBtn: function(e) {
-    this.setData({
-      psnData: {
-        avatar: 'https://app.xingxue.vip/icon/icon94.png',
-        user_nicename: '',
-        signature: '',
-        follower_num: 0,
-        fans_num: 0,
-        price: 0,
-        task_count: 0,
-      },
-      psnStatus: 0,
-
-    })
     wx.clearStorageSync();
-    wx.showToast({
-      title: '退出成功',
+    wx.reLaunch({
+      url:'../startPage/startPage',
     })
   }
 })

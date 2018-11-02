@@ -7,7 +7,9 @@ Page({
    */
   data: {
     oid:'',
-    orderData: {}
+    orderData: {},
+    OrderType:'',
+    status:'',
   },
 
   /**
@@ -15,25 +17,44 @@ Page({
    */
   onLoad: function (options) {
     let param=JSON.parse(options.data);
+    console.log(param);
     this.setData({
       oid: param.id,
+      OrderType:param.type,
+      status: param.status
     })
     this.freshData();
   },
   freshData:function(e){
     let self=this;
-    $.POST({
-      url:'wcOrderSOD',
-      data:{
-        oid:self.data.oid,
-        type:2,
-      }
-    },function(e){
-      self.setData({
-        orderData: e.data,
+    if (self.data.OrderType == 2 && self.data.status==1){
+      $.POST({
+        url: 'wcOrderTD',
+        data: {
+          oid: self.data.oid,
+          type: 2,
+        }
+      }, function (e) {
+        self.setData({
+          orderData: e.data,
+        })
+
       })
-    
-    })
+    }else{
+      $.POST({
+        url: 'wcOrderSOD',
+        data: {
+          oid: self.data.oid,
+          type: 2,
+        }
+      }, function (e) {
+        self.setData({
+          orderData: e.data,
+        })
+
+      })
+    }
+   
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -46,7 +67,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.freshData();
+   
   },
 
   /**
@@ -83,7 +104,23 @@ Page({
   onShareAppMessage: function () {
 
   },
+  // 参加任务
+  CJbtn:function(e){
+    let self = this;
+    $.POST({
+      url: 'wcOrderJAO',
+      data: {
+        oid: e.currentTarget.dataset.id,
+      }
+    }, function (e) {
+      wx.navigateBack();
+      wx.showToast({
+        title: e.msg,
+      });
+    })
+  },
   JSBtn:function(e){
+
     let self=this;
     $.POST({
       url:'wcOrderAO',

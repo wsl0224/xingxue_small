@@ -36,6 +36,12 @@ function POST(param, doSuccess, doFail) {
           if (param.url == 'wcUserMHP') {
             doSuccess(res.data);
            
+          } else if (param.url =='wcUserSRYT'){
+            wx.showToast({
+              title: '请重新授权',
+              icon: 'none',
+              duration: 2000
+            })
           } else {
             wx.showToast({
               title: res.data.msg,

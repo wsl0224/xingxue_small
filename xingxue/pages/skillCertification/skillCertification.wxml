@@ -26,16 +26,8 @@
       </view>
     </view>
     <view class='mid_Bot'>
-     <view class='mid_B' bindtap='startAudio'>
-      <image src='https://app.xingxue.vip/icon/icon92.png'>
-      </image>
-    </view>
-    <view class='mid_B' bindtap='stop'>
-      <image src='https://app.xingxue.vip/icon/icon92.png'>
-      </image>
-    </view>
-    <view class='mid_B' bindtap='play'>
-      <image src='https://app.xingxue.vip/icon/icon92.png'>
+     <view class='mid_B' bindtap='openShow'>
+      <image src='https://app.xingxue.vip/icon/icon92.png' >
       </image>
     </view>
     </view>
@@ -55,5 +47,28 @@
   <!-- footer -->
     <view class='footer' bindtap='submitBtn'>
       提交认证
+  </view>
+</view>
+<!-- 录音弹窗口 -->
+<view class='cover' wx:if="{{showCover}}">
+  <view class='cover_main'>
+     <view class='cover_top'> 
+      <view class='cover_Timg' bindtap='closeShow'>
+        <image src='https://app.xingxue.vip/icon/close.png'></image>
+      </view>
+      
+     </view>
+     <view class='cover_time'>
+      {{audioTime}}s
+     </view>
+     <view class='cover_start'  bindtap='startAudio'>
+      <image src='https://app.xingxue.vip/icon/soundRecord.png'></image>
+     </view>
+     <view class='cover_txt'>
+     录音至少5s
+     </view>
+     <view class='cover_sure' bindtap='stop'>
+          <image src='https://app.xingxue.vip/icon/sureIcon.png'></image>
+     </view>
   </view>
 </view>

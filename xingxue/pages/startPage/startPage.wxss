@@ -1,1 +1,44 @@
 /* pages/startPage/startPage.wxss */
+@import '../util/publicCss';
+.botton{
+  background: transparent;
+  border:0;
+  padding: 0; 
+  border-radius: 0;
+}
+
+.botton::after{
+  border: none;
+}
+.main_top{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 120rpx auto;
+}
+.main_top,.main_top>image{
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.main_midBtn{
+  width: 700rpx;
+  height: 98rpx;
+  border-radius: 8rpx;
+  background: #51c232;
+  color: #fff;
+    font-size: 36rpx;
+}
+
+.main_bottom{
+  font-size: 26rpx;
+  color: rgb(134,178,249);
+  text-align: center;
+  margin-top: 60rpx;
+}
+.main_bottom::before{
+  content: '登录即表示您已经阅读并同意';
+  font-size: 26rpx;
+  color: #999999;
+}

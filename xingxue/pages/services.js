@@ -443,7 +443,7 @@ Status.disconnect = () => {
   RongIMClient.getInstance().disconnect();
 };
 Status.connect = (user) => {
-  console.log(user);
+  console.log('1connect');
   RongIMClient.setConnectionStatusListener({
     onChanged: (status) => {
       Status.watcher.notify(status);
@@ -451,7 +451,7 @@ Status.connect = (user) => {
   });
 
   let receiveMessage = (message) => {
-    console.log(message);
+    console.log('3connect');
       let {messageType} = message;
       let messageCtrol = {
         otherMessage: () => {
@@ -466,12 +466,16 @@ Status.connect = (user) => {
   });
 
   return User.getToken(user).then((user) => {
+    console.log('4connect');
+
     return new Promise((resolve, reject) => {
       RongIMClient.connect(user.token, {
         onSuccess: (userId) => {
+          console.log('5connect');
           resolve(userId);
         },
         onTokenIncorrect: () => {
+          console.log('6connect');
           var msg = ErrorInfo[RongIMLib.ConnectionState.TOKEN_INCORRECT];
           reject(msg);
         },

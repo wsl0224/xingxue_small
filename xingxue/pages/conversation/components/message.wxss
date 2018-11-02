@@ -57,13 +57,13 @@
 }
 
 .rong-message-content-sender::after{
-  border-color: transparent transparent transparent rgba(50,205,50,1);
+  border-color: transparent transparent transparent #9ae76c;
   right: -24rpx;
 }
 
 .rong-message-content-sender{
   float: right;
-  background-color:rgba(50,205,50,1);
+  background-color:#9ae76c;
    border: 1rpx solid #ccc;
 }
 

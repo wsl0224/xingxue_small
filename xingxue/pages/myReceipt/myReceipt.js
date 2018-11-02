@@ -108,6 +108,8 @@ freshData:function(e){
       url:'../myReceipt/myReceiptDetail',
       data:{
         id: e.currentTarget.dataset.oid,
+        type: e.currentTarget.dataset.type,
+        status: e.currentTarget.dataset.status,
       }
     })
 

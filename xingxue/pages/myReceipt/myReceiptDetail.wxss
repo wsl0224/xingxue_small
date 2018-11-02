@@ -3,6 +3,9 @@
 .main{
   height: 85vh;
 }
+.main_{
+  height: 99vh;
+}
 .main_body{
   border-top: 1rpx;
   border-top-color: #dfdfdd;
@@ -102,6 +105,10 @@
   font-size: 32rpx;
   color: #000000;
 }
+.Item_label{
+  width: 200rpx;
+  text-align: left;
+}
 .Item_Discount{
   font-size: 32rpx;
   color: #999999;
@@ -148,22 +155,21 @@
   border:1rpx solid #909090;
 }
 .Item_EaluateShow{
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: flex-end;
  
 }
 .EaluateShowR{
+  
   font-size: 30rpx;
   color: #ffb924;
 }
-.EaluateShowR::after{
-  content: '星';
-  font-size: 30rpx;
-  color: #ffb924;
-}
+
 .EaluateShowL{
-    display: flex;
+   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;

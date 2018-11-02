@@ -1,5 +1,7 @@
 {
   "pages": [
+      
+    "pages/startPage/startPage",
     "pages/home/home",
     "pages/conversation/list",
     "pages/conversation/chat",
@@ -42,8 +44,8 @@
     "pages/webView/webView",
     "pages/mySkill/mySkillSet",
     "pages/payOrder/payOrder",
-    "pages/cropper/cropper",
-    "pages/startPage/startPage"
+    "pages/cropper/cropper"
+  
   ],
   "window": {
     "backgroundTextStyle": "light",

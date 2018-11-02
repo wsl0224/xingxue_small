@@ -8,9 +8,9 @@
 
 }
 .Item{
-  width: 541rpx;
+  width: 624rpx;
   height: 229rpx;
-  padding: 25rpx 69rpx 36rpx 60rpx;
+  padding: 23rpx 23rpx 23rpx 23rpx;
   display: flex;
   flex-direction: row;
   align-items: center; 
@@ -19,16 +19,12 @@
   background: #fff;
   margin-top: 30rpx;
   box-shadow: 0 0 10rpx 1rpx rgba(255,255,255,0.5);
+  background-image: url('https://app.xingxue.vip/icon/welfarHallBG.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
-.url_ItemL{
-  width: 144rpx;
-  height: 229rpx;
-  display: flex;
-  flex-direction: column;
-  align-items: center; 
-  margin-right: 20rpx;
-}
-.url_ItemL_B,.url_ItemL_T{
+
+.url_ItemL_B,{
   display: flex;
   flex-direction: row;
   align-items: center; 
@@ -36,18 +32,10 @@
 
 }
 
-.url_ItemL_T,.url_ItemL_T>image{
-  width: 144rpx;
-  height: 38rpx;
-  border-radius: 4rpx;
- 
-}
-.url_ItemL_B{
-  margin-top: 28rpx;
-}
+
 .url_ItemL_B,.url_ItemL_B>image{
    width: 144rpx;
-  height: 110rpx;
+  height:144rpx;
   border-radius: 4rpx;
    box-shadow: 0 0 10rpx 1rpx rgba(255,255,255,0.5);
 }

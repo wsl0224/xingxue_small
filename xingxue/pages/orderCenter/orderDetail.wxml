@@ -17,11 +17,11 @@
           {{orderData.age}}
         </view>
       </view>
-      <view class='psnEaluate'>
+      <view class='psnEaluate' wx:if='{{orderData.us_score>0}}'>
         <view class='psnEaluateImg'>
-             <view class='pingfenImg'  wx:key="{{index}}" wx:for="{{publicFun.showStars(orderData.us_score)}}">
-                        <image src='https://app.xingxue.vip/icon/my_iocn03.png' />
-              </view>
+          <view class='pingfenImg' wx:key="{{index}}" wx:for="{{publicFun.showStars(orderData.us_score)}}">
+            <image src='https://app.xingxue.vip/icon/my_iocn03.png' />
+          </view>
         </view>
         <view class='psnEaluateVal'>
           {{orderData.us_score}}</view>
@@ -39,11 +39,11 @@
       </view>
     </view>
   </view>
-   <!-- 性别 -->
+  <!-- 性别 -->
   <view class='Type' wx:if="{{orderData.status==7 || orderData.order_type==2}}">
     <view class='Item'>
       <view class='Item_label'>
-       性别
+        性别
       </view>
       <view class='Item_val'>
         {{orderData.sex==1?'男':'女'}}
@@ -57,7 +57,7 @@
         时间
       </view>
       <view class='Item_val'>
-        {{orderData.begin_time}}   {{orderData.num}}*{{orderData.unit}}
+        {{orderData.begin_time}} {{orderData.num}}*{{orderData.unit}}
       </view>
     </view>
   </view>
@@ -74,7 +74,7 @@
   </view>
   <!-- 优惠 -->
   <view class='Discount' wx:if="{{orderData.status!=7 && orderData.order_type!=2}}">
- <view class='Item'>
+    <view class='Item'>
       <view class='Item_label'>
         优惠
       </view>
@@ -85,32 +85,35 @@
   </view>
   <!-- 合计 -->
   <view class='Total' wx:if="{{orderData.status!=7 && orderData.order_type!=2}}">
-       {{orderData.price*orderData.num}}
+    {{orderData.price*10*orderData.num/10}}
   </view>
-  
+
 
   <!-- 当前订单状态 -->
   <view class='CurrentStatus'>
-  <view class='CurrentTxt'>
-  {{publicFun.showStatusLabel(orderData.status)}}
-  </view> 
+    <view class='CurrentTxt'>
+      {{publicFun.showStatusLabel(orderData.status)}}
+    </view>
+  </view>
+   <view class='clearBtn' bindtap='delOrder' data-status='{{orderData.status}}' wx:if="{{orderData.status==7||orderData.status==9||orderData.status==6}}">
+   删除
   </view>
   <!-- 评价显示 -->
   <view class='EaluateShow' wx:if="{{orderData.status==6}}">
-       <view class='Item_label'>
-        评分
-      </view>
-      <view>
+    <view class='Item_label'>
+      评分
+    </view>
+    <view>
       <view class='psnEaluateImg'>
-             <view class='pingfenImg'  wx:key="{{index}}" wx:for="{{publicFun.showStars(orderData.score)}}">
-                        <image src='https://app.xingxue.vip/icon/my_iocn03.png' />
-              </view>
-        </view>
-        <view class='psnEaluateVal'>
-          {{orderData.score}}
+        <view class='pingfenImg' wx:key="{{index}}" wx:for="{{publicFun.showStars(orderData.score)}}">
+          <image src='https://app.xingxue.vip/icon/my_iocn03.png' />
         </view>
       </view>
-      
+      <view class='psnEaluateVal'>
+        {{orderData.score}}
+      </view>
+    </view>
+
   </view>
 
   <!-- 取消 -->
@@ -119,21 +122,21 @@
   </view>
   <!-- 取消 和支付 -->
   <view class='ClearPay' wx:if="{{orderData.status==8}}">
-      <!-- 取消 -->
-      <view class='Clear' bindtap='clearOrder'>
-        取消
-      </view>
-      <!-- 支付 -->
-      <view class='Pay' bindtap='payOrder'>
-        支付
-      </view>
+    <!-- 取消 -->
+    <view class='Clear' bindtap='clearOrder'>
+      取消
+    </view>
+    <!-- 支付 -->
+    <view class='Pay' bindtap='payOrder'>
+      支付
+    </view>
   </view>
   <!-- 结束 -->
-  <picker  bindchange="EndOrderBtn" value='{{index}}' range='{{EndOrderArr}}' wx:if="{{orderData.status==4}}">
+  <picker bindchange="EndOrderBtn" value='{{index}}' range='{{EndOrderArr}}' wx:if="{{orderData.status==4}}">
     <view class='EndOrder' wx:if="{{orderData.status==4}}">
       完成
     </view>
   </picker>
- 
+
 
 </scroll-view>

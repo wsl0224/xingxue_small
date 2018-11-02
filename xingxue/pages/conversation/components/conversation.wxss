@@ -8,7 +8,7 @@
   height: 78rpx;
   position: relative;
   padding: 21rpx 23rpx;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1rpx solid rgb(223,223,221);
 }
 
 .rong-conversation-messagecontent{
