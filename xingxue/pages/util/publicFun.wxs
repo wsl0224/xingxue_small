@@ -42,7 +42,7 @@ var publicFun = {
       return 'https://app.xingxue.vip/icon/my_icon3_receipt.png';
     }
     if (e == 3) {
-      return 'https://app.xingxue.vip/icon/my_icon1_receipt.png';
+      return 'https://app.xingxue.vip/icon/my_icon10_receipt.png';
     }
     if (e == 4) {
       return 'https://app.xingxue.vip/icon/my_icon5_receipt.png';
@@ -94,8 +94,6 @@ var publicFun = {
   // 显示评分小星星
   showStars: function(e) {
     var starsArr = [];
-
-
     for (var i = 0; i < e; i++) {
       starsArr.push(i);
 

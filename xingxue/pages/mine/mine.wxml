@@ -7,9 +7,18 @@
           <view class='psnInfo_img' >
             <image src="{{psnData.avatar}}"></image>
           </view>
-          <view class='psnInfo_name' >
+          <view class='psnInfo_mid'>
+            <view class='psnInfo_name' >
             {{psnData.user_nicename}}
+            </view>
+            <view class='psnInfo_stu' wx:if='{{psnData.stu_status==3}}'>
+              学生身份
+            </view>
+            <view class='psnInfo_stuNo' wx:if='{{psnData.stu_status!=3}}' bindtap='ToApplicationSkill'>
+            未认证学生身份，点击认证
+            </view>
           </view>
+        
           <view class="psnInfo_right" >
            
             <view class='psnInfo_rightImg' wx:if="{{psnStatus==1}}">

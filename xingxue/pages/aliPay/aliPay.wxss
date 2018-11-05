@@ -1,0 +1,55 @@
+/* pages/aliPay/aliPay.wxss */
+@import '../util/publicCss';
+
+.main {
+  border-top: 1rpx;
+  border-top-style: solid;
+  border-top-color: #dfdfdf;
+}
+
+.main_top {
+  height: 108rpx;
+  font-size: 32rpx;
+  color: #afafaf;
+  padding: 0 23rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.main_Item {
+  height: 108rpx;
+  padding: 0 23rpx;
+  background: #fff;
+  border-bottom: 1rpx;
+  border-bottom-style: solid;
+  border-bottom-color: #dfdfdf;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.main_midL {
+  width: 214rpx;
+  font-size: 32rpx;
+  color: #000;
+}
+
+.main_midR, .inputCss {
+  width: 100%;
+  font-size: 32rpx;
+  color: #afafaf;
+}
+
+.footer {
+  width: 700rpx;
+  height: 98rpx;
+  margin: 0 auto;
+  margin-top: 80rpx;
+  background: #86b2f9;
+  text-align: center;
+  line-height: 98rpx;
+  color: #fff;
+  border-radius: 8rpx;
+}

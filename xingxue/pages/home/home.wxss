@@ -2,12 +2,12 @@
 @import'../util/publicCss';
 .slide-image{
   width: 100%;
-  height: 360rpx;
+  height: 300rpx;
 }
 /* .bannerDatas */
 .bannerData.section{
   width: 100%;
-  height: 220rpx;
+  height: 150rpx;
   padding-top:36rpx;
 }
 .bannerData.flex-wrp{
@@ -19,11 +19,14 @@
 .bannerData.flex-item{
   width: 106rpx;
   height: 150rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .bannerData.flex-img{
-  width: 106rpx;
-  height:106rpx;
-  border-radius: 53rpx;
+  width: 70rpx;
+  height:70rpx;
+  border-radius: 35rpx;
 }
 .bannerData.flex-txt{
   width: 100%;
@@ -37,7 +40,7 @@
 .typeData.section{
   width: 100%;
   height: 112rpx;
-   padding-top:39rpx;
+   padding-top:15rpx;
 }
 .typeData.flex-wrp{
   width: 100%;
@@ -55,7 +58,7 @@
   flex-direction: column ;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 30rpx;
+  margin-bottom: 15rpx;
 }
 .typeData.flex-imgC{
   width: 102rpx;

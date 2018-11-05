@@ -48,7 +48,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.freshData();
   },
 
   /**
@@ -93,6 +93,7 @@ Page({
   },
   // 刷新
   freshData:function(e){
+ 
     let self=this;
     $.POST({
       url:'wcUserSUS',
@@ -101,7 +102,10 @@ Page({
       console.log(e);
       self.setData({
         mySkillData:e.data,
-      })
+      });
+      wx.stopPullDownRefresh();
+    },function(e){
+      wx.stopPullDownRefresh();
     })
   }
 })

@@ -1,0 +1,38 @@
+<!--pages/aliPay/aliPay.wxml-->
+<view class='main'>
+  <view class='main_top'>
+    可提现余额{{walletData.price}}元
+  </view>
+  <view class='main_mid'>
+  <!-- 真实姓名 -->
+    <view class='main_Item'>
+      <view class='main_midL'>
+        真实姓名
+      </view>
+      <view class='main_midR'>
+        <input placeholder='必须与支付宝绑定的银行卡一致' bindinput='keyUpName' placeholder-class='inputCss'></input>
+      </view>
+    </view>
+<!-- 支付宝账号 -->
+<view class='main_Item'>
+      <view class='main_midL'>
+       支付宝账号
+      </view>
+      <view class='main_midR'>
+        <input type='number' placeholder='请填写支付宝账号' bindinput='keyUpNumber' placeholder-class='inputCss'></input>
+      </view>
+    </view>
+    <!-- 提现金额 -->
+    <view class='main_Item'>
+      <view class='main_midL'>
+       提现金额
+      </view>
+      <view class='main_midR'>
+        <input type='digit' placeholder='请输入提现金额' bindinput='keyUpPrice' placeholder-class='inputCss'></input>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='footer' bindtap='sumbitBtn'>
+  提现
+</view>

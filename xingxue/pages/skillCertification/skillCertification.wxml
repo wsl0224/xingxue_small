@@ -1,6 +1,6 @@
 <!--pages/skillCertification/skillCertification.wxml-->
 <view class='main'>
-<!-- 技能图 -->
+  <!-- 技能图 -->
   <view class='top'>
     <view class='top_T'>
       <view class='top_TL'>
@@ -25,16 +25,24 @@
         录音需大于 5s 以上
       </view>
     </view>
-    <view class='mid_Bot'>
-     <view class='mid_B' bindtap='openShow'>
-      <image src='https://app.xingxue.vip/icon/icon92.png' >
-      </image>
+    <view class='mid_Bot' >
+      <view class='mid_B' bindtap='openShow' wx:if='{{!showValImg}}'>
+        <image src='https://app.xingxue.vip/icon/icon92.png'>
+        </image>
+      </view>
+      <view class='mid_B mid_BSV' wx:if='{{showValImg}}' bindtap='play'>
+        <image src='https://app.xingxue.vip/icon/Skill_icon_Voice.png'>
+        </image>
+        <view class='AudioTop' data-index="{{index}}"  wx:if='{{showValImg}}' bindtap='delAudio'>
+        <image src='https://app.xingxue.vip/icon/icon95.png'></image>
+        </view>
+      </view>
+       
     </view>
-    </view>
-   
+
   </view>
   <!-- 技能说明 -->
-    <view class='bot'>
+  <view class='bot'>
     <view class='bot_T'>
       <view class='bot_TL'>
         技能说明
@@ -45,30 +53,30 @@
     </view>
   </view>
   <!-- footer -->
-    <view class='footer' bindtap='submitBtn'>
-      提交认证
+  <view class='footer' bindtap='submitBtn'>
+    提交认证
   </view>
 </view>
 <!-- 录音弹窗口 -->
 <view class='cover' wx:if="{{showCover}}">
   <view class='cover_main'>
-     <view class='cover_top'> 
+    <view class='cover_top'>
       <view class='cover_Timg' bindtap='closeShow'>
         <image src='https://app.xingxue.vip/icon/close.png'></image>
       </view>
-      
-     </view>
-     <view class='cover_time'>
+    </view>
+    <view class='cover_time'>
       {{audioTime}}s
-     </view>
-     <view class='cover_start'  bindtap='startAudio'>
-      <image src='https://app.xingxue.vip/icon/soundRecord.png'></image>
-     </view>
-     <view class='cover_txt'>
-     录音至少5s
-     </view>
-     <view class='cover_sure' bindtap='stop'>
-          <image src='https://app.xingxue.vip/icon/sureIcon.png'></image>
-     </view>
+    </view>
+    <view class='cover_start' bindtap='startAudio'>
+      <image src='https://app.xingxue.vip/icon/Skill_icon_Voice.png'></image>
+    </view>
+    <view class='cover_txt'>
+      录音至少5s
+    </view>
+    <view class='cover_sure' bindtap='stop'>
+      <image src='https://app.xingxue.vip/icon/Skill_icon_End.png'></image>
+    </view>
+
   </view>
 </view>

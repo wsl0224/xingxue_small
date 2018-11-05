@@ -41,7 +41,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.freshData();
   },
 
   /**
@@ -55,7 +55,13 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    console.log(getCurrentPages());
+    let pageN = getCurrentPages();
+    if (pageN.length>4){
+      wx.reLaunch({
+        url: '../mine/mine',
+      })
+    }
   },
 
   /**
@@ -92,9 +98,12 @@ Page({
   },
   // 跳转提现
   ToPutForward:function(e){
-    $.openWin({
-      url:'../putForward/putForward',
-      
+    // $.openWin({
+    //   url:'../putForward/putForward',    
+    // })
+    // 支付宝
+     $.openWin({
+       url:'../aliPay/aliPay',    
     })
   }
   

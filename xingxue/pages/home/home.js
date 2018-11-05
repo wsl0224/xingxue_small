@@ -37,7 +37,7 @@ Page({
     SkillArrBB: [],
     typeData: [],
     typeData1: [],
-    typeData_indicatorDots: true,
+    typeData_indicatorDots: false,
     typeData_autoplay: false,
     typeData_interval: 5000,
     typeData_duration: 1000,

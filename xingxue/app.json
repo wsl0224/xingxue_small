@@ -1,6 +1,6 @@
 {
   "pages": [
-      
+  
     "pages/startPage/startPage",
     "pages/home/home",
     "pages/conversation/list",
@@ -44,7 +44,8 @@
     "pages/webView/webView",
     "pages/mySkill/mySkillSet",
     "pages/payOrder/payOrder",
-    "pages/cropper/cropper"
+    "pages/cropper/cropper",
+     "pages/aliPay/aliPay"
   
   ],
   "window": {

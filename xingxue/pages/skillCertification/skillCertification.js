@@ -20,6 +20,7 @@ Page({
     audioTime:0,
     remark:'',
     showCover:false,
+    showValImg:false,
   },
 
   /**
@@ -57,8 +58,7 @@ Page({
     })
 
   },
-  openShow:function(e){
-    
+  openShow:function(e){   
     this.setData({
       showCover:true,
       audioTime:0,
@@ -101,7 +101,6 @@ Page({
       frameSize: 50,//指定帧大小，单位 KB
     }
     //开始录音
-  
     RecorderManager.start(options);
     RecorderManager.onStart((res) => {
       console.log('recorder start');
@@ -109,7 +108,7 @@ Page({
       ssTime = setInterval(function (e) {
         ss++;
         self.setData({
-          audioTime: ss,
+          audioTime:ss,
         })
       }, 1000);
     });
@@ -129,39 +128,26 @@ Page({
     RecorderManager.onStop((res) => {
       this.tempFilePath = res.tempFilePath;
       const { tempFilePath } = res;
-      self.setData({
-        audio: res.tempFilePath,
-      })
+      console.log(tempFilePath);
       let psnkey = wx.getStorageSync('psnkey');
       wx.uploadFile({
         url: config.Config.updateAudioUrl,
         filePath: self.tempFilePath,
         name: 'file',
-        formData: {
-          'key': psnkey
+        formData:{
+          'key':psnkey,
         },
-        success(res) {
-          console.log(config.Config.updateAudioUrl);
-          console.log(res);
+        success(res){
           clearTimeout(ssTime);
-          let audio = JSON.parse(res.data).data.audio;
+          let audio=JSON.parse(res.data).data.audio;
           let duration = JSON.parse(res.data).data.duration;
-          if (duration>5){
-            self.setData({
-              audio: audio,
-              audio_time: duration,
-            })
-          }else{
-
-            wx.showToast({
-              title: '当前录音' + duration+'s请重新录制',
-              icon:'none',
-            });
-            self.setData({
-              audioTime:0,
-            })
-          }
-        
+          self.setData({
+            audio: audio,
+            audioTime: 0,
+            audio_time: duration,
+            showCover: false,
+            showValImg:true,
+          })
         }
       })
     })
@@ -180,6 +166,16 @@ Page({
       console.log(res.errCode)
     })
 
+  },
+  delAudio:function(e){
+
+    this.setData({
+      audio: '',
+      audio_time: 0,
+      showCover: false,
+      showValImg: false,
+      audioTime:0,
+    })
   },
   // 备注
   keyContentBtn:function(e){

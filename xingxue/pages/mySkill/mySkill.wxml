@@ -10,7 +10,7 @@
         您还没有技能，快去申请第一个技能把~
       </view>
       <view class='top_item'  wx:if="{{mySkillData.skill.length>0}}">
-          <view class='top_itemN' data-id='{{item.sid}}' wx:key="{{index}}" data-cid='{{item.cate_id}}' data-name="{{item.name}}"  wx:for="{{mySkillData.skill}}" bindtap='ToMySkillSet'>
+          <view class="top_itemN {{(index+1)%3==2?'itemTwo':''}}" data-id='{{item.sid}}' wx:key="{{index}}" data-cid='{{item.cate_id}}' data-name="{{item.name}}"  wx:for="{{mySkillData.skill}}" bindtap='ToMySkillSet'>
             {{item.name}}
           </view>
       </view>
@@ -21,13 +21,13 @@
     未申请技能
     </view>
     <view class='mid_List'>
-        <view class='mid_ItemC' wx:key="{{index}}" wx:for="{{mySkillData.classification}}"> 
+        <view class="mid_ItemC" wx:key="{{index}}" wx:for="{{mySkillData.classification}}"> 
           <view class='mid_ItemTitle'>
            {{item.name}}
           </view>
           <view class='mid_itemCB'>
              
-              <view class='mid_Items' data-id='{{item.cate_id}}' data-name="{{item.name}}" wx:key="{{index}}"  wx:for="{{item.child}}" data-status='{{item.status}}' bindtap='ToSkillCertification'>
+              <view class="mid_Items  top_itemN {{(index+1)%3==2?'itemTwo':''}}" data-id='{{item.cate_id}}' data-name="{{item.name}}" wx:key="{{index}}"  wx:for="{{item.child}}" data-status='{{item.status}}' bindtap='ToSkillCertification'>
                   <view class="mid_itemCTR {{publicFun.showSkilStatusClass(item.status)}}"  wx:if="{{item.status>0}}">
                     {{publicFun.showSkilStatusLabel(item.status)}}
                   </view>

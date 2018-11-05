@@ -52,11 +52,38 @@
   height: 112rpx;
   border-radius: 56rpx;
 }
+.psnInfo_mid{
+   width: 100%;
+}
 .psnInfo_name{
-  width: 100%;
+ 
   margin-left: 45rpx;
   font-size: 30rpx;
   color: rgb(51,51,51);
+}
+.psnInfo_stu{
+     height: 36rpx;
+    width: 102rpx;
+    line-height: 36rpx;
+    background-color: rgb(12,217,97);
+    border-radius: 18rpx;
+    text-align: center;
+    margin-top: 20rpx;
+    font-size: 20rpx;
+     margin-left: 45rpx;
+    color:rgb(255,255,255);
+}
+.psnInfo_stuNo{
+   height: 36rpx;
+
+    line-height: 36rpx;
+ 
+    border-radius: 18rpx;
+    text-align: left;
+    margin-top: 20rpx;
+    font-size: 20rpx;
+     margin-left: 45rpx;
+    color:rgb(255,13,13);
 }
 .psnInfo_right{
   width: 300rpx;

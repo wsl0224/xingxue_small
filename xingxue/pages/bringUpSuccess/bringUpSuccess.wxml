@@ -11,10 +11,10 @@
       ￥{{money}}
       </view>
       <view class='top_footer'>
-        成功提现至微信钱包
+        {{txt}}
       </view>
     </view>
-    <view class='bottom'>
+    <view class='bottom' bindtap='submitBtn'>
       完成
     </view>
 </view>

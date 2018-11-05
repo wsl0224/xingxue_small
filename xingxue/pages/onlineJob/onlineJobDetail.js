@@ -12,6 +12,7 @@ Page({
     showSubmit:false,
     pageType:'',
     showJob:true,
+    imgList:[],
   },
 
   /**
@@ -49,9 +50,22 @@ Page({
           mid: self.data.mid
         }
       }, function (e) {
+        
+        let imgLists=[];
+        console.log('加载');
+        console.log(e.data[0].taskstep);
+        let setpList = e.data[0].taskstep;
+        for (var i = 0; i<setpList.length;i++){
+         let  setp=setpList[i].spic.split(',');
+          for (var j = 0; j < setp.length;j++){
+            imgLists.push(setp[j]);
+          }
+        }
+        console.log(imgLists);
         self.setData({
           jobData: e.data[0],
-        })
+          imgList:imgLists,
+        });
       })
   },
   /**
@@ -154,8 +168,8 @@ Page({
   },
   showBigImage:function(e){
     var src = e.currentTarget.dataset.src;
-    var list =[];
-    list.push(src);
+    var list = this.data.imgList;
+
     wx.previewImage({
       current: src,
       urls: list

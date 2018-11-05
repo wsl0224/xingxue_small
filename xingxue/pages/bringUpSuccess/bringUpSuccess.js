@@ -1,18 +1,28 @@
 // pages/bringUpSuccess/bringUpSuccess.js
+let $=require('../util/commit.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    money:'4.20',
+    money:'',
+    txt:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let param=JSON.parse(options.data);
+    if (param.Type=='aliPay'){
+      this.setData({
+        money: param.money,
+        Type: param.Type,
+        txt:'成功提现,等待审核'
+      })
+    }
+   
   },
 
   /**
@@ -62,5 +72,11 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  // 完成
+  submitBtn:function(){
+    $.openWin({
+      url:'../myWallet/myWallet'
+    })
   }
 })
