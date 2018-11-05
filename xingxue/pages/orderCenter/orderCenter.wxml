@@ -1,6 +1,6 @@
 <!--pages/orderCenter/orderCenter.wxml-->
 <wxs module="publicFun" src="../util/publicFun.wxs"></wxs>
-<scroll-view scroll-y class='main' bindscrolltoupper="upper" bindscrolltolower="lower">
+<scroll-view scroll-y class='main' bindscrolltoupper="upper" bindscrolltolower="lower" wx:if="{{orderData.length>0}}">
 <view class='main_body'>
   <view class='main_item' wx:key="{{index}}" wx:for="{{orderData}}" data-id="{{item.oid}}" data-status="{{item.status}}" bindtap='ToOrderDetail'>
     <view class="main_itemTitle {{item.status==1?'active':''}}">
@@ -34,6 +34,13 @@
     </view>
   </view>
 </view>
-
-
 </scroll-view>
+<view class='noData' wx:if="{{!orderData.length>0}}">
+    <view class='noData_Img'>
+    <image src='https://app.xingxue.vip/icon/none_icon_none.png'>  
+    </image>
+    </view>
+    <view class='noData_Txt'>
+    暂无数据
+    </view>
+</view>

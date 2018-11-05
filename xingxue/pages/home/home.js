@@ -48,11 +48,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-   
+    
     let self = this;
-    self.freshTData(); // 过滤二级数据
-    self.freshBanner(); //  过滤banner
-    self.freshTSData(); //过滤推荐二级技能
+    let loadStatus = wx.getStorageSync('loadStatus');
+    console.log(loadStatus);
+    if (loadStatus==1){
+      self.freshTData(); // 过滤二级数据
+      self.freshBanner(); //  过滤banner
+      self.freshTSData(); //过滤推荐二级技能
+    }else{
+      wx.reLaunch({
+        url: '../startPage/startPage'
+      })
+    }
+  
  
   },
   // 过滤二级数据

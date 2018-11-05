@@ -84,7 +84,15 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-
+    let pageNum = getCurrentPages();
+    console.log('生命周期函数--监听页面卸载');
+    console.log(pageNum);
+    console.log(pageNum.length);
+    if(pageNum.length>4){
+      wx.reLaunch({
+        url: '../mine/mine'
+      })
+    }
   },
 
   /**

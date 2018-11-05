@@ -38,7 +38,9 @@ Page({
         self.setData({
           orderData: e.data,
         })
-
+        wx.stopPullDownRefresh();
+      },function(e){
+        wx.stopPullDownRefresh();
       })
     }else{
       $.POST({
@@ -51,10 +53,12 @@ Page({
         self.setData({
           orderData: e.data,
         })
-
+        wx.stopPullDownRefresh();
+      },function(e){
+        wx.stopPullDownRefresh();
       })
     }
-   
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -67,7 +71,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-   
+    this.freshData();
   },
 
   /**
@@ -88,7 +92,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.freshData();
   },
 
   /**

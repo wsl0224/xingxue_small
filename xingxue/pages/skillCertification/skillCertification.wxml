@@ -19,7 +19,7 @@
   <view class='mid'>
     <view class='mid_T'>
       <view class='mid_TL'>
-        技能图
+        语音介绍
       </view>
       <view class='mid_TR'>
         录音需大于 5s 以上
@@ -37,7 +37,7 @@
     <view class='bot'>
     <view class='bot_T'>
       <view class='bot_TL'>
-        技能图
+        技能说明
       </view>
     </view>
     <view class='bot_B'>

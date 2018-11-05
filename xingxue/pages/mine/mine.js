@@ -144,7 +144,6 @@ Page({
   },
   // 申请技能
   ToApplicationSkill: function(e) {
-   
     if (this.data.psnData.stu_status != 3) {
       $.openWin({
         url: '../applicationSkills/applicationSkills',

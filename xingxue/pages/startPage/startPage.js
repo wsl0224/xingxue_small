@@ -147,7 +147,7 @@ Page({
           console.log(e)
           wx.setStorageSync('psnkey', e.data.key);
           wx.setStorageSync('userId', e.data.uid);
-
+          wx.setStorageSync('loadStatus', 1);
           wx.getSetting({
             success: res => {
               if (res.authSetting['scope.userInfo']) {
@@ -166,7 +166,9 @@ Page({
                       })
                     } else { //已注册  
                       console.log('已注册');
-                      connect(self);
+                      // connect(self);
+                      self.ToHome();
+                      self.freshPsnData();
                     }
                     
                     
@@ -216,7 +218,8 @@ Page({
       wx.setStorageSync('psnkey', e.data.key);
       wx.setStorageSync('userId', e.data.uid);
 
-      connect(self);
+      self.ToHome();
+      self.freshPsnData();
 
     }, function(e) {
 
@@ -274,7 +277,7 @@ Page({
           psnStatus: 1,
         });
         wx.setStorageSync('RZStatus', e.data.stu_status)
-        wx.setStorageSync('loadStatus', 1);
+       
       }
     }, function(e) {
       console.log(e)

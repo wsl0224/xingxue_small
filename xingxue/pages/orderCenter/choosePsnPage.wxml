@@ -1,5 +1,5 @@
 <!--pages/orderCenter/choosePsnPage.wxml-->
-<scroll-view>
+<scroll-view wx:if="{{psnData.length>0}}">
   <view data-id='{{item.aou_id}}' bindtap='SelectBtn' data-oid="{{item.oid}}" data-money="{{item.price}}" class="{{index==0?'first_item':'item_main'}}" wx:for="{{psnData}}">
     <view class='item_content'>
       <view class='item_contentL'>
@@ -48,4 +48,13 @@
     </view>
   </view>
 
+</view>
+<view class='noData' wx:if="{{!psnData.length>0}}">
+    <view class='noData_Img'>
+    <image src='https://app.xingxue.vip/icon/none_icon_none.png'>  
+    </image>
+    </view>
+    <view class='noData_Txt'>
+    暂无服务者接单
+    </view>
 </view>

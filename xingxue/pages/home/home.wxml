@@ -46,7 +46,7 @@
 
           </view>
           <view class='skillTitleRight'>
-            <text style='font-size:24rpx;color:{{config.XStyle.skillTFColor}};' data-id='{{item.cid}}' data-title='{{item.name}}' bindtap='ToSkillPage'>更多</text>
+            <text style='font-size:24rpx;color:{{config.XStyle.skillTFColor}};' data-id='{{item.cid}}' data-name="{{item.name}}" bindtap='ToSkillPage'>更多</text>
             <view class='skillTRAfter'>
               <image src='../image/home/right_JT.png' mode='aspectFit' />
             </view>

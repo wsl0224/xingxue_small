@@ -1,5 +1,5 @@
 var publicFun = {
-  // 根据状态num显示状态中文
+  // 根据订单中心状态num显示状态中文
   showStatusLabel: function(e) {
     
     if (e == 1) {
@@ -36,13 +36,13 @@ var publicFun = {
   // 根据状态num显示图片
   showStatusImg: function(e) {
     if (e == 1) {
-      return '';c
+      return '';
     }
     if (e == 2) {
-      return 'https://app.xingxue.vip/icon/my_icon4_receipt.png';
+      return 'https://app.xingxue.vip/icon/my_icon3_receipt.png';
     }
     if (e == 3) {
-      return '';
+      return 'https://app.xingxue.vip/icon/my_icon1_receipt.png';
     }
     if (e == 4) {
       return 'https://app.xingxue.vip/icon/my_icon5_receipt.png';

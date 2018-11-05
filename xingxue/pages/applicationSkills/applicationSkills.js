@@ -84,6 +84,7 @@ Page({
   },
   // 跳转详情
   ToApplicationDetail:function(e){
+    
     if (this.data.appliData.status == 1 || this.data.appliData.status == 4){
       $.openWin({
         url: '../applicationSkills/applicationDetail'

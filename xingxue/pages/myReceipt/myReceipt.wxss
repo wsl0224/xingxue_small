@@ -116,3 +116,29 @@ margin-right: 10rpx;
   width: 102rpx;
   height: 102rpx;
 }
+/* 无数据Css */
+.noData{
+width: 100vw;
+height: 100%;
+}
+
+.noData_Img{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 220rpx;
+}
+.noData_Img,.noData_Img>image{
+  width: 136rpx;
+  height: 136rpx;
+}
+.noData_Txt{
+  height: 32rpx;
+  line-height: 32rpx;
+  text-align: center;
+  font-size: 32rpx;
+  color: #777777;
+  margin-top: 65rpx;
+}
