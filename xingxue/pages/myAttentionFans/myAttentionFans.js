@@ -194,66 +194,15 @@ Page({
       this.freshMoreFansData();
     }
   },
-  // 
-  drawStart: function (e) {
-    // console.log("drawStart");  
-    var touch = e.touches[0]
-
-    for (var index in this.data.psnData) {
-      var item = this.data.psnData[index]
-      item.right = 0
-    }
-    this.setData({
-      data: this.data.psnData,
-      startX: touch.clientX,
-    })
-
-  },
-  drawMove: function (e) {
-    var touch = e.touches[0]
-    var item = this.data.psnData[e.currentTarget.dataset.index]
-    var disX = this.data.startX - touch.clientX
-
-    if (disX >= 20) {
-      if (disX > this.data.delBtnWidth) {
-        disX = this.data.delBtnWidth
-      }
-      item.right = disX
-      this.setData({
-        data: this.data.psnData
-      })
-    } else {
-      item.right = 0
-      this.setData({
-        data: this.data.psnData
-      })
-    }
-  },
-  drawEnd: function (e) {
-    var item = this.data.psnData[e.currentTarget.dataset.index]
-    if (item.right >= this.data.delBtnWidth / 2) {
-      item.right = this.data.delBtnWidth
-      this.setData({
-        data: this.data.psnData,
-      })
-    } else {
-      item.right = 0
-      this.setData({
-        data: this.data.psnData,
-      })
-    }
-  },
-  delItem: function (e) {
-    let self=this;
-    $.POST({
-      url:'wcUserUFU',
+  // 跳转个人主页
+  ToPsnPage:function(e){
+   
+    $.openWin({
+      url:'../psnPage/psnPage',
       data:{
-        fid:e.currentTarget.dataset.id,
+        id: e.currentTarget.dataset.psnid
       }
-    },function(e){
-      self.freshAttentionData();
-    },function(e){
-      console.log(e);
     })
-  }
+  },
+
 })
