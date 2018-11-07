@@ -11,9 +11,10 @@ Page({
     fansStatus:false,
     title:'',
     psnData: [],
-    isTouchMove:'',
+    isTouchMove:-1,
     startX: 0, //开始坐标
     startY: 0,
+    isTouchMoveFans:-1,
   },
 
   /**
@@ -196,6 +197,14 @@ Page({
       this.freshMoreFansData();
     }
   },
+  ToPsnPage:function(e){
+    $.openWin({
+      url:'../psnPage/psnPage',
+      data:{
+        id:e.currentTarget.dataset.psnid,
+      }
+    })
+  },
   // 触发开始
   touchstart: function (e) {
     console.log('触发开始');
@@ -204,6 +213,17 @@ Page({
       startX: e.changedTouches[0].clientX,
       startY: e.changedTouches[0].clientY,
       isTouchMove: e.currentTarget.dataset.index,
+    });
+
+  },
+  // 触发开始
+  touchstartFans: function (e) {
+    console.log('触发开始');
+
+    this.setData({
+      startX: e.changedTouches[0].clientX,
+      startY: e.changedTouches[0].clientY,
+      isTouchMoveFans: e.currentTarget.dataset.index,
     });
 
   },
@@ -228,14 +248,39 @@ Page({
     let conversationCopy = that.data.conversation;
     if (touchMoveX > startX) {//右滑
       that.setData({
-        isTouchMove :'',
+        isTouchMove :-1,
        
       });
     } else {
+      
+    }
+  },
+  // 移动
+  touchmoveFans: function (e) {
+    console.log('触发移动');
+    console.log(e);
+    var that = this,
+      startX = that.data.startX,//开始X坐标
+
+      startY = that.data.startY,//开始Y坐标
+
+      touchMoveX = e.changedTouches[0].clientX,//滑动变化坐标
+
+      touchMoveY = e.changedTouches[0].clientY,//滑动变化坐标
+      //获取滑动角度
+      angle = that.angle({ X: startX, Y: startY }, { X: touchMoveX, Y: touchMoveY });
+    //滑动超过30度角 return
+
+    console.log(touchMoveX, startX);
+    if (Math.abs(angle) > 30) return;
+    let conversationCopy = that.data.conversation;
+    if (touchMoveX > startX) {//右滑
       that.setData({
-        isTouchMove :'',
-     
+        isTouchMoveFans: -1,
+
       });
+    } else {
+
     }
   },
   //     * 计算滑动角度
@@ -257,5 +302,34 @@ Page({
     return 360 * Math.atan(_Y / _X) / (2 * Math.PI);
 
   },
- 
+  delItem:function(e){
+    let that=this;
+    $.POST({
+      url:'wcUserUFU',
+      data:{
+        fid:e.currentTarget.dataset.id,
+      }
+    },function(e){
+      wx.showToast({
+        title: '取消成功',
+        icon:'none',
+      })
+      that.freshAttentionData();
+    },function(e){})
+  },
+  AtteBtn:function(e){
+    let that=this;
+    $.POST({
+      url:'wcUserAFU',
+      data:{
+        uid:e.currentTarget.dataset.id,
+      }
+    },function(e){
+      wx.showToast({
+        title: '关注成功',
+        icon:'none',
+      });
+      that.freshFansData();
+    },function(e){});
+  }
 })

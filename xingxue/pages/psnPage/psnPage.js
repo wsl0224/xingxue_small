@@ -4,27 +4,9 @@ const utils = require('../utils/utils');
 const innerAudioContext = wx.createInnerAudioContext();
 const { globalData } = getApp();
 const { Service: { Status, Conversation } } = globalData;
-const watchConversation = (context) => {
-  Conversation.watch((conversationList) => {
-    context.setData({
-      conversationList
-    });
-  });
-};
-const watchStatus = () => {
-  Status.watch((status) => {
-    if (status == 3) {
-      let user = wx.getStorageSync('userInfo');
-      if (user) {
-        Status.connect(user.userInfo);
-      } else {
-      }
-    }
-  })
-}
+
 const connect = (context) => {
-  watchConversation(context);
-  watchStatus();
+  
   let userId = wx.getStorageSync('userId');
   let user = wx.getStorageSync('userInfo');
   $.POST({
@@ -34,10 +16,19 @@ const connect = (context) => {
     }
   }, function (e) {
     console.log('登录聊天');
+    console.log(e);
     wx.setStorageSync('UserToken', e.data.token);
     wx.setStorageSync('UserId', e.data.userId);
-
-    let user = wx.getStorageSync('userInfo');
+    let user = wx.getStorageSync("urserConInfo");
+    user.userInfo.token = e.data.token;
+    user.userInfo.id = e.data.userId;
+    user.userInfo.userId = e.data.userId;
+    user.userInfo.name = e.data.name;
+    user.userInfo.nickName = e.data.name;
+    user.userInfo.avatar = e.data.avatar;
+    user.userInfo.avatarUrl = e.data.avatar;
+    wx.setStorageSync("userInfo", user);
+    console.log('登录userInfo聊天');
     console.log(user);
     Status.connect(user.userInfo).then(() => {
       console.log('connect successfully');

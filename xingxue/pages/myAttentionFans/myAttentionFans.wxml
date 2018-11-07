@@ -12,7 +12,8 @@
     </view>
   </view>
   <scroll-view scroll-y class='list' bindscrolltoupper="upper" bindscrolltolower="lower">
-    <view data-id='{{item.uid}}' style='{{dataList}}'  wx:key="{{index}}"  wx:if="{{atteStatus}}"  class="{{index==0?'first_item':'item_main'}} atte-item touch-item  {{isTouchMove==index ? 'touch-move-active' : ''}}" bindtouchstart="touchstart" bindtouchmove="touchmove"   data-index="{{index}}"  data-fid='{{item.fid}}'  wx:for="{{psnData}}">
+    <view data-id='{{item.uid}}' style='{{dataList}}' data-psnid="{{item.be_uid}}" wx:key="{{index}}"  wx:if="{{atteStatus}}"  class="{{index==0?'first_item':'item_main'}} atte-item touch-item  {{isTouchMove==index ? 'touch-move-active' : ''}}"
+  bindtap='ToPsnPage'   bindtouchstart="touchstart" bindtouchmove="touchmove"   data-index="{{index}}"  data-fid='{{item.fid}}'  wx:for="{{psnData}}">
       <view class='item_content' style='{{item.txtStyle}}'>
         <view class='item_contentL'>
           <view class='item_image'>
@@ -38,10 +39,10 @@
 
       </view>
       <!-- 取关 -->
-       <view class="remove" bindtap="delItem" data-id="{{item.fid}}">取关</view>
+       <view class="remove" catchtap="delItem" data-id="{{item.fid}}">取关</view>
     </view>
 <!-- 粉丝 -->
-  <view data-id='{{item.uid}}' wx:key="{{index}}" wx:if="{{fansStatus}}" data-fid='{{item.fid}}' class="{{index==0?'first_item':'item_main'}}" wx:for="{{psnData}}">
+  <view data-id='{{item.uid}}' wx:key="{{index}}" wx:if="{{fansStatus}}" data-fid='{{item.fid}}'  data-index="{{index}}" class="{{index==0?'first_item':'item_main'}} touch-item {{isTouchMoveFans==index ? 'touch-move-active' : ''}}" bindtouchstart="touchstartFans" bindtouchmove="touchmoveFans" wx:for="{{psnData}}">
       <view class='item_content'>
         <view class='item_contentL'>
           <view class='item_image'>
@@ -67,6 +68,8 @@
 
       </view>
       <!-- 关注事件 -->
+         
+      <view class="remove" catchtap="AtteBtn" data-id="{{item.uid}}">关注</view>
     </view>
 
   </scroll-view>
