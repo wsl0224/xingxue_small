@@ -6,7 +6,7 @@ const { globalData } = getApp();
 const { Service: { Status, Conversation } } = globalData;
 
 const connect = (context) => {
-  
+
   let userId = wx.getStorageSync('userId');
   let user = wx.getStorageSync('userInfo');
   $.POST({
@@ -15,8 +15,7 @@ const connect = (context) => {
       uid: userId,
     }
   }, function (e) {
-    console.log('登录聊天');
-    console.log(e);
+
     wx.setStorageSync('UserToken', e.data.token);
     wx.setStorageSync('UserId', e.data.userId);
     let user = wx.getStorageSync("urserConInfo");
@@ -28,8 +27,7 @@ const connect = (context) => {
     user.userInfo.avatar = e.data.avatar;
     user.userInfo.avatarUrl = e.data.avatar;
     wx.setStorageSync("userInfo", user);
-    console.log('登录userInfo聊天');
-    console.log(user);
+
     Status.connect(user.userInfo).then(() => {
       console.log('connect successfully');
     }, (error) => {
@@ -60,6 +58,7 @@ Page({
    */
   onLoad: function(options) {
     let param = JSON.parse(options.data);
+    console.log(param);
     this.setData({
       psnId:param.id,
     })
