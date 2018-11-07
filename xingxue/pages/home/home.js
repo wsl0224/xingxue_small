@@ -254,7 +254,11 @@ Page({
     })
 
   },
+//  banner事件跳转
+  ToBanner:function(e){
  
+    $.openWin(e.currentTarget.dataset.param);
+  }
 
 
 })

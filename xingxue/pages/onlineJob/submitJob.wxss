@@ -125,7 +125,7 @@ margin-top: 20rpx;
   border-bottom-color: rgb(223,223,221);
 }
 .midMid_Label{
-  width: 100rpx;
+  width: 120rpx;
   height: 32rpx;
   line-height: 32rpx;
   font-size: 32rpx;

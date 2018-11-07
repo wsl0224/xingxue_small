@@ -1,3 +1,7 @@
 <scroll-view class='rong-conversations'>
-  <Conversation bindtap='gotoChat' wx:for="{{conversationList}}" wx:for-item="conversation" wx:key='{{conversation.targetId}}' data-item='{{conversation}}' conversation='{{conversation}}'></Conversation>
+
+ <Conversation bindtap='gotoChat'  wx:for="{{conversationList}}" wx:for-item="conversation" wx:key='{{conversation.targetId}}' data-item='{{conversation}}' conversation='{{conversation}}'>
+  
+  </Conversation>
+
 </scroll-view>

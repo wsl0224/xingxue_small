@@ -1,4 +1,5 @@
-<view class='rong-conversation'>
+<view class="touch-item  {{conversation.isTouchMove ? 'touch-move-active' : ''}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
+<view class="rong-conversation" >
       <image class=' rong-avatar rong-conversation-avatar ' src='{{conversation.target.avatar}} '></image>
     <view class='rong-conversation-title '>{{conversation.target.name}}</view>
     <view class='rong-conversation-message '>
@@ -8,4 +9,6 @@
     </view>
     <view class='rong-conversation-senttime '>{{conversation._sentTime}}</view>
     <view wx:if='{{conversation.unReadCount> 0}}' class='rong-conversation-unreadcount'>{{conversation.unReadCount}}</view>
+</view>
+<view class="del" catchtap="del">删除</view>
 </view>

@@ -10,8 +10,10 @@ Page({
     atteStatus:true,
     fansStatus:false,
     title:'',
-    psnData: []
-
+    psnData: [],
+    isTouchMove:'',
+    startX: 0, //开始坐标
+    startY: 0,
   },
 
   /**
@@ -194,66 +196,66 @@ Page({
       this.freshMoreFansData();
     }
   },
-  // 
-  drawStart: function (e) {
-    // console.log("drawStart");  
-    var touch = e.touches[0]
-
-    for (var index in this.data.psnData) {
-      var item = this.data.psnData[index]
-      item.right = 0
-    }
+  // 触发开始
+  touchstart: function (e) {
+    console.log('触发开始');
+  
     this.setData({
-      data: this.data.psnData,
-      startX: touch.clientX,
-    })
+      startX: e.changedTouches[0].clientX,
+      startY: e.changedTouches[0].clientY,
+      isTouchMove: e.currentTarget.dataset.index,
+    });
 
   },
-  drawMove: function (e) {
-    var touch = e.touches[0]
-    var item = this.data.psnData[e.currentTarget.dataset.index]
-    var disX = this.data.startX - touch.clientX
+  // 移动
+  touchmove: function (e) {
+    console.log('触发移动');
+    console.log(e);
+    var that = this,
+      startX = that.data.startX,//开始X坐标
 
-    if (disX >= 20) {
-      if (disX > this.data.delBtnWidth) {
-        disX = this.data.delBtnWidth
-      }
-      item.right = disX
-      this.setData({
-        data: this.data.psnData
-      })
+      startY = that.data.startY,//开始Y坐标
+
+      touchMoveX = e.changedTouches[0].clientX,//滑动变化坐标
+
+      touchMoveY = e.changedTouches[0].clientY,//滑动变化坐标
+      //获取滑动角度
+      angle = that.angle({ X: startX, Y: startY }, { X: touchMoveX, Y: touchMoveY });
+    //滑动超过30度角 return
+
+    console.log(touchMoveX, startX);
+    if (Math.abs(angle) > 30) return;
+    let conversationCopy = that.data.conversation;
+    if (touchMoveX > startX) {//右滑
+      that.setData({
+        isTouchMove :'',
+       
+      });
     } else {
-      item.right = 0
-      this.setData({
-        data: this.data.psnData
-      })
+      that.setData({
+        isTouchMove :'',
+     
+      });
     }
   },
-  drawEnd: function (e) {
-    var item = this.data.psnData[e.currentTarget.dataset.index]
-    if (item.right >= this.data.delBtnWidth / 2) {
-      item.right = this.data.delBtnWidth
-      this.setData({
-        data: this.data.psnData,
-      })
-    } else {
-      item.right = 0
-      this.setData({
-        data: this.data.psnData,
-      })
-    }
+  //     * 计算滑动角度
+
+  // * @param { Object } start 起点坐标
+
+  //   * @param { Object } end 终点坐标
+
+  //     * 
+
+  angle: function (start, end) {
+
+    var _X = end.X - start.X,
+
+      _Y = end.Y - start.Y
+
+    //返回角度 /Math.atan()返回数字的反正切值
+
+    return 360 * Math.atan(_Y / _X) / (2 * Math.PI);
+
   },
-  delItem: function (e) {
-    let self=this;
-    $.POST({
-      url:'wcUserUFU',
-      data:{
-        fid:e.currentTarget.dataset.id,
-      }
-    },function(e){
-      self.freshAttentionData();
-    },function(e){
-      console.log(e);
-    })
-  }
+ 
 })

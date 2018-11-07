@@ -2485,6 +2485,7 @@ module.exports = (function (wx) {
        * @param  {ResultCallback<boolean>} callback         [description]
        */
       RongIMClient.prototype.deleteMessages = function (conversationType, targetId, delMsgs, callback) {
+        
         RongIMClient._dataAccessProvider.removeMessage(conversationType, targetId, delMsgs, {
           onSuccess: function (bool) {
             setTimeout(function () {

@@ -322,7 +322,17 @@ Message.create = (params) => {
   bindSender(message);
   return message;
 };
-
+Message.deleteMessages = (params) => {
+  let { type, targetId, delMsg} = params;
+  imInstance.deleteMessages(type, targetId,delMsg,{
+    onSuccess: function () { 
+    console.log('qqq00');
+    },  
+    onError: function () { 
+      console.log('ddd');
+    }
+  });
+};
 Message.watch = (watch) => {
   Message.watcher.add(watch);
 };
@@ -424,6 +434,7 @@ Conversation.clearUnreadCount = (conversation) => {
     onError: function(){}
   });
 };
+
 Conversation.watch = (watcher) => {
   console.log('Conversation.watch ')
   console.log(watcher);

@@ -4,7 +4,7 @@
   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style='height:300rpx'>
     <block wx:for="{{imgUrls}}" wx:key="{{index}}">
       <swiper-item>
-        <image src="{{item.pic}}" class="slide-image"/>
+        <image src="{{item.pic}}" bindtap='ToBanner' data-param='{{item.urlParam}}' class="slide-image"/>
       </swiper-item>
     </block>
   </swiper>
