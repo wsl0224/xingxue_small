@@ -114,15 +114,24 @@
   </view>
 
 </scroll-view>
+
 <!-- 参加任务 -->
-<view class='TakeOrder' data-id="{{orderData.oid}}" bindtap='CJbtn' wx:if="{{orderData.advance_status==0}}">
+<form report-submit='true' bindsubmit='formSubmit' wx:if="{{orderData.advance_status==0}}">
+<button class='TakeOrder' formType='submit' data-id="{{orderData.oid}}" bindtap='CJbtn' >
   参加任务
-</view>
+</button>
+</form>
+
 <!-- 接受订单 -->
-<view class='TakeOrder' data-id="{{orderData.oid}}" bindtap='JSBtn' wx:if="{{orderData.status==1||orderData.status==2}}">
+<form report-submit='true' bindsubmit='formSubmit' wx:if="{{orderData.status==1||orderData.status==2}}">
+<button class='TakeOrder' formType='submit' data-id="{{orderData.oid}}" bindtap='JSBtn' >
   接受订单
-</view>
+</button>
+</form>
+
 <!-- 开始订单 -->
-<view class='StartOrder' bindtap='StartBtn' data-id="{{orderData.oid}}" wx:if="{{orderData.status==3}}">
+<form report-submit='true' bindsubmit='formSubmit' wx:if="{{orderData.status==3}}">
+<button class='StartOrder' formType='submit' bindtap='StartBtn' data-id="{{orderData.oid}}" >
   开始服务
-</view>
+</button>
+</form>

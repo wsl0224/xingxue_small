@@ -1,4 +1,5 @@
 // pages/conversation/components/message.js
+let $=require('../../util/commit.js');
 Component({
   options: {
     multipleSlots: true
@@ -42,6 +43,21 @@ Component({
     onPreviewImage: function(event){
       let {detail} = event;
       this.triggerEvent('onpreviewimage', detail);
+    },
+    ToPsnPage:function(event){
+      console.log(event);
+      console.log(event.currentTarget.dataset.message);
+      let message=event.currentTarget.dataset.message;
+
+      if(message.direction=='receiver'){
+        let psnId = message.targetId.split('_')[1];
+        $.openWin({
+          url:'../psnPage/psnPage',
+          data:{
+            id:psnId
+          }
+        })
+      }
     }
   }
 })

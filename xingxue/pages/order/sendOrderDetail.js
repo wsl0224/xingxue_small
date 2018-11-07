@@ -166,11 +166,6 @@ Page({
     let self=this;
     let sexVal;
     let DateTime;
-    
-   
-   
-
-
     if(self.data.sex=='全部'){
       sexVal=0;
     }
@@ -196,7 +191,9 @@ Page({
       },function(e){
         $.openWin({
           url: '../orderCenter/orderCenter'
-        })
+        });
+      
+       
       },function(e){
         console.log(e);
       })
@@ -206,6 +203,18 @@ Page({
       })
     }
  
+  },
+  formSubmit:function(e){
+    $.POST({
+      url: 'wcUserAFI',
+      data: {
+        formid: e.detail.formId,
+      }
+    }, function (e) {
+
+    }, function () {
+
+    })
   }
 
 })

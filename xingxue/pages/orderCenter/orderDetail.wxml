@@ -117,25 +117,31 @@
   </view>
 
   <!-- 取消 -->
-  <view class='clearBtn' bindtap='clearOrder' data-status='{{orderData.status}}' wx:if="{{orderData.status==2||orderData.status==3}}">
+  <form bindsubmit="formSubmit" report-submit="true" wx:if="{{orderData.status==2||orderData.status==3}}" >
+  <button class='clearBtn' bindtap='clearOrder' data-status='{{orderData.status}}'>
     取消
-  </view>
+  </button>
+  </form>
   <!-- 取消 和支付 -->
+   <form bindsubmit="formSubmit" report-submit="true" wx:if="{{orderData.status==2||orderData.status==3}}">
   <view class='ClearPay' wx:if="{{orderData.status==8}}">
     <!-- 取消 -->
-    <view class='Clear' bindtap='clearOrder'>
+    <button class='Clear' formType='submit' bindtap='clearOrder'>
       取消
-    </view>
+    </button>
     <!-- 支付 -->
-    <view class='Pay' bindtap='payOrder'>
+    <button class='Pay' formType='submit' bindtap='payOrder'>
       支付
-    </view>
+    </button>
   </view>
+  </form>
   <!-- 结束 -->
   <picker bindchange="EndOrderBtn" value='{{index}}' range='{{EndOrderArr}}' wx:if="{{orderData.status==4}}">
-    <view class='EndOrder' wx:if="{{orderData.status==4}}">
+    <form bindsubmit="formSubmit" report-submit="true"  wx:if="{{orderData.status==4}}">
+    <button formType="submit" class='EndOrder'>
       完成
-    </view>
+    </button>
+      </form>
   </picker>
 
 

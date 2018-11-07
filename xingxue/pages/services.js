@@ -323,13 +323,14 @@ Message.create = (params) => {
   return message;
 };
 Message.deleteMessages = (params) => {
-  let { type, targetId, delMsg} = params;
-  imInstance.deleteMessages(type, targetId,delMsg,{
-    onSuccess: function () { 
-    console.log('qqq00');
-    },  
-    onError: function () { 
-      console.log('ddd');
+  let { type, targetId} = params;
+  imInstance.removeConversation(type, targetId, {
+    onSuccess: function (result) {
+      console.log("删除会话成功", result);
+    },
+    onError: function (error) {
+      // error => 清除会话错误码。 
+      console.log("删除会话失败", error);
     }
   });
 };

@@ -209,5 +209,15 @@ Page({
       })
     }
   
+  },
+  // formSubmit
+  formSubmit: function (e) {
+    console.log(e);
+    $.POST({
+      url: 'wcUserAFI',
+      data: {
+        formid: e.detail.formId,
+      }
+    }, function (e) { }, function (e) { })
   }
 })

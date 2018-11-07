@@ -12,7 +12,7 @@
     </view>
   </view>
   <scroll-view scroll-y class='list' bindscrolltoupper="upper" bindscrolltolower="lower">
-    <view data-id='{{item.uid}}' style='{{dataList}}' data-psnid="{{item.be_uid}}" wx:key="{{index}}"  wx:if="{{atteStatus}}"  class="{{index==0?'first_item':'item_main'}} atte-item touch-item  {{isTouchMove==index ? 'touch-move-active' : ''}}"
+    <view data-id='{{item.be_uid}}' style='{{dataList}}' data-uid="{{item.uid}}" wx:key="{{index}}"  wx:if="{{atteStatus}}"  class="{{index==0?'first_item':'item_main'}} atte-item touch-item  {{isTouchMove==index ? 'touch-move-active' : ''}}"
   bindtap='ToPsnPage'   bindtouchstart="touchstart" bindtouchmove="touchmove"   data-index="{{index}}"  data-fid='{{item.fid}}'  wx:for="{{psnData}}">
       <view class='item_content' style='{{item.txtStyle}}'>
         <view class='item_contentL'>

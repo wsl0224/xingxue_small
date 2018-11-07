@@ -81,7 +81,11 @@
     </view>
 
   </scroll-view>
-  <view class='footer' bindtap='submitBtn'>
+  <form bindsubmit="formSubmit" report-submit="true" >
+
+  <button class='footer' formType="submit" bindtap='submitBtn'>
     提交审核
-  </view>
+  </button>
+    
+  </form>
 </view>

@@ -72,6 +72,9 @@
     
   </view>
 </view>
-<view class='footer' bindtap='ToOrderCenter'>
+<form report-submit='true' bindsubmit='formSubmit'>
+
+<button class='footer' formType="submit" bindtap='ToOrderCenter'>
   我要发布
-</view>
+</button>
+</form>

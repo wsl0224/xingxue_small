@@ -11,9 +11,10 @@ Page({
     fansStatus: false,
     title: '',
     psnData: [],
-    isTouchMove: -1,
+  
     startX: 0, //开始坐标
     startY: 0,
+    isTouchMove: -1,
     isTouchMoveFans: -1,
   },
 
@@ -159,6 +160,8 @@ Page({
       pageNum = 1;
       self.setData({
         psnData: e.data,
+        isTouchMove: -1,
+        isTouchMoveFans: -1,
       })
     }, function(e) {
 
@@ -177,6 +180,8 @@ Page({
 
       self.setData({
         psnData: e.data.psnData.concat(e.data),
+        isTouchMove: -1,
+        isTouchMoveFans: -1,
       })
     }, function(e) {
       console.log(e);
@@ -199,12 +204,14 @@ Page({
   },
 
   ToPsnPage: function(e) {
+    console.log(e);
     $.openWin({
       url: '../psnPage/psnPage',
       data: {
-        id: e.currentTarget.dataset.psnid,
+        id: e.currentTarget.dataset.id,
       }
     })
+
   },
   // 触发开始
   touchstart: function(e) {
@@ -324,7 +331,7 @@ Page({
     $.POST({
       url: 'wcUserUFU',
       data: {
-        id: e.currentTarget.dataset.psnid
+        fid: e.currentTarget.dataset.id
       }
     },function(e){
       wx.showToast({
@@ -350,16 +357,5 @@ Page({
       that.freshFansData();
     }, function (e) { });
   },
-  // 跳转个人主页
-  ToPsnPage: function (e) {
-
-    $.openWin({
-      url: '../psnPage/psnPage',
-
-      data: {
-        id: e.currentTarget.dataset.psnid
-      }
-
-    })
-  },
+ 
 })

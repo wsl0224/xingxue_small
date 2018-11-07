@@ -53,9 +53,12 @@
     </view>
   </view>
   <!-- footer -->
-  <view class='footer' bindtap='submitBtn'>
+  <form bindsubmit="formSubmit" report-submit="true" >
+
+  <button formType="submit" class='footer' bindtap='submitBtn'>
     提交认证
-  </view>
+  </button>
+  </form>
 </view>
 <!-- 录音弹窗口 -->
 <view class='cover' wx:if="{{showCover}}">

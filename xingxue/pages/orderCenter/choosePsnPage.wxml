@@ -37,18 +37,21 @@
     </view>
   </view>
 </scroll-view>
-<view class='Footer' wx:if="{{showFooter}}" bindtap='HideFooter'>
+<form  wx:if="{{showFooter}}" bindsubmit="formSubmit" report-submit="true">
+<view class='Footer' bindtap='HideFooter' >
   <view class='FMain'>
     <view class='Footer_Item'>
       <view class='Footer_lab'>费用</view>
       <view class='Footer_Val'>{{SelectMoney}}</view>
     </view>
-    <view class='FooterBtn' bindtap='sureBtn'>
+    <button class='FooterBtn' bindtap='sureBtn' formType="submit">
       确认
-    </view>
+    </button>
   </view>
 
 </view>
+</form>
+
 <view class='noData' wx:if="{{!psnData.length>0}}">
     <view class='noData_Img'>
     <image src='https://app.xingxue.vip/icon/none_icon_none.png'>  

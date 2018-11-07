@@ -19,7 +19,7 @@
   </view>
   <!-- 推荐服务 -->
   <swiper indicator-dots="{{typeData_indicatorDots}}" autoplay="{{typeData_autoplay}}" interval="{{typeData_interval}}" duration="{{typeData_duration}}" style='height:280rpx;margin-top:20rpx;margin-bottom:20rpx;background-color:{{config.XStyle.CbgColor}}'>
-    <block wx:for="{{typeData}}" wx:key="{{index}}">
+    <block wx:for="{{typeData}}" wx:if="{{typeData}}" wx:key="{{index}}">
       <swiper-item>
         <view class="typeData section">
           <view class="typeData flex-wrp">

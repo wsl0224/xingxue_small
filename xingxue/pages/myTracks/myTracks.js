@@ -56,7 +56,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.freshMoreData();
   },
 
   /**
@@ -93,9 +93,11 @@ Page({
 
       self.setData({
         psnData: self.data.psnData.concat(e.data),
-      })
+      });
+      wx.stopPullDownRefresh();
     }, function (e) {
       console.log(e);
+      wx.stopPullDownRefresh();
     })
   },
   // 跳转人员主页 

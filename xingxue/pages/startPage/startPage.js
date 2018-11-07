@@ -293,5 +293,15 @@ Page({
         url:'https://app.xingxue.vip/wcOtherSUP',
       }
     })
+  },
+  // formBtn 
+  formSubmit:function(e){
+    console.log(e.detail.formId);
+    $.POST({
+      url:'wcUserAFI',
+      data:{
+        formid:e.detail.formId
+      }
+    })
   }
 })

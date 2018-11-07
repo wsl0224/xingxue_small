@@ -95,7 +95,6 @@ Component({
       Message.deleteMessages({
         type:1,
         targetId, 
-        delMsg,
       });
     }
   }

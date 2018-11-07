@@ -88,12 +88,11 @@ Page({
       url: 'wcIndexRCCL',
       data:{}
     }, function(e) {
-      console.log('过滤推荐二级技能');
-      console.log(e.data);
       let SkillArrA = [];
       let SkillArrB = [];
       let typeData = [];
-      if (e.data.length < 7) {
+
+      if (e.data.length <= 7) {
         for (var i = 0; i < e.data.length; i++) {
           SkillArrA.push(e.data[i]);
         }
@@ -104,7 +103,7 @@ Page({
         });
         typeData.push(SkillArrA);
       }
-      if (e.data.length > 6) {
+      if (e.data.length >7) {
         for (var i = 0; i < 7; i++) {
           SkillArrA.push(e.data[i]);
         }
@@ -120,7 +119,7 @@ Page({
         typeData.push(SkillArrB);
       }
    
-      
+      console.log(typeData);
      
       self.setData({
         typeData: typeData,

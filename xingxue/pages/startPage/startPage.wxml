@@ -4,7 +4,7 @@
     <image src='https://app.xingxue.vip/icon/144.png'></image>
   </view>
   <view class='main_mid'>
-    <button class='main_midBtn' wx:if="{{showLoad}}" bindgetuserinfo='getUserInfo' open-type="getUserInfo" >
+    <button class='main_midBtn' wx:if="{{showLoad}}"  bindgetuserinfo='getUserInfo' open-type="getUserInfo" >
     微信用户信息授权
     </button>
     <button class='main_midBtn' wx:if="{{!showLoad}}" bindgetphonenumber="getPhoneNumber" open-type="getPhoneNumber" >

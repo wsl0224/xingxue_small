@@ -32,6 +32,15 @@ function POST(param, doSuccess, doFail) {
         if (res.data.code == 200) {
           doSuccess(res.data);
         
+        } else if(res.data.code==301){
+          wx.showToast({
+            title: '请重新授权登录',
+            icon: 'none',
+            duration: 2000
+          })
+           openWin({
+             url:'../startPage/startPage'
+           })
         } else {
           if (param.url == 'wcUserMHP') {
             doSuccess(res.data);
@@ -43,6 +52,7 @@ function POST(param, doSuccess, doFail) {
               duration: 2000
             })
           } else {
+        
             wx.showToast({
               title: res.data.msg,
               icon:'none',

@@ -15,6 +15,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+   
     let param= JSON.parse(options.data);
     this.setData({
       orderCode: param.id,
@@ -33,6 +34,8 @@ freshData:function(e){
     self.setData({
       orderData: e.data,    
     })
+  },function(e){
+    
   })
 },
   /**
@@ -156,5 +159,13 @@ freshData:function(e){
         title: e.msg,
       });
     })
+  },
+  formSubmit:function(e){
+    $.POST({
+      url:'wcUserAFI',
+      data:{
+        formid:e.detail.formId,
+      }
+    },function(e){},function(e){});
   }
 })
