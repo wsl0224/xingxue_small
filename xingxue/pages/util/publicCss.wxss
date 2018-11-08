@@ -1,13 +1,12 @@
 page{
   background: #e4e4e4;
 }
-.botton{
+botton{
   background: transparent;
   border:0;
   padding: 0; 
   border-radius: 0;
 }
-
-.botton::after{
+botton::after{
   border: none;
 }

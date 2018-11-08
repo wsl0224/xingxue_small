@@ -10,7 +10,8 @@
       <view class='Item_mid'>
           <view class='Item_midLT'>
             <view class='Item_Name'>
-           {{item.user_nicename}}
+         
+           {{publicFun.substr(item.user_nicename,5)}}
             </view>
             <view class='Item_Title'>
               {{item.cname}}

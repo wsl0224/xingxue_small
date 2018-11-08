@@ -96,6 +96,7 @@ Component({
         type:1,
         targetId, 
       });
+      
     }
   }
 })

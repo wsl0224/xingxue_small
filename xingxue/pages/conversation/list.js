@@ -4,22 +4,6 @@ const utils = require('../utils/utils');
 const {globalData} = getApp();
 const {Service: {Status, Conversation}} = globalData;
 
-// const requestUserAuth = () => {
-//   return new Promise((resolve, reject) => {
-//     console.log(resolve);
-//     console.log(reject);
-//     wx.getSetting({
-//       success: function (res) {
-//         resolve(!!res.authSetting['scope.userInfo'])
-//       },
-//       fail: function (error) {
-//         console.log(error);
-//         reject(error)
-//       }
-//     })
-//   });
-// };
-
 const watchConversation = (context) => {
   Conversation.watch((conversationList) => {
     console.log(conversationList);
@@ -33,56 +17,48 @@ const watchStatus = () => {
  Status.watch((status) => {
    console.log(status);
    if (status == 3) {
-     wx.getUserInfo({
-       success: (user) => {
-         console.log(user.userInfo);
-         Status.connect(user.userInfo);
+     let userId = wx.getStorageSync('userId');
+     let user = wx.getStorageSync('userInfo');
+     $.POST({
+       url: 'wcUserSRYT',
+       data: {
+         uid: userId,
        }
-     });
+     }, function (e) {
+       console.log('登录聊天');
+       console.log(e);
+       wx.setStorageSync('UserToken', e.data.token);
+       wx.setStorageSync('UserId', e.data.userId);
+       let user = wx.getStorageSync("urserConInfo");
+       user.userInfo.token = e.data.token;
+       user.userInfo.id = e.data.userId;
+       user.userInfo.userId = e.data.userId;
+       user.userInfo.name = e.data.name;
+       user.userInfo.nickName = e.data.name;
+       user.userInfo.avatar = e.data.avatar;
+       user.userInfo.avatarUrl = e.data.avatar;
+       wx.setStorageSync("userInfo", user);
+       console.log('登录userInfo聊天');
+       console.log(user);
+       Status.connect(user.userInfo).then(() => {
+         console.log('connect successfully');
+       }, (error) => {
+         wx.showToast({
+           title: error.msg,
+           icon: 'none',
+           duration: 3000
+         })
+       })
+     }, function (e) {
+       console.log(e);
+     })
    }
  })
 }
 
 const connect = (context) => {
-  console.log(context);
-
   watchConversation(context);
   watchStatus();
-  let userId = wx.getStorageSync('userId');
-  let user = wx.getStorageSync('userInfo');
-  $.POST({
-    url: 'wcUserSRYT',
-    data: {
-      uid: userId,
-    }
-  }, function (e) {
-    console.log('登录聊天');
-    console.log(e);
-    wx.setStorageSync('UserToken', e.data.token);
-    wx.setStorageSync('UserId', e.data.userId);
-    let user = wx.getStorageSync("urserConInfo");
-    user.userInfo.token = e.data.token;
-    user.userInfo.id = e.data.userId;
-    user.userInfo.userId = e.data.userId;
-    user.userInfo.name = e.data.name;
-    user.userInfo.nickName = e.data.name;
-    user.userInfo.avatar = e.data.avatar;
-    user.userInfo.avatarUrl = e.data.avatar;
-    wx.setStorageSync("userInfo", user);
-    console.log('登录userInfo聊天');
-    console.log(user);
-    Status.connect(user.userInfo).then(() => {
-      console.log('connect successfully');
-    }, (error) => {
-      wx.showToast({
-        title: error.msg,
-        icon: 'none',
-        duration: 3000
-      })
-    })
-  }, function (e) {
-    console.log(e);
-  })
  wx.stopPullDownRefresh();
 };
 

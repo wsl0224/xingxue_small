@@ -88,13 +88,14 @@
   <view class='bottom'>
 
      <!-- 我的接单 -->
-    <view class='bottom_Item' bindtap='ToMyReceipt'>
+     <form report-submit='true' bindsubmit='formSubmit'>
+    <button class='button bottom_Item' formType="submit" bindtap='ToMyReceipt'>
       <view class='bottom_ItemL'>
         <view class='bottom_ItemImg'>
           <image src='https://app.xingxue.vip/icon/icon72.png'></image>
         </view>
         <view class='bottom_ItemLtxt'>
-          我的接单
+          接单中心
         </view>
       </view>
       <view class='bottom_ItemR'>
@@ -105,7 +106,8 @@
         </view>
       </view>
 
-    </view>
+    </button>
+      </form>
     <!-- 申请技能 -->
     <view class='bottom_Item' bindtap='ToApplicationSkill'>
       <view class='bottom_ItemL'>
@@ -126,7 +128,8 @@
       </view>
     </view>
     <!-- 订单中心 -->
-    <view class='bottom_Item' bindtap='ToOrderCenter'>
+    <form report-submit='true' bindsubmit='formSubmit'>
+    <button class='button bottom_Item' fromType="submit" bindtap='ToOrderCenter'>
       <view class='bottom_ItemL'>
         <view class='bottom_ItemImg'>
           <image src='https://app.xingxue.vip/icon/icon74.png'></image>
@@ -143,7 +146,8 @@
         </view>
       </view>
 
-    </view>
+    </button>
+    </form>
         <!-- 邀请码 -->
     <view class='bottom_Item' bindtap='ToInvitationCode'>
       <view class='bottom_ItemL'>
@@ -163,7 +167,7 @@
       </view>
     </view>
     <!-- 在线客服 -->
-    <button class='botton bottom_Item bottom_Btn' open-type="contact">
+    <button class='button bottom_Item bottom_Btn' open-type="contact">
       <view class='bottom_ItemL'>
         <view class='bottom_ItemImg'>
           <image src='https://app.xingxue.vip/icon/icon75.png'></image>

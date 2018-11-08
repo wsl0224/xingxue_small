@@ -6,7 +6,8 @@ const { globalData } = getApp();
 const { Service: { Status, Conversation } } = globalData;
 
 const connect = (context) => {
-
+  // Status.watch((status) => {
+  //   console.log(status);
   let userId = wx.getStorageSync('userId');
   let user = wx.getStorageSync('userInfo');
   $.POST({
@@ -40,7 +41,7 @@ const connect = (context) => {
   }, function (e) {
     console.log(e);
   })
-
+  // })
 };
 Page({
 

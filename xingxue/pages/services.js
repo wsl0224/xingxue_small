@@ -287,9 +287,11 @@ Message.sendMusic = (params) => {
 Message.getList = (params) => {
   let {type, targetId, position, count} = params;
   count = count || 5;
+  type=parseInt(type);
   return new Promise((resolve, reject) => {
     let timestamp = position > 0 ? null : position;
-    imInstance.getHistoryMessages(+type, targetId, timestamp, count, {
+    console.log(type,targetId,position,count);
+    imInstance.getHistoryMessages(type, targetId, timestamp, count, {
       onSuccess: (messageList, hasMore) => {
         // 过滤未处理的消息类型
         messageList = messageList.filter((message) => {
@@ -326,7 +328,7 @@ Message.deleteMessages = (params) => {
   let { type, targetId} = params;
   imInstance.removeConversation(type, targetId, {
     onSuccess: function (result) {
-      console.log("删除会话成功", result);
+      Conversation.watch([]);
     },
     onError: function (error) {
       // error => 清除会话错误码。 
@@ -437,15 +439,13 @@ Conversation.clearUnreadCount = (conversation) => {
 };
 
 Conversation.watch = (watcher) => {
-  console.log('Conversation.watch ')
-  console.log(watcher);
-  console.log(RongIMClient.Conversation.watch(function (list) {
-    bindUserInfo(list);
-    watcher(list);
-  }))
+
   RongIMClient.Conversation.watch(function(list){
     bindUserInfo(list);
-    watcher(list);
+   
+      watcher(list);
+  
+   
   });
 };
 let Status = {
@@ -458,6 +458,7 @@ Status.connect = (user) => {
   console.log('1connect');
   RongIMClient.setConnectionStatusListener({
     onChanged: (status) => {
+      console.log(status);
       Status.watcher.notify(status);
     }
   });

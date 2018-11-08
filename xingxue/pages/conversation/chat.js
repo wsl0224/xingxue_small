@@ -151,6 +151,7 @@ const onLoad = (context, query) => {
   wx.setNavigationBarTitle({
     title
   });
+  
   context.setData({
     adapterHeight: adapterHeight,
     type,
@@ -161,6 +162,7 @@ const onLoad = (context, query) => {
 
   let position = 0;
   let count = 15;
+
   getMessageList(context, { type, targetId, position, count });
 
   Message.watch((message) => {

@@ -295,13 +295,16 @@ Page({
     })
   },
   // formBtn 
-  formSubmit:function(e){
-    console.log(e.detail.formId);
+  formSubmit: function (e) {
     $.POST({
-      url:'wcUserAFI',
-      data:{
-        formid:e.detail.formId
+      url: 'wcUserAFI',
+      data: {
+        formid: e.detail.formId,
       }
+    }, function (e) {
+
+    }, function () {
+
     })
   }
 })

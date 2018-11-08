@@ -112,9 +112,11 @@
     </view>
   </view>
 </scroll-view>
-<view class='footer' bindtap='submit'>
+
+<form report-submit='true' bindsubmit='formSubmit'>
+<button  class='botton footer' formType="submit" bindtap='submit'>
   <view>
     提交订单
   </view>
-
-</view>
+</button>
+</form>
