@@ -1,7 +1,7 @@
 /* pages/orderCenter/orderCenter.wxss */
 @import '../util/publicCss';
 .main{
- 
+ height: 100vh;
 }
 .main_body{
   padding-top:20rpx; 

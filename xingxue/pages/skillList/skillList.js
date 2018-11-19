@@ -15,6 +15,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
     let data=JSON.parse(options.data);
     let self=this;
     wx.setNavigationBarTitle({
@@ -23,10 +24,12 @@ Page({
     self.setData({
       OneId: data.id,
     })
+    
     self.freshData();
-
+ 
   },
   freshData:function(e){
+
     let self=this;
     $.POST(
       {
@@ -36,24 +39,23 @@ Page({
           page:1,
         }
       },function(e){
-        console.log('freshData');
         self.setData({
           psnData:e.data,
         });
         page=1;
+        wx.stopPullDownRefresh();
       },
       function(e){
         console.log(e);
+        wx.stopPullDownRefresh();
       }
     )
-    wx.stopPullDownRefresh();
+
   },
-  // upper
   upper:function(e){
-   
+    this.freshData();
   },
   lower:function(e){
-    
     let self = this;
     page++;
     $.POST(
@@ -66,10 +68,12 @@ Page({
       }, function (e) {
         self.setData({
           psnData: self.data.psnData.concat(e.data),
-        })
+        });
+        wx.stopPullDownRefresh();
       },
       function (e) {
         console.log(e);
+        wx.stopPullDownRefresh();
       }
     )
   },
@@ -84,6 +88,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    wx.startPullDownRefresh();
     this.freshData();
   },
 
@@ -112,7 +117,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.lower();
   },
 
   /**

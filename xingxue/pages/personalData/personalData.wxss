@@ -17,6 +17,11 @@
   color: rgb(0,0,0);
   margin-bottom: 20rpx;
 }
+.top_type::after{
+  content: '(为提高成单率，请尽量上传本人相关图片)';
+  font-size:25rpx;
+  color:#666666;
+}
 .top_psnPhoto,.mid_psnPhoto{
   margin-right: 20rpx;
   display: flex;
@@ -93,6 +98,7 @@
     padding:32rpx 24rpx 0 24rpx;
   }
   .infoLabel{
+    width: 120rpx;
     font-size: 32rpx;
     height: 32rpx;
     line-height: 32rpx;
@@ -100,6 +106,7 @@
     margin-right: 60rpx;
   }
   .infoValue{
+    width: 100%;
     font-size: 30rpx;
      height: 32rpx;
     line-height: 32rpx;

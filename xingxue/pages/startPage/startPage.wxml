@@ -5,11 +5,11 @@
   </view>
   <view class='main_mid'>
   
-<form report-submit='true' bindsubmit='formSubmit'>
-    <button class='main_midBtn' formType="submit" wx:if="{{showLoad}}"  bindgetuserinfo='getUserInfo' open-type="getUserInfo" >
+
+    <button class='main_midBtn' wx:if="{{showLoad}}"  bindgetuserinfo='getUserInfo' open-type="getUserInfo" >
     微信用户信息授权
     </button>
-    </form>
+ 
     <button class='main_midBtn' wx:if="{{!showLoad}}" bindgetphonenumber="getPhoneNumber" open-type="getPhoneNumber" >
     微信用户手机号授权
     </button>

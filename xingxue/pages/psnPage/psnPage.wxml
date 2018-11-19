@@ -37,7 +37,7 @@
                 {{psnData.address}}
               </view>
             </view>
-            <view class='psnInfo_FR'>
+            <view class='psnInfo_FR' catchtap='AtteBtn' data-id='{{psnData.uid}}' data-fid='{{psnData.fid}}' data-status='{{psnData.follower}}'>
               {{psnData.follower==2?'未关注':'已关注'}}
             </view>
           </view>

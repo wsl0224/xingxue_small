@@ -49,10 +49,10 @@
     <!-- 证件图 -->
     <view class='pInfo'>
       <view class='pInfo_TLeft'>
-        学生证 (个人信息)
+        上传学生证 (个人信息)
       </view>
       <view class='pInfo_Tright'>
-        上传学生证或校园一卡通
+        上传校园一卡通
       </view>
     </view>
     <view>

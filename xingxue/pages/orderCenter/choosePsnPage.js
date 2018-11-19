@@ -115,5 +115,21 @@ Page({
       });
       wx.navigateBack();
     })
+  },
+  canleBtn:function(e){
+    let self=this;
+    $.POST({
+      url:'wcOrderDUO',
+      data:{
+        oid: self.data.orderCode,
+      }
+    },function(e){
+      wx.showToast({
+        title: e.msg,
+      });
+      wx.navigateBack();
+    },function(e){
+
+    })
   }
 })

@@ -4,7 +4,7 @@
 <view class='main_body'>
   <view class='main_item' wx:key="{{index}}" wx:for="{{orderData}}" data-id="{{item.oid}}" data-status="{{item.status}}" bindtap='ToOrderDetail'>
     <view class="main_itemTitle {{item.status==1?'active':''}}">
-      {{publicFun.showStatusLabel(item.status)}}
+      {{publicFun.showOCStatusLabel(item.status)}}
     </view>
     <view class='main_skillInfo'>
       <view class='main_skillImg'>

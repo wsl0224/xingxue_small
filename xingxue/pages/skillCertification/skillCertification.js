@@ -116,10 +116,18 @@ Page({
     //错误回调
     RecorderManager.onError((res) => {
       console.log(res);
-      self.setData({
-        audioTime: 0,
-      })
-      clearTimeout(ssTime);
+      if (res.errMsg == "operateRecorder:fail:audio is recording, don't start record again"){
+        wx.showToast({
+          title: '正在录音请确认或取消',
+        })
+      }else{
+        self.setData({
+          audioTime: 0,
+        })
+        clearTimeout(ssTime);
+      }
+      
+   
     })
   },
   stop:function(e){

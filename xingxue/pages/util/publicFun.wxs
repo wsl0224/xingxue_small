@@ -1,5 +1,38 @@
 var publicFun = {
   // 根据订单中心状态num显示状态中文
+  showOCStatusLabel: function (e) {
+
+    if (e == 1) {
+      return '打开选择';
+    }
+    if (e == 2) {
+      return '待接受'
+    }
+    if (e == 3) {
+      return '待服务';
+    }
+    if (e == 4) {
+      return '进行中'
+    }
+    if (e == 5) {
+      return '等待用户评价';
+    }
+    if (e == 6) {
+      return '已完成'
+    }
+    if (e == 7) {
+      return '已取消';
+    }
+    if (e == 8) {
+      return '未支付'
+    }
+    if (e == 9) {
+      return '已取消'
+    }
+    if (e == 0) {
+      return '待参加'
+    }
+  },
   showStatusLabel: function(e) {
     
     if (e == 1) {
@@ -106,7 +139,7 @@ var publicFun = {
       return '未认证';
     }
     if (e == 2) {
-      return '申请中';
+      return '审核中';
     }
     if (e == 3) {
       return '通过';
@@ -171,6 +204,7 @@ module.exports = {
   substr: publicFun.substr,
   stringToArr: publicFun.stringToArr,
   showSkilStatusLabel: publicFun.showSkilStatusLabel,
+  showOCStatusLabel: publicFun.showOCStatusLabel,
   showSkilStatusClass: publicFun.showSkilStatusClass,
   showNum: publicFun.showNum
 }

@@ -57,9 +57,47 @@ const watchStatus = () => {
 }
 
 const connect = (context) => {
+  let userId = wx.getStorageSync('userId');
+  let user = wx.getStorageSync('userInfo');
+  $.POST({
+    url: 'wcUserSRYT',
+    data: {
+      uid: userId,
+    }
+  }, function (e) {
+    console.log('登录聊天');
+    console.log(e);
+    wx.setStorageSync('UserToken', e.data.token);
+    wx.setStorageSync('UserId', e.data.userId);
+    let user = wx.getStorageSync("urserConInfo");
+    user.userInfo.token = e.data.token;
+    user.userInfo.id = e.data.userId;
+    user.userInfo.userId = e.data.userId;
+    user.userInfo.name = e.data.name;
+    user.userInfo.nickName = e.data.name;
+    user.userInfo.avatar = e.data.avatar;
+    user.userInfo.avatarUrl = e.data.avatar;
+    wx.setStorageSync("userInfo", user);
+    console.log('登录userInfo聊天');
+    console.log(user);
+    Status.connect(user.userInfo).then(() => {
+      console.log('connect successfully');
+      wx.stopPullDownRefresh();
+    }, (error) => {
+      wx.showToast({
+        title: error.msg,
+        icon: 'none',
+        duration: 3000
+      });
+      wx.stopPullDownRefresh();
+    })
+  }, function (e) {
+    wx.stopPullDownRefresh();
+    console.log(e);
+  })
   watchConversation(context);
-  watchStatus();
- wx.stopPullDownRefresh();
+  
+
 };
 
 Page({

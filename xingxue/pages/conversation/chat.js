@@ -155,7 +155,8 @@ const onLoad = (context, query) => {
   context.setData({
     adapterHeight: adapterHeight,
     type,
-    targetId
+    targetId,
+    title,
   });
   let keyboardHeight = 0;
   setKeyboardPos(context, keyboardHeight, adapterHeight);
@@ -282,7 +283,19 @@ const selectEmoji = (context, event) => {
 };
 
 const sendText = (context) => {
-  let { content, type, targetId, messageList } = context.data;
+
+  let { content, type, targetId, messageList,title } = context.data;
+  $.POST({
+    url: 'wcRYR',
+    data: {
+      uid: targetId ,
+      be_uid:title,
+    }
+  }, function () {
+
+  }, function () {
+
+  });
   context.setData({
     content: '',
     isShowEmojiSent: false
@@ -319,6 +332,7 @@ const getMoreMessages = (context) => {
 };
 
 const sendImage = (context) => {
+
   wx.chooseImage({
     count: 1,
     sizeType: ['compressed'],
@@ -330,8 +344,18 @@ const sendImage = (context) => {
         src: tempFilePath,
         success: (res) => {
           let extra = utils.compress(res);
-          let { type, targetId, messageList } = context.data;
+          let { type, targetId, messageList, title } = context.data;
+          $.POST({
+            url: 'wcRYR',
+            data: {
+              uid: targetId,
+              be_uid: title,
+            }
+          }, function () {
 
+          }, function () {
+
+          });
           let name = 'ImageMessage';
           let content = {
             imageUri: tempFilePath,
@@ -369,7 +393,18 @@ const sendImage = (context) => {
 };
 
 const sendMusic = (context) => {
-  let { content, type, targetId, messageList } = context.data;
+  let { content, type, targetId, messageList, title } = context.data;
+  $.POST({
+    url: 'wcRYR',
+    data: {
+      uid: targetId,
+      be_uid: title,
+    }
+  }, function () {
+
+  }, function () {
+
+  });
   Message.sendMusic({
     type,
     targetId

@@ -14,7 +14,7 @@
             <view class='psnInfo_stu' wx:if='{{psnData.stu_status==3}}'>
               学生身份
             </view>
-            <view class='psnInfo_stuNo' wx:if='{{psnData.stu_status!=3}}' bindtap='ToApplicationSkill'>
+            <view class='psnInfo_stuNo' wx:if='{{psnData.stu_status!=3}}' catchtap='ToApplicationSkill'>
             未认证学生身份，点击认证
             </view>
           </view>

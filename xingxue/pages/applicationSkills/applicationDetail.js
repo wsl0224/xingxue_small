@@ -8,7 +8,7 @@ Page({
    */
   data: {
     showTitle: true,
-    content: "<p>1.信息无遮盖，内容清晰，证件照需包含学号</p><p>2.手持学生证件照，照片中证件文字需清晰</p>",
+    content: "<p>1.信息无遮盖，内容清晰，证件照需包含学号</p>",
     Name:'',
     Number:'',
     Card_pic:'',

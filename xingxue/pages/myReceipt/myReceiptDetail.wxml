@@ -8,7 +8,7 @@
         <image src='{{orderData.avatar}}'></image>
       </view>
       <view class='psnInfoR'>
-        <view class='psnName'>orderData.user_nicename</view>
+        <view class='psnName'>{{orderData.user_nicename}}</view>
         <view class="psn_SexAge {{orderData.sex==1?'man':'woman'}}">
           <view class='psn_Sex'>
             <image src="{{orderData.sex==1?'https://app.xingxue.vip/icon/icon46.png':'https://app.xingxue.vip/icon/icon45.png'}}" />

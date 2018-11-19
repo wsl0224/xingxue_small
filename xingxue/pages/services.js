@@ -10,7 +10,7 @@ let imInstance = null;
 let currentUser = null;
 
 let config = {
-  appkey: '',
+  appkey: 'pvxdm17jp38vr',
   url: '',
   wsScheme: 'wss://',
   protocol: 'https://'
@@ -480,7 +480,7 @@ Status.connect = (user) => {
 
   return User.getToken(user).then((user) => {
     console.log('4connect');
-
+    
     return new Promise((resolve, reject) => {
       RongIMClient.connect(user.token, {
         onSuccess: (userId) => {
@@ -518,6 +518,7 @@ File.upload = (file) => {
     imInstance.getFileToken(fileType, {
       onSuccess: (result) => {
         let { token } = result;
+        console.log(token);
         wx.uploadFile({
           url: 'https://up.qbox.me',
           filePath: file.path,

@@ -1,5 +1,8 @@
 /* pages/skillList/skillList.wxss */
 @import '../util/publicCss';
+.main{
+  height: 100vh;
+}
 .first_item{
    width: 100vw;
   height: 193rpx;

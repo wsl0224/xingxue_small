@@ -42,7 +42,7 @@
     <!-- 备注 -->
     <view class='list-end'>
       <text>备注</text>
-      <input placeholder='简单说下你的要求'  bindinput="bindKeyInput" placeholder-class='remarkInput'></input>
+      <input placeholder='简单说下你的要求'  bindinput="bindKeyInput" placeholder-class='remarkInput' value='{{remark}}'></input>
     </view>
   </view>
  

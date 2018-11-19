@@ -15,7 +15,7 @@ Page({
     unit:'请选择单位',
     unitId:'',
     unitArr: [],
-    Remark:''
+    remark:''
   },
 
   /**
@@ -48,7 +48,7 @@ Page({
           priceId: e.data.price_id,
           unit: e.data.unit ? e.data.unit :'请选择单位',
           unitId: e.data.unit_id,
-          Remark: e.data.remark
+          remark: e.data.remark
         })
       }
      
@@ -98,7 +98,7 @@ Page({
   // 更新备注
   bindKeyInput:function(e){
     this.setData({
-      Remark: e.detail.value,
+      remark: e.detail.value,
     })
   },
   // 保存

@@ -22,7 +22,7 @@ const connect = (context) => {
     }
   }, function(e) {
     console.log(e)
-    
+
     wx.setStorageSync('UserToken', e.data.token);
     wx.setStorageSync('UserId', e.data.userId);
     let user = wx.getStorageSync("urserConInfo");
@@ -50,8 +50,8 @@ const connect = (context) => {
       })
     })
   }, function(e) {
-    
-    
+
+
   })
 };
 Page({
@@ -61,22 +61,24 @@ Page({
    */
   data: {
     showLoad: true,
-    hasUserAuth:true,
+    hasUserAuth: true,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log(loadStatus)
-    let loadStatus = wx.getStorageSync('loadStatus');
-    console.log(loadStatus);
-    if (loadStatus){
-      wx.redirectTo({
-        url: '../home/home',
+      wx.getStorage({
+        key: 'loadStatus',
+        success: function(res) {
+          if (res.data) {
+            wx.redirectTo({
+              url: '../home/home',
+            })
+          }
+        },
       })
-    }
-
+     
   },
 
   /**
@@ -90,7 +92,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-      wx.clearStorageSync();
+   
   },
 
   /**
@@ -132,7 +134,7 @@ Page({
     wx.showToast({
       title: '授权中',
       icon: 'loading',
-    })
+    });
     let self = this;
     wx.login({
       timeout: 5000,
@@ -144,19 +146,24 @@ Page({
             code: e.code,
           },
         }, function(e) {
-          console.log(e)
-          wx.setStorageSync('psnkey', e.data.key);
-          wx.setStorageSync('userId', e.data.uid);
+          wx.setStorage({
+            key: "psnkey",
+            data: e.data.key
+          });
+          wx.setStorage({
+            key: "userId",
+            data: e.data.uid
+          });
           wx.setStorageSync('loadStatus', 1);
           wx.getSetting({
             success: res => {
               if (res.authSetting['scope.userInfo']) {
                 wx.getUserInfo({
                   success: (user) => {
-                    wx.setStorageSync('urserConInfo', user);
-
-                    self.getLocation();
-
+                    wx.setStorage({
+                      key: 'urserConInfo',
+                      data: user,
+                    })
                     if (e.data.status == 1) { //未注册
                       self.setData({
                         showLoad: false,
@@ -165,14 +172,13 @@ Page({
                         title: '请手机号授权注册',
                       })
                     } else { //已注册  
-                      console.log('已注册');
-                      // connect(self);
+                      self.getLocation();
                       self.ToHome();
                       self.freshPsnData();
                     }
-                    
-                    
-                    
+
+
+
                   },
                   fail: (error) => {
                     console.log(error);
@@ -206,24 +212,42 @@ Page({
   // 同步注册APP账号
   getPhoneNumber: function(e) {
     let self = this;
-    let userInfo = wx.getStorageSync('urserConInfo');
-    wx.setStorageSync("phoneInfo", e.detail);
-    $.POST({
-      url: 'wcLoginR',
-      data: {
-        userinfo: JSON.stringify(userInfo),
-        phone: JSON.stringify(e.detail),
-      }
-    }, function(e) {
-      wx.setStorageSync('psnkey', e.data.key);
-      wx.setStorageSync('userId', e.data.uid);
-
-      self.ToHome();
-      self.freshPsnData();
-
-    }, function(e) {
-
-    });
+    wx.showToast({
+      title: '手机号授权中。。。',
+      icon: 'loading',
+    })
+  let detail=e.detail;
+  wx.setStorageSync("phoneInfo", e.detail);
+  wx.getStorage({
+    key: 'urserConInfo',
+    success: function(res) {
+      let userInfo = res.data;
+      $.POST({
+        url: 'wcLoginR',
+        data: {
+          userinfo: JSON.stringify(userInfo),
+          phone: JSON.stringify(detail),
+        }
+      }, function (e) {
+         wx.setStorage({
+            key: "psnkey",
+            data: e.data.key
+          });
+          wx.setStorage({
+            key: "userId",
+            data: e.data.uid
+          });
+        self.getLocation();
+        self.ToHome();
+        self.freshPsnData();
+        wx.hideToast()
+      }, function (e) {
+        wx.hideToast()
+      });
+    },
+  })
+  
+ 
 
   },
   // 获取当前人地理位置
@@ -248,9 +272,9 @@ Page({
                   latitude: res.latitude,
                 }
               }, function(e) {
-
+                  
               }, function(e) {
-
+                
               })
             }
           })
@@ -277,7 +301,7 @@ Page({
           psnStatus: 1,
         });
         wx.setStorageSync('RZStatus', e.data.stu_status)
-       
+
       }
     }, function(e) {
       console.log(e)
@@ -286,24 +310,24 @@ Page({
 
   },
   // 跳转用户协议
-  ToUrl:function(e){
+  ToUrl: function(e) {
     $.openWin({
-      url:'../webView/webView',
-      data:{
-        url:'https://app.xingxue.vip/wcOtherSUP',
+      url: '../webView/webView',
+      data: {
+        url: 'https://app.xingxue.vip/wcOtherSUP',
       }
     })
   },
   // formBtn 
-  formSubmit: function (e) {
+  formSubmit: function(e) {
     $.POST({
       url: 'wcUserAFI',
       data: {
         formid: e.detail.formId,
       }
-    }, function (e) {
+    }, function(e) {
 
-    }, function () {
+    }, function() {
 
     })
   }

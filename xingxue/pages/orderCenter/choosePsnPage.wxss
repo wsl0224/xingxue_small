@@ -165,7 +165,22 @@ border-radius: 6rpx;
   text-align: center;
   line-height: 68rpx;
 }
-
+.canleBtn{
+   width: 700rpx;
+  height: 68rpx;
+ 
+  background: rgb(108,127,235);
+  border-radius: 6rpx;
+  font-size: 30rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 68rpx;
+  position: absolute;
+  bottom: 10rpx;
+  left: 0;
+  right: 0;
+   margin: 0 auto;
+}
 /* 无数据Css */
 .noData{
 width: 100vw;

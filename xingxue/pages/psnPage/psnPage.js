@@ -97,35 +97,38 @@ Page({
   },
 // 关注取关
   AtteBtn:function(e){
-    if(e.currentTarget.dataset.status==1){
-        //取关
-        $.POST({
-          url:'wcUserUFU',
-          data:{
-            fid:e.currentTarget.dataset.id,
-          }
-        },function(e){
-          wx.showToast({
-            title: '取关成功',
-          });
-        },function(e){
-          console.log(e);
-        })
-    }else{
-      //关注
+
+    let that = this;
+
+    if (e.currentTarget.dataset.status == 1) {
       $.POST({
         url: 'wcUserUFU',
         data: {
-          uid: e.currentTarget.dataset.psnId,
+          fid: e.currentTarget.dataset.fid,
         }
       }, function (e) {
         wx.showToast({
-          title: '关注成功',
+          title: e.msg,
         });
+        that.freshData();
       }, function (e) {
         console.log(e);
       })
-    }
+    } else {
+      $.POST({
+        url: 'wcUserAFU',
+        data: {
+          uid: e.currentTarget.dataset.id,
+        }
+      }, function (e) {
+        wx.showToast({
+          title: e.msg,
+        });
+        that.freshData();
+      }, function (e) {
+        console.log(e);
+      })
+    }  
   },
   // 下单
   ToPlaceOrder: function (e) {

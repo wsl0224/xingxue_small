@@ -30,6 +30,7 @@ function POST(param, doSuccess, doFail) {
         console.log(param);
         console.log(res);
         if (res.data.code == 200) {
+      
           doSuccess(res.data);
         
         } else if(res.data.code==301){
@@ -51,7 +52,9 @@ function POST(param, doSuccess, doFail) {
               icon: 'none',
               duration: 2000
             })
-          } else {
+          } else if (param.url == 'wcRYR'){
+            
+          }else {
         
             wx.showToast({
               title: res.data.msg,

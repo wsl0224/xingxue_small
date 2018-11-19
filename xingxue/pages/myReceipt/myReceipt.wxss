@@ -98,12 +98,12 @@ margin-right: 10rpx;
   color: #666666;
 }
 .Item_Num{
-  width: 100rpx;
+  width: 150rpx;
   height: 124rpx;
   line-height: 124rpx;
   font-size: 30rpx;
   color:#333333;
-   margin: 0 30rpx;
+   margin: 0 10rpx;
 }
 .Item_R{
   display: flex;

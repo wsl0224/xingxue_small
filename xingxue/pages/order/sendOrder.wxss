@@ -67,10 +67,8 @@ OneLeverScroll{
 .mapMid{
   width: 308rpx;
   height: 225rpx;
-
-  border:1rpx solid 99;
-  background-color: re#fff;
-  position: fixed;
+  background-color:transparent;
+  position: absolute;
   bottom: 495rpx;
   left: 0;
   right: 0;
